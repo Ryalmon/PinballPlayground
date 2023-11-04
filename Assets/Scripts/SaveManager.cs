@@ -12,25 +12,26 @@ public class SaveManager : MonoBehaviour
 
     void Awake()
     {
-        EstablishSingleton();
-
-        
+        if (EstablishSingleton())
+            return;
+        EstablishPath();
         Load();
 
     }
 
-    private void EstablishSingleton()
+    private bool EstablishSingleton()
     {
         if (M_Instance != null && M_Instance != this)
         {
             Destroy(gameObject);
-            return;
+            return false;
         }
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
+        return false;
     }
-    
+
     private void EstablishPath()
     {
         path = Application.isEditor ? Application.dataPath : Application.persistentDataPath; //checks to see if we're in editor, if so use datapath instead of persistent datapath
