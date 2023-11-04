@@ -8,7 +8,7 @@ public class FlipperManager : MonoBehaviour
     [SerializeField] List<Flippers> leftFlippers = new List<Flippers>();
     [SerializeField] List<Flippers> rightFlippers = new List<Flippers>();
 
-    private void Awake()
+    /*private void Awake()
     {
         EstablishSingleton();
     }
@@ -23,7 +23,7 @@ public class FlipperManager : MonoBehaviour
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
+    }*/
 
     public void AddToList(Flippers newFlipper, List<Flippers> flipList)
     {
