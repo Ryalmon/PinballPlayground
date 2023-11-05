@@ -4,37 +4,53 @@ using UnityEngine;
 
 public class PointParticle : MonoBehaviour
 {
-    public Vector2 AwayDirection;
-    public Vector2 EndingLocation;
+    [SerializeField] float awayTime;
+    [SerializeField] float endTime;
+
+    internal Vector2 AwayDirection;
+    internal Vector2 EndingLocation;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(MoveAway());
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    public PointParticle(Vector2 away, Vector2 end)
     {
         
+    }
+
+    public void AssignStartValues(Vector2 away, Vector2 end)
+    {
+        AwayDirection = (Vector2)transform.position + away;
+        EndingLocation = end;
+        StartCoroutine(MoveAway());
     }
 
     IEnumerator MoveAway()
     {
         float movePercent = 0;
+        Vector2 startPos = transform.position;
         while(movePercent < 1)
         {
-            movePercent += Time.deltaTime;
+            movePercent += Time.deltaTime/awayTime;
+            transform.position = Vector2.Lerp(startPos, AwayDirection, Mathf.Sqrt(movePercent));
             yield return null;
         }
     }
 
-    IEnumerator MoveTowards()
+    public IEnumerator MoveTowards()
     {
         float movePercent = 0;
-        while(movePercent < 0)
+        Vector2 startPos = transform.position;
+        while (movePercent < 1)
         {
-            movePercent += Time.deltaTime;
+            movePercent += Time.deltaTime/endTime;
+            transform.position = Vector2.Lerp(startPos, EndingLocation, movePercent);
             yield return null;
         }
+        Destroy(gameObject);
     }
+
 }
+
