@@ -15,11 +15,6 @@ public class PointParticle : MonoBehaviour
         
     }
 
-    public PointParticle(Vector2 away, Vector2 end)
-    {
-        
-    }
-
     public void AssignStartValues(Vector2 away, Vector2 end)
     {
         AwayDirection = (Vector2)transform.position + away;
