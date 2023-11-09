@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2718604723980117296}
   - component: {fileID: 7980377760253004927}
   m_Layer: 0
-  m_Name: PlayManagers
+  m_Name: PinballManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
