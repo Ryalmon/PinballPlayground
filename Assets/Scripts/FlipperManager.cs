@@ -5,8 +5,8 @@ using UnityEngine;
 public class FlipperManager : MonoBehaviour
 {
     public static FlipperManager M_Instance;
-    [SerializeField] List<Flippers> leftFlippers = new List<Flippers>();
-    [SerializeField] List<Flippers> rightFlippers = new List<Flippers>();
+    [SerializeField] List<Flippers> _leftFlippers = new List<Flippers>();
+    [SerializeField] List<Flippers> _rightFlippers = new List<Flippers>();
 
     /*private void Awake()
     {
@@ -32,7 +32,7 @@ public class FlipperManager : MonoBehaviour
 
     void ActivateLeftFlippers()
     {
-        foreach(Flippers currentFlipper in leftFlippers)
+        foreach(Flippers currentFlipper in _leftFlippers)
         {
             currentFlipper.Flip();
         }
@@ -40,7 +40,7 @@ public class FlipperManager : MonoBehaviour
 
     void ActivateRightFlippers()
     {
-        foreach (Flippers currentFlipper in rightFlippers)
+        foreach (Flippers currentFlipper in _rightFlippers)
         {
             currentFlipper.Flip();
         }
@@ -48,7 +48,7 @@ public class FlipperManager : MonoBehaviour
 
     public void ResetLists()
     {
-        leftFlippers.Clear();
-        rightFlippers.Clear();
+        _leftFlippers.Clear();
+        _rightFlippers.Clear();
     }
 }

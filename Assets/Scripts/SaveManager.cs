@@ -8,7 +8,7 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager M_Instance;
     public GameSaveData GSD;
-    private string path;
+    private string _path;
 
     void Awake()
     {
@@ -34,11 +34,11 @@ public class SaveManager : MonoBehaviour
 
     private void EstablishPath()
     {
-        path = Application.isEditor ? Application.dataPath : Application.persistentDataPath; //checks to see if we're in editor, if so use datapath instead of persistent datapath
-        path = path + "/SaveData/"; //append /SaveData/ to said path
-        if (!Application.isEditor && !Directory.Exists(path)) //check if we're in a build, check if the directory exists, if not
+        _path = Application.isEditor ? Application.dataPath : Application.persistentDataPath; //checks to see if we're in editor, if so use datapath instead of persistent datapath
+        _path = _path + "/SaveData/"; //append /SaveData/ to said path
+        if (!Application.isEditor && !Directory.Exists(_path)) //check if we're in a build, check if the directory exists, if not
         {
-            Directory.CreateDirectory(path); //create it
+            Directory.CreateDirectory(_path); //create it
         }
     }
 
@@ -65,14 +65,14 @@ public class SaveManager : MonoBehaviour
         {
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         });
-        File.WriteAllText(path + "Data.json", convertedJson);
+        File.WriteAllText(_path + "Data.json", convertedJson);
     }
 
     public void Load()
     {
-        if (File.Exists(path + "Data.json"))
+        if (File.Exists(_path + "Data.json"))
         {
-            var json = File.ReadAllText(path + "Data.json");
+            var json = File.ReadAllText(_path + "Data.json");
             GSD = JsonConvert.DeserializeObject<GameSaveData>(json);
         }
         else

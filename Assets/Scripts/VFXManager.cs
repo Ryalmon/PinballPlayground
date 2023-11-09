@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
-    [SerializeField] GameObject pointParticle;
+    [SerializeField] GameObject _pointParticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,7 @@ public class VFXManager : MonoBehaviour
         for(int i = 0; i < particlesSpawned; i++)
         {
             Vector2 dir = Random.insideUnitCircle.normalized;
-            GameObject currentParticle = Instantiate(pointParticle, startPos, Quaternion.identity);
+            GameObject currentParticle = Instantiate(_pointParticle, startPos, Quaternion.identity);
             currentParticle.GetComponent<PointParticle>().AssignStartValues(dir, endPos);
             particleList.Add(currentParticle);
             yield return new WaitForSeconds(.1f);

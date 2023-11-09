@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PointParticle : MonoBehaviour
 {
-    [SerializeField] float awayTime;
-    [SerializeField] float endTime;
+    [SerializeField] float _awayTime;
+    [SerializeField] float _endTime;
 
     internal Vector2 AwayDirection;
     internal Vector2 EndingLocation;
@@ -28,7 +28,7 @@ public class PointParticle : MonoBehaviour
         Vector2 startPos = transform.position;
         while(movePercent < 1)
         {
-            movePercent += Time.deltaTime/awayTime;
+            movePercent += Time.deltaTime/_awayTime;
             transform.position = Vector2.Lerp(startPos, AwayDirection, Mathf.Sqrt(movePercent));
             yield return null;
         }
@@ -40,7 +40,7 @@ public class PointParticle : MonoBehaviour
         Vector2 startPos = transform.position;
         while (movePercent < 1)
         {
-            movePercent += Time.deltaTime/endTime;
+            movePercent += Time.deltaTime/_endTime;
             transform.position = Vector2.Lerp(startPos, EndingLocation, movePercent);
             yield return null;
         }
