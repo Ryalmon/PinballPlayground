@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PointParticle : MonoBehaviour
 {
+    [Header("Variables")]
     [SerializeField] float _awayTime;
     [SerializeField] float _endTime;
 

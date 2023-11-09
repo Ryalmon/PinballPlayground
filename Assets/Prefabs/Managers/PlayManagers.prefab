@@ -47,4 +47,3 @@ MonoBehaviour:
   _allManagers:
   - {fileID: 2193156186037136744, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
   - {fileID: 2158832630143005662, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
-  - {fileID: 5093124564103350219, guid: 798d31da20c4d7649a44dee54640c5ce, type: 3}

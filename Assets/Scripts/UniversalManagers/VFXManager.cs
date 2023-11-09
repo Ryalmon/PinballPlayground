@@ -4,11 +4,30 @@ using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
+    [Header("Point Particles")]
+    [SerializeField] float _pointPSpawnDelay;
+    [SerializeField] float _pointPMoveDelay;
     [SerializeField] GameObject _pointParticle;
-    // Start is called before the first frame update
-    void Start()
+
+    public static VFXManager M_Instance;
+
+    void Awake()
     {
-        
+        if (EstablishSingleton())
+            return;
+    }
+
+    private bool EstablishSingleton()
+    {
+        if (M_Instance != null && M_Instance != this)
+        {
+            Destroy(gameObject);
+            return false;
+        }
+
+        M_Instance = this;
+        DontDestroyOnLoad(gameObject);
+        return false;
     }
 
     // Update is called once per frame
@@ -17,7 +36,6 @@ public class VFXManager : MonoBehaviour
         //Testing Point Particles, will remove later
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Vector2 dir = Random.insideUnitCircle.normalized;
             Vector2 end = new Vector2(2, 4);
             StartCoroutine(SpawnPointParticles(Vector2.zero, end,8));
         }
@@ -32,13 +50,14 @@ public class VFXManager : MonoBehaviour
             GameObject currentParticle = Instantiate(_pointParticle, startPos, Quaternion.identity);
             currentParticle.GetComponent<PointParticle>().AssignStartValues(dir, endPos);
             particleList.Add(currentParticle);
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(_pointPSpawnDelay);
         }
         yield return new WaitForSeconds(.1f);
         foreach(GameObject particle in particleList)
         {
             PointParticle pScript = particle.GetComponent<PointParticle>();
             pScript.StartCoroutine(pScript.MoveTowards());
+            yield return new WaitForSeconds(_pointPMoveDelay);
         }
 
 

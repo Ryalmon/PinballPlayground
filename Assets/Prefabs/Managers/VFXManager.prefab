@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872066a03c1df9e4b946829d1338e917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointParticle: {fileID: 2142193388877706397, guid: 9086944d318b05444988a4874500c34b, type: 3}
+  _pointPSpawnDelay: 0.1
+  _pointPMoveDelay: 0.03
+  _pointParticle: {fileID: 2142193388877706397, guid: 9086944d318b05444988a4874500c34b, type: 3}

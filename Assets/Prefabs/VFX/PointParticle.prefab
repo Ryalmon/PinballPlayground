@@ -97,7 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac3c70105f38e044a6e9d22ec94856b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AwayDirection: {x: 0, y: 0}
-  EndingLocation: {x: 0, y: 0}
-  awayTime: 1
-  endTime: 0.5
+  _awayTime: 1
+  _endTime: 0.5
