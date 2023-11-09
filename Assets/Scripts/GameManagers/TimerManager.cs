@@ -10,6 +10,7 @@ public class TimerManager : MonoBehaviour
     {
         while(TimeRemaining > 0)
         {
+            TimeRemaining -= Time.deltaTime;
             yield return null;
         }
     }
