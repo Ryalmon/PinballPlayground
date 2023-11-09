@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class SceneLoadingManager : MonoBehaviour
 {
-    public static SceneManager M_Instance;
+    public static SceneLoadingManager M_Instance;
 
     void Awake()
     {
@@ -26,9 +26,13 @@ public class SceneManager : MonoBehaviour
         return false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int CurrentScene()
     {
-        
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
     }
 }
