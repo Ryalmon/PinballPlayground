@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     {
         if (EstablishSingleton())
             return;
+        SetupInput();
     }
 
     private bool EstablishSingleton()
@@ -22,6 +23,11 @@ public class InputManager : MonoBehaviour
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
         return false;
+    }
+
+    void SetupInput()
+    {
+        
     }
 
     // Update is called once per frame
