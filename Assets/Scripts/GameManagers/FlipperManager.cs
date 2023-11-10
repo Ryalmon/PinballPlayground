@@ -13,7 +13,7 @@ public class FlipperManager : MonoBehaviour
         flipList.Add(newFlipper);
     }
 
-    void ActivateLeftFlippers()
+    public void ActivateLeftFlippers()
     {
         foreach(Flippers currentFlipper in _leftFlippers)
         {
@@ -21,7 +21,7 @@ public class FlipperManager : MonoBehaviour
         }
     }
 
-    void ActivateRightFlippers()
+    public void ActivateRightFlippers()
     {
         foreach (Flippers currentFlipper in _rightFlippers)
         {
