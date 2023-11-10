@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
 using System.IO;
 
 public class SaveManager : MonoBehaviour
@@ -61,10 +60,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveText()
     {
-        var convertedJson = JsonConvert.SerializeObject(GSD, Formatting.None, new JsonSerializerSettings()
-        {
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-        });
+        var convertedJson = JsonUtility.ToJson(GSD);
         File.WriteAllText(_path + "Data.json", convertedJson);
     }
 
@@ -73,7 +69,7 @@ public class SaveManager : MonoBehaviour
         if (File.Exists(_path + "Data.json"))
         {
             var json = File.ReadAllText(_path + "Data.json");
-            GSD = JsonConvert.DeserializeObject<GameSaveData>(json);
+            GSD = JsonUtility.FromJson<GameSaveData>(json);
         }
         else
         {
