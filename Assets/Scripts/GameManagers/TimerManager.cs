@@ -13,5 +13,11 @@ public class TimerManager : MonoBehaviour
             TimeRemaining -= Time.deltaTime;
             yield return null;
         }
+        EndTimer();
+    }
+
+    void EndTimer()
+    {
+        
     }
 }

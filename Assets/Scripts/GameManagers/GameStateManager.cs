@@ -6,15 +6,16 @@ public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject BallPrefab;
 
-    internal GamePlayState GPS;
+    internal static GamePlayState GPS;
 
     public enum GamePlayState { 
         Intro,
         Play,
         End
     };
-    // Start is called before the first frame update
-    void Start()
+
+
+    private void Awake()
     {
         
     }
@@ -27,6 +28,11 @@ public class GameStateManager : MonoBehaviour
         {
             SpawnBall();
         }
+    }
+
+    public void EndGameState()
+    {
+
     }
 
     public void SpawnBall()
