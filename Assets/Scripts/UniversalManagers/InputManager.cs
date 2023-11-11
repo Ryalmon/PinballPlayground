@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     {
         if (EstablishSingleton())
             return;
-        SetupInput();
+        /*SetupInput();*/
     }
 
     private bool EstablishSingleton()
