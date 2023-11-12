@@ -7,6 +7,7 @@ public class PointParticle : MonoBehaviour
     [Header("Variables")]
     [SerializeField] float _awayTime;
     [SerializeField] float _endTime;
+    [SerializeField] float _awayAcceleration;
 
     internal Vector2 AwayDirection;
     internal Vector2 EndingLocation;
@@ -38,10 +39,12 @@ public class PointParticle : MonoBehaviour
     public IEnumerator MoveTowards()
     {
         float movePercent = 0;
+        float speedMult = 1;
         Vector2 startPos = transform.position;
         while (movePercent < 1)
         {
-            movePercent += Time.deltaTime/_endTime;
+            speedMult += Time.deltaTime * _awayAcceleration;
+            movePercent += (Time.deltaTime/_endTime) * speedMult;
             transform.position = Vector2.Lerp(startPos, EndingLocation, movePercent);
             yield return null;
         }
