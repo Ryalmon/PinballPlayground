@@ -41,11 +41,11 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void SavePlayerValues(int position, string name, int score)
+    public void SavePlayerValues(string name, int score, int pos)
     {
-        GSD.SaveNames[position - 1] = name;
-        GSD.SaveScore[position - 1] = score;
-        SaveText();
+        GSD.SaveNames[pos] = name;
+        GSD.SaveScore[pos] = score;
+        //SaveText();
     }
 
     public string ReturnPlayerName(int position)
@@ -56,6 +56,51 @@ public class SaveManager : MonoBehaviour
     public int ReturnPlayerScore(int position)
     {
         return GSD.SaveScore[position - 1];
+    }
+
+/*    public string[] ReturnPlayerList()
+    {
+        return GSD.SaveNames;
+    }
+
+    public int[] ReturnPlayerScores()
+    {
+        return GSD.SaveScore;
+    }
+
+    public void FindScorePlacement(string name, int score)
+    {
+        int prevScore = GSD.SaveScore[9];
+        for(int i = 9; i > 0; i++)
+        {
+            if(score < GSD.SaveScore[i] && score > prevScore)
+            {
+                
+            }
+
+            prevScore = GSD.SaveScore[i];
+        }
+    }*/
+
+    public void PlaceScoreInArray(string name, int score, int pos)
+    {
+        if(score > GSD.SaveScore[pos])
+        {
+            if(pos + 1 < GSD.SaveScore.Length)
+            {
+                MovePreviousValues(pos);
+            }
+            SavePlayerValues(name, score, pos);
+            PlaceScoreInArray(name, score, --pos);
+            return;
+        }
+        SaveText();
+    }
+
+    private void MovePreviousValues(int pos)
+    {
+        GSD.SaveNames[pos + 1] = GSD.SaveNames[pos];
+        GSD.SaveScore[pos + 1] = GSD.SaveScore[pos];
     }
 
     public void SaveText()
@@ -83,6 +128,6 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class GameSaveData
 {
-    public List<string> SaveNames = new List<string>();
-    public List<int> SaveScore = new List<int>();
+    public string[] SaveNames = new string[10];
+    public int[] SaveScore = new int[10];
 }
