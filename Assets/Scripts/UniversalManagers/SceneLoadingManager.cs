@@ -9,21 +9,18 @@ public class SceneLoadingManager : MonoBehaviour
 
     void Awake()
     {
-        if (EstablishSingleton())
-            return;
+        EstablishSingleton();
     }
 
-    private bool EstablishSingleton()
+    private void EstablishSingleton()
     {
         if (M_Instance != null && M_Instance != this)
         {
             Destroy(gameObject);
-            return false;
         }
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
-        return false;
     }
 
     public int CurrentScene()

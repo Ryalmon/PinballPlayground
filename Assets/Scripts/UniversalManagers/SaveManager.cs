@@ -11,24 +11,21 @@ public class SaveManager : MonoBehaviour
 
     void Awake()
     {
-        if (EstablishSingleton())
-            return;
+        EstablishSingleton();
         EstablishPath();
         Load();
 
     }
 
-    private bool EstablishSingleton()
+    private void EstablishSingleton()
     {
         if (M_Instance != null && M_Instance != this)
         {
             Destroy(gameObject);
-            return false;
         }
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
-        return false;
     }
 
     private void EstablishPath()
@@ -95,12 +92,22 @@ public class SaveManager : MonoBehaviour
             return;
         }
         SaveText();
+        Print();
     }
 
     private void MovePreviousValues(int pos)
     {
         GSD.SaveNames[pos + 1] = GSD.SaveNames[pos];
         GSD.SaveScore[pos + 1] = GSD.SaveScore[pos];
+    }
+
+    private void Print()
+    {
+        string a = "";
+        for (int i = 9; i > 0; i--)
+        {
+            a += "Pos:" + i + " Name:" + GSD.SaveNames[i] + " Score:" + GSD.SaveScore[i] + " ";
+        }
     }
 
     public void SaveText()
