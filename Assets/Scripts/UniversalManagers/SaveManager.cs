@@ -15,8 +15,8 @@ public class SaveManager : MonoBehaviour
         EstablishPath();
         Load();
 
-        int p = Random.Range(0, 100);
-        PlaceScoreInArray("a", p, GSD.SaveScore.Length-1);
+        /*int p = Random.Range(0, 100);
+        PlaceScoreInArray("a", p, GSD.SaveScore.Length-1);*/
     }
 
     private void EstablishSingleton()
@@ -44,7 +44,6 @@ public class SaveManager : MonoBehaviour
     {
         GSD.SaveNames[pos] = name;
         GSD.SaveScore[pos] = score;
-        //SaveText();
     }
 
     public string ReturnPlayerName(int position)
@@ -65,43 +64,29 @@ public class SaveManager : MonoBehaviour
     public int[] ReturnPlayerScores()
     {
         return GSD.SaveScore;
-    }
-
-    public void FindScorePlacement(string name, int score)
-    {
-        int prevScore = GSD.SaveScore[9];
-        for(int i = 9; i > 0; i++)
-        {
-            if(score < GSD.SaveScore[i] && score > prevScore)
-            {
-                
-            }
-
-            prevScore = GSD.SaveScore[i];
-        }
     }*/
 
     public void PlaceScoreInArray(string name, int score, int pos)
     {
+        //Stops if you reach the end and this is bigger than everything else
         if (pos < 0)
         {
             Debug.Log("DONE");
             SaveText();
-            Print();
             return;
         }
             
-        //Debug.Log("Score" + score + " GSD" + GSD.SaveScore[pos] + "pos" + pos);
+        //If we are bigger than the current value, keep moving
         if (score > GSD.SaveScore[pos])
         {
             MovePreviousValues(pos);
 
             SavePlayerValues(name, score, pos);
-            Print();
             PlaceScoreInArray(name, score, --pos);
             return;
         }
 
+        //If this isn't bigger than the next value save the value where we are
         if(InBoundsOfArray(pos+1))
         {
             SavePlayerValues(name, score, pos + 1);
@@ -112,18 +97,13 @@ public class SaveManager : MonoBehaviour
 
     private void MovePreviousValues(int pos)
     {
-        int tempPos = pos + 1;
-        int tempLength = GSD.SaveScore.Length;
-        //Debug.Log("P" + tempPos + "G" + tempLength);
+        //Moves previous value back
         if(InBoundsOfArray(pos + 1))
         {
             GSD.SaveNames[pos + 1] = GSD.SaveNames[pos];
             GSD.SaveScore[pos + 1] = GSD.SaveScore[pos];
             return;
         }
-        /*Debug.Log("MOVEPREVIOUSVALUES");
-        GSD.SaveNames[pos] = "REMOVED";
-        GSD.SaveScore[pos] = 999;*/
         
     }
 
@@ -132,6 +112,7 @@ public class SaveManager : MonoBehaviour
         return pos < GSD.SaveScore.Length;
     }
 
+    //Used to print the array if needed
     /*private void Print()
     {
         //Debug.Log("print");
@@ -145,15 +126,9 @@ public class SaveManager : MonoBehaviour
 
     private void PopulateArrays()
     {
-        /*for (int i = 0; i < GSD.SaveScore.Length; i++)
-        {
-            GSD.SaveScore[i] = 0;
-            GSD.SaveNames[i] = " ";
-        }*/
+        //Fills the arrays with default values when the file is created
         System.Array.Fill(GSD.SaveNames, "");
         System.Array.Fill(GSD.SaveScore, 0);
-        //GSD.SaveScore = { 0,0,0,0,0,0,0,0,0,0};
-        //GSD.SaveNames = { "","","","","","","","",""};
     }
 
     public void SaveText()
