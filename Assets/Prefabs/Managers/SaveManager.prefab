@@ -45,5 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GSD:
-    SaveNames: []
-    SaveScore: 
+    SaveNames:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    SaveScore: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
