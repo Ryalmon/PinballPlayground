@@ -54,7 +54,6 @@ public class NameInput : MonoBehaviour
         _buttonInteractionStatus = canInteract;
         foreach(Button currentButton in _textButtons)
         {
-            Debug.Log("ChangeStatus" + canInteract);
             currentButton.interactable = canInteract;
         }
     }
