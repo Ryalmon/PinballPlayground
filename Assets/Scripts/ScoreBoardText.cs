@@ -27,7 +27,6 @@ public class ScoreBoardText : MonoBehaviour
 
     private void ChangeText()
     {
-        Debug.Log(SaveManager.M_Instance);
         _nameText.text = SaveManager.M_Instance.ReturnPlayerName(_scorePosition);
         _scoreText.text = SaveManager.M_Instance.ReturnPlayerScore(_scorePosition).ToString();
     }
