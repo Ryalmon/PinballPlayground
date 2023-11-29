@@ -8,14 +8,26 @@ public class Flippers : MonoBehaviour
     [SerializeField] private float _flipUpTime;
     [SerializeField] private float _flipWaitTime;
     [SerializeField] private float _flipDownTime;
-    [SerializeField] private Quaternion _upperLimit;
-    private Quaternion _lowerLimit;
+    [SerializeField] private float _upSpeed;
+    [SerializeField] private float _downSpeed;
+    [SerializeField] private bool _rightFlipper;
+    private Coroutine _flipCoroutine;
+    /*    [SerializeField] private float _upperLimit;
+    private float _lowerLimit;*/
+    //[SerializeField] private Quaternion _upperLimit;
+    //private Quaternion _lowerLimit;
     /*    [SerializeField] HingeJoint2D _hJ;
         [SerializeField] JointMotor2D _motorJoint;*/
 
     private void Start()
     {
-        _lowerLimit = transform.rotation;
+        //_lowerLimit = transform.rotation;
+        //_lowerLimit = transform.rotation.eulerAngles.z;
+        if(_rightFlipper)
+        {
+            _upSpeed *= -1;
+            _downSpeed *= -1;
+        }
     }
     private void Update()
     {
@@ -28,64 +40,38 @@ public class Flippers : MonoBehaviour
 
     public void Flip()
     {
-        StartCoroutine(FlipProcess());
+        if(_flipCoroutine != null)
+        {
+            return;
+        }
+        //_flipping = true;
+        _flipCoroutine = StartCoroutine(FlipProcess());
     }
 
     IEnumerator FlipProcess()
     {
-        Quaternion tempRotation = transform.rotation;
         float tempTime = 0;
-        while(tempTime < 1)
+        while(tempTime < _flipUpTime)
         {
-            tempTime += Time.deltaTime / _flipUpTime;
-            rb.angularVelocity = 100;
+            tempTime += Time.deltaTime;
+            rb.angularVelocity = _upSpeed;
             //transform.rotation = Quaternion.Lerp(tempRotation, _upperLimit, tempTime);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
-        Debug.Log("Done");
+        rb.angularVelocity = 0;
         yield return new WaitForSeconds(_flipWaitTime);
-        tempRotation = transform.rotation;
+        
         tempTime = 0;
 
-        while(tempTime < 1)
+        while(tempTime < _flipDownTime)
         {
-            tempTime += Time.deltaTime / _flipDownTime;
-            rb.angularVelocity = -30;
+            tempTime += Time.deltaTime;
+            rb.angularVelocity = -_downSpeed;
             //transform.rotation = Quaternion.Lerp(tempRotation, _lowerLimit, tempTime);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
-
+        
         rb.angularVelocity = 0;
-
+        _flipCoroutine = null;
     }
-
-    /*IEnumerator FlipProcess()
-    {
-        
-        MotorSpeed(_flipUp);
-
-        while (_hJ.limitState != JointLimitState2D.LowerLimit)
-        {
-            yield return null;
-        }
-        
-        yield return new WaitForSeconds(_flipWait);
-
-        Debug.Log("30");
-        MotorSpeed(_flipDown);
-        while (_hJ.limitState != JointLimitState2D.UpperLimit)
-        {
-            Debug.Log("A");
-            yield return null;
-        }
-        
-        MotorSpeed(0);
-    }
-
-    void MotorSpeed(float speed)
-    {
-        _motorJoint = _hJ.motor;
-        _motorJoint.motorSpeed = speed;
-        _hJ.motor = _motorJoint;
-    }*/
 }
