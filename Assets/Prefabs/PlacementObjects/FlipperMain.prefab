@@ -52,6 +52,7 @@ MonoBehaviour:
   _flipDownTime: 0.1
   _upSpeed: 700
   _downSpeed: 700
+  _rightFlipper: 0
 --- !u!50 &2021235586474674469
 Rigidbody2D:
   serializedVersion: 4

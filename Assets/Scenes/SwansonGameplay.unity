@@ -585,6 +585,7 @@ MonoBehaviour:
   _flipDownTime: 0
   _upSpeed: 0
   _downSpeed: 0
+  _rightFlipper: 0
 --- !u!212 &1282017896
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -706,11 +707,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270374997512535687, guid: 9a0d801f001281945a574c410997188e, type: 3}
       propertyPath: _upSpeed
-      value: -700
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 5270374997512535687, guid: 9a0d801f001281945a574c410997188e, type: 3}
       propertyPath: _downSpeed
-      value: -700
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270374997512535687, guid: 9a0d801f001281945a574c410997188e, type: 3}
+      propertyPath: _rightFlipper
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

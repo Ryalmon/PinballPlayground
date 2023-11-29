@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3102872279646475462
+--- !u!1 &6702260392199139463
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2718604723980117296}
-  - component: {fileID: 7980377760253004927}
+  - component: {fileID: 8359723158382371869}
+  - component: {fileID: 9190154201100602611}
   m_Layer: 0
-  m_Name: PinballManagers
+  m_Name: ScoreManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2718604723980117296
+--- !u!4 &8359723158382371869
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3102872279646475462}
+  m_GameObject: {fileID: 6702260392199139463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7980377760253004927
+--- !u!114 &9190154201100602611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3102872279646475462}
+  m_GameObject: {fileID: 6702260392199139463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e852205a44e8bcd4a93a2fd05b96a4b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 014a3a0f068404f4da68c5871f8f4b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allManagers:
-  - {fileID: 2193156186037136744, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
-  - {fileID: 2158832630143005662, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
-  - {fileID: 1142893909840185829, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
-  - {fileID: 6702260392199139463, guid: 93b02d6355a92cc4e8d34913bd56dd82, type: 3}
+  _scoreText: {fileID: 0}

@@ -12,5 +12,7 @@ public class ManagerSpawner : MonoBehaviour
         {
             Instantiate(m, transform.position, transform.rotation);
         }
+
+        Destroy(gameObject);
     }
 }
