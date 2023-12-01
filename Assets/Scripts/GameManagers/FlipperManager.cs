@@ -15,6 +15,7 @@ public class FlipperManager : MonoBehaviour
 
     public void ActivateLeftFlippers()
     {
+        //Goes through the list of left flippers and activates them
         foreach(Flippers currentFlipper in _leftFlippers)
         {
             currentFlipper.Flip();
@@ -23,6 +24,7 @@ public class FlipperManager : MonoBehaviour
 
     public void ActivateRightFlippers()
     {
+        //Goes through the list of right flippers and activates them
         foreach (Flippers currentFlipper in _rightFlippers)
         {
             currentFlipper.Flip();

@@ -40,11 +40,12 @@ public class Flippers : MonoBehaviour
 
     public void Flip()
     {
+        //Checks that you are not currently flipping
         if(_flipCoroutine != null)
         {
             return;
         }
-        //_flipping = true;
+        //Assignes the coroutine value and starts the process of flipping
         _flipCoroutine = StartCoroutine(FlipProcess());
     }
 
@@ -53,18 +54,21 @@ public class Flippers : MonoBehaviour
         float tempTime = 0;
         while(tempTime < _flipUpTime)
         {
+            //Flips the flipper up until a set time has passed
             tempTime += Time.deltaTime;
             rb.angularVelocity = _upSpeed;
             //transform.rotation = Quaternion.Lerp(tempRotation, _upperLimit, tempTime);
             yield return new WaitForFixedUpdate();
         }
+        //Stops the flipping to wait
         rb.angularVelocity = 0;
         yield return new WaitForSeconds(_flipWaitTime);
         
         tempTime = 0;
-
+        
         while(tempTime < _flipDownTime)
         {
+            //Flips the flippers down until a set time has passed
             tempTime += Time.deltaTime;
             rb.angularVelocity = -_downSpeed;
             //transform.rotation = Quaternion.Lerp(tempRotation, _lowerLimit, tempTime);

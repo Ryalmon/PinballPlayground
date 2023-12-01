@@ -22,6 +22,7 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateText()
     {
+        //Displays the score in the game world
         _scoreText.text = CurrentScore.ToString();
     }
 }

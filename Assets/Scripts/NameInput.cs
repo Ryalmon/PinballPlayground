@@ -24,6 +24,7 @@ public class NameInput : MonoBehaviour
 
     public void AddLetter()
     {
+        //Adds the letter from the button into the currently inputted name
         Name += EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TMP_Text>().text;
         CheckInteractableStatus();
         ChangeText();
@@ -31,8 +32,10 @@ public class NameInput : MonoBehaviour
 
     public void Backspace()
     {
+        //Checks that the name isn't empty
         if (Name.Length-1 < 0)
             return;
+        //Removes the last letter in the name
         Name = Name.Remove(Name.Length-1);
         CheckInteractableStatus();
         ChangeText();
@@ -40,19 +43,23 @@ public class NameInput : MonoBehaviour
 
     private void CheckInteractableStatus()
     {
+        //Checks if the name is at the name length limit
         if (Name.Length >= _allowedNameLength)
         {
+            //Makes all input buttons non interactable
             Interactable(false);
             return;
         }
         if (!_buttonInteractionStatus)
+            //Makes all input buttons interactable
             Interactable(true);
     }
 
     private void Interactable(bool canInteract)
     {
         _buttonInteractionStatus = canInteract;
-        foreach(Button currentButton in _textButtons)
+        //Goes through each button and changes the interactability of them
+        foreach (Button currentButton in _textButtons)
         {
             currentButton.interactable = canInteract;
         }
@@ -60,6 +67,7 @@ public class NameInput : MonoBehaviour
 
     private void ChangeText()
     {
+        //Displays the name in the game world
         _nameText.text = Name;
     }
 

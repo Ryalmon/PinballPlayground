@@ -37,6 +37,9 @@ public class GameStateManager : MonoBehaviour
 
     public void SpawnBall()
     {
+        //Places a ball
         Instantiate(BallPrefab, Vector2.zero, Quaternion.identity);
+
+        //---Currently the ball is placed at (0,0) this will change later!---
     }
 }

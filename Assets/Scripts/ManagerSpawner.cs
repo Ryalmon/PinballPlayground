@@ -8,11 +8,12 @@ public class ManagerSpawner : MonoBehaviour
 
     private void Awake()
     {
+        //Spawns all prefabs in the _allManagers list
         foreach (GameObject m in _allManagers)
         {
             Instantiate(m, transform.position, transform.rotation);
         }
-
+        //Destroys itself
         Destroy(gameObject);
     }
 }

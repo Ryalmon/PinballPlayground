@@ -109,6 +109,7 @@ public class SaveManager : MonoBehaviour
 
     private bool InBoundsOfArray(int pos)
     {
+        //Checks that a specific number is a valid position on the scoreboard
         return pos < GSD.SaveScore.Length;
     }
 
@@ -133,12 +134,14 @@ public class SaveManager : MonoBehaviour
 
     public void SaveText()
     {
+        //Writes all variables in the Game Save Data class into Json
         var convertedJson = JsonUtility.ToJson(GSD);
         File.WriteAllText(_path + "Data.json", convertedJson);
     }
 
     public void Load()
     {
+        //Loads all variables in Json into the Game Save Data class
         if (File.Exists(_path + "Data.json"))
         {
             var json = File.ReadAllText(_path + "Data.json");
@@ -157,6 +160,7 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class GameSaveData
 {
+    //Holds the saved data of the top 10 players
     public string[] SaveNames = new string[10];
     public int[] SaveScore = new int[10];
 }
