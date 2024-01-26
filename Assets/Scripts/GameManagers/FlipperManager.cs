@@ -9,9 +9,6 @@ public class FlipperManager : MonoBehaviour
     [SerializeField] List<Flippers> _leftFlippers = new List<Flippers>();
     [SerializeField] List<Flippers> _rightFlippers = new List<Flippers>();
 
-    private void Start()
-    {
-    }
 
     public void AddToList(Flippers newFlipper, List<Flippers> flipList)
     {
