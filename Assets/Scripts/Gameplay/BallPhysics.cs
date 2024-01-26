@@ -16,4 +16,14 @@ public class BallPhysics : MonoBehaviour
     {
         rb.AddForce(newForce);
     }
+
+    public void RedirectBall(Vector2 newDirection)
+    {
+        rb.velocity = newDirection * rb.velocity.magnitude;
+    }
+
+    public void OverrideBallForce(Vector2 newForce)
+    {
+        rb.velocity = newForce;
+    }
 }
