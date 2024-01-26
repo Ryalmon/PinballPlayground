@@ -26,4 +26,33 @@ public class BallPhysics : MonoBehaviour
     {
         rb.velocity = newForce;
     }
+
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
+    public void SetPosition(Vector2 newPos)
+    {
+        transform.position = newPos;
+    }
+
+    public void SetParent(GameObject newParent)
+    {
+        transform.parent = newParent.transform;
+    }
+    public void RemoveParent()
+    {
+        transform.parent = null;
+    }
+
+    public void PhysicsEnabled(bool enabled)
+    {
+        if(enabled)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            return;
+        }
+        rb.bodyType = RigidbodyType2D.Static;
+    }
 }
