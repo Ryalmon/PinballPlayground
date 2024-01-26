@@ -15,6 +15,7 @@ public class Flippers : MonoBehaviour
     /*    [SerializeField] private float _upperLimit;
     private float _lowerLimit;*/
     //[SerializeField] private Quaternion _upperLimit;
+    [SerializeField] private Quaternion _startingRotation;
     //private Quaternion _lowerLimit;
     /*    [SerializeField] HingeJoint2D _hJ;
         [SerializeField] JointMotor2D _motorJoint;*/
@@ -23,6 +24,7 @@ public class Flippers : MonoBehaviour
     {
         //_lowerLimit = transform.rotation;
         //_lowerLimit = transform.rotation.eulerAngles.z;
+        _startingRotation = transform.rotation;
         if(_rightFlipper)
         {
             _upSpeed *= -1;
@@ -77,5 +79,6 @@ public class Flippers : MonoBehaviour
         
         rb.angularVelocity = 0;
         _flipCoroutine = null;
+        transform.rotation = _startingRotation;
     }
 }
