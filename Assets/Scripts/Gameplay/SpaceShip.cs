@@ -7,18 +7,21 @@ public class SpaceShip : MonoBehaviour
     [Header("Variables")]
     [SerializeField] float _holdDuration;
     [SerializeField] float _resetDuration;
+    [SerializeField] Vector3 _moveDistance;
     [Space]
 
     [Header("Refrences")]
     [SerializeField] Collider2D _detectionArea;
     [SerializeField] GameObject _holdingLocation;
+
     private GameObject _dragObject;
     private BallPhysics _dragObjectPhysics;
+    private Vector3 startLocation;
     SpaceShipState _shipState = SpaceShipState.IDLE;
     // Start is called before the first frame update
     void Start()
     {
-        
+         startLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -51,7 +54,16 @@ public class SpaceShip : MonoBehaviour
 
     private IEnumerator DragProcess()
     {
-        yield return new WaitForSeconds(_holdDuration);
+        float moveProgress = 0;
+
+        Vector3 moveTo = startLocation + _moveDistance;
+        while(moveProgress < 1)
+        {
+            moveProgress += Time.deltaTime / _holdDuration;
+            transform.position = Vector3.Lerp(startLocation, moveTo, moveProgress);
+            yield return null;
+        }
+        //yield return new WaitForSeconds(_holdDuration);
         ReleaseObject();
     }
 
@@ -69,7 +81,7 @@ public class SpaceShip : MonoBehaviour
     private IEnumerator ResetSpaceShip()
     {
         yield return new WaitForSeconds(_resetDuration);
-
+        transform.position = startLocation;
         ChangeShipState(SpaceShipState.IDLE);
     }
 

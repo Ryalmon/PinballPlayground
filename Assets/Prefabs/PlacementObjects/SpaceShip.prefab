@@ -165,7 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfc89889851d7840b383aca603c41ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _holdDuration: 3
-  _resetDuration: 1
+  _holdDuration: 1
+  _resetDuration: 1.5
+  _moveDistance: {x: 0, y: 3, z: 0}
   _detectionArea: {fileID: 3128519516912981413}
   _holdingLocation: {fileID: 2386597549701634280}
