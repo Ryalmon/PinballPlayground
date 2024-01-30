@@ -16,7 +16,4 @@ public class GameplayParent : MonoBehaviour
     {
         Instance = this;
     }
-
-
-
 }

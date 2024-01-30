@@ -17,8 +17,8 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        
 
+        
 
     }
 
@@ -30,16 +30,24 @@ public class GameStateManager : MonoBehaviour
         {
             SpawnBall();
         }
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            //TEMPORARY REMOVE LATER
+            StartGame();
+        }
     }
 
-    public void StartGameState()
+    public void StartGame()
     {
+        //Set currentgameplay state to play
+        GPS = GamePlayState.Play;
+        //Starts the timer
         GameplayParent.Instance.Timer.StartCountdown();
     }
 
     public void EndGameState()
     {
-
+        GPS = GamePlayState.End;
     }
 
     public void SpawnBall()

@@ -101,6 +101,7 @@ MonoBehaviour:
   _awayTime: 1
   _endTime: 0.5
   _awayAcceleration: 10
+  _pointValue: 5
 --- !u!96 &8698081135603383568
 TrailRenderer:
   serializedVersion: 3
