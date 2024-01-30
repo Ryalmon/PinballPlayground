@@ -6,18 +6,18 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 { 
     [SerializeField] TMP_Text _scoreText;
-    public static ScoreManager M_Instance;
     internal int CurrentScore;
     
     // Start is called before the first frame update
     void Start()
     {
-        M_Instance = this;
+
     }
 
     public void AddToScore(int addedScore)
     {
-
+        CurrentScore += addedScore;
+        UpdateText();
     }
 
     private void UpdateText()

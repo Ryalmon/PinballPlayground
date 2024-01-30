@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class FlipperManager : MonoBehaviour
 {
-    public static FlipperManager M_Instance;
     [SerializeField] List<Flippers> _leftFlippers = new List<Flippers>();
     [SerializeField] List<Flippers> _rightFlippers = new List<Flippers>();
 

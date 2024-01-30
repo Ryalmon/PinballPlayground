@@ -18,6 +18,8 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         
+
+
     }
 
     // Update is called once per frame
@@ -28,6 +30,11 @@ public class GameStateManager : MonoBehaviour
         {
             SpawnBall();
         }
+    }
+
+    public void StartGameState()
+    {
+        GameplayParent.Instance.Timer.StartCountdown();
     }
 
     public void EndGameState()
