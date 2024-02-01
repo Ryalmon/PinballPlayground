@@ -170,9 +170,10 @@ MonoBehaviour:
   _flipUpTime: 0.1
   _flipWaitTime: 0.2
   _flipDownTime: 0.1
-  _upSpeed: 700
-  _downSpeed: 700
+  _upSpeed: 400
+  _downSpeed: 400
   _rightFlipper: 1
+  _startingRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &8268660517208159088
 Rigidbody2D:
   serializedVersion: 4

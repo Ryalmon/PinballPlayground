@@ -33,7 +33,7 @@ public class VFXManager : MonoBehaviour
         //Testing Point Particles, will remove later
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Vector2 end = new Vector2(2, 4);
+            Vector2 end = new Vector2(0, 4.5f);
             StartCoroutine(SpawnPointParticles(Vector2.zero, end,8));
         }
     }
