@@ -19,6 +19,6 @@ public class MainMenuButtons : MonoBehaviour
 
     public void PlayGame()
     {
-        
+        UniversalManager.Instance.Scene.LoadScene(_gameplayScene);
     }
 }
