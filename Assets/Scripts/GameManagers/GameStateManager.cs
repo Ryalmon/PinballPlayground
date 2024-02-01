@@ -24,6 +24,7 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
         //Testing Spawn Ball, will remove later
+        //Quinn note - spawning balls this way will break the respawning system
         if (Input.GetKeyDown(KeyCode.S))
         {
             SpawnBall();

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - BallController
+  - KillBox
   layers:
   - Default
   - TransparentFX
