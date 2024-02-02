@@ -21,4 +21,19 @@ public class MainMenuButtons : MonoBehaviour
     {
         UniversalManager.Instance.Scene.LoadScene(_gameplayScene);
     }
+
+    public static void QuitGame()
+    {
+
+        Application.Quit();
+        /*if (Application.isEditor)
+        {
+         //   UnityEditor.EditorApplication.isPlaying = false;
+        }
+        else
+        {
+            Application.Quit();
+        }*/
+
+    }
 }

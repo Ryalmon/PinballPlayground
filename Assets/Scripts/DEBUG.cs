@@ -18,7 +18,7 @@ public class DEBUG : MonoBehaviour
 
     public void PointsDebug()
     {
-        UniversalManager.Instance.VFX.StartCoroutine(UniversalManager.Instance.VFX.SpawnPointParticles(Vector2.zero, new Vector2(0, 4.5f), 8));
+        UniversalManager.Instance.VFX.StartCoroutine(UniversalManager.Instance.VFX.SpawnPointParticles(Vector2.zero, new Vector2(0, 10), 8));
     }
 
     public void StartGame()
