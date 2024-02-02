@@ -25,7 +25,7 @@ public class ScoreBoardText : MonoBehaviour
         }
     }
 
-    private void ChangeText()
+    public void ChangeText()
     {
         //Gets the name and score from JSON at a certain position and displays it on the scoreboard
         _nameText.text = SaveManager.M_Instance.ReturnPlayerName(_scorePosition);

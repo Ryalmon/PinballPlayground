@@ -22,22 +22,6 @@ public class GameStateManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Testing Spawn Ball, will remove later
-        //Quinn note - spawning balls this way will break the respawning system
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SpawnBall();
-        }
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            //TEMPORARY REMOVE LATER
-            StartGame();
-        }
-    }
-
     public void StartGame()
     {
         //Set currentgameplay state to play
