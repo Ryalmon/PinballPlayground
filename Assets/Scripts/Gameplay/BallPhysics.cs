@@ -5,11 +5,13 @@ using UnityEngine;
 public class BallPhysics : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject BallController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BallController = GameObject.FindGameObjectWithTag("BallController");
+        BallController.GetComponent<BallSpawner>().BallsInScene.Add(this);
     }
 
     public void ApplyForceToBall(Vector2 newForce)
