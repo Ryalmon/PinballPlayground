@@ -628,6 +628,63 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1001 &298622642
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2408790924656567570, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_Name
+      value: SpaceShipParent (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465482642243203541, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
 --- !u!114 &325085081 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1181254285127490709, guid: c3059cd23b7610f46a8168e2b1180a75, type: 3}
@@ -1550,8 +1607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 6940565582449282592, guid: 869a610c578bdc7428f578774a96a525, type: 3}
   BallSpawnLocation: {x: 0, y: 6}
-  BallIsInGame: 0
   MultiBallIsActive: 0
+  BallsInScene: []
+  BallTransform: {fileID: 0}
 --- !u!4 &1039923385
 Transform:
   m_ObjectHideFlags: 0
@@ -2952,63 +3010,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3adc74b1a405eff4c9b313b4440d1423, type: 3}
---- !u!1001 &4699385699799078460
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207186686734828905, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9024585968132116695, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
-      propertyPath: m_Name
-      value: SpaceShip
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c28c0e78c7b326b469ed7192bd2499c8, type: 3}
 --- !u!1001 &6685374692172638627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3076,7 +3077,6 @@ SceneRoots:
   - {fileID: 2007641630}
   - {fileID: 906001218}
   - {fileID: 1109273039709911475}
-  - {fileID: 4699385699799078460}
   - {fileID: 3434954454544592652}
   - {fileID: 2086138435}
   - {fileID: 1039923385}
@@ -3084,3 +3084,4 @@ SceneRoots:
   - {fileID: 1757761488}
   - {fileID: 287693405}
   - {fileID: 162508314}
+  - {fileID: 298622642}

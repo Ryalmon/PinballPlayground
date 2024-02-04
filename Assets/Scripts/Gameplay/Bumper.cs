@@ -8,7 +8,7 @@ public class Bumper : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<BallPhysics>() != null)
+        if (collision.gameObject.GetComponent<BallPhysics>() != null )
         {
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision.transform.position));
         }

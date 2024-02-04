@@ -9,24 +9,6 @@ public class VFXManager : MonoBehaviour
     [SerializeField] float _pointPMoveDelay;
     [SerializeField] GameObject _pointParticle;
 
-    public static VFXManager M_Instance;
-
-    void Awake()
-    {
-        EstablishSingleton();
-    }
-
-    private void EstablishSingleton()
-    {
-        if (M_Instance != null && M_Instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        M_Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
     // Update is called once per frame
     void Update()
     {

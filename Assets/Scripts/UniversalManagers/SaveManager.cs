@@ -5,13 +5,12 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager M_Instance;
     public GameSaveData GSD;
     private string _path;
 
     void Awake()
     {
-        EstablishSingleton();
+        /*EstablishSingleton();*/
         EstablishPath();
         Load();
 
@@ -19,7 +18,7 @@ public class SaveManager : MonoBehaviour
         PlaceScoreInArray("a", p, GSD.SaveScore.Length-1);*/
     }
 
-    private void EstablishSingleton()
+/*    private void EstablishSingleton()
     {
         if (M_Instance != null && M_Instance != this)
         {
@@ -28,7 +27,7 @@ public class SaveManager : MonoBehaviour
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
+    }*/
 
     private void EstablishPath()
     {

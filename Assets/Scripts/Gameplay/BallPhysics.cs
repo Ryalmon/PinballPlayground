@@ -16,16 +16,19 @@ public class BallPhysics : MonoBehaviour
 
     public void ApplyForceToBall(Vector2 newForce)
     {
+        if (!HasPhysics()) return;
         rb.AddForce(newForce);
     }
 
     public void RedirectBall(Vector2 newDirection)
     {
+        if (!HasPhysics()) return;
         rb.velocity = newDirection * rb.velocity.magnitude;
     }
 
     public void OverrideBallForce(Vector2 newForce)
     {
+        if (!HasPhysics()) return;
         rb.velocity = newForce;
     }
 
@@ -56,5 +59,11 @@ public class BallPhysics : MonoBehaviour
             return;
         }
         rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    private bool HasPhysics()
+    {
+        if (rb.bodyType == RigidbodyType2D.Dynamic) return true;
+        return false;
     }
 }
