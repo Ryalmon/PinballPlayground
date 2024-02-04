@@ -8,6 +8,8 @@ public class SpaceShip : MonoBehaviour
     [SerializeField] float _holdDuration;
     [SerializeField] float _resetDuration;
     [SerializeField] Vector3 _moveDistance;
+    [SerializeField] float _releaseForce;
+    [SerializeField] float _releaseXVariability;
     [Space]
 
     [Header("Refrences")]
@@ -60,6 +62,9 @@ public class SpaceShip : MonoBehaviour
     {
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
+
+        Vector2 releaseBallForce = new Vector2(Random.Range(-_releaseXVariability, _releaseXVariability), _releaseForce);
+        _dragObjectPhysics.OverrideBallForce(releaseBallForce);
 
         _dragObject = null;
         _dragObjectPhysics = null;

@@ -102,6 +102,8 @@ MonoBehaviour:
   _holdDuration: 1
   _resetDuration: 2
   _moveDistance: {x: 0, y: 3, z: 0}
+  _releaseForce: 8
+  _releaseXVariability: 3
   _detectionArea: {fileID: 9193157069710995436}
   _holdingLocation: {fileID: 2387247319312278465}
 --- !u!58 &9193157069710995436
