@@ -24,10 +24,13 @@ public class GameStateManager : MonoBehaviour
 
     public void StartGame()
     {
-        //Set currentgameplay state to play
-        GPS = GamePlayState.Play;
-        //Starts the timer
-        GameplayParent.Instance.Timer.StartCountdown();
+        if (GPS != GamePlayState.Intro) return;
+        
+            //Set currentgameplay state to play
+            GPS = GamePlayState.Play;
+            //Starts the timer
+            GameplayParent.Instance.Timer.StartCountdown();
+        
     }
 
     public void EndGameState()
