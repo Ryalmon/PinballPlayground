@@ -57,6 +57,10 @@ public class GameUIManager : MonoBehaviour
         {
             DisplayKeyboard();
         }
+        else
+        {
+            GameplayParent.Instance.State.EndScene();
+        }
     }
 
     private void DisplayFinalScore()
@@ -67,6 +71,7 @@ public class GameUIManager : MonoBehaviour
 
     private void DisplayKeyboard()
     {
+        Debug.Log("DisplayKeyboard");
         _inputKeyboardDisplay.SetActive(true);
     }
 }

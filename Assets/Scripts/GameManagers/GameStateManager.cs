@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject BallPrefab;
+    private const int _mainMeunScene = 0;
 
     internal static GamePlayState GPS = GamePlayState.Intro;
 
@@ -45,5 +46,10 @@ public class GameStateManager : MonoBehaviour
         Instantiate(BallPrefab, Vector2.zero, Quaternion.identity);
 
         //---Currently the ball is placed at (0,0) this will change later!---
+    }
+
+    public void EndScene()
+    {
+        UniversalManager.Instance.Scene.LoadScene(_mainMeunScene);
     }
 }
