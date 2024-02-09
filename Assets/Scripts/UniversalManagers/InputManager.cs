@@ -5,16 +5,15 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager M_Instance;
     public TouchInput TI;
 
     void Awake()
     {
-        EstablishSingleton();
+        //EstablishSingleton();
         /*SetupInput();*/
     }
 
-    private void EstablishSingleton()
+    /*private void EstablishSingleton()
     {
         if (M_Instance != null && M_Instance != this)
         {
@@ -23,7 +22,7 @@ public class InputManager : MonoBehaviour
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
+    }*/
 
     /*void SetupInput()
     {
@@ -37,8 +36,5 @@ public class InputManager : MonoBehaviour
     }*/
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

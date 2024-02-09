@@ -6,7 +6,7 @@ public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject BallPrefab;
 
-    internal static GamePlayState GPS;
+    internal static GamePlayState GPS = GamePlayState.Intro;
 
     public enum GamePlayState { 
         Intro,
@@ -17,22 +17,23 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
+
         
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
     {
-        //Testing Spawn Ball, will remove later
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SpawnBall();
-        }
+        //Set currentgameplay state to play
+        GPS = GamePlayState.Play;
+        //Starts the timer
+        GameplayParent.Instance.Timer.StartCountdown();
     }
 
     public void EndGameState()
     {
-
+        GPS = GamePlayState.End;
+        GameplayParent.Instance.UI.GameEndUI();
     }
 
     public void SpawnBall()

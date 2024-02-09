@@ -5,13 +5,25 @@ using UnityEngine;
 public class TimerManager : MonoBehaviour
 {
     public float TimeRemaining;
+    private Coroutine _countDownCoroutine;
 
-    IEnumerator CountDown()
+    public void StartCountdown()
+    {
+        _countDownCoroutine = StartCoroutine(CountDown());
+    }
+
+    public void StopCountDown()
+    {
+        StopCoroutine(_countDownCoroutine);
+    }
+
+    private IEnumerator CountDown()
     {
         //Count the timer down until it reaches 0
         while(TimeRemaining > 0)
         {
             TimeRemaining -= Time.deltaTime;
+            GameplayParent.Instance.UI.UpdateTimerUI(TimeRemaining);
             yield return null;
         }
         //Activate anything that needs to happen after the timer reaches 0
@@ -20,6 +32,7 @@ public class TimerManager : MonoBehaviour
 
     void EndTimer()
     {
-        
+
+        GameplayParent.Instance.State.EndGameState();
     }
 }

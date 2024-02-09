@@ -9,31 +9,13 @@ public class VFXManager : MonoBehaviour
     [SerializeField] float _pointPMoveDelay;
     [SerializeField] GameObject _pointParticle;
 
-    public static VFXManager M_Instance;
-
-    void Awake()
-    {
-        EstablishSingleton();
-    }
-
-    private void EstablishSingleton()
-    {
-        if (M_Instance != null && M_Instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        M_Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
     // Update is called once per frame
     void Update()
     {
         //Testing Point Particles, will remove later
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Vector2 end = new Vector2(2, 4);
+            Vector2 end = new Vector2(0, 4.5f);
             StartCoroutine(SpawnPointParticles(Vector2.zero, end,8));
         }
     }

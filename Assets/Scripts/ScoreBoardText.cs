@@ -12,23 +12,25 @@ public class ScoreBoardText : MonoBehaviour
     [SerializeField] TMP_Text _nameText;
     [SerializeField] TMP_Text _scoreText;
 
-    private void Awake()
+    private void Start()
     {
-        //ChangeText();
+        ChangeText();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            ChangeText();
-        }
+        StartCoroutine(TextUpdate()); 
     }
 
-    private void ChangeText()
+    public void ChangeText()
     {
         //Gets the name and score from JSON at a certain position and displays it on the scoreboard
-        _nameText.text = SaveManager.M_Instance.ReturnPlayerName(_scorePosition);
-        _scoreText.text = SaveManager.M_Instance.ReturnPlayerScore(_scorePosition).ToString();
+        _nameText.text = UniversalManager.Instance.Save.ReturnPlayerName(_scorePosition);
+        _scoreText.text = UniversalManager.Instance.Save.ReturnPlayerScore(_scorePosition).ToString();
+    }
+    public IEnumerator TextUpdate()
+    {
+        yield return new WaitForSecondsRealtime(10f);
+        ChangeText();
     }
 }

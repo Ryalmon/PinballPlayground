@@ -5,13 +5,12 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager M_Instance;
     public GameSaveData GSD;
     private string _path;
 
     void Awake()
     {
-        EstablishSingleton();
+        /*EstablishSingleton();*/
         EstablishPath();
         Load();
 
@@ -19,7 +18,7 @@ public class SaveManager : MonoBehaviour
         PlaceScoreInArray("a", p, GSD.SaveScore.Length-1);*/
     }
 
-    private void EstablishSingleton()
+/*    private void EstablishSingleton()
     {
         if (M_Instance != null && M_Instance != this)
         {
@@ -28,7 +27,7 @@ public class SaveManager : MonoBehaviour
 
         M_Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
+    }*/
 
     private void EstablishPath()
     {
@@ -55,6 +54,11 @@ public class SaveManager : MonoBehaviour
     {
         return GSD.SaveScore[position - 1];
     }
+    
+    public int ReturnArrayLength()
+    {
+        return GSD.SaveScore.Length;
+    }
 
 /*    public string[] ReturnPlayerList()
     {
@@ -65,13 +69,17 @@ public class SaveManager : MonoBehaviour
     {
         return GSD.SaveScore;
     }*/
+    public bool ValidScoreInput(int score)
+    {
+        if (score > GSD.SaveScore[GSD.SaveScore.Length-1]) return true;
+        return false;
+    }
 
     public void PlaceScoreInArray(string name, int score, int pos)
     {
         //Stops if you reach the end and this is bigger than everything else
         if (pos < 0)
         {
-            Debug.Log("DONE");
             SaveText();
             return;
         }

@@ -5,25 +5,30 @@ using UnityEngine;
 public class BallPhysics : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject BallController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BallController = GameObject.FindGameObjectWithTag("BallController");
+        BallController.GetComponent<BallSpawner>().BallsInScene.Add(this);
     }
 
     public void ApplyForceToBall(Vector2 newForce)
     {
+        if (!HasPhysics()) return;
         rb.AddForce(newForce);
     }
 
     public void RedirectBall(Vector2 newDirection)
     {
+        if (!HasPhysics()) return;
         rb.velocity = newDirection * rb.velocity.magnitude;
     }
 
     public void OverrideBallForce(Vector2 newForce)
     {
+        if (!HasPhysics()) return;
         rb.velocity = newForce;
     }
 
@@ -54,5 +59,11 @@ public class BallPhysics : MonoBehaviour
             return;
         }
         rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    private bool HasPhysics()
+    {
+        if (rb.bodyType == RigidbodyType2D.Dynamic) return true;
+        return false;
     }
 }

@@ -7,29 +7,23 @@ public class SpaceShip : MonoBehaviour
     [Header("Variables")]
     [SerializeField] float _holdDuration;
     [SerializeField] float _resetDuration;
+    [SerializeField] Vector3 _moveDistance;
+    [SerializeField] float _releaseForce;
+    [SerializeField] float _releaseXVariability;
     [Space]
 
     [Header("Refrences")]
     [SerializeField] Collider2D _detectionArea;
     [SerializeField] GameObject _holdingLocation;
+
     private GameObject _dragObject;
     private BallPhysics _dragObjectPhysics;
     SpaceShipState _shipState = SpaceShipState.IDLE;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<BallPhysics>() != null)
+        if(collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE )
         {
             ChangeShipState(SpaceShipState.DRAGGING);
             DragObject(collision.gameObject);
@@ -51,7 +45,16 @@ public class SpaceShip : MonoBehaviour
 
     private IEnumerator DragProcess()
     {
-        yield return new WaitForSeconds(_holdDuration);
+        float moveProgress = 0;
+
+        Vector3 moveTo = _moveDistance;
+        while(moveProgress < 1)
+        {
+            moveProgress += Time.deltaTime / _holdDuration;
+            transform.localPosition = Vector3.Lerp(Vector3.zero, moveTo, moveProgress);
+            yield return null;
+        }
+        //yield return new WaitForSeconds(_holdDuration);
         ReleaseObject();
     }
 
@@ -59,6 +62,9 @@ public class SpaceShip : MonoBehaviour
     {
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
+
+        Vector2 releaseBallForce = new Vector2(Random.Range(-_releaseXVariability, _releaseXVariability), _releaseForce);
+        _dragObjectPhysics.OverrideBallForce(releaseBallForce);
 
         _dragObject = null;
         _dragObjectPhysics = null;
@@ -69,7 +75,7 @@ public class SpaceShip : MonoBehaviour
     private IEnumerator ResetSpaceShip()
     {
         yield return new WaitForSeconds(_resetDuration);
-
+        transform.localPosition = Vector3.zero;
         ChangeShipState(SpaceShipState.IDLE);
     }
 
