@@ -44,6 +44,15 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TestTouch2"",
+                    ""type"": ""Value"",
+                    ""id"": ""434a5d08-1575-467f-98b9-3add37197fe0"",
+                    ""expectedControlType"": ""Touch"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""action"": ""TestTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82a70a15-7626-4c28-95b3-1d09ab63486e"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestTouch2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
         m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
         m_Controls_Touch = m_Controls.FindAction("Touch", throwIfNotFound: true);
         m_Controls_TestTouch = m_Controls.FindAction("TestTouch", throwIfNotFound: true);
+        m_Controls_TestTouch2 = m_Controls.FindAction("TestTouch2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
     private List<IControlsActions> m_ControlsActionsCallbackInterfaces = new List<IControlsActions>();
     private readonly InputAction m_Controls_Touch;
     private readonly InputAction m_Controls_TestTouch;
+    private readonly InputAction m_Controls_TestTouch2;
     public struct ControlsActions
     {
         private @TouchInput m_Wrapper;
         public ControlsActions(@TouchInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Touch => m_Wrapper.m_Controls_Touch;
         public InputAction @TestTouch => m_Wrapper.m_Controls_TestTouch;
+        public InputAction @TestTouch2 => m_Wrapper.m_Controls_TestTouch2;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
             @TestTouch.started += instance.OnTestTouch;
             @TestTouch.performed += instance.OnTestTouch;
             @TestTouch.canceled += instance.OnTestTouch;
+            @TestTouch2.started += instance.OnTestTouch2;
+            @TestTouch2.performed += instance.OnTestTouch2;
+            @TestTouch2.canceled += instance.OnTestTouch2;
         }
 
         private void UnregisterCallbacks(IControlsActions instance)
@@ -172,6 +198,9 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
             @TestTouch.started -= instance.OnTestTouch;
             @TestTouch.performed -= instance.OnTestTouch;
             @TestTouch.canceled -= instance.OnTestTouch;
+            @TestTouch2.started -= instance.OnTestTouch2;
+            @TestTouch2.performed -= instance.OnTestTouch2;
+            @TestTouch2.canceled -= instance.OnTestTouch2;
         }
 
         public void RemoveCallbacks(IControlsActions instance)
@@ -193,5 +222,6 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
     {
         void OnTouch(InputAction.CallbackContext context);
         void OnTestTouch(InputAction.CallbackContext context);
+        void OnTestTouch2(InputAction.CallbackContext context);
     }
 }
