@@ -96,7 +96,6 @@ public class Flippers : MonoBehaviour
     }
     IEnumerator UnFlipProcess()
     {
-        Debug.Log("Unity hates me");
         float tempTime = 0;
 
         while (tempTime < _flipDownTime)
