@@ -26,7 +26,7 @@ public class BallKillBox : MonoBehaviour
             BallController.GetComponent<BallSpawner>().BallsInScene.Remove(GetComponent<BallPhysics>());
             if (BallController.GetComponent<BallSpawner>().BallsInScene.Count <= 0)
             {
-                BallController.GetComponent<BallSpawner>().StartSpawnBall();
+                BallController.GetComponent<BallSpawner>().ReadyBallLaunch();
             }
             Destroy(gameObject);
             
