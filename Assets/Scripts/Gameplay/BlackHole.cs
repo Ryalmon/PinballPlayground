@@ -34,7 +34,6 @@ public class BlackHole : MonoBehaviour
     Vector2 CalculateGravityForce(BallPhysics bp)
     {
         Vector2 newForce = (transform.position - bp.gameObject.transform.position ) * _gravityForce * Time.deltaTime;
-        Debug.Log(newForce);
         return newForce;
     }
 

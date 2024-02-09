@@ -41,6 +41,11 @@ public class NameInput : MonoBehaviour
         ChangeText();
     }
 
+    public void SubmitName()
+    {
+        UniversalManager.Instance.Save.PlaceScoreInArray(Name,GameplayParent.Instance.Score.CurrentScore, UniversalManager.Instance.Save.ReturnArrayLength()-1);
+    }
+
     private void CheckInteractableStatus()
     {
         //Checks if the name is at the name length limit

@@ -6,7 +6,7 @@ public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject BallPrefab;
 
-    internal static GamePlayState GPS;
+    internal static GamePlayState GPS = GamePlayState.Intro;
 
     public enum GamePlayState { 
         Intro,
@@ -33,6 +33,7 @@ public class GameStateManager : MonoBehaviour
     public void EndGameState()
     {
         GPS = GamePlayState.End;
+        GameplayParent.Instance.UI.GameEndUI();
     }
 
     public void SpawnBall()

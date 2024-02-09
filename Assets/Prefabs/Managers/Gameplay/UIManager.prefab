@@ -45,3 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 0}
+  _timerText: {fileID: 0}
+  _finalScoreDisplay: {fileID: 0}
+  _finalScoreText: {fileID: 0}
+  _inputKeyboardDisplay: {fileID: 0}
+  _finalScoreWaitTime: 4
