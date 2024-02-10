@@ -19,17 +19,11 @@ public class PointParticle : MonoBehaviour
         
     }
 
-    public void AssignStartValues(Vector2 away, Vector2 end)
+    public IEnumerator MoveAway(Vector2 away)
     {
         //Assigns the direction that the projectile is launched out at the start
         AwayDirection = (Vector2)transform.position + away;
-        //Assigns where the projectile flies to at the end
-        EndingLocation = end;
-        StartCoroutine(MoveAway());
-    }
 
-    IEnumerator MoveAway()
-    {
         float movePercent = 0;
         Vector2 startPos = transform.position;
         //Launches the particle away from where it is spawned
@@ -41,8 +35,11 @@ public class PointParticle : MonoBehaviour
         }
     }
 
-    public IEnumerator MoveTowards()
+    public IEnumerator MoveTowards(Vector2 end)
     {
+        //Assigns where the projectile flies to at the end
+        EndingLocation = end;
+
         float movePercent = 0;
         float speedMult = 1;
         Vector2 startPos = transform.position;

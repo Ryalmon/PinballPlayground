@@ -10,6 +10,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
     [Space]
+    [SerializeField] Vector2 _scoreTextLocation;
+    [Space]
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
@@ -73,5 +75,10 @@ public class GameUIManager : MonoBehaviour
     {
         Debug.Log("DisplayKeyboard");
         _inputKeyboardDisplay.SetActive(true);
+    }
+
+    public Vector2 GetScoreTextLocation()
+    {
+        return _scoreTextLocation;
     }
 }

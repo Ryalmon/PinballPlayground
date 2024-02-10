@@ -9,7 +9,7 @@ public class VFXManager : MonoBehaviour
     [SerializeField] float _pointPMoveDelay;
     [SerializeField] GameObject _pointParticle;
 
-    // Update is called once per frame
+    /*// Update is called once per frame
     void Update()
     {
         //Testing Point Particles, will remove later
@@ -18,21 +18,17 @@ public class VFXManager : MonoBehaviour
             Vector2 end = new Vector2(0, 4.5f);
             StartCoroutine(SpawnPointParticles(Vector2.zero, end,8));
         }
-    }
+    }*/
 
-    public IEnumerator SpawnPointParticles(Vector2 startPos, Vector2 endPos, float particlesSpawned)
+
+
+    public IEnumerator SpawnPointParticles(GameObject spawnSource, Vector2 endPos, int score)
     {
         List<GameObject> particleList = new List<GameObject>();
-        for(int i = 0; i < particlesSpawned; i++)
+        for(int i = 0; i < DetermineParticleNum(score); i++)
         {
-            //Choose a random direction
-            Vector2 dir = Random.insideUnitCircle.normalized;
-            //Creates the point particle
-            GameObject currentParticle = Instantiate(_pointParticle, startPos, Quaternion.identity);
-            //Passes the direction and endPos values into the most recent particle
-            currentParticle.GetComponent<PointParticle>().AssignStartValues(dir, endPos);
             //Adds the most recent particle to a list
-            particleList.Add(currentParticle);
+            particleList.Add(SpawnPointGameObject(spawnSource.transform.position));
             //Waits to spawn another particle
             yield return new WaitForSeconds(_pointPSpawnDelay);
         }
@@ -42,10 +38,26 @@ public class VFXManager : MonoBehaviour
         {
             //Makes all particles that were spawned, start their MoveTowards function
             PointParticle pScript = particle.GetComponent<PointParticle>();
-            pScript.StartCoroutine(pScript.MoveTowards());
+            pScript.StartCoroutine(pScript.MoveTowards(endPos));
             yield return new WaitForSeconds(_pointPMoveDelay);
         }
+    }
 
+    private GameObject SpawnPointGameObject(Vector2 spawnPos)
+    {
+        //Choose a random direction
+        Vector2 dir = Random.insideUnitCircle.normalized;
+        //Creates the point particle
+        GameObject currentParticle = Instantiate(_pointParticle, spawnPos, Quaternion.identity);
+        //Passes the direction and endPos values into the most recent particle
+        PointParticle pScript = currentParticle.GetComponent<PointParticle>();
+        pScript.StartCoroutine(pScript.MoveAway(dir));
 
+        return currentParticle;
+    }
+
+    private int DetermineParticleNum(int score)
+    {
+        return 5;
     }
 }

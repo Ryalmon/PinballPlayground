@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forceMultiplier: 5
+  _baseScoreValue: 5
 --- !u!58 &1106186567627082645
 CircleCollider2D:
   m_ObjectHideFlags: 0
