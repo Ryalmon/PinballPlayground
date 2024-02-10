@@ -148,8 +148,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.9659258, w: 0.2588191}
   m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6112693192094230795}
   m_Father: {fileID: 0}
@@ -173,6 +173,8 @@ MonoBehaviour:
   _upSpeed: 400
   _downSpeed: 400
   _rightFlipper: 1
+  done: 0
+  hold: 0
   _startingRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &8268660517208159088
 Rigidbody2D:
