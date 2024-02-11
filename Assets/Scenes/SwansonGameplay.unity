@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 6940565582449282592, guid: 869a610c578bdc7428f578774a96a525, type: 3}
-  BallSpawnLocation: {x: 0, y: 6}
+  BallSpawnLocation: {x: -1, y: 8}
   MultiBallIsActive: 0
   BallsInScene: []
   BallTransform: {fileID: 0}
@@ -2205,7 +2205,7 @@ Transform:
   m_GameObject: {fileID: 1039923383}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3058085, y: -4.9479337, z: -0.23794211}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

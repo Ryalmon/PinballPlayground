@@ -7,6 +7,8 @@ public class VFXManager : MonoBehaviour
     [Header("Point Particles")]
     [SerializeField] float _pointPSpawnDelay;
     [SerializeField] float _pointPMoveDelay;
+    //[SerializeField] float _pointMoveAwayDistance;
+    [SerializeField] int _basePointValue;
     [SerializeField] GameObject _pointParticle;
 
     /*// Update is called once per frame
@@ -25,10 +27,19 @@ public class VFXManager : MonoBehaviour
     public IEnumerator SpawnPointParticles(GameObject spawnSource, Vector2 endPos, int score)
     {
         List<GameObject> particleList = new List<GameObject>();
-        for(int i = 0; i < DetermineParticleNum(score); i++)
+        int particleNumber = DetermineParticleNum(score);
+        for (int i = 0; i < particleNumber; i++)
         {
+            //Spawns a new particle
+            GameObject newestPoint = SpawnPointGameObject(spawnSource.transform.position);
+            //Decrements total score and assigns the score to the point particle
+            int newPointValue = IndividualPointValue(score);
+            Debug.Log(newPointValue);
+            newestPoint.GetComponent<PointParticle>().SetPointValue(newPointValue);
+            score -= newPointValue;
             //Adds the most recent particle to a list
-            particleList.Add(SpawnPointGameObject(spawnSource.transform.position));
+            particleList.Add(newestPoint);
+
             //Waits to spawn another particle
             yield return new WaitForSeconds(_pointPSpawnDelay);
         }
@@ -58,6 +69,13 @@ public class VFXManager : MonoBehaviour
 
     private int DetermineParticleNum(int score)
     {
-        return 5;
+        return Mathf.CeilToInt((float)score / (float)_basePointValue);
+    }
+
+    private int IndividualPointValue(int score)
+    {
+        if (score > _basePointValue)
+            return _basePointValue;
+        return score;
     }
 }

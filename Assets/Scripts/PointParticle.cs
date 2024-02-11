@@ -8,15 +8,19 @@ public class PointParticle : MonoBehaviour
     [SerializeField] float _awayTime;
     [SerializeField] float _endTime;
     [SerializeField] float _awayAcceleration;
-    //Change to internal later
-    public int _pointValue;
 
     internal Vector2 AwayDirection;
     internal Vector2 EndingLocation;
+    int _baseValue;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void SetPointValue(int value)
+    {
+        _baseValue = value;
     }
 
     public IEnumerator MoveAway(Vector2 away)
@@ -51,7 +55,7 @@ public class PointParticle : MonoBehaviour
             transform.position = Vector2.Lerp(startPos, EndingLocation, movePercent);
             yield return null;
         }
-        GameplayParent.Instance.Score.AddToScore(_pointValue);
+        GameplayParent.Instance.Score.AddToScore(_baseValue);
         Destroy(gameObject);
     }
 

@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityForce: 500
+  _baseScorePerTick: 25
+  _scoreTickRate: 0.2
 --- !u!58 &4470684863236244675
 CircleCollider2D:
   m_ObjectHideFlags: 0
