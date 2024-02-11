@@ -31,7 +31,6 @@ public class ScoreManager : MonoBehaviour
         _currentBallMultiplier = _newMultiplier;
     }
 
-
     IEnumerator ScalingProcess()
     {
         while (true)

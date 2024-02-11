@@ -42,9 +42,10 @@ public class BallSpawner : MonoBehaviour
         BallLaunchButton.SetActive(true);
     }
 
-    public void SetButtonInactive()
+    public void SpawnBallButtonPressed()
     {
         BallLaunchButton.SetActive(false);
+        GameplayParent.Instance.Score.StartScaling();
     }
 
     public int GetBallsInSceneCount()
