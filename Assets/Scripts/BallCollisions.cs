@@ -30,8 +30,6 @@ public class BallKillBox : MonoBehaviour
             }
             Destroy(gameObject);
             BallController.GetComponent<BallSpawner>().SetButtonActive();
-            
-            
         }
 
         if(collision.gameObject.CompareTag("Splitter"))
