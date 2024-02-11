@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     {
         SetCurrentMultiplier(_startingBallMultiplier);
         _scalingCoroutine = StartCoroutine(ScalingProcess());
+        ScalingUIUpdate();
     }
 
     private void SetStartingScale()
@@ -42,7 +43,13 @@ public class ScoreManager : MonoBehaviour
         {
             yield return new WaitForSeconds(_ballMultiplierScalingRate);
             SetCurrentMultiplier(_currentBallMultiplier + _ballMultiplerScalingAmount);
+            ScalingUIUpdate();
         }
+    }
+
+    private void ScalingUIUpdate()
+    {
+        GameplayParent.Instance.UI.UpdateMultiplierUI(_currentBallMultiplier);
     }
 
     public float GetBallLifetimeMultiplier()

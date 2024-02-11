@@ -9,6 +9,8 @@ public class GameUIManager : MonoBehaviour
     [Header("Gameplay")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
+    [SerializeField] TMP_Text _scoreMultiplierText;
+    private float _scoreMultiplierStartingFontSize;
     [Space]
     [SerializeField] Vector2 _scoreTextLocation;
     [Space]
@@ -24,7 +26,7 @@ public class GameUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
     }
 
     // Update is called once per frame
@@ -42,6 +44,12 @@ public class GameUIManager : MonoBehaviour
     {
         time = Mathf.Round(time * 10) * .1f;
         _timerText.text = time.ToString();
+    }
+
+    public void UpdateMultiplierUI(float multiplier)
+    {
+        _scoreMultiplierText.text = multiplier.ToString() + "x";
+        _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
     }
 
     public void GameEndUI()
