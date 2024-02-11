@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentBallMultiplier = _startingBallMultiplier;
+        SetStartingScale();
     }
 
     #region BallPointMultiplier
@@ -24,6 +24,11 @@ public class ScoreManager : MonoBehaviour
     {
         SetCurrentMultiplier(_startingBallMultiplier);
         _scalingCoroutine = StartCoroutine(ScalingProcess());
+    }
+
+    private void SetStartingScale()
+    {
+        SetCurrentMultiplier(_startingBallMultiplier);
     }
 
     private void SetCurrentMultiplier(float _newMultiplier)
@@ -44,13 +49,24 @@ public class ScoreManager : MonoBehaviour
     {
         return _currentBallMultiplier;
     }
+
+    public void StopScaling()
+    {
+        StopCoroutine(_scalingCoroutine);
+        SetStartingScale();
+    }
     #endregion
 
     #region PointParticles
     public void CreatePointParticles(GameObject spawnSource, int score)
     {
         VFXManager vfxMan = UniversalManager.Instance.VFX;
-        vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource,GameplayParent.Instance.UI.GetScoreTextLocation(),score));
+        vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource,GameplayParent.Instance.UI.GetScoreTextLocation(),ScoreTimesBallMultiplier(score)));
+    }
+
+    private int ScoreTimesBallMultiplier(int score)
+    {
+        return Mathf.CeilToInt(score * GetBallLifetimeMultiplier());
     }
 
     #endregion

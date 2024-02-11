@@ -34,6 +34,7 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
+        GameplayParent.Instance.Score.StopScaling();
         SetButtonActive();
     }
 
