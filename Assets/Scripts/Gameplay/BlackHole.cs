@@ -8,22 +8,12 @@ public class BlackHole : MonoBehaviour
     [SerializeField] int _baseScorePerTick;
     [SerializeField] float _scoreTickRate;
     private List<BallPhysics> _objectsInRadius = new List<BallPhysics>();
+    private Coroutine _moveObjectsCoroutine;
     private Coroutine _addScoreCoroutine;
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(MoveObjectsInRadius());
-    }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator MovePinballs()
     {
-        
-    }
-
-    IEnumerator MoveObjectsInRadius()
-    {
-        while(true)
+        while(_objectsInRadius.Count > 0)
         {
             foreach (BallPhysics bp in _objectsInRadius)
             {
@@ -31,7 +21,7 @@ public class BlackHole : MonoBehaviour
             }
             yield return null;
         }
-        
+        _moveObjectsCoroutine = null;
     }
 
     IEnumerator GenerateScore()
@@ -57,8 +47,8 @@ public class BlackHole : MonoBehaviour
         if (bp != null)
         {
             _objectsInRadius.Add(bp);
-            if (_addScoreCoroutine == null)
-                _addScoreCoroutine = StartCoroutine(GenerateScore());
+
+            StartActiveCoroutines();
         }
     }
 
@@ -68,6 +58,15 @@ public class BlackHole : MonoBehaviour
         if (bp != null)
         {
             _objectsInRadius.Remove(bp);
+        }
+    }
+
+    private void StartActiveCoroutines()
+    {
+        if(_moveObjectsCoroutine == null && _addScoreCoroutine == null)
+        {
+            _moveObjectsCoroutine = StartCoroutine(MovePinballs());
+            _addScoreCoroutine = StartCoroutine(GenerateScore());
         }
     }
 }
