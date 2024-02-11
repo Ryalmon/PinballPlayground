@@ -13,23 +13,10 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private GameObject BallLaunchButton;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Spawns a ball when there is not one in game. 
-    void Update()
-    {
- 
-    }
-
     public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
     {
         Destroy(Splitter);
         Instantiate(BallPrefab, CurrentLocation, Quaternion.identity);
-
     }
 
     public void LaunchBall()
@@ -39,14 +26,30 @@ public class BallSpawner : MonoBehaviour
         BallTransform = Ball.transform;
     }
 
+    public void CheckBallCountIsZero()
+    {
+        if (BallsInScene.Count <= 0)
+            BallCountIsZero();
+    }
+
+    private void BallCountIsZero()
+    {
+        SetButtonActive();
+    }
+
     public void SetButtonActive()
     {
-        BallLaunchButton.SetActive (true);
+        BallLaunchButton.SetActive(true);
     }
 
     public void SetButtonInactive()
     {
         BallLaunchButton.SetActive(false);
+    }
+
+    public int GetBallsInSceneCount()
+    {
+        return BallsInScene.Count;
     }
 
 }
