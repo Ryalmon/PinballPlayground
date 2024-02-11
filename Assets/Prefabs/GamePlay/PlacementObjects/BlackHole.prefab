@@ -47,7 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215f65c734608674bb55f8fd3df6f021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityForce: 500
+  _baseGravityForce: 500
+  _xForceMultiplier: 1.5
+  _yForceMultiplier: 0.8
   _ballSpeedForceInfluence: 5
   _baseScorePerTick: 25
   _scoreTickRate: 0.2

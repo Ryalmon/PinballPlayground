@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    [SerializeField] float _gravityForce;
+    [Header("Variables")]
+    [SerializeField] float _baseGravityForce;
+    [SerializeField] float _xForceMultiplier;
+    [SerializeField] float _yForceMultiplier;
     [SerializeField] float _ballSpeedForceInfluence;
+    [Space]
     [SerializeField] int _baseScorePerTick;
     [SerializeField] float _scoreTickRate;
+
     private List<BallPhysics> _objectsInRadius = new List<BallPhysics>();
     private Coroutine _moveObjectsCoroutine;
     private Coroutine _addScoreCoroutine;
@@ -37,9 +42,9 @@ public class BlackHole : MonoBehaviour
 
     Vector2 CalculateGravityForce(BallPhysics bp)
     {
-        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) * _gravityForce 
+        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) * _baseGravityForce 
             * (bp.GetComponent<Rigidbody2D>().velocity.magnitude/_ballSpeedForceInfluence) * Time.deltaTime;
-
+        newForce *= new Vector2(_xForceMultiplier, _yForceMultiplier);
         return newForce;
     }
 
