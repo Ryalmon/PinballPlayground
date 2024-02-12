@@ -23,6 +23,15 @@ public class FlipperManager : MonoBehaviour
         }
     }
 
+    public void DeactivateLeftFlippers()
+    {
+        //Goes through the list of left flippers and activates them
+        foreach (Flippers currentFlipper in _leftFlippers)
+        {
+            currentFlipper.UnFlip();
+        }
+    }
+
     public void ActivateRightFlippers()
     {
         //Goes through the list of right flippers and activates them
@@ -32,13 +41,22 @@ public class FlipperManager : MonoBehaviour
         }
     }
 
-/*    public void AttachButtons()
+    public void DeactivateRightFlippers()
     {
-        GameObject LeftButton = GameObject.Find("LeftFlipperButton");
-        LeftButton.GetComponent<Button>().onClick.AddListener(ActivateLeftFlippers);
-        if (LeftButton.GetComponent<Button>() != null)
-            Debug.Log("FoundLeftButton");
-    }*/
+        //Goes through the list of right flippers and activates them
+        foreach (Flippers currentFlipper in _rightFlippers)
+        {
+            currentFlipper.UnFlip();
+        }
+    }
+
+    /*    public void AttachButtons()
+        {
+            GameObject LeftButton = GameObject.Find("LeftFlipperButton");
+            LeftButton.GetComponent<Button>().onClick.AddListener(ActivateLeftFlippers);
+            if (LeftButton.GetComponent<Button>() != null)
+                Debug.Log("FoundLeftButton");
+        }*/
 
     public void ResetLists()
     {

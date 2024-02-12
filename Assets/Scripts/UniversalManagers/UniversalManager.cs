@@ -17,7 +17,7 @@ public class UniversalManager : MonoBehaviour
     {
         EstablishSingleton();
         SpawnManagers();
-        AssignManagers();
+        
     }
 
     private void EstablishSingleton()
@@ -38,6 +38,7 @@ public class UniversalManager : MonoBehaviour
         {
             Instantiate(m, transform.position, transform.rotation).transform.parent = gameObject.transform;
         }
+        AssignManagers();
     }
 
     void AssignManagers()

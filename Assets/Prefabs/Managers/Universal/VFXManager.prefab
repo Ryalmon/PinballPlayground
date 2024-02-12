@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pointPSpawnDelay: 0.1
   _pointPMoveDelay: 0.03
+  _pointMoveAwayDistance: 1
+  _basePointValue: 25
   _pointParticle: {fileID: 2142193388877706397, guid: 9086944d318b05444988a4874500c34b, type: 3}

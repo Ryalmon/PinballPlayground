@@ -24,13 +24,14 @@ public class BallKillBox : MonoBehaviour
         if (collision.gameObject.CompareTag("KillBox"))
         {
             BallController.GetComponent<BallSpawner>().BallsInScene.Remove(GetComponent<BallPhysics>());
-            if (BallController.GetComponent<BallSpawner>().BallsInScene.Count <= 0)
+            BallController.GetComponent<BallSpawner>().CheckBallCountIsZero();
+            Destroy(gameObject);
+            /*if (BallController.GetComponent<BallSpawner>().BallsInScene.Count <= 0)
             {
                 BallController.GetComponent<BallSpawner>().SetButtonInactive();
             }
             Destroy(gameObject);
-            BallController.GetComponent<BallSpawner>().SetButtonActive();
-            
+            BallController.GetComponent<BallSpawner>().SetButtonActive();*/
         }
 
         if(collision.gameObject.CompareTag("Splitter"))

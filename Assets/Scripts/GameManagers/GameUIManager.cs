@@ -9,6 +9,10 @@ public class GameUIManager : MonoBehaviour
     [Header("Gameplay")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
+    [SerializeField] TMP_Text _scoreMultiplierText;
+    private float _scoreMultiplierStartingFontSize;
+    [Space]
+    [SerializeField] Vector2 _scoreTextLocation;
     [Space]
 
     [Header("Game End")]
@@ -22,7 +26,7 @@ public class GameUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
     }
 
     // Update is called once per frame
@@ -42,6 +46,14 @@ public class GameUIManager : MonoBehaviour
         _timerText.text = time.ToString();
     }
 
+    public void UpdateMultiplierUI(float multiplier)
+    {
+        //Updates the score multiplier UI text
+        _scoreMultiplierText.text = multiplier.ToString() + "x";
+        //Updates the score multiplier UI size
+        _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
+    }
+
     public void GameEndUI()
     {
         StartCoroutine(GameEndUIProcess());
@@ -57,6 +69,10 @@ public class GameUIManager : MonoBehaviour
         {
             DisplayKeyboard();
         }
+        else
+        {
+            GameplayParent.Instance.State.EndScene();
+        }
     }
 
     private void DisplayFinalScore()
@@ -67,6 +83,12 @@ public class GameUIManager : MonoBehaviour
 
     private void DisplayKeyboard()
     {
+        Debug.Log("DisplayKeyboard");
         _inputKeyboardDisplay.SetActive(true);
+    }
+
+    public Vector2 GetScoreTextLocation()
+    {
+        return _scoreTextLocation;
     }
 }
