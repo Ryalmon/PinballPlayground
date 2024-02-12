@@ -48,7 +48,9 @@ public class GameUIManager : MonoBehaviour
 
     public void UpdateMultiplierUI(float multiplier)
     {
+        //Updates the score multiplier UI text
         _scoreMultiplierText.text = multiplier.ToString() + "x";
+        //Updates the score multiplier UI size
         _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
     }
 
