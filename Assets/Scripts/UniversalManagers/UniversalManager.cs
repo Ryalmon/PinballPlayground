@@ -16,8 +16,6 @@ public class UniversalManager : MonoBehaviour
     private void Awake()
     {
         EstablishSingleton();
-        SpawnManagers();
-        
     }
 
     private void EstablishSingleton()
@@ -25,9 +23,10 @@ public class UniversalManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-
         Instance = this;
+        SpawnManagers();
         DontDestroyOnLoad(gameObject);
     }
 
