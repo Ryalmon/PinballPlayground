@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014a3a0f068404f4da68c5871f8f4b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreFromBumper: 100
+  _scoreFromSpaceShip: 100
+  _scoreFromBlackHole: 25
+  _scoreFromCeiling: 250
   _startingBallMultiplier: 1
-  _ballMultiplierScalingRate: 5
-  _ballMultiplerScalingAmount: 0.1
+  _ballMultiplierScalingRate: 3
+  _ballMultiplerScalingAmount: 0.05

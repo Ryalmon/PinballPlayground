@@ -53,7 +53,7 @@ MonoBehaviour:
   _yForceMultiplier: 0.8
   _ballSpeedForceInfluence: 5
   _baseScorePerTick: 25
-  _scoreTickRate: 0.2
+  _scoreTickRate: 0.25
 --- !u!58 &4470684863236244675
 CircleCollider2D:
   m_ObjectHideFlags: 0

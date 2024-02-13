@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    [Header("Score Value From Sources")]
+    [SerializeField] int _scoreFromBumper;
+    [SerializeField] int _scoreFromSpaceShip;
+    [SerializeField] int _scoreFromBlackHole;
+    [SerializeField] int _scoreFromCeiling;
+    
+    [Space]
+
     [Header("Ball Point Scaling")]
     [SerializeField] float _startingBallMultiplier;
     [SerializeField] float _ballMultiplierScalingRate;
@@ -12,11 +20,29 @@ public class ScoreManager : MonoBehaviour
     Coroutine _scalingCoroutine;
 
     internal int CurrentScore;
+    Dictionary<ScoreSource, int> _scoreDictionary = new Dictionary<ScoreSource, int>()
+    {
+        { ScoreSource.Bumper,0},
+        { ScoreSource.SpaceShip,0},
+        { ScoreSource.BlackHole,0},
+        { ScoreSource.Ceiling,0}
+    };
+
     
+
     // Start is called before the first frame update
     void Start()
     {
         SetStartingScale();
+        PopulateDictionary();
+    }
+
+    void PopulateDictionary()
+    {
+        _scoreDictionary[ScoreSource.Bumper] = _scoreFromBumper;
+        _scoreDictionary[ScoreSource.SpaceShip] = _scoreFromSpaceShip;
+        _scoreDictionary[ScoreSource.BlackHole] = _scoreFromBlackHole;
+        _scoreDictionary[ScoreSource.Ceiling] = _scoreFromCeiling;
     }
 
     #region BallPointMultiplier
@@ -65,10 +91,16 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region PointParticles
-    public void CreatePointParticles(GameObject spawnSource, int score)
+    public void CreatePointParticles(GameObject spawnSource, ScoreSource source)
     {
+        //Starts the spawn point particles coroutine on the vfx manager
+        //Spawnsource is where to spawn them
+        //GetScoreTextLocation is where to send them
+        //ScoreTimesBallMultipler returns the score multiplied by the current multipler
+        //ScoreValueFromSource gets the score based on the source of what called it.
         VFXManager vfxMan = UniversalManager.Instance.VFX;
-        vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource,GameplayParent.Instance.UI.GetScoreTextLocation(),ScoreTimesBallMultiplier(score)));
+        vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource, GameplayParent.Instance.UI.GetScoreTextLocation(),
+            ScoreTimesBallMultiplier(ScoreValueFromSource(source))));
     }
 
     private int ScoreTimesBallMultiplier(int score)
@@ -90,4 +122,17 @@ public class ScoreManager : MonoBehaviour
         GameplayParent.Instance.UI.UpdateScoreUI(CurrentScore);
         //_scoreText.text = CurrentScore.ToString();
     }
+
+    private int ScoreValueFromSource(ScoreSource source)
+    {
+        return _scoreDictionary[source];
+    }
 }
+
+public enum ScoreSource
+{
+    Bumper,
+    SpaceShip,
+    BlackHole,
+    Ceiling
+};

@@ -11,19 +11,6 @@ public class VFXManager : MonoBehaviour
     [SerializeField] int _basePointValue;
     [SerializeField] GameObject _pointParticle;
 
-    /*// Update is called once per frame
-    void Update()
-    {
-        //Testing Point Particles, will remove later
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Vector2 end = new Vector2(0, 4.5f);
-            StartCoroutine(SpawnPointParticles(Vector2.zero, end,8));
-        }
-    }*/
-
-
-
     public IEnumerator SpawnPointParticles(GameObject spawnSource, Vector2 endPos, int score)
     {
         List<GameObject> particleList = new List<GameObject>();

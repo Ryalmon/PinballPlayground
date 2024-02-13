@@ -10,7 +10,6 @@ public class SpaceShip : MonoBehaviour
     [SerializeField] Vector3 _moveDistance;
     [SerializeField] float _releaseForce;
     [SerializeField] float _releaseXVariability;
-    [SerializeField] int _baseScoreValue;
     [Space]
 
     [Header("Refrences")]
@@ -70,7 +69,7 @@ public class SpaceShip : MonoBehaviour
         _dragObject = null;
         _dragObjectPhysics = null;
 
-        GameplayParent.Instance.Score.CreatePointParticles(gameObject, _baseScoreValue);
+        GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.SpaceShip);
 
         ChangeShipState(SpaceShipState.RESETTING);
     }
