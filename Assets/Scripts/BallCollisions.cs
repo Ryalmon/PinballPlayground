@@ -34,10 +34,10 @@ public class BallKillBox : MonoBehaviour
             BallController.GetComponent<BallSpawner>().SetButtonActive();*/
         }
 
-        if(collision.gameObject.CompareTag("Splitter"))
-        {
-            BallController.GetComponent<BallSpawner>().BallSplit(transform.position, collision.gameObject);
-        }
+        //if(collision.gameObject.CompareTag("Splitter"))
+        //{
+        //    BallController.GetComponent<BallSpawner>().BallSplit(transform.position, collision.gameObject);
+        //}
     }
 
     
