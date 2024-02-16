@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackHole : MonoBehaviour
+public class BlackHole : MonoBehaviour, IPlaceable
 {
     [Header("Variables")]
     [SerializeField] float _baseGravityForce;
@@ -76,5 +76,10 @@ public class BlackHole : MonoBehaviour
             _moveObjectsCoroutine = StartCoroutine(MovePinballs());
             _addScoreCoroutine = StartCoroutine(GenerateScore());
         }
+    }
+
+    public void Placed()
+    {
+        GetComponent<Drift>().enabled = true;
     }
 }

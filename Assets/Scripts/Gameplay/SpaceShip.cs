@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceShip : MonoBehaviour
+public class SpaceShip : MonoBehaviour, IPlaceable
 {
     [Header("Variables")]
     [SerializeField] float _holdDuration;
@@ -98,6 +98,11 @@ public class SpaceShip : MonoBehaviour
                 return;
         }
             
+    }
+
+    public void Placed()
+    {
+        GetComponentInParent<Drift>().enabled = true;
     }
 }
 

@@ -104,7 +104,6 @@ MonoBehaviour:
   _moveDistance: {x: 0, y: 3, z: 0}
   _releaseForce: 8
   _releaseXVariability: 3
-  _baseScoreValue: 100
   _detectionArea: {fileID: 9193157069710995436}
   _holdingLocation: {fileID: 2387247319312278465}
 --- !u!58 &9193157069710995436
@@ -273,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e80e3b05b3363f489c75894f78be3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeable: {fileID: 384901953705527372}
 --- !u!58 &593139920983052117
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2408790924656567570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
   m_Name: 
