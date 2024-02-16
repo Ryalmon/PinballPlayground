@@ -7,23 +7,64 @@ public class DragnDrop : MonoBehaviour
 {
     private bool dragging = false;
     private Vector3 offset;
+    private Vector3 originalPosition;
+    private SpawningObjects spawningObjects;
+    //private Collider2D invalidCollider;
 
-    private void Update()
+    private void Start()
     {
-        if (dragging)
+        spawningObjects = FindObjectOfType<SpawningObjects>();
+        originalPosition = transform.position;
+        //invalidCollider = GetComponent<Collider2D>();
+    }
+
+    private void OnMouseDrag()
+    {
+        if (!dragging)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
     }
-
     private void OnMouseDown()
     {
-        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dragging = true;
+        if (!dragging)
+        {
+            offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        }
     }
 
     private void OnMouseUp()
     {
-        dragging = false;
+        if (!dragging)
+        {
+            dragging = true;
+            Vector3 newPosition = transform.position;
+            if (!InvalidLocation(newPosition))
+            {
+                transform.position = originalPosition;
+                dragging = false;
+            }
+
+            else
+            {
+                spawningObjects.SpawnNewObject(gameObject);
+            }
+            //spawningObjects.SpawnNewObject(gameObject);
+        }
+    }
+    
+    private bool InvalidLocation(Vector3 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapPointAll(position);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.isTrigger)
+            {
+                return false;
+            }
+        }
+        return true;
+      
     }
 }
