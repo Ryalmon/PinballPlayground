@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class DragnDrop : MonoBehaviour
 {
+    [SerializeField] GameObject placeable;
     private bool dragging = false;
     private Vector3 offset;
     private Vector3 originalPosition;
@@ -44,10 +45,14 @@ public class DragnDrop : MonoBehaviour
             {
                 transform.position = originalPosition;
                 dragging = false;
+                Debug.Log("Placed");
+                //placeable.GetComponent<IPlaceable>().Placed();
             }
 
             else
             {
+                Debug.Log("Placed");
+                placeable.GetComponent<IPlaceable>().Placed();
                 spawningObjects.SpawnNewObject(gameObject);
             }
             //spawningObjects.SpawnNewObject(gameObject);
@@ -61,6 +66,8 @@ public class DragnDrop : MonoBehaviour
         {
             if (collider.isTrigger)
             {
+                Debug.Log("Placed");
+                placeable.GetComponent<IPlaceable>().Placed();
                 return true;
             }
         }

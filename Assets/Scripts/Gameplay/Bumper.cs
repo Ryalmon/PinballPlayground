@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bumper : MonoBehaviour
+public class Bumper : MonoBehaviour, IPlaceable
 {
     [SerializeField] float _forceMultiplier;
 
@@ -18,5 +18,12 @@ public class Bumper : MonoBehaviour
     private Vector2 DetermineShootDirection(Vector2 otherObject)
     {
         return (otherObject - new Vector2(transform.position.x, transform.position.y)).normalized * _forceMultiplier;
+    }
+
+    public void Placed()
+    {
+        Debug.Log("Anything");
+        GetComponent<Drift>().enabled = true;
+        
     }
 }
