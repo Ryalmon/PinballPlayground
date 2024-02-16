@@ -4400,6 +4400,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2007641630}
     m_Modifications:
+    - target: {fileID: 1015548266078414722, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
+      propertyPath: leftFlipperButton
+      value: 
+      objectReference: {fileID: 189015880}
+    - target: {fileID: 1015548266078414722, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
+      propertyPath: rightFlipperButton
+      value: 
+      objectReference: {fileID: 1792820187}
     - target: {fileID: 1142893909840185829, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
       propertyPath: m_Name
       value: GameStateManager
