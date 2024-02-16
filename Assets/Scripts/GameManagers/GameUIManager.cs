@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class GameUIManager : MonoBehaviour
     public void UpdateMultiplierUI(float multiplier)
     {
         //Updates the score multiplier UI text
+        multiplier = MathF.Round(multiplier * 10f) / 10f;
         _scoreMultiplierText.text = multiplier.ToString() + "x";
         //Updates the score multiplier UI size
         _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
