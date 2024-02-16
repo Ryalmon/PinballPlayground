@@ -10,6 +10,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] Vector3 _moveDistance;
     [SerializeField] float _releaseForce;
     [SerializeField] float _releaseXVariability;
+    float time = 0;
     [Space]
 
     [Header("Refrences")]
@@ -20,6 +21,13 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     private BallPhysics _dragObjectPhysics;
     SpaceShipState _shipState = SpaceShipState.IDLE;
 
+    private void Update()
+    {
+        time += Time.deltaTime; 
+        float x = Mathf.Cos(time);
+        float y = Mathf.Sin(2 * time) / 2;
+        transform.localPosition = new Vector2(x, y);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
