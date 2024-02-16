@@ -10,7 +10,6 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] Vector3 _moveDistance;
     [SerializeField] float _releaseForce;
     [SerializeField] float _releaseXVariability;
-    float time = 0;
     [Space]
 
     [Header("Refrences")]
@@ -19,23 +18,35 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private GameObject _dragObject;
     private BallPhysics _dragObjectPhysics;
+    private Coroutine _idleMovementCoroutine;
     SpaceShipState _shipState = SpaceShipState.IDLE;
-
-    private void Update()
-    {
-        time += Time.deltaTime; 
-        float x = Mathf.Cos(time);
-        float y = Mathf.Sin(2 * time) / 2;
-        transform.localPosition = new Vector2(x, y);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE )
+        if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE)
         {
             ChangeShipState(SpaceShipState.DRAGGING);
             DragObject(collision.gameObject);
         }
+    }
+
+    private void StartIdleMovement()
+    {
+        _idleMovementCoroutine = StartCoroutine(IdleMovement());
+    }
+
+    private IEnumerator IdleMovement()
+    {
+        float time = 0;
+        while (_shipState == SpaceShipState.IDLE)
+        {
+            time += Time.deltaTime;
+            float x = Mathf.Cos(time);
+            float y = Mathf.Sin(2 * time) / 2;
+            transform.localPosition = new Vector2(x, y);
+            yield return null;
+        }
+        
     }
 
     private void DragObject(GameObject newDragObject)
@@ -111,6 +122,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     public void Placed()
     {
         GetComponentInParent<Drift>().enabled = true;
+        StartIdleMovement();
     }
 }
 
