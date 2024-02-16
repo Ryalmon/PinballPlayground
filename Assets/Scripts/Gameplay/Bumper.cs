@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Bumper : MonoBehaviour
 {
-    [SerializeField] float _forceMultiplier = 1;
+    [SerializeField] float _forceMultiplier;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null )
         {
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision.transform.position));
+            GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
         }
     }
 

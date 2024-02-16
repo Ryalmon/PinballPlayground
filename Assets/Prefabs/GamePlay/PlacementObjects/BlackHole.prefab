@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4470684863236244675}
   - component: {fileID: 1331773116486188367}
   - component: {fileID: 828961347189144883}
-  - component: {fileID: -252642819817706174}
+  - component: {fileID: -3327530709350279036}
   m_Layer: 0
   m_Name: BlackHole
   m_TagString: Untagged
@@ -48,7 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215f65c734608674bb55f8fd3df6f021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityForce: 500
+  _baseGravityForce: 500
+  _xForceMultiplier: 1.5
+  _yForceMultiplier: 0.8
+  _ballSpeedForceInfluence: 5
+  _baseScorePerTick: 25
+  _scoreTickRate: 0.25
 --- !u!58 &4470684863236244675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -78,7 +83,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -122,8 +127,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1112422181
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.5483471, g: 0.4669811, b: 1, a: 1}
@@ -148,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e80e3b05b3363f489c75894f78be3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-252642819817706174
+--- !u!114 &-3327530709350279036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4158817482814993248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bc5751ae2b70d54e921e22554c4d9ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalSpawnPoint: {x: 0, y: 0}
+  DriftSpeed: 0.125

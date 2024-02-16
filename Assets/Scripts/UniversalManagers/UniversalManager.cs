@@ -16,8 +16,6 @@ public class UniversalManager : MonoBehaviour
     private void Awake()
     {
         EstablishSingleton();
-        SpawnManagers();
-        AssignManagers();
     }
 
     private void EstablishSingleton()
@@ -25,9 +23,10 @@ public class UniversalManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
-
         Instance = this;
+        SpawnManagers();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -38,6 +37,7 @@ public class UniversalManager : MonoBehaviour
         {
             Instantiate(m, transform.position, transform.rotation).transform.parent = gameObject.transform;
         }
+        AssignManagers();
     }
 
     void AssignManagers()

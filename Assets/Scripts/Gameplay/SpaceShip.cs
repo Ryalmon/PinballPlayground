@@ -69,6 +69,8 @@ public class SpaceShip : MonoBehaviour
         _dragObject = null;
         _dragObjectPhysics = null;
 
+        GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.SpaceShip);
+
         ChangeShipState(SpaceShipState.RESETTING);
     }
 

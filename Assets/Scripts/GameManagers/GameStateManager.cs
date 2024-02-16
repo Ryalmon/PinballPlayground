@@ -5,8 +5,11 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject BallPrefab;
+    private const int _mainMeunScene = 0;
 
     internal static GamePlayState GPS = GamePlayState.Intro;
+    public GameObject leftFlipperButton;
+    public GameObject rightFlipperButton;
 
     public enum GamePlayState { 
         Intro,
@@ -24,16 +27,21 @@ public class GameStateManager : MonoBehaviour
 
     public void StartGame()
     {
-        //Set currentgameplay state to play
-        GPS = GamePlayState.Play;
-        //Starts the timer
-        GameplayParent.Instance.Timer.StartCountdown();
+        if (GPS != GamePlayState.Intro) return;
+        
+            //Set currentgameplay state to play
+            GPS = GamePlayState.Play;
+            //Starts the timer
+            GameplayParent.Instance.Timer.StartCountdown();
+        
     }
 
     public void EndGameState()
     {
         GPS = GamePlayState.End;
         GameplayParent.Instance.UI.GameEndUI();
+        leftFlipperButton.SetActive(false);
+        rightFlipperButton.SetActive(false);
     }
 
     public void SpawnBall()
@@ -42,5 +50,10 @@ public class GameStateManager : MonoBehaviour
         Instantiate(BallPrefab, Vector2.zero, Quaternion.identity);
 
         //---Currently the ball is placed at (0,0) this will change later!---
+    }
+
+    public void EndScene()
+    {
+        UniversalManager.Instance.Scene.LoadScene(_mainMeunScene);
     }
 }

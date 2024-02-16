@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1112422181
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,6 +104,7 @@ MonoBehaviour:
   _moveDistance: {x: 0, y: 3, z: 0}
   _releaseForce: 8
   _releaseXVariability: 3
+  _baseScoreValue: 100
   _detectionArea: {fileID: 9193157069710995436}
   _holdingLocation: {fileID: 2387247319312278465}
 --- !u!58 &9193157069710995436
@@ -184,6 +185,7 @@ GameObject:
   - component: {fileID: 3795884989796494523}
   - component: {fileID: 7496918158738298133}
   - component: {fileID: 593139920983052117}
+  - component: {fileID: -2079052407640379130}
   m_Layer: 0
   m_Name: SpaceShipParent
   m_TagString: Untagged
@@ -245,8 +247,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1112422181
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.03529412}
@@ -306,3 +308,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-2079052407640379130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408790924656567570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DriftSpeed: 0.125

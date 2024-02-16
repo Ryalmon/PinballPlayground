@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    [SerializeField] float _gravityForce;
+    [Header("Variables")]
+    [SerializeField] float _baseGravityForce;
+    [SerializeField] float _xForceMultiplier;
+    [SerializeField] float _yForceMultiplier;
+    [SerializeField] float _ballSpeedForceInfluence;
+    [Space]
+    [SerializeField] float _scoreTickRate;
+
     private List<BallPhysics> _objectsInRadius = new List<BallPhysics>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(MoveObjectsInRadius());
-    }
+    private Coroutine _moveObjectsCoroutine;
+    private Coroutine _addScoreCoroutine;
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator MovePinballs()
     {
-        
-    }
-
-    IEnumerator MoveObjectsInRadius()
-    {
-        while(true)
+        while(_objectsInRadius.Count > 0)
         {
             foreach (BallPhysics bp in _objectsInRadius)
             {
@@ -28,14 +26,28 @@ public class BlackHole : MonoBehaviour
             }
             yield return null;
         }
-        
+        _moveObjectsCoroutine = null;
+    }
+
+    IEnumerator GenerateScore()
+    {
+        while(_objectsInRadius.Count > 0)
+        {
+            for(int i = 0; i < _objectsInRadius.Count;i++)
+                GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole);
+            yield return new WaitForSeconds(_scoreTickRate);
+        }
+        _addScoreCoroutine = null;
     }
 
     Vector2 CalculateGravityForce(BallPhysics bp)
     {
-        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) * _gravityForce * Time.deltaTime;
+        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) * _baseGravityForce 
+            * (bp.GetComponent<Rigidbody2D>().velocity.magnitude/_ballSpeedForceInfluence) * Time.deltaTime;
+        newForce *= new Vector2(_xForceMultiplier, _yForceMultiplier);
         return newForce;
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,6 +55,8 @@ public class BlackHole : MonoBehaviour
         if (bp != null)
         {
             _objectsInRadius.Add(bp);
+
+            StartActiveCoroutines();
         }
     }
 
@@ -52,6 +66,15 @@ public class BlackHole : MonoBehaviour
         if (bp != null)
         {
             _objectsInRadius.Remove(bp);
+        }
+    }
+
+    private void StartActiveCoroutines()
+    {
+        if(_moveObjectsCoroutine == null && _addScoreCoroutine == null)
+        {
+            _moveObjectsCoroutine = StartCoroutine(MovePinballs());
+            _addScoreCoroutine = StartCoroutine(GenerateScore());
         }
     }
 }

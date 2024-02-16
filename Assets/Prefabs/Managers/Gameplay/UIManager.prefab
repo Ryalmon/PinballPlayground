@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 0}
   _timerText: {fileID: 0}
+  _scoreTextLocation: {x: 0, y: 10}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _inputKeyboardDisplay: {fileID: 0}
