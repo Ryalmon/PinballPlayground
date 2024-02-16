@@ -61,10 +61,10 @@ public class DragnDrop : MonoBehaviour
         {
             if (collider.isTrigger)
             {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
       
     }
 }
