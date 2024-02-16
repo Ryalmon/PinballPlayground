@@ -6,22 +6,34 @@ public class SpawningObjects : MonoBehaviour
 {
     [SerializeField] List<GameObject> Spawnables = new List<GameObject>();
     [SerializeField] List<Transform> SpawnPoints = new List<Transform>();
-    
+    [SerializeField] List<GameObject> SpawnedObjects = new List<GameObject>();
+    private void Start()
+    {
+        ObjectsSpawn();
+        
+    }
     private void ObjectsSpawn()
     {
         for (int i = 0; i < Spawnables.Count; i++)
         {
-            //Random.Range(i, Spawnables.Count);
             GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
-            //Instantiate(Spawnables[Random.Range(i, Spawnables.Count)], SpawnPoints[i].position, Quaternion.identity);
-            Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
+            GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
+            SpawnedObjects.Add(newObject);
+            //Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
+        }
+
+    }
+
+    public void SpawnNewObject(GameObject oldObject)
+    {
+        int index = SpawnedObjects.IndexOf(oldObject);
+        if (index != -1)
+        {
+            GameObject newGameObject = Instantiate(Spawnables[index], SpawnPoints[index].position, Quaternion.identity);
+            SpawnedObjects[index] = newGameObject;
         }
     }
 
-  
+ 
 
-    private void Start()
-    {
-        ObjectsSpawn();
-    }
 }
