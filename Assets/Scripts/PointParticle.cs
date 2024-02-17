@@ -55,7 +55,7 @@ public class PointParticle : MonoBehaviour
             transform.position = Vector2.Lerp(startPos, EndingLocation, movePercent);
             yield return null;
         }
-        GameplayParent.Instance.Score.AddToScore(_baseValue);
+        GameplayManagers.Instance.Score.AddToScore(_baseValue);
         Destroy(gameObject);
     }
 

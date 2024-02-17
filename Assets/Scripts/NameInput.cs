@@ -43,8 +43,8 @@ public class NameInput : MonoBehaviour
 
     public void SubmitName()
     {
-        UniversalManager.Instance.Save.PlaceScoreInArray(Name,GameplayParent.Instance.Score.CurrentScore, UniversalManager.Instance.Save.ReturnArrayLength()-1);
-        GameplayParent.Instance.State.EndScene();
+        UniversalManager.Instance.Save.PlaceScoreInArray(Name,GameplayManagers.Instance.Score.CurrentScore, UniversalManager.Instance.Save.ReturnArrayLength()-1);
+        GameplayManagers.Instance.State.EndScene();
     }
 
     private void CheckInteractableStatus()

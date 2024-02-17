@@ -27,21 +27,18 @@ public class GameStateManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("PreStartGame");
         if (GPS != GamePlayState.Intro) return;
-
-        Debug.Log("StartGame");
-            //Set currentgameplay state to play
-            GPS = GamePlayState.Play;
-            //Starts the timer
-            GameplayParent.Instance.Timer.StartCountdown();
+        //Set currentgameplay state to play
+        GPS = GamePlayState.Play;
+        //Starts the timer
+        GameplayManagers.Instance.Timer.StartCountdown();
         
     }
 
     public void EndGameState()
     {
         GPS = GamePlayState.End;
-        GameplayParent.Instance.UI.GameEndUI();
+        GameplayManagers.Instance.UI.GameEndUI();
         leftFlipperButton.SetActive(false);
         rightFlipperButton.SetActive(false);
     }

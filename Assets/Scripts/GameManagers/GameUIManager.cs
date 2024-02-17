@@ -67,19 +67,19 @@ public class GameUIManager : MonoBehaviour
         yield return new WaitForSeconds(_finalScoreWaitTime);
         _finalScoreDisplay.SetActive(false);
 
-        if (UniversalManager.Instance.Save.ValidScoreInput(GameplayParent.Instance.Score.CurrentScore))
+        if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
             DisplayKeyboard();
         }
         else
         {
-            GameplayParent.Instance.State.EndScene();
+            GameplayManagers.Instance.State.EndScene();
         }
     }
 
     private void DisplayFinalScore()
     {
-        _finalScoreText.text = GameplayParent.Instance.Score.CurrentScore.ToString();
+        _finalScoreText.text = GameplayManagers.Instance.Score.CurrentScore.ToString();
         _finalScoreDisplay.SetActive(true);
     }
 

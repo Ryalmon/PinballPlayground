@@ -17,7 +17,7 @@ public class BallKillBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("KillBox"))
         {
-            GameplayParent.Instance.Ball.RemoveBall(gameObject);
+            GameplayManagers.Instance.Ball.RemoveBall(gameObject);
             /*BallController.GetComponent<BallSpawner>().BallsInScene.Remove(GetComponent<BallPhysics>());
             BallController.GetComponent<BallSpawner>().CheckBallCountIsZero();
             Destroy(gameObject);*/

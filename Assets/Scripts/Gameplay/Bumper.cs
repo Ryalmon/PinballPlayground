@@ -11,7 +11,7 @@ public class Bumper : MonoBehaviour, IPlaceable
         if (collision.gameObject.GetComponent<BallPhysics>() != null )
         {
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision.transform.position));
-            GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
+            GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
         }
     }
 

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayParent : MonoBehaviour
+public class GameplayManagers : MonoBehaviour
 {
-    public static GameplayParent Instance;
+    public static GameplayManagers Instance;
     public TimerManager Timer;
     public GameStateManager State;
     public ScoreManager Score;
