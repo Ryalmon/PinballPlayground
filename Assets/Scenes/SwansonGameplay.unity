@@ -2148,6 +2148,7 @@ MonoBehaviour:
   _textButtons:
   - {fileID: 1369162267}
   - {fileID: 1157452463}
+  _enterButton: {fileID: 1218186941}
 --- !u!114 &982876926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,7 +2847,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1218186942}
   m_OnClick:
     m_PersistentCalls:
@@ -4402,6 +4403,7 @@ MonoBehaviour:
   Flippers: {fileID: 1799912070}
   UI: {fileID: 880333033}
   Ball: {fileID: 1039923384}
+  Spawning: {fileID: 0}
 --- !u!1 &2015646857
 GameObject:
   m_ObjectHideFlags: 0

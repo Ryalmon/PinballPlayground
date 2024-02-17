@@ -16,6 +16,7 @@ public class NameInput : MonoBehaviour
     [Header("References")]
     [SerializeField] TMP_Text _nameText;
     [SerializeField] List<Button> _textButtons; 
+    [SerializeField] Button _enterButton; 
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +70,7 @@ public class NameInput : MonoBehaviour
         {
             currentButton.interactable = canInteract;
         }
+        _enterButton.interactable = !canInteract;
     }
 
     private void ChangeText()

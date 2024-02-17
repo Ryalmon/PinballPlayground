@@ -65,12 +65,14 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     private IEnumerator DragProcess()
     {
         float moveProgress = 0;
-
-        Vector3 moveTo = _moveDistance;
+        Vector3 startPos = transform.localPosition;
+        Vector3 moveTo = _moveDistance + startPos;
+        //Vector3 testMoveTo = moveTo + startPos;
+        //Debug.Log("StartPOS: " + startPos + " MoveTo " + moveTo + " testMoveTo " + testMoveTo);
         while(moveProgress < 1)
         {
             moveProgress += Time.deltaTime / _holdDuration;
-            transform.localPosition = Vector3.Lerp(Vector3.zero, moveTo, moveProgress);
+            transform.localPosition = Vector3.Lerp(startPos, moveTo, moveProgress);
             yield return null;
         }
         //yield return new WaitForSeconds(_holdDuration);
@@ -107,6 +109,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         {
             case SpaceShipState.IDLE:
                 _detectionArea.enabled = true;
+                StartIdleMovement();
                 return;
             case SpaceShipState.DRAGGING:
                 _detectionArea.enabled = false;
