@@ -38,6 +38,14 @@ public class BallSpawner : MonoBehaviour
         SetButtonActive();
     }
 
+    public void RemoveBall(GameObject ball)
+    {
+        BallsInScene.Remove(ball.GetComponent<BallPhysics>());
+        CheckBallCountIsZero();
+        Destroy(ball.gameObject);
+    }
+
+
     public void SetButtonActive()
     {
         BallLaunchButton.SetActive(true);

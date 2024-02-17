@@ -22,7 +22,6 @@ public class Bumper : MonoBehaviour, IPlaceable
 
     public void Placed()
     {
-        Debug.Log("Anything");
         GetComponent<Drift>().enabled = true;
         
     }

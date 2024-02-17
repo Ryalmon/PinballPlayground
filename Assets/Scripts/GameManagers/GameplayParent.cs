@@ -10,6 +10,8 @@ public class GameplayParent : MonoBehaviour
     public ScoreManager Score;
     public FlipperManager Flippers;
     public GameUIManager UI;
+    public BallSpawner Ball;
+    public SpawningObjects Spawning;
 
     // Start is called before the first frame update
     void Start()

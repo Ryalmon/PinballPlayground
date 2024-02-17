@@ -7,7 +7,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject BallPrefab;
     private const int _mainMeunScene = 0;
 
-    internal static GamePlayState GPS = GamePlayState.Intro;
+    internal GamePlayState GPS = GamePlayState.Intro;
     public GameObject leftFlipperButton;
     public GameObject rightFlipperButton;
 
@@ -27,8 +27,10 @@ public class GameStateManager : MonoBehaviour
 
     public void StartGame()
     {
+        Debug.Log("PreStartGame");
         if (GPS != GamePlayState.Intro) return;
-        
+
+        Debug.Log("StartGame");
             //Set currentgameplay state to play
             GPS = GamePlayState.Play;
             //Starts the timer

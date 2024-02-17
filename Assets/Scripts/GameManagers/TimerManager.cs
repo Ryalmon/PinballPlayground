@@ -9,6 +9,7 @@ public class TimerManager : MonoBehaviour
 
     public void StartCountdown()
     {
+        Debug.Log("StartTimer");
         _countDownCoroutine = StartCoroutine(CountDown());
     }
 
