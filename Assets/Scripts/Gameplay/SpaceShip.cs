@@ -19,6 +19,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     private GameObject _dragObject;
     private BallPhysics _dragObjectPhysics;
     private Coroutine _idleMovementCoroutine;
+    private Coroutine _dragMovementCoroutine;
     SpaceShipState _shipState = SpaceShipState.IDLE;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,7 +60,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
         _dragObjectPhysics.SetParent(gameObject);
 
-        StartCoroutine(DragProcess());
+        _dragMovementCoroutine = StartCoroutine(DragProcess());
     }
 
     private IEnumerator DragProcess()
@@ -76,6 +77,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             yield return null;
         }
         //yield return new WaitForSeconds(_holdDuration);
+        _dragMovementCoroutine = null;
         ReleaseObject();
     }
 
@@ -126,6 +128,17 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     {
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
+    }
+
+    public void DestroyPlacedObject()
+    {
+        if (_dragMovementCoroutine != null)
+        {
+            StopCoroutine(_dragMovementCoroutine);
+            ReleaseObject();
+            return;
+        }
+        Destroy(transform.parent.gameObject);
     }
 }
 

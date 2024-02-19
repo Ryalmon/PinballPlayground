@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215f65c734608674bb55f8fd3df6f021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseGravityForce: 500
-  _xForceMultiplier: 1.5
-  _yForceMultiplier: 0.8
-  _ballSpeedForceInfluence: 5
+  _baseGravityForce: 400
+  _xForceMultiplier: 2
+  _yForceMultiplier: 1
+  _ballSpeedForceInfluence: 6
   _scoreTickRate: 0.25
 --- !u!58 &4470684863236244675
 CircleCollider2D:

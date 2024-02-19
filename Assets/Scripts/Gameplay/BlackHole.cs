@@ -82,4 +82,9 @@ public class BlackHole : MonoBehaviour, IPlaceable
     {
         GetComponent<Drift>().enabled = true;
     }
+
+    public void DestroyPlacedObject()
+    {
+        Destroy(gameObject);
+    }
 }
