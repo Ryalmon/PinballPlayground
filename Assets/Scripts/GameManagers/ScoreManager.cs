@@ -113,15 +113,15 @@ public class ScoreManager : MonoBehaviour
     public void AddToScore(int addedScore)
     {
         CurrentScore += addedScore;
-        UpdateText();
-    }
-
-    private void UpdateText()
-    {
         //Displays the score in the game world
         GameplayManagers.Instance.UI.UpdateScoreUI(CurrentScore);
-        //_scoreText.text = CurrentScore.ToString();
     }
+
+/*    private void UpdateScoreUI()
+    {
+        
+        //_scoreText.text = CurrentScore.ToString();
+    }*/
 
     private int ScoreValueFromSource(ScoreSource source)
     {

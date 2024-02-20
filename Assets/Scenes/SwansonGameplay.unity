@@ -698,6 +698,7 @@ RectTransform:
   - {fileID: 490284819}
   - {fileID: 611447658}
   - {fileID: 1842554926}
+  - {fileID: 2064399020}
   - {fileID: 1269371854}
   m_Father: {fileID: 1038765694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1802,6 +1803,14 @@ PrefabInstance:
       propertyPath: _inputKeyboardDisplay
       value: 
       objectReference: {fileID: 1235496768}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _scorePopUpSpawnSource
+      value: 
+      objectReference: {fileID: 2064399019}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _scorePopupSpawnSource
+      value: 
+      objectReference: {fileID: 2064399019}
     - target: {fileID: 8365700082165327291, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -4519,6 +4528,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585a954a6d2075f489be7dc4b1bec66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2064399019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064399020}
+  m_Layer: 5
+  m_Name: ScorePopupSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2064399020
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064399019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 452519173}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -330, y: -30}
+  m_SizeDelta: {x: 10, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2069746761
 GameObject:
   m_ObjectHideFlags: 0

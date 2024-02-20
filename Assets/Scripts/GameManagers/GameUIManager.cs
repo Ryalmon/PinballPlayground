@@ -14,6 +14,9 @@ public class GameUIManager : MonoBehaviour
     private float _scoreMultiplierStartingFontSize;
     [Space]
     [SerializeField] Vector2 _scoreTextLocation;
+    [SerializeField] GameObject _scorePopUpSpawnSource;
+    [SerializeField] GameObject _scorePopUpObject;
+    [SerializeField] float _scorePopupTime;
     [Space]
 
     [Header("Game End")]
@@ -36,7 +39,14 @@ public class GameUIManager : MonoBehaviour
 
     }
 
+
     public void UpdateScoreUI(int newScore)
+    {
+        UpdateScoreBoard(newScore);
+        //CreateScorePopUp();
+    }
+
+    private void UpdateScoreBoard(int newScore)
     {
         _scoreText.text = newScore.ToString();
     }
@@ -76,6 +86,19 @@ public class GameUIManager : MonoBehaviour
             GameplayManagers.Instance.State.EndScene();
         }
     }
+
+    public void CreateScorePopUp()
+    {
+        GameObject textPopup = Instantiate(_scorePopUpObject, new Vector3(100, 100, 0), _scorePopUpObject.transform.rotation);
+        textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
+        Destroy(textPopup.gameObject, _scorePopupTime);
+    }
+
+    /*private IEnumerator ScorePopUpProcess(GameObject popUp)
+    {
+        yield return new WaitForSeconds(_scorePopupTime);
+        Destroy(popUp.gameObject);
+    }*/
 
     private void DisplayFinalScore()
     {
