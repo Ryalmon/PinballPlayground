@@ -47,7 +47,7 @@ MonoBehaviour:
   _scoreText: {fileID: 0}
   _timerText: {fileID: 0}
   _scoreMultiplierText: {fileID: 0}
-  _scoreTextLocation: {x: 0, y: 10}
+  _scoreTextLocation: {x: 0, y: 8}
   _scorePopUpSpawnSource: {fileID: 0}
   _scorePopUpObject: {fileID: 8745426761391789019, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
   _scorePopupTime: 1.5
