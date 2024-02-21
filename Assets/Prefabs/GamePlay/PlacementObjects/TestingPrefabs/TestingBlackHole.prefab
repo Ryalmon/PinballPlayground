@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseGravityForce: 400
-  _xForceMultiplier: 2
-  _yForceMultiplier: 1
+  _xForceMultiplier: 2.5
+  _yForceMultiplier: 1.5
   _ballSpeedForceInfluence: 6
   _scoreTickRate: 0.25
 --- !u!58 &4470684863236244675
