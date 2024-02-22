@@ -1371,7 +1371,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -872306769
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2250,6 +2250,7 @@ MonoBehaviour:
   _textButtons:
   - {fileID: 1369162267}
   - {fileID: 1157452463}
+  _enterButton: {fileID: 0}
 --- !u!114 &982876926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4530,6 +4531,8 @@ MonoBehaviour:
   Score: {fileID: 2001141391}
   Flippers: {fileID: 1799912070}
   UI: {fileID: 880333033}
+  Ball: {fileID: 1039923384}
+  Spawning: {fileID: 0}
 --- !u!1001 &2025410128
 PrefabInstance:
   m_ObjectHideFlags: 0

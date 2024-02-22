@@ -53,14 +53,17 @@ public class SpawnSplitter : MonoBehaviour
 
     private void Update()
     {
-        currentTime -= Time.deltaTime;
-
-        if (currentTime <= 0.0f)
+        if (GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.Play)
         {
-            currentTime = SpawnCountdown;
-            CreateSplitter();
-        }
+            currentTime -= Time.deltaTime;
 
+            if (currentTime <= 0.0f)
+            {
+                currentTime = SpawnCountdown;
+                CreateSplitter();
+            }
+        }
+    
     }
 
 }

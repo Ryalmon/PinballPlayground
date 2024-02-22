@@ -180,6 +180,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3059cd23b7610f46a8168e2b1180a75, type: 3}
+--- !u!1 &184545573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184545575}
+  - component: {fileID: 184545574}
+  m_Layer: 0
+  m_Name: BallSplitterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &184545574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184545573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082222a3eac9053439222152132ee800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SplitterPrefab: {fileID: 8466248108494780780, guid: 3f4101ec52966a041bafdbf968004edf, type: 3}
+  XRight: 6.66
+  YUpperSpawnBounds: 5
+  XLeft: -6.66
+  YLowerSpawnBounds: -2.5
+  SpawnCountdown: 3
+--- !u!4 &184545575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184545573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13782218, y: -0.95613915, z: 0.018556597}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189015880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4884,3 +4934,4 @@ SceneRoots:
   - {fileID: 735998625}
   - {fileID: 906001218}
   - {fileID: 2015646858}
+  - {fileID: 184545575}
