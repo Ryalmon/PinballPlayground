@@ -1842,9 +1842,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 470113876}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: leftFlipperButton
+      value: 
+      objectReference: {fileID: 189015880}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _finalScoreDisplay
       value: 
       objectReference: {fileID: 2069746761}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: rightFlipperButton
+      value: 
+      objectReference: {fileID: 1792820187}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scoreMultiplierText
       value: 
