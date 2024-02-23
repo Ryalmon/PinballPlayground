@@ -16,6 +16,7 @@ public class NameInput : MonoBehaviour
     [Header("References")]
     [SerializeField] TMP_Text _nameText;
     [SerializeField] List<Button> _textButtons; 
+    [SerializeField] Button _enterButton; 
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +44,8 @@ public class NameInput : MonoBehaviour
 
     public void SubmitName()
     {
-        UniversalManager.Instance.Save.PlaceScoreInArray(Name,GameplayParent.Instance.Score.CurrentScore, UniversalManager.Instance.Save.ReturnArrayLength()-1);
-        GameplayParent.Instance.State.EndScene();
+        UniversalManager.Instance.Save.PlaceScoreInArray(Name,GameplayManagers.Instance.Score.CurrentScore, UniversalManager.Instance.Save.ReturnArrayLength()-1);
+        GameplayManagers.Instance.State.EndScene();
     }
 
     private void CheckInteractableStatus()
@@ -69,6 +70,7 @@ public class NameInput : MonoBehaviour
         {
             currentButton.interactable = canInteract;
         }
+        _enterButton.interactable = !canInteract;
     }
 
     private void ChangeText()

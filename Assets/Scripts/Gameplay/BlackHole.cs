@@ -34,7 +34,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
         while(_objectsInRadius.Count > 0)
         {
             for(int i = 0; i < _objectsInRadius.Count;i++)
-                GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole);
+                GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole);
             yield return new WaitForSeconds(_scoreTickRate);
         }
         _addScoreCoroutine = null;
@@ -81,5 +81,10 @@ public class BlackHole : MonoBehaviour, IPlaceable
     public void Placed()
     {
         GetComponent<Drift>().enabled = true;
+    }
+
+    public void DestroyPlacedObject()
+    {
+        Destroy(gameObject);
     }
 }

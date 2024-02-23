@@ -18,16 +18,40 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private GameObject _dragObject;
     private BallPhysics _dragObjectPhysics;
+    private Coroutine _idleMovementCoroutine;
+    private Coroutine _dragMovementCoroutine;
+    public float _idleXVariability = 1;
+    public float _idleYVariability = 1;
     SpaceShipState _shipState = SpaceShipState.IDLE;
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE )
+        if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE)
         {
             ChangeShipState(SpaceShipState.DRAGGING);
             DragObject(collision.gameObject);
         }
+    }
+
+    private void StartIdleMovement()
+    {
+        _idleMovementCoroutine = StartCoroutine(IdleMovement());
+    }
+
+    private IEnumerator IdleMovement()
+    {
+        float time = 0;
+        while (_shipState == SpaceShipState.IDLE)
+        {
+            time += Time.deltaTime;
+            float x = Mathf.Cos(time);
+            float y = Mathf.Sin(2 * time) / 2;
+            transform.localPosition = new Vector2((x * _idleXVariability), (y * _idleYVariability));
+            yield return null;
+        }
+        
+        
+
     }
 
     private void DragObject(GameObject newDragObject)
@@ -40,21 +64,24 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
         _dragObjectPhysics.SetParent(gameObject);
 
-        StartCoroutine(DragProcess());
+        _dragMovementCoroutine = StartCoroutine(DragProcess());
     }
 
     private IEnumerator DragProcess()
     {
         float moveProgress = 0;
-
-        Vector3 moveTo = _moveDistance;
+        Vector3 startPos = transform.localPosition;
+        Vector3 moveTo = _moveDistance + startPos;
+        //Vector3 testMoveTo = moveTo + startPos;
+        //Debug.Log("StartPOS: " + startPos + " MoveTo " + moveTo + " testMoveTo " + testMoveTo);
         while(moveProgress < 1)
         {
             moveProgress += Time.deltaTime / _holdDuration;
-            transform.localPosition = Vector3.Lerp(Vector3.zero, moveTo, moveProgress);
+            transform.localPosition = Vector3.Lerp(startPos, moveTo, moveProgress);
             yield return null;
         }
         //yield return new WaitForSeconds(_holdDuration);
+        _dragMovementCoroutine = null;
         ReleaseObject();
     }
 
@@ -69,7 +96,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         _dragObject = null;
         _dragObjectPhysics = null;
 
-        GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.SpaceShip);
+        GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.SpaceShip);
 
         ChangeShipState(SpaceShipState.RESETTING);
     }
@@ -88,6 +115,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         {
             case SpaceShipState.IDLE:
                 _detectionArea.enabled = true;
+                StartIdleMovement();
                 return;
             case SpaceShipState.DRAGGING:
                 _detectionArea.enabled = false;
@@ -103,6 +131,18 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     public void Placed()
     {
         GetComponentInParent<Drift>().enabled = true;
+        StartIdleMovement();
+    }
+
+    public void DestroyPlacedObject()
+    {
+        if (_dragMovementCoroutine != null)
+        {
+            StopCoroutine(_dragMovementCoroutine);
+            ReleaseObject();
+            return;
+        }
+        Destroy(transform.parent.gameObject);
     }
 }
 

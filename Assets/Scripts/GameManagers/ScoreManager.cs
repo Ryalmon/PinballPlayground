@@ -75,7 +75,7 @@ public class ScoreManager : MonoBehaviour
 
     private void ScalingUIUpdate()
     {
-        GameplayParent.Instance.UI.UpdateMultiplierUI(_currentBallMultiplier);
+        GameplayManagers.Instance.UI.UpdateMultiplierUI(_currentBallMultiplier);
     }
 
     public float GetBallLifetimeMultiplier()
@@ -99,7 +99,7 @@ public class ScoreManager : MonoBehaviour
         //ScoreTimesBallMultipler returns the score multiplied by the current multipler
         //ScoreValueFromSource gets the score based on the source of what called it.
         VFXManager vfxMan = UniversalManager.Instance.VFX;
-        vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource, GameplayParent.Instance.UI.GetScoreTextLocation(),
+        vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource, GameplayManagers.Instance.UI.GetScoreTextLocation(),
             ScoreTimesBallMultiplier(ScoreValueFromSource(source))));
     }
 
@@ -113,15 +113,15 @@ public class ScoreManager : MonoBehaviour
     public void AddToScore(int addedScore)
     {
         CurrentScore += addedScore;
-        UpdateText();
+        //Displays the score in the game world
+        GameplayManagers.Instance.UI.UpdateScoreUI(CurrentScore);
     }
 
-    private void UpdateText()
+/*    private void UpdateScoreUI()
     {
-        //Displays the score in the game world
-        GameplayParent.Instance.UI.UpdateScoreUI(CurrentScore);
+        
         //_scoreText.text = CurrentScore.ToString();
-    }
+    }*/
 
     private int ScoreValueFromSource(ScoreSource source)
     {

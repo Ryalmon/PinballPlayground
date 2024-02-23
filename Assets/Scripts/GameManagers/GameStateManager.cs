@@ -7,11 +7,9 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject BallPrefab;
     private const int _mainMeunScene = 0;
 
-    internal static GamePlayState GPS = GamePlayState.Intro;
-    public GameObject leftFlipperButton;
-    public GameObject rightFlipperButton;
+    internal GamePlayState GPS = GamePlayState.Intro;
+    
 
-    private DragnDrop dragNDrop;
     public enum GamePlayState { 
         Intro,
         Play,
@@ -29,30 +27,19 @@ public class GameStateManager : MonoBehaviour
     public void StartGame()
     {
         if (GPS != GamePlayState.Intro) return;
-        
-            //Set currentgameplay state to play
-            GPS = GamePlayState.Play;
-            //Starts the timer
-            GameplayParent.Instance.Timer.StartCountdown();
+        //Set currentgameplay state to play
+        GPS = GamePlayState.Play;
+        //Starts the timer
+        GameplayManagers.Instance.Timer.StartCountdown();
         
     }
 
     public void EndGameState()
     {
         GPS = GamePlayState.End;
-        GameplayParent.Instance.UI.GameEndUI();
-        leftFlipperButton.SetActive(false);
-        rightFlipperButton.SetActive(false);
-
-        Debug.Log("Endgame method called");
-        dragNDrop = GetComponent<DragnDrop>();
-        if (dragNDrop != null)
-        {
-            dragNDrop.enabled = false;
-        }
+        GameplayManagers.Instance.UI.GameEndUI();
         
     }
-
 
     public void SpawnBall()
     {

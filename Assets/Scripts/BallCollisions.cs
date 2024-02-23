@@ -12,20 +12,15 @@ public class BallKillBox : MonoBehaviour
         BallController = GameObject.FindGameObjectWithTag("BallController");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //Function to destroy the ball when it collides with the killbox
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("KillBox"))
         {
-            BallController.GetComponent<BallSpawner>().BallsInScene.Remove(GetComponent<BallPhysics>());
+            GameplayManagers.Instance.Ball.RemoveBall(gameObject);
+            /*BallController.GetComponent<BallSpawner>().BallsInScene.Remove(GetComponent<BallPhysics>());
             BallController.GetComponent<BallSpawner>().CheckBallCountIsZero();
-            Destroy(gameObject);
+            Destroy(gameObject);*/
             /*if (BallController.GetComponent<BallSpawner>().BallsInScene.Count <= 0)
             {
                 BallController.GetComponent<BallSpawner>().SetButtonInactive();
