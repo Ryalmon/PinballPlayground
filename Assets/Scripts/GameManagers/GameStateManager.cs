@@ -8,8 +8,7 @@ public class GameStateManager : MonoBehaviour
     private const int _mainMeunScene = 0;
 
     internal GamePlayState GPS = GamePlayState.Intro;
-    public GameObject leftFlipperButton;
-    public GameObject rightFlipperButton;
+    
 
     public enum GamePlayState { 
         Intro,
@@ -39,8 +38,7 @@ public class GameStateManager : MonoBehaviour
     {
         GPS = GamePlayState.End;
         GameplayManagers.Instance.UI.GameEndUI();
-        leftFlipperButton.SetActive(false);
-        rightFlipperButton.SetActive(false);
+        
     }
 
     public void SpawnBall()

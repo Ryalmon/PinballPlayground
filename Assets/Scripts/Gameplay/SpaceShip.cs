@@ -20,6 +20,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     private BallPhysics _dragObjectPhysics;
     private Coroutine _idleMovementCoroutine;
     private Coroutine _dragMovementCoroutine;
+    public float _idleXVariability = 1;
+    public float _idleYVariability = 1;
     SpaceShipState _shipState = SpaceShipState.IDLE;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,10 +46,12 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             time += Time.deltaTime;
             float x = Mathf.Cos(time);
             float y = Mathf.Sin(2 * time) / 2;
-            transform.localPosition = new Vector2(x, y);
+            transform.localPosition = new Vector2((x * _idleXVariability), (y * _idleYVariability));
             yield return null;
         }
         
+        
+
     }
 
     private void DragObject(GameObject newDragObject)

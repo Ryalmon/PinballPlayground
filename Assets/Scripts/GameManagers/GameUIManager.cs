@@ -24,6 +24,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] TMP_Text _finalScoreText;
     [Space]
     [SerializeField] GameObject _inputKeyboardDisplay;
+    public GameObject leftFlipperButton;
+    public GameObject rightFlipperButton;
 
     [Space]
     [SerializeField] float _finalScoreWaitTime;
@@ -76,6 +78,9 @@ public class GameUIManager : MonoBehaviour
         DisplayFinalScore();
         yield return new WaitForSeconds(_finalScoreWaitTime);
         _finalScoreDisplay.SetActive(false);
+
+        leftFlipperButton.SetActive(false);
+        rightFlipperButton.SetActive(false);
 
         if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
