@@ -1371,7 +1371,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -872306769
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1766,11 +1766,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3015140028866793388, guid: 3f4101ec52966a041bafdbf968004edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1434581
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 3015140028866793388, guid: 3f4101ec52966a041bafdbf968004edf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2161894
+      value: 3.59
       objectReference: {fileID: 0}
     - target: {fileID: 3015140028866793388, guid: 3f4101ec52966a041bafdbf968004edf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1994,6 +1994,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1265837493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &892806795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 892806797}
+  - component: {fileID: 892806796}
+  m_Layer: 0
+  m_Name: BallSplitterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &892806796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892806795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082222a3eac9053439222152132ee800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SplitterPrefab: {fileID: 8466248108494780780, guid: 3f4101ec52966a041bafdbf968004edf, type: 3}
+  XRight: 6.66
+  YUpperSpawnBounds: 5
+  XLeft: -6.66
+  YLowerSpawnBounds: -2.5
+  SpawnCountdown: 3
+--- !u!4 &892806797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892806795}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8592827, y: -2.192818, z: -0.07408376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &906001217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2250,7 @@ MonoBehaviour:
   _textButtons:
   - {fileID: 1369162267}
   - {fileID: 1157452463}
+  _enterButton: {fileID: 0}
 --- !u!114 &982876926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2682,6 +2733,37 @@ RectTransform:
   m_AnchoredPosition: {x: 15, y: 0}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1187812648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187812649}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1187812649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187812648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.66, y: 5.18, z: -0.12027015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1191523262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4449,6 +4531,8 @@ MonoBehaviour:
   Score: {fileID: 2001141391}
   Flippers: {fileID: 1799912070}
   UI: {fileID: 880333033}
+  Ball: {fileID: 1039923384}
+  Spawning: {fileID: 0}
 --- !u!1001 &2025410128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4839,3 +4923,5 @@ SceneRoots:
   - {fileID: 3434954454544592652}
   - {fileID: 298622642}
   - {fileID: 810645575}
+  - {fileID: 892806797}
+  - {fileID: 1187812649}

@@ -23,7 +23,7 @@ public class TimerManager : MonoBehaviour
         while(TimeRemaining > 0)
         {
             TimeRemaining -= Time.deltaTime;
-            GameplayParent.Instance.UI.UpdateTimerUI(TimeRemaining);
+            GameplayManagers.Instance.UI.UpdateTimerUI(TimeRemaining);
             yield return null;
         }
         //Activate anything that needs to happen after the timer reaches 0
@@ -32,7 +32,6 @@ public class TimerManager : MonoBehaviour
 
     void EndTimer()
     {
-
-        GameplayParent.Instance.State.EndGameState();
+        GameplayManagers.Instance.State.EndGameState();
     }
 }

@@ -34,9 +34,17 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
-        GameplayParent.Instance.Score.StopScaling();
+        GameplayManagers.Instance.Score.StopScaling();
         SetButtonActive();
     }
+
+    public void RemoveBall(GameObject ball)
+    {
+        BallsInScene.Remove(ball.GetComponent<BallPhysics>());
+        CheckBallCountIsZero();
+        Destroy(ball.gameObject);
+    }
+
 
     public void SetButtonActive()
     {
@@ -46,7 +54,7 @@ public class BallSpawner : MonoBehaviour
     public void SpawnBallButtonPressed()
     {
         BallLaunchButton.SetActive(false);
-        GameplayParent.Instance.Score.StartScaling();
+        GameplayManagers.Instance.Score.StartScaling();
     }
 
     public int GetBallsInSceneCount()

@@ -14,6 +14,9 @@ public class GameUIManager : MonoBehaviour
     private float _scoreMultiplierStartingFontSize;
     [Space]
     [SerializeField] Vector2 _scoreTextLocation;
+    [SerializeField] GameObject _scorePopUpSpawnSource;
+    [SerializeField] GameObject _scorePopUpObject;
+    [SerializeField] float _scorePopupTime;
     [Space]
 
     [Header("Game End")]
@@ -36,7 +39,14 @@ public class GameUIManager : MonoBehaviour
 
     }
 
+
     public void UpdateScoreUI(int newScore)
+    {
+        UpdateScoreBoard(newScore);
+        //CreateScorePopUp();
+    }
+
+    private void UpdateScoreBoard(int newScore)
     {
         _scoreText.text = newScore.ToString();
     }
@@ -67,19 +77,32 @@ public class GameUIManager : MonoBehaviour
         yield return new WaitForSeconds(_finalScoreWaitTime);
         _finalScoreDisplay.SetActive(false);
 
-        if (UniversalManager.Instance.Save.ValidScoreInput(GameplayParent.Instance.Score.CurrentScore))
+        if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
             DisplayKeyboard();
         }
         else
         {
-            GameplayParent.Instance.State.EndScene();
+            GameplayManagers.Instance.State.EndScene();
         }
     }
 
+    public void CreateScorePopUp()
+    {
+        GameObject textPopup = Instantiate(_scorePopUpObject, new Vector3(100, 100, 0), _scorePopUpObject.transform.rotation);
+        textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
+        Destroy(textPopup.gameObject, _scorePopupTime);
+    }
+
+    /*private IEnumerator ScorePopUpProcess(GameObject popUp)
+    {
+        yield return new WaitForSeconds(_scorePopupTime);
+        Destroy(popUp.gameObject);
+    }*/
+
     private void DisplayFinalScore()
     {
-        _finalScoreText.text = GameplayParent.Instance.Score.CurrentScore.ToString();
+        _finalScoreText.text = GameplayManagers.Instance.Score.CurrentScore.ToString();
         _finalScoreDisplay.SetActive(true);
     }
 
