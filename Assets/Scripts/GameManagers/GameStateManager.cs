@@ -11,6 +11,7 @@ public class GameStateManager : MonoBehaviour
     public GameObject leftFlipperButton;
     public GameObject rightFlipperButton;
 
+    private DragnDrop dragNDrop;
     public enum GamePlayState { 
         Intro,
         Play,
@@ -42,7 +43,16 @@ public class GameStateManager : MonoBehaviour
         GameplayParent.Instance.UI.GameEndUI();
         leftFlipperButton.SetActive(false);
         rightFlipperButton.SetActive(false);
+
+        Debug.Log("Endgame method called");
+        dragNDrop = GetComponent<DragnDrop>();
+        if (dragNDrop != null)
+        {
+            dragNDrop.enabled = false;
+        }
+        
     }
+
 
     public void SpawnBall()
     {
