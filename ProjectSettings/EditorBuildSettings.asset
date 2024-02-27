@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/MainScenes/MainMenu.unity
     guid: 03ced14312d47c94380ab136be3e9bef
   - enabled: 1
-    path: Assets/Scenes/SwansonGameplay.unity
+    path: Assets/Scenes/MainScenes/SwansonGameplay.unity
     guid: 6f2dd6a00e1a0cb4dbe3b2a786114eca
   m_configObjects: {}
