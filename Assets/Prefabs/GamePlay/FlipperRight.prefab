@@ -170,8 +170,8 @@ MonoBehaviour:
   _flipUpTime: 0.1
   _flipWaitTime: 0.2
   _flipDownTime: 0.1
-  _upSpeed: 550
-  _downSpeed: 550
+  _upSpeed: 600
+  _downSpeed: 600
   _rightFlipper: 1
   done: 0
   hold: 0
