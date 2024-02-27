@@ -48,6 +48,9 @@ TagManager:
   - name: Background
     uniqueID: 1381621193
     locked: 0
+  - name: GameBack
+    uniqueID: 805626411
+    locked: 0
   - name: BallSplitter
     uniqueID: 548764367
     locked: 0
