@@ -25,12 +25,12 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayMusic("");
+       // PlayMusic("Music");
     }
 
     public void PlayMusic(string name)
     {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
+        Sound s = Array.Find(musicSounds, x => x.soundName == name);
 
         if (s == null)
         {
@@ -46,7 +46,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFX(string name)
     {
-        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        Sound s = Array.Find(sfxSounds, x => x.soundName == name);
 
         if (s == null)
         {
