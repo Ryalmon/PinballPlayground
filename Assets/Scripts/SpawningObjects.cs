@@ -19,7 +19,6 @@ public class SpawningObjects : MonoBehaviour
             GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
             GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
             SpawnedObjects.Add(newObject);
-            //Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
         }
 
     }
@@ -29,11 +28,9 @@ public class SpawningObjects : MonoBehaviour
         int index = SpawnedObjects.IndexOf(oldObject);
         if (index != -1)
         {
-            GameObject newGameObject = Instantiate(Spawnables[index], SpawnPoints[index].position, Quaternion.identity);
+            GameObject newGameObject = Instantiate(Spawnables[Random.Range(0,Spawnables.Count)], SpawnPoints[index].position, Quaternion.identity);
+            //GameObject newGameObject = Spawnables[Random.Range(0, Spawnables.Count)];
             SpawnedObjects[index] = newGameObject;
         }
     }
-
- 
-
 }

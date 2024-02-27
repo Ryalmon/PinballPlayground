@@ -10,16 +10,14 @@ public class DragnDrop : MonoBehaviour
     private Vector3 offset;
     private Vector3 originalPosition;
     private SpawningObjects spawningObjects;
-    //private Collider2D invalidCollider;
-
+    
     private void Start()
     {
         spawningObjects = FindObjectOfType<SpawningObjects>();
         originalPosition = transform.position;
-        //invalidCollider = GetComponent<Collider2D>();
     }
 
-    private void OnMouseDrag()
+    public void OnMouseDrag()
     {
         if (!dragging)
         {
@@ -31,11 +29,10 @@ public class DragnDrop : MonoBehaviour
         if (!dragging)
         {
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         }
     }
 
-    private void OnMouseUp()
+    public void OnMouseUp()
     {
         if (!dragging)
         {
@@ -46,7 +43,6 @@ public class DragnDrop : MonoBehaviour
                 transform.position = originalPosition;
                 dragging = false;
                 Debug.Log("Placed");
-                //placeable.GetComponent<IPlaceable>().Placed();
             }
 
             else
@@ -55,7 +51,6 @@ public class DragnDrop : MonoBehaviour
                 placeable.GetComponent<IPlaceable>().Placed();
                 spawningObjects.SpawnNewObject(gameObject);
             }
-            //spawningObjects.SpawnNewObject(gameObject);
         }
     }
     
@@ -73,5 +68,11 @@ public class DragnDrop : MonoBehaviour
         }
         return false;
       
+    }
+
+    public void SetDragging(bool enabled)
+    {
+        Debug.Log("dragging set to: " + enabled);
+        dragging = enabled;
     }
 }
