@@ -4798,12 +4798,20 @@ PrefabInstance:
       value: SpawningObjectsController
       objectReference: {fileID: 0}
     - target: {fileID: 4006629902198132567, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006629902198132567, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006629902198132567, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4006629902198132567, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3151673
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4006629902198132567, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
       propertyPath: m_LocalPosition.z

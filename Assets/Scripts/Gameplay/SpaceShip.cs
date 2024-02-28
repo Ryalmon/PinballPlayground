@@ -130,8 +130,10 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     public void Placed()
     {
+        _detectionArea.enabled = true;
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
+        GetComponent<SpaceShip>().enabled = true;
     }
 
     public void DestroyPlacedObject()
@@ -144,6 +146,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         }
         Destroy(transform.parent.gameObject);
     }
+
 }
 
 enum SpaceShipState

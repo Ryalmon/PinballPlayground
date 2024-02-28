@@ -30,10 +30,12 @@ public class Bumper : MonoBehaviour, IPlaceable
     public void Placed()
     {
         GetComponent<Drift>().enabled = true;
+        GetComponent<Bumper>().enabled = true;
     }
 
     public void DestroyPlacedObject()
     {
         Destroy(gameObject);
     }
+
 }
