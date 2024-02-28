@@ -8,6 +8,8 @@ TagManager:
   - BallController
   - KillBox
   - Splitter
+  - Bumper
+  - Wall
   layers:
   - Default
   - TransparentFX

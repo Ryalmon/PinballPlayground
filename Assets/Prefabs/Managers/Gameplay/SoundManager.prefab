@@ -46,8 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5855412852a3f6e45ab24717b23b5989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
-  sfxSounds: []
+  musicSounds:
+  - soundName: Music
+    clip: {fileID: 0}
+  sfxSounds:
+  - soundName: Laser 1
+    clip: {fileID: 8300000, guid: 6fddfb48f44ba6e43bf506e77c7b4c69, type: 3}
+  - soundName: Laser 2
+    clip: {fileID: 8300000, guid: 5973412ea3aa8d446afa9a2147f50d66, type: 3}
+  - soundName: Bounce
+    clip: {fileID: 8300000, guid: 5f60d2d1294ca6d42941b2335d7a72a9, type: 3}
+  - soundName: Hit
+    clip: {fileID: 8300000, guid: 6a3d83c37f783564d9636af273faf964, type: 3}
   musicSource: {fileID: 632983649218979711}
   sfxSource: {fileID: 2874589334072883463}
 --- !u!1 &4277381805131339752

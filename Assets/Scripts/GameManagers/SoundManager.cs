@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-       // PlayMusic("Music");
+       //PlayMusic("Music");
     }
 
     public void PlayMusic(string name)
@@ -56,6 +56,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
+            Debug.Log("Unity Hates me");
         }
     }
 
