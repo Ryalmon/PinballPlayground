@@ -21,7 +21,7 @@ public class VFXManager : MonoBehaviour
             GameObject newestPoint = SpawnPointGameObject(spawnSource.transform.position);
             //Decrements total score and assigns the score to the point particle
             int newPointValue = IndividualPointValue(score);
-            Debug.Log(newPointValue);
+            //Debug.Log(newPointValue);
             newestPoint.GetComponent<PointParticle>().SetPointValue(newPointValue);
             score -= newPointValue;
             //Adds the most recent particle to a list

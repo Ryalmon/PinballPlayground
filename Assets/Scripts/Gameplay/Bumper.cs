@@ -10,14 +10,21 @@ public class Bumper : MonoBehaviour, IPlaceable
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null )
         {
-            collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision.transform.position));
+            Debug.DrawRay(collision.contacts[collision.contactCount-1].point, collision.gameObject.transform.position - (Vector3)collision.contacts[collision.contactCount-1].point, Color.green,5);
+
+            collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision));
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
         }
     }
 
-    private Vector2 DetermineShootDirection(Vector2 otherObject)
+    /*private Vector2 DetermineShootDirection(Vector2 otherObject)
     {
         return (otherObject - new Vector2(transform.position.x, transform.position.y)).normalized * _forceMultiplier;
+    }*/
+
+    private Vector2 DetermineShootDirection(Collision2D collision)
+    {
+        return (collision.gameObject.transform.position - (Vector3)collision.contacts[collision.contactCount - 1].point).normalized * _forceMultiplier;
     }
 
     public void Placed()
