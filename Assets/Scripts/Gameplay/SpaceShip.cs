@@ -130,6 +130,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     public void Placed()
     {
+        _detectionArea.enabled = true;
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
         GetComponent<SpaceShip>().enabled = true;
