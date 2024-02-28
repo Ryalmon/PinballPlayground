@@ -43,15 +43,17 @@ public class BlackHole : MonoBehaviour, IPlaceable
 
     Vector2 CalculateGravityForce(BallPhysics bp)
     {
-        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) 
-            * _baseGravityForce 
-            * (bp.GetComponent<Rigidbody2D>().velocity.magnitude/_ballSpeedForceInfluence) * 
+        Vector2 newForce = (transform.position - bp.gameObject.transform.position).normalized
+            * (transform.position - bp.gameObject.transform.position).sqrMagnitude
+            * _baseGravityForce
+            * (bp.GetComponent<Rigidbody2D>().velocity.magnitude / _ballSpeedForceInfluence) *
             Time.deltaTime;
         newForce *= new Vector2(_xForceMultiplier, _yForceMultiplier);
-        if (newForce.y > 0)
+        if (newForce.y > 0 && bp.GetComponent<Rigidbody2D>().velocity.y < 0)
             newForce *= new Vector2(1, _upwardsForceMultiplier);
-        //else
-            //newForce += new Vector2(0, 3f * Time.deltaTime);
+        /*else
+            if (bp.gameObject.transform.position.y < transform.position.y)
+                newForce += new Vector2(0, 10000f * Time.deltaTime);*/
         return newForce;
     }
 

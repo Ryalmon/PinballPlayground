@@ -49,5 +49,5 @@ MonoBehaviour:
   _scoreFromBlackHole: 25
   _scoreFromCeiling: 250
   _startingBallMultiplier: 1
-  _ballMultiplierScalingRate: 3
-  _ballMultiplerScalingAmount: 0.05
+  _ballMultiplierScalingRate: 6
+  _ballMultiplerScalingAmount: 0.1
