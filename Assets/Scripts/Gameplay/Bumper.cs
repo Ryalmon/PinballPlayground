@@ -29,4 +29,9 @@ public class Bumper : MonoBehaviour, IPlaceable
     {
         Destroy(gameObject);
     }
+
+    public void NotPlaced()
+    {
+        GetComponent<Bumper>().enabled = false;
+    }
 }

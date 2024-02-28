@@ -87,4 +87,9 @@ public class BlackHole : MonoBehaviour, IPlaceable
     {
         Destroy(gameObject);
     }
+
+    public void NotPlaced()
+    {
+        GetComponent<BlackHole>().enabled = false;
+    }
 }

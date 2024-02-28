@@ -6,20 +6,25 @@ using UnityEngine.InputSystem;
 public class DragnDrop : MonoBehaviour
 {
     [SerializeField] GameObject placeable;
+    //[SerializeField] GameObject notPlaceable;
     private bool dragging = false;
     private Vector3 offset;
     private Vector3 originalPosition;
     private SpawningObjects spawningObjects;
+    private GameStateManager gameStateManager;
     
     private void Start()
     {
         spawningObjects = FindObjectOfType<SpawningObjects>();
+        gameStateManager = FindObjectOfType<GameStateManager>();
+
         originalPosition = transform.position;
+       
     }
 
     public void OnMouseDrag()
     {
-        if (!dragging)
+        if (!dragging && gameStateManager.GPS != GameStateManager.GamePlayState.End)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
@@ -42,12 +47,11 @@ public class DragnDrop : MonoBehaviour
             {
                 transform.position = originalPosition;
                 dragging = false;
-                Debug.Log("Placed");
+                //notPlaceable.GetComponent<IPlaceable>().NotPlaced();
             }
 
             else
             {
-                Debug.Log("Placed");
                 placeable.GetComponent<IPlaceable>().Placed();
                 spawningObjects.SpawnNewObject(gameObject);
             }
@@ -61,13 +65,12 @@ public class DragnDrop : MonoBehaviour
         {
             if (collider.isTrigger)
             {
-                Debug.Log("Placed");
+                //Debug.Log("Placed");
                 placeable.GetComponent<IPlaceable>().Placed();
                 return true;
             }
         }
-        return false;
-      
+        return false;   
     }
 
     public void SetDragging(bool enabled)

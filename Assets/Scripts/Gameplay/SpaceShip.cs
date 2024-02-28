@@ -144,6 +144,11 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         }
         Destroy(transform.parent.gameObject);
     }
+
+    public void NotPlaced()
+    {
+        GetComponent<SpaceShip>().enabled = false;
+    }
 }
 
 enum SpaceShipState

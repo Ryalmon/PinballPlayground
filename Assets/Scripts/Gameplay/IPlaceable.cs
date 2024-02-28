@@ -6,5 +6,7 @@ public interface IPlaceable
 {
     void Placed();
 
+    void NotPlaced();
+
     void DestroyPlacedObject();
 }

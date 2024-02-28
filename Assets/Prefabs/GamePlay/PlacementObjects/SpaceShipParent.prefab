@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeable: {fileID: 384901953705527372}
+  notPlaceable: {fileID: 2408790924656567570}
 --- !u!58 &593139920983052117
 CircleCollider2D:
   m_ObjectHideFlags: 0
