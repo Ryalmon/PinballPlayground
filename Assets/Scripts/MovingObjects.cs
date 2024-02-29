@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingObjects : MonoBehaviour
 {
     [SerializeField] Vector3 MoveLocation;
+    [SerializeField] private float _moveSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class MovingObjects : MonoBehaviour
     {
         while (true)
         {
-            transform.position += MoveLocation * Time.deltaTime;
+            transform.position += MoveLocation * _moveSpeed * Time.deltaTime;
             yield return null;
         }
 
