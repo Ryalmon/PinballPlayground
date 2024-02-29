@@ -13,7 +13,7 @@ public class SpawningObjects : MonoBehaviour
     }
     private void ObjectsSpawn()
     {
-        for (int i = 0; i < Spawnables.Count; i++)
+        for (int i = 0; i < SpawnPoints.Count; i++)
         {
             GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
             GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
