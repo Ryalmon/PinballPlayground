@@ -102,8 +102,8 @@ MonoBehaviour:
   _holdDuration: 0.4
   _resetDuration: 3
   _moveDistance: {x: 0, y: 4, z: 0}
-  _releaseForce: 8
   _releaseXVariability: 3
+  _releaseYForce: 8
   _minSpeedToAddXVariability: 1
   _detectionArea: {fileID: 9193157069710995436}
   _holdingLocation: {fileID: 2387247319312278465}

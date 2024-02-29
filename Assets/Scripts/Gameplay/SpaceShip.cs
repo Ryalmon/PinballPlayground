@@ -8,10 +8,11 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _holdDuration;
     [SerializeField] float _resetDuration;
     [SerializeField] Vector3 _moveDistance;
-    [SerializeField] float _releaseForce;
     [SerializeField] float _releaseXVariability;
+    [SerializeField] float _releaseYForce;
     [SerializeField] float _minSpeedToAddXVariability;
-    private float _storedXVelocity;
+    //private float _storedXVelocity;
+    private Vector2 _storedVelocity;
     [Space]
 
     [Header("Refrences")]
@@ -60,7 +61,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     {
         StopCoroutine(_idleMovementCoroutine);
 
-        _storedXVelocity = newDragObject.GetComponent<Rigidbody2D>().velocity.x;
+        _storedVelocity = newDragObject.GetComponent<Rigidbody2D>().velocity;
 
         _dragObject = newDragObject;
         _dragObjectPhysics = _dragObject.GetComponent<BallPhysics>();
@@ -97,9 +98,11 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
 
-        if (Mathf.Abs(_storedXVelocity) < _minSpeedToAddXVariability)
-            _storedXVelocity += Random.Range(-_releaseXVariability, _releaseXVariability);
-        Vector2 releaseBallForce = new Vector2(_storedXVelocity, _releaseForce);
+        if (Mathf.Abs(_storedVelocity.x) < _minSpeedToAddXVariability)
+            _storedVelocity += new Vector2 (Random.Range(-_releaseXVariability, _releaseXVariability) , 0 );
+        if (_storedVelocity.y < _releaseYForce)
+            _storedVelocity = new Vector2(_storedVelocity.x, _releaseYForce);
+        Vector2 releaseBallForce = new Vector2(_storedVelocity.x, _storedVelocity.y);
         _dragObjectPhysics.OverrideBallForce(releaseBallForce);
 
         _dragObject = null;

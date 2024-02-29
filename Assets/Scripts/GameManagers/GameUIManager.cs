@@ -115,7 +115,7 @@ public class GameUIManager : MonoBehaviour
 
     private void DisplayKeyboard()
     {
-        Debug.Log("DisplayKeyboard");
+        //Debug.Log("DisplayKeyboard");
         _inputKeyboardDisplay.SetActive(true);
     }
 
