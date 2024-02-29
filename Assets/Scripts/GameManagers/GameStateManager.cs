@@ -38,7 +38,7 @@ public class GameStateManager : MonoBehaviour
     {
         GPS = GamePlayState.End;
         GameplayManagers.Instance.UI.GameEndUI();
-        
+       
     }
 
     public void SpawnBall()

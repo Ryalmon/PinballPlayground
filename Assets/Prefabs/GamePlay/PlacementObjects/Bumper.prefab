@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeable: {fileID: 5825183760435697442}
+  notPlaceable: {fileID: 5825183760435697442}
 --- !u!114 &7403976552961128249
 MonoBehaviour:
   m_ObjectHideFlags: 0
