@@ -8,6 +8,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
     [SerializeField] float _baseGravityForce;
     [SerializeField] float _xForceMultiplier;
     [SerializeField] float _yForceMultiplier;
+    [SerializeField] float _upwardsForceMultiplier;
     [SerializeField] float _ballSpeedForceInfluence;
     [Space]
     [SerializeField] float _scoreTickRate;
@@ -34,7 +35,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
         while(_objectsInRadius.Count > 0)
         {
             for(int i = 0; i < _objectsInRadius.Count;i++)
-                GameplayParent.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole);
+                GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole);
             yield return new WaitForSeconds(_scoreTickRate);
         }
         _addScoreCoroutine = null;
@@ -42,9 +43,15 @@ public class BlackHole : MonoBehaviour, IPlaceable
 
     Vector2 CalculateGravityForce(BallPhysics bp)
     {
-        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) * _baseGravityForce 
-            * (bp.GetComponent<Rigidbody2D>().velocity.magnitude/_ballSpeedForceInfluence) * Time.deltaTime;
+        Vector2 newForce = (transform.position - bp.gameObject.transform.position ) 
+            * _baseGravityForce 
+            * (bp.GetComponent<Rigidbody2D>().velocity.magnitude/_ballSpeedForceInfluence) * 
+            Time.deltaTime;
         newForce *= new Vector2(_xForceMultiplier, _yForceMultiplier);
+        if (newForce.y > 0)
+            newForce *= new Vector2(1, _upwardsForceMultiplier);
+        //else
+            //newForce += new Vector2(0, 3f * Time.deltaTime);
         return newForce;
     }
 
@@ -81,5 +88,12 @@ public class BlackHole : MonoBehaviour, IPlaceable
     public void Placed()
     {
         GetComponent<Drift>().enabled = true;
+        GetComponent<BlackHole>().enabled = true;
     }
+
+    public void DestroyPlacedObject()
+    {
+        Destroy(gameObject);
+    }
+
 }

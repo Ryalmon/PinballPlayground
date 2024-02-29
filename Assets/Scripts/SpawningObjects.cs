@@ -9,8 +9,7 @@ public class SpawningObjects : MonoBehaviour
     [SerializeField] List<GameObject> SpawnedObjects = new List<GameObject>();
     private void Start()
     {
-        ObjectsSpawn();
-        
+        ObjectsSpawn(); 
     }
     private void ObjectsSpawn()
     {
@@ -19,9 +18,7 @@ public class SpawningObjects : MonoBehaviour
             GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
             GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
             SpawnedObjects.Add(newObject);
-            //Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
         }
-
     }
 
     public void SpawnNewObject(GameObject oldObject)
@@ -29,11 +26,8 @@ public class SpawningObjects : MonoBehaviour
         int index = SpawnedObjects.IndexOf(oldObject);
         if (index != -1)
         {
-            GameObject newGameObject = Instantiate(Spawnables[index], SpawnPoints[index].position, Quaternion.identity);
+            GameObject newGameObject = Instantiate(Spawnables[Random.Range(0,Spawnables.Count)], SpawnPoints[index].position, Quaternion.identity);
             SpawnedObjects[index] = newGameObject;
         }
     }
-
- 
-
 }

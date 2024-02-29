@@ -48,8 +48,23 @@ TagManager:
   - name: Background
     uniqueID: 1381621193
     locked: 0
-  - name: PlacementObjects
-    uniqueID: 3182545115
+  - name: GameBack
+    uniqueID: 805626411
+    locked: 0
+  - name: BallSplitter
+    uniqueID: 548764367
+    locked: 0
+  - name: BlackHole
+    uniqueID: 459094043
+    locked: 0
+  - name: Bumper
+    uniqueID: 168427789
+    locked: 0
+  - name: SpaceShip
+    uniqueID: 3359841337
+    locked: 0
+  - name: Flipper
+    uniqueID: 1448200471
     locked: 0
   - name: GeneralGamePlay
     uniqueID: 3422660527

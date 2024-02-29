@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2661236172417039834}
   - component: {fileID: 7419749466663230024}
   - component: {fileID: 4756956988678542874}
-  - component: {fileID: 4990985637562270995}
   - component: {fileID: 4124302067389166168}
+  - component: {fileID: -362040558029122447}
   m_Layer: 0
   m_Name: BallSplitter
   m_TagString: Splitter
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -872306769
-  m_SortingLayer: 3
+  m_SortingLayerID: 548764367
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,19 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e80e3b05b3363f489c75894f78be3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4990985637562270995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8466248108494780780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DriftSpeed: 0.125
+  placeable: {fileID: 0}
 --- !u!114 &4124302067389166168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +165,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 6940565582449282592, guid: 869a610c578bdc7428f578774a96a525, type: 3}
+--- !u!114 &-362040558029122447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8466248108494780780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71548c76ea205f64590fb46f50251ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveLocation: {x: 0, y: 0, z: 0}

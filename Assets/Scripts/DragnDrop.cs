@@ -6,22 +6,27 @@ using UnityEngine.InputSystem;
 public class DragnDrop : MonoBehaviour
 {
     [SerializeField] GameObject placeable;
+
     private bool dragging = false;
+
     private Vector3 offset;
     private Vector3 originalPosition;
-    private SpawningObjects spawningObjects;
-    //private Collider2D invalidCollider;
 
+    private SpawningObjects spawningObjects;
+    private GameStateManager gameStateManager;
+    
     private void Start()
     {
         spawningObjects = FindObjectOfType<SpawningObjects>();
+        gameStateManager = FindObjectOfType<GameStateManager>();
+
         originalPosition = transform.position;
-        //invalidCollider = GetComponent<Collider2D>();
+       
     }
 
-    private void OnMouseDrag()
+    public void OnMouseDrag()
     {
-        if (!dragging)
+        if (!dragging && gameStateManager.GPS != GameStateManager.GamePlayState.End)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
@@ -31,31 +36,22 @@ public class DragnDrop : MonoBehaviour
         if (!dragging)
         {
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         }
     }
 
-    private void OnMouseUp()
+    public void OnMouseUp()
     {
-        if (!dragging)
-        {
-            dragging = true;
-            Vector3 newPosition = transform.position;
-            if (!InvalidLocation(newPosition))
-            {
-                transform.position = originalPosition;
-                dragging = false;
-                Debug.Log("Placed");
-                //placeable.GetComponent<IPlaceable>().Placed();
-            }
+        dragging = false;
+        Vector3 newPosition = transform.position;
 
-            else
-            {
-                Debug.Log("Placed");
-                placeable.GetComponent<IPlaceable>().Placed();
-                spawningObjects.SpawnNewObject(gameObject);
-            }
-            //spawningObjects.SpawnNewObject(gameObject);
+        if (!InvalidLocation(newPosition))
+        {
+            transform.position = originalPosition;
+        }
+        else
+        {
+            placeable.GetComponent<IPlaceable>().Placed();
+            spawningObjects.SpawnNewObject(gameObject);
         }
     }
     
@@ -64,14 +60,16 @@ public class DragnDrop : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapPointAll(position);
         foreach (Collider2D collider in colliders)
         {
-            if (collider.isTrigger)
+            if (collider.isTrigger && collider.gameObject != gameObject)
             {
-                Debug.Log("Placed");
-                placeable.GetComponent<IPlaceable>().Placed();
                 return true;
             }
         }
-        return false;
-      
+        return false;   
+    }
+
+    public void SetDragging(bool enabled)
+    {
+        dragging = enabled;
     }
 }
