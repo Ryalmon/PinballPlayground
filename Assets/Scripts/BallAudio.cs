@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallAudio : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollision2D(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {

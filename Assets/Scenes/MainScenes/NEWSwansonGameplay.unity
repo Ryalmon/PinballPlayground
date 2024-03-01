@@ -2560,6 +2560,7 @@ GameObject:
   - component: {fileID: 726923834}
   - component: {fileID: 726923835}
   - component: {fileID: 726923836}
+  - component: {fileID: 726923837}
   m_Layer: 0
   m_Name: LeftWall
   m_TagString: Wall
@@ -2654,6 +2655,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &726923837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726923833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c849869b250746479832a40691c5e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &727340976
 GameObject:
   m_ObjectHideFlags: 0
