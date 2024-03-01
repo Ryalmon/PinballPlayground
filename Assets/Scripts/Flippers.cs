@@ -6,12 +6,11 @@ public class Flippers : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float _flipUpTime;
-    [SerializeField] private float _flipWaitTime;
     [SerializeField] private float _flipDownTime;
     [SerializeField] private float _upSpeed;
     [SerializeField] private float _downSpeed;
     [SerializeField] private bool _rightFlipper;
-    [SerializeField] private bool done;
+
     [SerializeField] private bool hold;
     private Coroutine _flipCoroutine;
     private Coroutine _unflipCoroutine;
@@ -34,19 +33,6 @@ public class Flippers : MonoBehaviour
             _downSpeed *= -1;
         }
     }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            Flip();
-        }
-        /*Debug.Log(_hJ.limitState);*/
-        if (hold == false && done == true)
-        {
-            StartCoroutine(UnFlipProcess());
-        }
-
-    }
 
     public void Flip()
     {
@@ -62,12 +48,12 @@ public class Flippers : MonoBehaviour
     public void UnFlip()
     {
         //Checks that you are not currently flipping
-        if (_unflipCoroutine != null || _flipCoroutine == null)
+        /*if (_unflipCoroutine != null)
         {
             return;
         }
         //Assignes the coroutine value and starts the process of flipping
-        _unflipCoroutine = StartCoroutine(UnFlipProcess());
+        _unflipCoroutine = StartCoroutine(UnFlipProcess());*/
     }
 
     IEnumerator FlipProcess()
@@ -84,11 +70,13 @@ public class Flippers : MonoBehaviour
         }
         //Stops the flipping to wait
         rb.angularVelocity = 0;
-        done = true;
-        if (hold == false && done == true)
+        while (hold == true)
+            yield return null;
+        StartCoroutine(UnFlipProcess());
+        /*if (hold == false && done == true)
         {
             StartCoroutine(UnFlipProcess());
-        }
+        }*/
     }
     public void TurnFalse()
     {
@@ -110,6 +98,5 @@ public class Flippers : MonoBehaviour
         rb.angularVelocity = 0;
         _flipCoroutine = null;
         transform.rotation = _startingRotation;
-        done = false;
     }
 }
