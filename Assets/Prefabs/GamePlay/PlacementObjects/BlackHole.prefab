@@ -51,7 +51,7 @@ MonoBehaviour:
   _baseGravityForce: 500
   _xForceMultiplier: 2
   _yForceMultiplier: 1
-  _upwardsForceMultiplier: 1
+  _upwardsForceMultiplier: 3
   _ballSpeedForceInfluence: 6
   _scoreTickRate: 0.25
 --- !u!58 &4470684863236244675

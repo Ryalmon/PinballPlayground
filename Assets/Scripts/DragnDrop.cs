@@ -6,20 +6,27 @@ using UnityEngine.InputSystem;
 public class DragnDrop : MonoBehaviour
 {
     [SerializeField] GameObject placeable;
+
     private bool dragging = false;
+
     private Vector3 offset;
     private Vector3 originalPosition;
+
     private SpawningObjects spawningObjects;
+    private GameStateManager gameStateManager;
     
     private void Start()
     {
         spawningObjects = FindObjectOfType<SpawningObjects>();
+        gameStateManager = FindObjectOfType<GameStateManager>();
+
         originalPosition = transform.position;
+       
     }
 
     public void OnMouseDrag()
     {
-        if (!dragging)
+        if (!dragging && gameStateManager.GPS != GameStateManager.GamePlayState.End)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
@@ -34,23 +41,17 @@ public class DragnDrop : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if (!dragging)
-        {
-            dragging = true;
-            Vector3 newPosition = transform.position;
-            if (!InvalidLocation(newPosition))
-            {
-                transform.position = originalPosition;
-                dragging = false;
-                Debug.Log("Placed");
-            }
+        dragging = false;
+        Vector3 newPosition = transform.position;
 
-            else
-            {
-                Debug.Log("Placed");
-                placeable.GetComponent<IPlaceable>().Placed();
-                spawningObjects.SpawnNewObject(gameObject);
-            }
+        if (!InvalidLocation(newPosition))
+        {
+            transform.position = originalPosition;
+        }
+        else
+        {
+            placeable.GetComponent<IPlaceable>().Placed();
+            spawningObjects.SpawnNewObject(gameObject);
         }
     }
     
@@ -59,20 +60,16 @@ public class DragnDrop : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapPointAll(position);
         foreach (Collider2D collider in colliders)
         {
-            if (collider.isTrigger)
+            if (collider.isTrigger && collider.gameObject != gameObject)
             {
-                Debug.Log("Placed");
-                placeable.GetComponent<IPlaceable>().Placed();
                 return true;
             }
         }
-        return false;
-      
+        return false;   
     }
 
     public void SetDragging(bool enabled)
     {
-        Debug.Log("dragging set to: " + enabled);
         dragging = enabled;
     }
 }

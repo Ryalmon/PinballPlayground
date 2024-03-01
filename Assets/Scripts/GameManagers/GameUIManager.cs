@@ -18,14 +18,16 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _scorePopUpObject;
     [SerializeField] float _scorePopupTime;
     [Space]
+    [SerializeField] GameObject leftFlipperButton;
+    [SerializeField] GameObject rightFlipperButton;
+    [SerializeField] Sprite _buttonPassive;
+    [SerializeField] Sprite _buttonPressed;
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
     [SerializeField] TMP_Text _finalScoreText;
     [Space]
     [SerializeField] GameObject _inputKeyboardDisplay;
-    public GameObject leftFlipperButton;
-    public GameObject rightFlipperButton;
 
     [Space]
     [SerializeField] float _finalScoreWaitTime;
@@ -113,7 +115,7 @@ public class GameUIManager : MonoBehaviour
 
     private void DisplayKeyboard()
     {
-        Debug.Log("DisplayKeyboard");
+        //Debug.Log("DisplayKeyboard");
         _inputKeyboardDisplay.SetActive(true);
     }
 

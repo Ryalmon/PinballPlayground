@@ -8,8 +8,11 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _holdDuration;
     [SerializeField] float _resetDuration;
     [SerializeField] Vector3 _moveDistance;
-    [SerializeField] float _releaseForce;
     [SerializeField] float _releaseXVariability;
+    [SerializeField] float _releaseYForce;
+    [SerializeField] float _minSpeedToAddXVariability;
+    //private float _storedXVelocity;
+    private Vector2 _storedVelocity;
     [Space]
 
     [Header("Refrences")]
@@ -56,6 +59,10 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private void DragObject(GameObject newDragObject)
     {
+        StopCoroutine(_idleMovementCoroutine);
+
+        _storedVelocity = newDragObject.GetComponent<Rigidbody2D>().velocity;
+
         _dragObject = newDragObject;
         _dragObjectPhysics = _dragObject.GetComponent<BallPhysics>();
         _dragObjectPhysics.ResetVelocity();
@@ -77,6 +84,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         while(moveProgress < 1)
         {
             moveProgress += Time.deltaTime / _holdDuration;
+            //float tempMoveProgress = Mathf.Pow(moveProgress, 2) + 2 * moveProgress + 0;
             transform.localPosition = Vector3.Lerp(startPos, moveTo, moveProgress);
             yield return null;
         }
@@ -90,7 +98,11 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
 
-        Vector2 releaseBallForce = new Vector2(Random.Range(-_releaseXVariability, _releaseXVariability), _releaseForce);
+        if (Mathf.Abs(_storedVelocity.x) < _minSpeedToAddXVariability)
+            _storedVelocity += new Vector2 (Random.Range(-_releaseXVariability, _releaseXVariability) , 0 );
+        if (_storedVelocity.y < _releaseYForce)
+            _storedVelocity = new Vector2(_storedVelocity.x, _releaseYForce);
+        Vector2 releaseBallForce = new Vector2(_storedVelocity.x, _storedVelocity.y);
         _dragObjectPhysics.OverrideBallForce(releaseBallForce);
 
         _dragObject = null;
@@ -130,8 +142,10 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     public void Placed()
     {
+        _detectionArea.enabled = true;
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
+        GetComponent<SpaceShip>().enabled = true;
     }
 
     public void DestroyPlacedObject()
@@ -144,6 +158,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         }
         Destroy(transform.parent.gameObject);
     }
+
 }
 
 enum SpaceShipState

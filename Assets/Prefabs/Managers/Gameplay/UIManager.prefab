@@ -51,6 +51,10 @@ MonoBehaviour:
   _scorePopUpSpawnSource: {fileID: 0}
   _scorePopUpObject: {fileID: 8745426761391789019, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
   _scorePopupTime: 1.5
+  leftFlipperButton: {fileID: 0}
+  rightFlipperButton: {fileID: 0}
+  _buttonPassive: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
+  _buttonPressed: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _inputKeyboardDisplay: {fileID: 0}
