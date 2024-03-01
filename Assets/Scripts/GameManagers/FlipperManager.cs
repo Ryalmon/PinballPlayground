@@ -20,6 +20,7 @@ public class FlipperManager : MonoBehaviour
         foreach(Flippers currentFlipper in _leftFlippers)
         {
             currentFlipper.Flip();
+            SoundManager.Instance.PlaySFX("Hit");
         }
     }
 
@@ -38,6 +39,7 @@ public class FlipperManager : MonoBehaviour
         foreach (Flippers currentFlipper in _rightFlippers)
         {
             currentFlipper.Flip();
+            SoundManager.Instance.PlaySFX("Hit");
         }
     }
 

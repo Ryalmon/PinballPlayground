@@ -8,7 +8,7 @@ public class WallSound : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null)
         {
-            SoundManager.Instance.PlaySFX("Hit");
+            //SoundManager.Instance.PlaySFX("Hit");
         }
     }
 }
