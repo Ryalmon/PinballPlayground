@@ -23,11 +23,12 @@ public class BallSplit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
+            SoundManager.Instance.PlaySFX("Laser 2");
             ball = collision.gameObject;
             SplitBall();
             Destroy(gameObject);
             //THIS SOUND MANAGER LINE IS CREATING ERRORS PLEASE FIX ALEX
-            //SoundManager.Instance.PlaySFX("Laser 2");
+            
             //ballController.GetComponent<BallSpawner>().BallSplit(transform.position, collision.gameObject);
         }
     }
