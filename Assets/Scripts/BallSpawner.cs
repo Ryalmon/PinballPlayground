@@ -9,11 +9,11 @@ public class BallSpawner : MonoBehaviour
     public bool MultiBallIsActive;
     public List<BallPhysics> BallsInScene;
     public Transform BallTransform;
-    private bool canLaunchBall;
+    //private bool canLaunchBall;
     [SerializeField] private GameObject BallLaunchButton;
     [SerializeField] private GameObject _ballShooter;
-    [SerializeField] private GameObject _ballShooterParent;
-    private float launchDirection;
+    //[SerializeField] private GameObject _ballShooterParent;
+    //private float launchDirection;
     [SerializeField] private float _launchPower;
 
 
@@ -25,10 +25,12 @@ public class BallSpawner : MonoBehaviour
 
     public void LaunchBall()
     {
-        BallSpawnLocation = _ballShooter.transform.position;
-        GameObject Ball;
-        Ball = Instantiate(BallPrefab, BallSpawnLocation, Quaternion.identity);
-        //BallTransform = Ball.transform;
+        //BallSpawnLocation = _ballShooter.transform.position;
+        //GameObject Ball;
+        GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
+
+
+        /*//BallTransform = Ball.transform;
         //_ballShooter.transform.position.z 
         Debug.Log(_ballShooterParent.transform.rotation.z);
 
@@ -51,8 +53,13 @@ public class BallSpawner : MonoBehaviour
             launchDirection = 1;
         }
         //BallShootAngle = _ballShooter.transform.forward;
-        Ball.GetComponent<BallPhysics>().OverrideBallForce(BallShootAngle * _launchPower * launchDirection);
-            
+
+        
+
+        Ball.GetComponent<BallPhysics>().OverrideBallForce(BallShootAngle * _launchPower * launchDirection);*/
+
+        //Determines direction and multiplies that by the launch power
+        Ball.GetComponent<BallPhysics>().OverrideBallForce( _launchPower * _ballShooter.GetComponent<BallShooter>().ShootBallDir());
     }
 
     public void CheckBallCountIsZero()
