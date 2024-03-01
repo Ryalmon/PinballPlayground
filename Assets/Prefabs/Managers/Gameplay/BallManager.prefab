@@ -50,3 +50,5 @@ MonoBehaviour:
   BallsInScene: []
   BallTransform: {fileID: 0}
   BallLaunchButton: {fileID: 0}
+  _ballShooter: {fileID: 0}
+  _launchPower: 7
