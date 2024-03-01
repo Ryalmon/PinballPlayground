@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Rotate : MonoBehaviour
+public class BallShooter : MonoBehaviour
 {
     private Vector3 currentRotation;
     [SerializeField] private float _rotateSpeed;
@@ -11,6 +11,8 @@ public class Rotate : MonoBehaviour
 
     [SerializeField] private Vector3 _turnEnd1;
     [SerializeField] private Vector3 _turnEnd2;
+
+    [SerializeField] private GameObject _ballShootPoint;
     
 
     // Start is called before the first frame update
@@ -24,6 +26,11 @@ public class Rotate : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public Vector2 ShootBallDir()
+    {
+        return (_ballShootPoint.transform.position - transform.position).normalized;
     }
 
     private IEnumerator Rotation()

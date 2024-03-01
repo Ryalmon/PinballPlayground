@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 362394802}
   m_Layer: 0
   m_Name: BottomRightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 670949948}
   m_Layer: 0
   m_Name: GameCeiling
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2505,7 +2505,7 @@ GameObject:
   - component: {fileID: 726923836}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 1324174163}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5329,6 +5329,10 @@ PrefabInstance:
     - target: {fileID: 2424686002455521493, guid: bf8704d4708781842871113b9b518fd9, type: 3}
       propertyPath: m_Name
       value: SideBumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264058489581378954, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+      propertyPath: m_TagString
+      value: Bumper
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6008,7 +6012,7 @@ GameObject:
   - component: {fileID: 1941380913}
   m_Layer: 0
   m_Name: WallHitboxes
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6048,7 +6052,7 @@ GameObject:
   - component: {fileID: 1958320317}
   m_Layer: 0
   m_Name: BottomLeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6383,6 +6387,7 @@ Transform:
   - {fileID: 880333034}
   - {fileID: 1039923385}
   - {fileID: 1763237429}
+  - {fileID: 25864396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2007641631
@@ -7020,6 +7025,10 @@ PrefabInstance:
     - target: {fileID: 2424686002455521493, guid: bf8704d4708781842871113b9b518fd9, type: 3}
       propertyPath: m_Name
       value: SideBumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264058489581378954, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+      propertyPath: m_TagString
+      value: Bumper
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

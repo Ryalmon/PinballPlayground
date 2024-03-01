@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2021235586474674469}
-  _flipUpTime: 0.1
+  _flipUpTime: 0.08
   _flipWaitTime: 0.2
-  _flipDownTime: 0.1
-  _upSpeed: 650
-  _downSpeed: 650
+  _flipDownTime: 0.08
+  _upSpeed: 750
+  _downSpeed: 750
   _rightFlipper: 0
   done: 0
   hold: 0
