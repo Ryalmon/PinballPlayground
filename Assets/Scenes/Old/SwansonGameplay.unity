@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlipperRight
       objectReference: {fileID: 0}
+    - target: {fileID: 6707506440586209968, guid: c3059cd23b7610f46a8168e2b1180a75, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -526,7 +530,7 @@ GameObject:
   - component: {fileID: 362394802}
   m_Layer: 0
   m_Name: BottomRightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1337,6 +1341,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611447657}
   m_CullTransparentMesh: 1
+--- !u!1001 &661300723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2007641630}
+    m_Modifications:
+    - target: {fileID: 588335960944550166, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 632983649218979711, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2c8027fe1cf58884fbd939eeff46ffca, type: 2}
+    - target: {fileID: 2874589334072883463, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2c8027fe1cf58884fbd939eeff46ffca, type: 2}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141637268142932077, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: musicSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fb20059f7c48da4885dfe8bfab67799, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
 --- !u!1 &670949943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1425,7 @@ GameObject:
   - component: {fileID: 670949948}
   m_Layer: 0
   m_Name: GameCeiling
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1521,7 +1594,7 @@ GameObject:
   - component: {fileID: 726923836}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3221,7 +3294,7 @@ GameObject:
   - component: {fileID: 1324174163}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3628,6 +3701,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideBumper
       objectReference: {fileID: 0}
+    - target: {fileID: 6264058489581378954, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+      propertyPath: m_TagString
+      value: Bumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548407050394131612, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3778,6 +3859,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895066f20c02aeb4daddb21848d36ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1703395945 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+  m_PrefabInstance: {fileID: 661300723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1730364813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3789,6 +3875,10 @@ PrefabInstance:
     - target: {fileID: 2675654729917862603, guid: 9a0d801f001281945a574c410997188e, type: 3}
       propertyPath: m_Name
       value: FlipperLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675654729917862603, guid: 9a0d801f001281945a574c410997188e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3728830038263464971, guid: 9a0d801f001281945a574c410997188e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4172,7 +4262,7 @@ GameObject:
   - component: {fileID: 1958320317}
   m_Layer: 0
   m_Name: BottomLeftWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4507,6 +4597,7 @@ Transform:
   - {fileID: 880333034}
   - {fileID: 1039923385}
   - {fileID: 1763237429}
+  - {fileID: 1703395945}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2007641631
@@ -4932,6 +5023,14 @@ PrefabInstance:
     - target: {fileID: 2424686002455521493, guid: bf8704d4708781842871113b9b518fd9, type: 3}
       propertyPath: m_Name
       value: SideBumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264058489581378954, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+      propertyPath: m_TagString
+      value: Bumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548407050394131612, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
