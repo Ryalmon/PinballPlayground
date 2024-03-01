@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallAudio : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollision2D(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
@@ -14,6 +14,7 @@ public class BallAudio : MonoBehaviour
         if (collision.gameObject.CompareTag("Bumper"))
         {
             SoundManager.Instance.PlaySFX("Bounce");
+            Debug.Log("Bumped");
         }
     }
     

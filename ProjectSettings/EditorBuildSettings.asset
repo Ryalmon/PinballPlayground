@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainScenes/MainMenu.unity
     guid: 03ced14312d47c94380ab136be3e9bef
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainScenes/NEWSwansonGameplay.unity
     guid: 1a74b5dc4777dd4469b33f29354eb17e
   - enabled: 0
     path: Assets/Scenes/New Scene.unity
     guid: 2e6164f22cb4e1a40aaa39c94be33302
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SalmonMoving.unity
     guid: d2c40385047f7f84bbe96442c955fb6d
   m_configObjects: {}

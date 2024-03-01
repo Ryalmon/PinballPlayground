@@ -58,13 +58,13 @@ public class GameUIManager : MonoBehaviour
     public void UpdateTimerUI(float time)
     {
         time = Mathf.Round(time * 10) * .1f;
-        _timerText.text = time.ToString();
+        _timerText.text = time.ToString("F1");
     }
 
     public void UpdateMultiplierUI(float multiplier)
     {
         //Updates the score multiplier UI text
-        multiplier = MathF.Round(multiplier * 10f) / 10f;
+        multiplier = Mathf.Round(multiplier * 10f) / 10f;
         _scoreMultiplierText.text = multiplier.ToString() + "x";
         //Updates the score multiplier UI size
         _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
