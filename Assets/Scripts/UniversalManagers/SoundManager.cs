@@ -56,7 +56,6 @@ public class SoundManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
-            Debug.Log("Unity Hates me");
         }
     }
 
