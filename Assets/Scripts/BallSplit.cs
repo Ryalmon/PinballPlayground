@@ -26,7 +26,8 @@ public class BallSplit : MonoBehaviour
             ball = collision.gameObject;
             SplitBall();
             Destroy(gameObject);
-            SoundManager.Instance.PlaySFX("Laser 2");
+            //THIS SOUND MANAGER LINE IS CREATING ERRORS PLEASE FIX ALEX
+            //SoundManager.Instance.PlaySFX("Laser 2");
             //ballController.GetComponent<BallSpawner>().BallSplit(transform.position, collision.gameObject);
         }
     }
