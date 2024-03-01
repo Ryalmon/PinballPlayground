@@ -122,19 +122,23 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private void ChangeShipState(SpaceShipState newState)
     {
+        Animator animator = GetComponent<Animator>();
+
         _shipState = newState;
         switch(newState)
         {
             case SpaceShipState.IDLE:
                 _detectionArea.enabled = true;
                 StartIdleMovement();
+                animator.SetTrigger("Idle");
                 return;
             case SpaceShipState.DRAGGING:
                 _detectionArea.enabled = false;
+                animator.SetTrigger("Dragging");
                 return;
             case SpaceShipState.RESETTING:
                 StartCoroutine(ResetSpaceShip());
-                    
+                animator.SetTrigger("Resetting");
                 return;
         }
             
@@ -167,3 +171,6 @@ enum SpaceShipState
     DRAGGING,
     RESETTING
 };
+
+
+//toby was here
