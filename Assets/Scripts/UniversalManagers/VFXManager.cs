@@ -13,12 +13,21 @@ public class VFXManager : MonoBehaviour
 
     public IEnumerator SpawnPointParticles(GameObject spawnSource, Vector2 endPos, int score)
     {
-        List<GameObject> particleList = new List<GameObject>();
+        Vector3 spawnSourceLoc = spawnSource.transform.position;
+        List <GameObject> particleList = new List<GameObject>();
         int particleNumber = DetermineParticleNum(score);
         for (int i = 0; i < particleNumber; i++)
         {
             //Spawns a new particle
-            GameObject newestPoint = SpawnPointGameObject(spawnSource.transform.position);
+            GameObject newestPoint;
+            if(spawnSource == null)
+                newestPoint = SpawnPointGameObject(spawnSourceLoc);
+            else
+            {
+                newestPoint = SpawnPointGameObject(spawnSource.transform.position);
+                spawnSourceLoc = spawnSource.transform.position;
+            }
+                
             //Decrements total score and assigns the score to the point particle
             int newPointValue = IndividualPointValue(score);
             //Debug.Log(newPointValue);
