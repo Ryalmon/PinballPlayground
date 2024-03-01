@@ -14,6 +14,7 @@ public class BallAudio : MonoBehaviour
         if (collision.gameObject.CompareTag("Bumper"))
         {
             SoundManager.Instance.PlaySFX("Bounce");
+            Debug.Log("Bumped");
         }
     }
     

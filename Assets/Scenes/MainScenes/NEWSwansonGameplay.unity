@@ -5293,10 +5293,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideBumper
       objectReference: {fileID: 0}
-    - target: {fileID: 6264058489581378954, guid: bf8704d4708781842871113b9b518fd9, type: 3}
-      propertyPath: m_TagString
-      value: Bumper
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5964,6 +5960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2874589334072883463, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_Pitch
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874589334072883463, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.4000003
@@ -5982,7 +5986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6368421267033090820, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
       propertyPath: m_LocalPosition.z
