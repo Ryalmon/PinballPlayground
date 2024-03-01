@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SpawnedObjects: []
+  _respawnObjectDelay: 8
 --- !u!61 &8203163027244516565
 BoxCollider2D:
   m_ObjectHideFlags: 0

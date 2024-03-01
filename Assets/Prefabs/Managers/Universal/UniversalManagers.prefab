@@ -49,3 +49,8 @@ MonoBehaviour:
   - {fileID: 5093124564103350219, guid: 798d31da20c4d7649a44dee54640c5ce, type: 3}
   - {fileID: 385940783861551912, guid: a71559a6edbaa9f4d87777de60ab84f4, type: 3}
   - {fileID: 1876149547641481473, guid: bd5567ec7137b97439993e9a17099719, type: 3}
+  - {fileID: 588335960944550166, guid: 7a5e7287c23509d4dac0866170d0891c, type: 3}
+  Input: {fileID: 0}
+  Save: {fileID: 0}
+  Scene: {fileID: 0}
+  VFX: {fileID: 0}

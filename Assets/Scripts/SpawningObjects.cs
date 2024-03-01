@@ -7,6 +7,7 @@ public class SpawningObjects : MonoBehaviour
     [SerializeField] List<GameObject> Spawnables = new List<GameObject>();
     [SerializeField] List<Transform> SpawnPoints = new List<Transform>();
     [SerializeField] List<GameObject> SpawnedObjects = new List<GameObject>();
+    [SerializeField] float _respawnObjectDelay;
     private void Start()
     {
         ObjectsSpawn(); 
@@ -29,5 +30,16 @@ public class SpawningObjects : MonoBehaviour
             GameObject newGameObject = Instantiate(Spawnables[Random.Range(0,Spawnables.Count)], SpawnPoints[index].position, Quaternion.identity);
             SpawnedObjects[index] = newGameObject;
         }
+    }
+
+    public void StartSpawnDelay(GameObject oldObject)
+    {
+        StartCoroutine(SpawnDelay(oldObject));
+    }
+
+    private IEnumerator SpawnDelay(GameObject oldObject)
+    {
+        yield return new WaitForSeconds(_respawnObjectDelay);
+        SpawnNewObject(oldObject);
     }
 }
