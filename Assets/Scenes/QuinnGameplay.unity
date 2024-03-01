@@ -156,6 +156,7 @@ MonoBehaviour:
   _flipTime: 2
   _turnEnd1: {x: 0, y: 0, z: 30}
   _turnEnd2: {x: 0, y: 0, z: -30}
+  _ballShootPoint: {fileID: 534537445}
 --- !u!4 &32370288
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +171,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 928588739}
-  - {fileID: 534537446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &182328432
@@ -1202,12 +1202,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534537445}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.3940548, z: 0}
+  m_LocalScale: {x: 0.39405468, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 32370288}
+  m_Father: {fileID: 928588739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &583982694
 GameObject:
@@ -2196,7 +2196,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2.5377185, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 534537446}
   m_Father: {fileID: 32370288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &941256682
@@ -5042,7 +5043,7 @@ PrefabInstance:
     - target: {fileID: 5192401535831067026, guid: 53a3aeb82f7839d4583b9c47cca34f76, type: 3}
       propertyPath: _ballShooter
       value: 
-      objectReference: {fileID: 928588737}
+      objectReference: {fileID: 32370286}
     - target: {fileID: 5192401535831067026, guid: 53a3aeb82f7839d4583b9c47cca34f76, type: 3}
       propertyPath: _launchPower
       value: 10
