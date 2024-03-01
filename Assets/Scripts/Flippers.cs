@@ -62,7 +62,7 @@ public class Flippers : MonoBehaviour
     public void UnFlip()
     {
         //Checks that you are not currently flipping
-        if (_unflipCoroutine != null)
+        if (_unflipCoroutine != null || _flipCoroutine == null)
         {
             return;
         }
