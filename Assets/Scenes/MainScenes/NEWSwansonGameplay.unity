@@ -1126,9 +1126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'M
-
-'
+  m_text: M
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
   m_sharedMaterial: {fileID: 643703137179681282, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
@@ -6513,8 +6511,32 @@ MonoBehaviour:
   _allowedNameLength: 3
   _nameText: {fileID: 982876926}
   _textButtons:
+  - {fileID: 1748924276}
+  - {fileID: 1739189953}
+  - {fileID: 553539347}
+  - {fileID: 208906979}
+  - {fileID: 788795209}
+  - {fileID: 1710426353}
+  - {fileID: 1926168059}
+  - {fileID: 1736368654}
+  - {fileID: 1698432669}
+  - {fileID: 2033844382}
   - {fileID: 1369162267}
+  - {fileID: 1895519509}
+  - {fileID: 1356830615}
+  - {fileID: 1752502434}
+  - {fileID: 813495027}
+  - {fileID: 701279648}
+  - {fileID: 757730654}
+  - {fileID: 1481078099}
+  - {fileID: 390836141}
+  - {fileID: 1162703003}
+  - {fileID: 80645646}
+  - {fileID: 368649662}
+  - {fileID: 1851728224}
   - {fileID: 1157452463}
+  - {fileID: 1767717373}
+  - {fileID: 873668882}
   _enterButton: {fileID: 1218186941}
 --- !u!114 &982876926
 MonoBehaviour:
@@ -7738,7 +7760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1235496769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11142,9 +11164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'G
-
-'
+  m_text: G
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
   m_sharedMaterial: {fileID: 643703137179681282, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
