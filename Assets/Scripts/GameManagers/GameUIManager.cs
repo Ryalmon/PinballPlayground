@@ -17,6 +17,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
     [SerializeField] float _scorePopupTime;
+    [SerializeField] Vector2 _scorePopupLocation;
+    [SerializeField] float _scorePopupXVariability;
     [Space]
     [SerializeField] GameObject leftFlipperButton;
     [SerializeField] GameObject rightFlipperButton;
@@ -44,10 +46,10 @@ public class GameUIManager : MonoBehaviour
     }
 
 
-    public void UpdateScoreUI(int newScore)
+    public void UpdateScoreUI(int currentScore, int newScore)
     {
-        UpdateScoreBoard(newScore);
-        //CreateScorePopUp();
+        UpdateScoreBoard(currentScore);
+        CreateScorePopUp(newScore);
     }
 
     private void UpdateScoreBoard(int newScore)
@@ -94,9 +96,11 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    public void CreateScorePopUp()
+    public void CreateScorePopUp(float scorePopUp)
     {
-        GameObject textPopup = Instantiate(_scorePopUpObject, new Vector3(100, 100, 0), _scorePopUpObject.transform.rotation);
+        Vector2 popupLocation = new Vector2(_scorePopupLocation.x, _scorePopupLocation.y);
+        GameObject textPopup = Instantiate(_scorePopUpObject, _scorePopupLocation, _scorePopUpObject.transform.rotation);
+        textPopup.GetComponent<TMP_Text>().text = scorePopUp.ToString();
         textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
         Destroy(textPopup.gameObject, _scorePopupTime);
     }
