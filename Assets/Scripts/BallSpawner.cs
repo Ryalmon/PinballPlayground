@@ -40,7 +40,7 @@ public class BallSpawner : MonoBehaviour
         GameplayManagers.Instance.Score.StopScaling();
         SetButtonActive();
         //makes the launcher visible
-        _ballSpawner.GetComponent<SpriteRenderer>().enabled = true;
+        _ballSpawner.SetActive(true);
     }
 
     public void RemoveBall(GameObject ball)
@@ -62,7 +62,7 @@ public class BallSpawner : MonoBehaviour
         BallLaunchButton.SetActive(false);
         GameplayManagers.Instance.Score.StartScaling();
         //makes the launcher invisible
-        _ballSpawner.GetComponent<SpriteRenderer>().enabled = false;
+        _ballSpawner.SetActive(false);
     }
 
     public int GetBallsInSceneCount()

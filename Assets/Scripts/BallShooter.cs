@@ -13,11 +13,13 @@ public class BallShooter : MonoBehaviour
     [SerializeField] private Vector3 _turnEnd2;
 
     [SerializeField] private GameObject _ballShootPoint;
+    [SerializeField] private Vector3 _startRotation;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        transform.eulerAngles = _startRotation;
         StartCoroutine(Rotation());
         StartCoroutine(Rotate2());
     }
