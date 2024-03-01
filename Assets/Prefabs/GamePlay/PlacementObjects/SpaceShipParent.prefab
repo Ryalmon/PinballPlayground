@@ -106,6 +106,7 @@ MonoBehaviour:
   _releaseXVariability: 3
   _releaseYForce: 8
   _minSpeedToAddXVariability: 1
+  startTime: 4.75
   _detectionArea: {fileID: 9193157069710995436}
   _holdingLocation: {fileID: 2387247319312278465}
   _idleXVariability: 1

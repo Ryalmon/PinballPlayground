@@ -43,7 +43,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator IdleMovement()
     {
-        float time = 1.5f;
+        float time = 4.75f;
         while (_shipState == SpaceShipState.IDLE)
         {
             time += Time.deltaTime;
