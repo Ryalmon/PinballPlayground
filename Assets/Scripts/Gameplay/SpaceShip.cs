@@ -17,6 +17,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     [Header("Refrences")]
     [SerializeField] Collider2D _detectionArea;
+    [SerializeField] Collider2D _dragArea;
     [SerializeField] GameObject _holdingLocation;
 
     private GameObject _dragObject;
@@ -147,6 +148,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     public void Placed()
     {
         _detectionArea.enabled = true;
+        _dragArea.enabled = false;
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
         GetComponent<SpaceShip>().enabled = true;
