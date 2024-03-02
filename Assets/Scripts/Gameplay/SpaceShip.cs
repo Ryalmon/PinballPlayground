@@ -11,6 +11,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _releaseXVariability;
     [SerializeField] float _releaseYForce;
     [SerializeField] float _minSpeedToAddXVariability;
+    [SerializeField] float _resetFadeOutTime;
+    [SerializeField] float _resetFadeInTime;
     //private float _storedXVelocity;
     private Vector2 _storedVelocity;
     [Space]
@@ -116,8 +118,10 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator ResetSpaceShip()
     {
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _resetFadeOutTime);
         yield return new WaitForSeconds(_resetDuration);
         transform.localPosition = Vector3.zero;
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, _resetFadeInTime);
         ChangeShipState(SpaceShipState.IDLE);
     }
 

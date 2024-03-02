@@ -15,6 +15,7 @@ public class BallSpawner : MonoBehaviour
     //[SerializeField] private GameObject _ballShooterParent;
     //private float launchDirection;
     [SerializeField] private float _launchPower;
+    [SerializeField] private float _ballRemovalTime;
 
 
     public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
@@ -78,7 +79,8 @@ public class BallSpawner : MonoBehaviour
     {
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
-        Destroy(ball.gameObject);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime);
+        Destroy(ball.gameObject,_ballRemovalTime);
     }
 
 

@@ -53,6 +53,9 @@ TagManager:
   - name: GameBack
     uniqueID: 805626411
     locked: 0
+  - name: SideBumper
+    uniqueID: 2012120919
+    locked: 0
   - name: BallSplitter
     uniqueID: 548764367
     locked: 0

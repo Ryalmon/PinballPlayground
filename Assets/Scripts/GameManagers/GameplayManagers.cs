@@ -12,6 +12,7 @@ public class GameplayManagers : MonoBehaviour
     public GameUIManager UI;
     public BallSpawner Ball;
     public SpawningObjects Spawning;
+    public ObjectFadingManager Fade;
 
     // Start is called before the first frame update
     void Start()
