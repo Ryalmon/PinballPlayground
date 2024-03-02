@@ -12,6 +12,15 @@ public class SceneLoadingManager : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        StartCoroutine(SceneLoadDelay(index));
+    }
+
+    public IEnumerator SceneLoadDelay(int index)
+    {
+        SceneTransition st = FindObjectOfType<SceneTransition>();
+        if (st != null)
+            st.SceneTransitionIn();
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(index);
     }
 }

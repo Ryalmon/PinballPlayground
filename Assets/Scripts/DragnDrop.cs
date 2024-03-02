@@ -51,7 +51,8 @@ public class DragnDrop : MonoBehaviour
         else
         {
             placeable.GetComponent<IPlaceable>().Placed();
-            spawningObjects.SpawnNewObject(gameObject);
+            spawningObjects.StartSpawnDelay(gameObject);
+            //spawningObjects.SpawnNewObject(gameObject);
         }
     }
     

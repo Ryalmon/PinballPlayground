@@ -28,6 +28,9 @@ public class GameCeiling : MonoBehaviour
     {
         IPlaceable placeable = newObj.GetComponent<IPlaceable>();
         Drift driftComponent = newObj.GetComponent<Drift>();
+        if (driftComponent == null)
+            driftComponent = newObj.GetComponentInParent<Drift>();
+
         if (placeable != null && driftComponent != null)
         {
             placeable.DestroyPlacedObject();

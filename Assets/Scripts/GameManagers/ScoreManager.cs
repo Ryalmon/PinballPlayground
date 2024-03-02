@@ -114,7 +114,7 @@ public class ScoreManager : MonoBehaviour
     {
         CurrentScore += addedScore;
         //Displays the score in the game world
-        GameplayManagers.Instance.UI.UpdateScoreUI(CurrentScore);
+        GameplayManagers.Instance.UI.UpdateScoreUI(CurrentScore,addedScore);
     }
 
 /*    private void UpdateScoreUI()

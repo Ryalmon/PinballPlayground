@@ -9,6 +9,7 @@ public class UniversalManager : MonoBehaviour
     public SaveManager Save;
     public SceneLoadingManager Scene;
     public VFXManager VFX;
+    public SoundManager Sound;
 
     public static UniversalManager Instance;
 
@@ -46,5 +47,7 @@ public class UniversalManager : MonoBehaviour
         Save = FindObjectOfType<SaveManager>();
         Scene = FindObjectOfType<SceneLoadingManager>();
         VFX = FindObjectOfType<VFXManager>();
+        Sound = FindObjectOfType<SoundManager>();
+
     }
 }

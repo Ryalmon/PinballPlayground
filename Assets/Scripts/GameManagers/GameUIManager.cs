@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+//using System;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -17,6 +17,12 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
     [SerializeField] float _scorePopupTime;
+    [SerializeField] Vector2 _scorePopupLocation;
+    [SerializeField] float _scorePopupYVariability;
+    [SerializeField] float _scorePopupRate;
+    [SerializeField] float _scorePopupRateScaler;
+    Queue<float> _scorePopupQueue = new Queue<float>();
+    private Coroutine _scorePopupCoroutine;
     [Space]
     [SerializeField] GameObject leftFlipperButton;
     [SerializeField] GameObject rightFlipperButton;
@@ -44,10 +50,10 @@ public class GameUIManager : MonoBehaviour
     }
 
 
-    public void UpdateScoreUI(int newScore)
+    public void UpdateScoreUI(int currentScore, int newScore)
     {
-        UpdateScoreBoard(newScore);
-        //CreateScorePopUp();
+        UpdateScoreBoard(currentScore);
+        CreateScorePopUp(newScore);
     }
 
     private void UpdateScoreBoard(int newScore)
@@ -94,11 +100,27 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    public void CreateScorePopUp()
+    public void CreateScorePopUp(float scorePopUp)
     {
-        GameObject textPopup = Instantiate(_scorePopUpObject, new Vector3(100, 100, 0), _scorePopUpObject.transform.rotation);
-        textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
-        Destroy(textPopup.gameObject, _scorePopupTime);
+        _scorePopupQueue.Enqueue(scorePopUp);
+        if (_scorePopupCoroutine == null)
+            _scorePopupCoroutine = StartCoroutine(PopupCreationProcess());
+        
+    }
+
+    private IEnumerator PopupCreationProcess()
+    {
+        while(_scorePopupQueue.Count > 0)
+        {
+            Vector2 popupLoc = new Vector2(_scorePopupLocation.x, Random.Range(_scorePopupLocation.y - _scorePopupYVariability,
+            _scorePopupLocation.y + _scorePopupYVariability));
+            GameObject textPopup = Instantiate(_scorePopUpObject, popupLoc, _scorePopUpObject.transform.rotation);
+            textPopup.GetComponent<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
+            textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
+            Destroy(textPopup.gameObject, _scorePopupTime);
+            yield return new WaitForSeconds(_scorePopupRate / (1 +(_scorePopupQueue.Count * _scorePopupRateScaler)));
+        }
+        _scorePopupCoroutine = null;
     }
 
     /*private IEnumerator ScorePopUpProcess(GameObject popUp)

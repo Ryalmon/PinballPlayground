@@ -11,12 +11,15 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _releaseXVariability;
     [SerializeField] float _releaseYForce;
     [SerializeField] float _minSpeedToAddXVariability;
+    [SerializeField] float _resetFadeOutTime;
+    [SerializeField] float _resetFadeInTime;
     //private float _storedXVelocity;
     private Vector2 _storedVelocity;
     [Space]
 
     [Header("Refrences")]
     [SerializeField] Collider2D _detectionArea;
+    [SerializeField] Collider2D _dragArea;
     [SerializeField] GameObject _holdingLocation;
 
     private GameObject _dragObject;
@@ -43,7 +46,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator IdleMovement()
     {
-        float time = 0;
+        float time = 4.75f;
         while (_shipState == SpaceShipState.IDLE)
         {
             time += Time.deltaTime;
@@ -115,26 +118,32 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator ResetSpaceShip()
     {
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _resetFadeOutTime);
         yield return new WaitForSeconds(_resetDuration);
         transform.localPosition = Vector3.zero;
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, _resetFadeInTime);
         ChangeShipState(SpaceShipState.IDLE);
     }
 
     private void ChangeShipState(SpaceShipState newState)
     {
+        Animator animator = GetComponent<Animator>();
+
         _shipState = newState;
         switch(newState)
         {
             case SpaceShipState.IDLE:
                 _detectionArea.enabled = true;
                 StartIdleMovement();
+                animator.SetTrigger("Idle");
                 return;
             case SpaceShipState.DRAGGING:
                 _detectionArea.enabled = false;
+                animator.SetTrigger("Dragging");
                 return;
             case SpaceShipState.RESETTING:
                 StartCoroutine(ResetSpaceShip());
-                    
+                animator.SetTrigger("Resetting");
                 return;
         }
             
@@ -143,6 +152,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     public void Placed()
     {
         _detectionArea.enabled = true;
+        _dragArea.enabled = false;
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
         GetComponent<SpaceShip>().enabled = true;
@@ -167,3 +177,6 @@ enum SpaceShipState
     DRAGGING,
     RESETTING
 };
+
+
+//toby was here
