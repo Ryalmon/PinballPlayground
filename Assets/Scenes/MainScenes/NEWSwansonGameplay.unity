@@ -701,6 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forceMultiplier: 5
+  _destroyTime: 0
 --- !u!212 &177096366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5742,6 +5743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forceMultiplier: 5
+  _destroyTime: 0
 --- !u!212 &847273689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13909,6 +13911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forceMultiplier: 5
+  _destroyTime: 0
 --- !u!1 &3076047731789237232
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bumper : MonoBehaviour, IPlaceable
 {
     [SerializeField] float _forceMultiplier;
+    [Space]
+    [SerializeField] float _destroyTime;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,7 +38,8 @@ public class Bumper : MonoBehaviour, IPlaceable
 
     public void DestroyPlacedObject()
     {
-        Destroy(gameObject);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime);
+        Destroy(gameObject,_destroyTime);
     }
 
 }

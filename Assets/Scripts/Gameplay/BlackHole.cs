@@ -12,6 +12,8 @@ public class BlackHole : MonoBehaviour, IPlaceable
     [SerializeField] float _ballSpeedForceInfluence;
     [Space]
     [SerializeField] float _scoreTickRate;
+    [Space]
+    [SerializeField] float _destroyTime;
 
     private List<BallPhysics> _objectsInRadius = new List<BallPhysics>();
     private Coroutine _moveObjectsCoroutine;
@@ -95,7 +97,8 @@ public class BlackHole : MonoBehaviour, IPlaceable
 
     public void DestroyPlacedObject()
     {
-        Destroy(gameObject);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime);
+        Destroy(gameObject,_destroyTime);
     }
 
 }

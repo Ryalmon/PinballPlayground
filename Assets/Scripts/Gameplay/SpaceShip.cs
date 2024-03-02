@@ -13,6 +13,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _minSpeedToAddXVariability;
     [SerializeField] float _resetFadeOutTime;
     [SerializeField] float _resetFadeInTime;
+    [Space]
+    [SerializeField] float _destroyTime;
     //private float _storedXVelocity;
     private Vector2 _storedVelocity;
     [Space]
@@ -166,7 +168,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             ReleaseObject();
             return;
         }
-        Destroy(transform.parent.gameObject);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime);
+        Destroy(transform.parent.gameObject,_destroyTime);
     }
 
 }

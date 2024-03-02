@@ -108,6 +108,7 @@ MonoBehaviour:
   _minSpeedToAddXVariability: 1
   _resetFadeOutTime: 1
   _resetFadeInTime: 1
+  _destroyTime: 2
   _detectionArea: {fileID: 9193157069710995436}
   _dragArea: {fileID: 593139920983052117}
   _holdingLocation: {fileID: 2387247319312278465}
