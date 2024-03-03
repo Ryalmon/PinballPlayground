@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpaceShip : MonoBehaviour, IPlaceable
 {
@@ -120,11 +121,19 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator ResetSpaceShip()
     {
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _resetFadeOutTime);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _resetFadeOutTime,null);
         yield return new WaitForSeconds(_resetDuration);
         transform.localPosition = Vector3.zero;
-        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, _resetFadeInTime);
+
         ChangeShipState(SpaceShipState.IDLE);
+        UnityEvent postFadeIn = new UnityEvent();
+        postFadeIn.AddListener(DetectionAreaEnabled);
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, _resetFadeInTime,postFadeIn);
+    }
+
+    private void DetectionAreaEnabled()
+    {
+        _detectionArea.enabled = true;
     }
 
     private void ChangeShipState(SpaceShipState newState)
@@ -135,8 +144,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         switch(newState)
         {
             case SpaceShipState.IDLE:
-                _detectionArea.enabled = true;
                 StartIdleMovement();
+                
                 animator.SetTrigger("Idle");
                 return;
             case SpaceShipState.DRAGGING:
@@ -168,7 +177,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             ReleaseObject();
             return;
         }
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
         Destroy(transform.parent.gameObject,_destroyTime);
     }
 

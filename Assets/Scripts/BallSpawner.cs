@@ -79,7 +79,7 @@ public class BallSpawner : MonoBehaviour
     {
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime,null);
         Destroy(ball.gameObject,_ballRemovalTime);
     }
 

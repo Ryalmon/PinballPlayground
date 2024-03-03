@@ -38,7 +38,7 @@ public class Bumper : MonoBehaviour, IPlaceable
 
     public void DestroyPlacedObject()
     {
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
         Destroy(gameObject,_destroyTime);
     }
 
