@@ -101,6 +101,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private void ReleaseObject()
     {
+        if (_dragObject == null) return;
+
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
 

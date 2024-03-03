@@ -83,6 +83,14 @@ public class BallSpawner : MonoBehaviour
         Destroy(ball.gameObject,_ballRemovalTime);
     }
 
+    public void RemoveAllBalls()
+    {
+        while(BallsInScene.Count > 0)
+        {
+            RemoveBall(BallsInScene[0].gameObject);
+        }
+    }
+
 
     public void SetButtonActive()
     {
