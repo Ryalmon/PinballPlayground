@@ -48,10 +48,11 @@ MonoBehaviour:
   _timerText: {fileID: 0}
   _scoreMultiplierText: {fileID: 0}
   _scoreTextLocation: {x: 0, y: 8}
+  _roundTo2DigitsAt: 10
   _scorePopUpSpawnSource: {fileID: 0}
   _scorePopUpObject: {fileID: 8745426761391789019, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
-  _scorePopupTime: 1.5
   _scorePopupLocation: {x: 100, y: 900}
+  _scorePopupTime: 1.5
   _scorePopupYVariability: 75
   _scorePopupRate: 0.3
   _scorePopupRateScaler: 0.5

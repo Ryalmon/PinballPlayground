@@ -11,18 +11,20 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
     [SerializeField] TMP_Text _scoreMultiplierText;
-    private float _scoreMultiplierStartingFontSize;
     [Space]
     [SerializeField] Vector2 _scoreTextLocation;
+    [SerializeField] float _roundTo2DigitsAt;
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
-    [SerializeField] float _scorePopupTime;
     [SerializeField] Vector2 _scorePopupLocation;
+    [SerializeField] float _scorePopupTime;
     [SerializeField] float _scorePopupYVariability;
     [SerializeField] float _scorePopupRate;
     [SerializeField] float _scorePopupRateScaler;
     Queue<float> _scorePopupQueue = new Queue<float>();
     private Coroutine _scorePopupCoroutine;
+    private float _scoreMultiplierStartingFontSize;
+    private string _roundScoreTo = "F1";
     [Space]
     [SerializeField] GameObject leftFlipperButton;
     [SerializeField] GameObject rightFlipperButton;
@@ -63,15 +65,15 @@ public class GameUIManager : MonoBehaviour
 
     public void UpdateTimerUI(float time)
     {
-        time = Mathf.Round(time * 10) * .1f;
-        _timerText.text = time.ToString("F1");
+        if (time < _roundTo2DigitsAt) _roundScoreTo = "F2";
+        //time = Mathf.Round(time * 10) * .1f;
+        _timerText.text = time.ToString(_roundScoreTo);
     }
 
     public void UpdateMultiplierUI(float multiplier)
     {
         //Updates the score multiplier UI text
-        multiplier = Mathf.Round(multiplier * 10f) / 10f;
-        _scoreMultiplierText.text = multiplier.ToString() + "x";
+        _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
         //Updates the score multiplier UI size
         _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
     }
