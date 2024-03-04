@@ -6,8 +6,14 @@ using UnityEngine.Events;
 
 public class ObjectFadingManager : MonoBehaviour
 {
-    public UnityEvent eventa;
-    
+    /*public delegate void Activate();
+    public static event Activate active;
+
+    public static event Action<int> act;*/
+
+    /*active +=Placed;
+        active?.Invoke();
+    act?.Invoke(1);*/
     public void FadeGameObjectIn(GameObject fadeObj, float timeToFade, UnityEvent postFade)
     {
         StartCoroutine(FadeProcess(fadeObj, 0, 1, timeToFade,postFade));
