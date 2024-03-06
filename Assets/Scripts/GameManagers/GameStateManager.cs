@@ -5,10 +5,17 @@ using UnityEngine.Events;
 
 public class GameStateManager : MonoBehaviour
 {
+    [Header("Events")]
+    [SerializeField] UnityEvent _gameStartEvent;
     [SerializeField] UnityEvent _gameEndEvent;
-    private const int _mainMeunScene = 0;
+
+    [SerializeField] UnityEvent _ballActivatedEvent;
+    [SerializeField] UnityEvent _ballDeactivatedEvent;
+    
+    private const int _mainMenuScene = 0;
 
     internal GamePlayState GPS = GamePlayState.Intro;
+    private BallActiveGameplayState BallActiveEnum = BallActiveGameplayState.BallInactive;
     
 
     public enum GamePlayState { 
@@ -17,29 +24,28 @@ public class GameStateManager : MonoBehaviour
         End
     };
 
+    public enum BallActiveGameplayState
+    {
+        BallActive,
+        BallInactive
+    };
+
+    public void LaunchBallButtonPress()
+    {
+        if (GPS == GamePlayState.Intro)
+            StartGame();
+
+        ActivateBallState();
+    }
 
     public void StartGame()
     {
-        if (GPS != GamePlayState.Intro) return;
-        //Populates all events
-        PopulateEvents();
         //Set currentgameplay state to play
         GPS = GamePlayState.Play;
         //Starts the timer
-        GameplayManagers.Instance.Timer.StartCountdown();
-        
+        _gameStartEvent.Invoke();
     }
 
-    private void PopulateEvents()
-    {
-        PopulateEndEvent();
-    }
-
-    private void PopulateEndEvent()
-    {
-        _gameEndEvent.AddListener(GameplayManagers.Instance.UI.GameEndUI);
-        _gameEndEvent.AddListener(GameplayManagers.Instance.Ball.RemoveAllBalls);
-    }
 
     public void EndGameState()
     {
@@ -47,8 +53,40 @@ public class GameStateManager : MonoBehaviour
         _gameEndEvent.Invoke();
     }
 
+    public void ActivateBallState()
+    {
+        BallActiveEnum = BallActiveGameplayState.BallActive;
+        _ballActivatedEvent.Invoke();
+    }
+
+    public void DeactivateBallState()
+    {
+        BallActiveEnum = BallActiveGameplayState.BallInactive;
+        _ballDeactivatedEvent.Invoke();
+    }
+
     public void EndScene()
     {
-        UniversalManager.Instance.Scene.LoadScene(_mainMeunScene);
+        UniversalManager.Instance.Scene.LoadScene(_mainMenuScene);
+    }
+
+    public UnityEvent GetGameStartEvent()
+    {
+        return _gameStartEvent;
+    }
+
+    public UnityEvent GetGameEndEvent()
+    {
+        return _gameEndEvent;
+    }
+
+    public UnityEvent GetBallActiveEvent()
+    {
+        return _ballActivatedEvent;
+    }
+
+    public UnityEvent GetBallDeactiveEvent()
+    {
+        return _ballDeactivatedEvent;
     }
 }

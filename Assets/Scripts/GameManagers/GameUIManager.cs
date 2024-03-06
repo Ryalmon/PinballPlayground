@@ -14,6 +14,7 @@ public class GameUIManager : MonoBehaviour
     [Space]
     [SerializeField] Vector2 _scoreTextLocation;
     [SerializeField] float _roundTo2DigitsAt;
+    [Space]
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
     [SerializeField] Vector2 _scorePopupLocation;
@@ -21,6 +22,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _scorePopupYVariability;
     [SerializeField] float _scorePopupRate;
     [SerializeField] float _scorePopupRateScaler;
+    [Space]
+    [SerializeField] private GameObject BallLaunchButton;
     Queue<float> _scorePopupQueue = new Queue<float>();
     private Coroutine _scorePopupCoroutine;
     private float _scoreMultiplierStartingFontSize;
@@ -39,18 +42,21 @@ public class GameUIManager : MonoBehaviour
 
     [Space]
     [SerializeField] float _finalScoreWaitTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        AssignEvents();
         _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AssignEvents()
     {
-
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(GameEndUI);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
+        GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
     }
-
 
     public void UpdateScoreUI(int currentScore, int newScore)
     {
@@ -112,6 +118,7 @@ public class GameUIManager : MonoBehaviour
 
     private IEnumerator PopupCreationProcess()
     {
+        //This code is gibberish to read I will comment it later - Ryan
         while(_scorePopupQueue.Count > 0)
         {
             Vector2 popupLoc = new Vector2(_scorePopupLocation.x, Random.Range(_scorePopupLocation.y - _scorePopupYVariability,
@@ -125,11 +132,16 @@ public class GameUIManager : MonoBehaviour
         _scorePopupCoroutine = null;
     }
 
-    /*private IEnumerator ScorePopUpProcess(GameObject popUp)
+    public void SetLaunchButtonActive()
     {
-        yield return new WaitForSeconds(_scorePopupTime);
-        Destroy(popUp.gameObject);
-    }*/
+        BallLaunchButton.SetActive(true);
+    }
+
+    public void BallLaunchButtonPressed()
+    {
+        BallLaunchButton.SetActive(false);
+    }
+
 
     private void DisplayFinalScore()
     {

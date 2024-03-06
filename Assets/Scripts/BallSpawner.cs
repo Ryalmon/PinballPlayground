@@ -17,6 +17,15 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private float _launchPower;
     [SerializeField] private float _ballRemovalTime;
 
+    private void Start()
+    {
+        AssignEvents();
+    }
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(LaunchBall);
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(RemoveAllBalls);
+    }
 
     public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
     {
@@ -71,8 +80,7 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
-        GameplayManagers.Instance.Score.StopScaling();
-        SetButtonActive();
+        GameplayManagers.Instance.State.DeactivateBallState();
     }
 
     public void RemoveBall(GameObject ball)
@@ -92,20 +100,15 @@ public class BallSpawner : MonoBehaviour
     }
 
 
-    public void SetButtonActive()
+    /*public void SetButtonActive()
     {
         BallLaunchButton.SetActive(true);
     }
 
-    public void SpawnBallButtonPressed()
-    {
-        BallLaunchButton.SetActive(false);
-        GameplayManagers.Instance.Score.StartScaling();
-    }
 
     public int GetBallsInSceneCount()
     {
         return BallsInScene.Count;
-    }
+    }*/
 
 }

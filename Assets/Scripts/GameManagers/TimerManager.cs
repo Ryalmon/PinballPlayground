@@ -7,6 +7,16 @@ public class TimerManager : MonoBehaviour
     public float TimeRemaining;
     private Coroutine _countDownCoroutine;
 
+    public void Start()
+    {
+        AssignEvents();
+    }
+
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetGameStartEvent().AddListener(StartCountdown);
+    }
+
     public void StartCountdown()
     {
         _countDownCoroutine = StartCoroutine(CountDown());

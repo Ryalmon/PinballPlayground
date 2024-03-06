@@ -35,6 +35,13 @@ public class ScoreManager : MonoBehaviour
     {
         SetStartingScale();
         PopulateDictionary();
+        AssignEvents();
+    }
+
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(StartScaling);
+        GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(StopScaling);
     }
 
     void PopulateDictionary()

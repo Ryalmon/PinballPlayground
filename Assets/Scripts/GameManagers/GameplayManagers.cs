@@ -15,7 +15,7 @@ public class GameplayManagers : MonoBehaviour
     public ObjectFadingManager Fade;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Instance = this;
     }
