@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b730074d798d24d9b184c2d9a26570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceMultiplier: 7
+  _forceMultiplier: 17
   _destroyTime: 0
 --- !u!212 &177096366
 SpriteRenderer:
@@ -5866,7 +5866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b730074d798d24d9b184c2d9a26570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceMultiplier: 7
+  _forceMultiplier: 17
   _destroyTime: 0
 --- !u!212 &847273689
 SpriteRenderer:
@@ -14236,7 +14236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b730074d798d24d9b184c2d9a26570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceMultiplier: 7
+  _forceMultiplier: 17
   _destroyTime: 0
 --- !u!1 &3076047731789237232
 GameObject:
