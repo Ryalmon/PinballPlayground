@@ -37,6 +37,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE)
         {
+            SoundManager.Instance.PlaySFX("Hit");
             ChangeShipState(SpaceShipState.DRAGGING);
             DragObject(collision.gameObject);
         }

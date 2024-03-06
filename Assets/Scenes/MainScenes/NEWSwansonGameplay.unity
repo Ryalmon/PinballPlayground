@@ -143,6 +143,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlipperLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
+      propertyPath: buttonPressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
+      propertyPath: flipperButton
+      value: 
+      objectReference: {fileID: 189015883}
+    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
+      propertyPath: buttonUnpressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
     - target: {fileID: 7347470351037366829, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3763,6 +3775,18 @@ PrefabInstance:
       propertyPath: _rightFlipper
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
+      propertyPath: buttonPressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
+      propertyPath: flipperButton
+      value: 
+      objectReference: {fileID: 1792820190}
+    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
+      propertyPath: buttonUnpressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
     - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.90000004

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - soundName: Music
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 182058e8e341a204997f4044a435df29, type: 3}
   sfxSounds:
   - soundName: Laser 1
     clip: {fileID: 8300000, guid: 6fddfb48f44ba6e43bf506e77c7b4c69, type: 3}
@@ -58,6 +58,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5f60d2d1294ca6d42941b2335d7a72a9, type: 3}
   - soundName: Hit
     clip: {fileID: 8300000, guid: 6a3d83c37f783564d9636af273faf964, type: 3}
+  - soundName: Launch
+    clip: {fileID: 8300000, guid: d64ec337fe9823045bda428f84e677cd, type: 3}
+  - soundName: Death
+    clip: {fileID: 8300000, guid: 5973412ea3aa8d446afa9a2147f50d66, type: 3}
+  - soundName: FlipUp
+    clip: {fileID: 8300000, guid: 91acea86d6afdeb44bf63735d3a0e26c, type: 3}
+  - soundName: FlipDown
+    clip: {fileID: 8300000, guid: 8bea791506e66da4a9bbe8bb674f6b05, type: 3}
+  - soundName: 8Hit
+    clip: {fileID: 8300000, guid: ec9bbbbfa621af04bb71683d79f4bb7e, type: 3}
   musicSource: {fileID: 632983649218979711}
   sfxSource: {fileID: 2874589334072883463}
 --- !u!1 &4277381805131339752

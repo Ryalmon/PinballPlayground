@@ -30,6 +30,7 @@ public class BallShooter : MonoBehaviour
 
     public Vector2 ShootBallDir()
     {
+        SoundManager.Instance.PlaySFX("Launch");
         return (_ballShootPoint.transform.position - transform.position).normalized;
     }
 
