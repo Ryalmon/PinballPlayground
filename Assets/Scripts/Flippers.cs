@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Flippers : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Flippers : MonoBehaviour
     [SerializeField] private float _upSpeed;
     [SerializeField] private float _downSpeed;
     [SerializeField] private bool _rightFlipper;
+
+    public Image flipperButton;
+    public Sprite buttonPressed;
+    public Sprite buttonUnpressed;
 
     [SerializeField] private bool hold;
     private Coroutine _flipCoroutine;
@@ -59,6 +64,7 @@ public class Flippers : MonoBehaviour
     IEnumerator FlipProcess()
     {
         hold = true;
+        flipperButton.sprite = buttonPressed;
         float tempTime = 0;
         while (tempTime < _flipUpTime)
         {
@@ -81,6 +87,7 @@ public class Flippers : MonoBehaviour
     public void TurnFalse()
     {
         hold = false;
+        flipperButton.sprite = buttonUnpressed;
     }
     IEnumerator UnFlipProcess()
     {
