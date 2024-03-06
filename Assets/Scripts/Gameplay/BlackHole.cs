@@ -12,6 +12,9 @@ public class BlackHole : MonoBehaviour, IPlaceable
     [SerializeField] float _ballSpeedForceInfluence;
     [Space]
     [SerializeField] float _scoreTickRate;
+    [Space]
+    [SerializeField] float _destroyTime;
+    float time;
 
     private List<BallPhysics> _objectsInRadius = new List<BallPhysics>();
     private Coroutine _moveObjectsCoroutine;
@@ -19,11 +22,13 @@ public class BlackHole : MonoBehaviour, IPlaceable
 
     IEnumerator MovePinballs()
     {
+        time = 1;
         while(_objectsInRadius.Count > 0)
         {
+            time += Time.deltaTime;
             foreach (BallPhysics bp in _objectsInRadius)
             {
-                bp.ApplyForceToBall(CalculateGravityForce(bp));
+                bp.ApplyForceToBall(CalculateGravityForce(bp) / time);
             }
             yield return null;
         }
@@ -95,7 +100,8 @@ public class BlackHole : MonoBehaviour, IPlaceable
 
     public void DestroyPlacedObject()
     {
-        Destroy(gameObject);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
+        Destroy(gameObject,_destroyTime);
     }
 
 }

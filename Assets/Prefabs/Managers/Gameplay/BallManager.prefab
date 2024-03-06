@@ -52,3 +52,4 @@ MonoBehaviour:
   BallLaunchButton: {fileID: 0}
   _ballShooter: {fileID: 0}
   _launchPower: 7
+  _ballRemovalTime: 1

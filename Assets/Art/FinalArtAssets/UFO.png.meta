@@ -113,10 +113,10 @@ TextureImporter:
       name: UFO_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 1422
-        width: 1176
-        height: 791
+        x: 0
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: UFO_1
       rect:
         serializedVersion: 2
-        x: 1205
-        y: 1422
-        width: 1181
-        height: 791
+        x: 1200
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: UFO_2
       rect:
         serializedVersion: 2
-        x: 2407
-        y: 1422
-        width: 1176
-        height: 791
+        x: 2400
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: UFO_3
       rect:
         serializedVersion: 2
-        x: 3605
-        y: 1422
-        width: 1180
-        height: 791
+        x: 3600
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: UFO_4
       rect:
         serializedVersion: 2
-        x: 4807
-        y: 1422
-        width: 1176
-        height: 791
+        x: 4800
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: UFO_5
       rect:
         serializedVersion: 2
-        x: 6004
-        y: 1422
-        width: 1181
-        height: 791
+        x: 6000
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: UFO_6
       rect:
         serializedVersion: 2
-        x: 7206
-        y: 1422
-        width: 1176
-        height: 791
+        x: 7200
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: UFO_7
       rect:
         serializedVersion: 2
-        x: 8409
-        y: 1422
-        width: 1175
-        height: 791
+        x: 8400
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: UFO_8
       rect:
         serializedVersion: 2
-        x: 9606
-        y: 1422
-        width: 1176
-        height: 791
+        x: 9600
+        y: 1350
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +302,10 @@ TextureImporter:
       name: UFO_9
       rect:
         serializedVersion: 2
-        x: 8
-        y: 219
-        width: 1176
-        height: 796
+        x: 0
+        y: 150
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: UFO_10
       rect:
         serializedVersion: 2
-        x: 1205
-        y: 219
-        width: 1181
-        height: 796
+        x: 1200
+        y: 150
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +344,10 @@ TextureImporter:
       name: UFO_11
       rect:
         serializedVersion: 2
-        x: 2407
-        y: 219
-        width: 1176
-        height: 796
+        x: 2400
+        y: 150
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +365,10 @@ TextureImporter:
       name: UFO_12
       rect:
         serializedVersion: 2
-        x: 3605
-        y: 219
-        width: 1180
-        height: 796
+        x: 3600
+        y: 150
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,10 +386,10 @@ TextureImporter:
       name: UFO_13
       rect:
         serializedVersion: 2
-        x: 4807
-        y: 219
-        width: 1176
-        height: 796
+        x: 4800
+        y: 150
+        width: 1200
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

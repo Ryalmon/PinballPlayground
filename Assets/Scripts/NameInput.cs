@@ -16,7 +16,8 @@ public class NameInput : MonoBehaviour
     [Header("References")]
     [SerializeField] TMP_Text _nameText;
     [SerializeField] List<Button> _textButtons; 
-    [SerializeField] Button _enterButton; 
+    [SerializeField] Button _enterButton;
+    [SerializeField] NameBlacklistSO _blacklist;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,7 @@ public class NameInput : MonoBehaviour
         {
             //Makes all input buttons non interactable
             Interactable(false);
+            CheckNameBlacklist();
             return;
         }
         if (!_buttonInteractionStatus)
@@ -71,12 +73,21 @@ public class NameInput : MonoBehaviour
             currentButton.interactable = canInteract;
         }
         _enterButton.interactable = !canInteract;
+        
     }
 
     private void ChangeText()
     {
         //Displays the name in the game world
         _nameText.text = Name;
+    }
+
+    private void CheckNameBlacklist()
+    {
+        foreach (string names in _blacklist._blackListedNames)
+            if (Name == names)
+                _enterButton.interactable = false;
+            
     }
 
 

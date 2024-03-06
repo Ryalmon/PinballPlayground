@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpaceShip : MonoBehaviour, IPlaceable
 {
@@ -11,12 +12,17 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _releaseXVariability;
     [SerializeField] float _releaseYForce;
     [SerializeField] float _minSpeedToAddXVariability;
+    [SerializeField] float _resetFadeOutTime;
+    [SerializeField] float _resetFadeInTime;
+    [Space]
+    [SerializeField] float _destroyTime;
     //private float _storedXVelocity;
     private Vector2 _storedVelocity;
     [Space]
 
     [Header("Refrences")]
     [SerializeField] Collider2D _detectionArea;
+    [SerializeField] Collider2D _dragArea;
     [SerializeField] GameObject _holdingLocation;
 
     private GameObject _dragObject;
@@ -43,7 +49,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator IdleMovement()
     {
-        float time = 0;
+        float time = 4.75f;
         while (_shipState == SpaceShipState.IDLE)
         {
             time += Time.deltaTime;
@@ -95,6 +101,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private void ReleaseObject()
     {
+        if (_dragObject == null) return;
+
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
 
@@ -115,26 +123,40 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private IEnumerator ResetSpaceShip()
     {
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _resetFadeOutTime,null);
         yield return new WaitForSeconds(_resetDuration);
         transform.localPosition = Vector3.zero;
+
         ChangeShipState(SpaceShipState.IDLE);
+        UnityEvent postFadeIn = new UnityEvent();
+        postFadeIn.AddListener(DetectionAreaEnabled);
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, _resetFadeInTime,postFadeIn);
+    }
+
+    private void DetectionAreaEnabled()
+    {
+        _detectionArea.enabled = true;
     }
 
     private void ChangeShipState(SpaceShipState newState)
     {
+        Animator animator = GetComponent<Animator>();
+
         _shipState = newState;
         switch(newState)
         {
             case SpaceShipState.IDLE:
-                _detectionArea.enabled = true;
                 StartIdleMovement();
+                
+                animator.SetTrigger("Idle");
                 return;
             case SpaceShipState.DRAGGING:
                 _detectionArea.enabled = false;
+                animator.SetTrigger("Dragging");
                 return;
             case SpaceShipState.RESETTING:
                 StartCoroutine(ResetSpaceShip());
-                    
+                animator.SetTrigger("Resetting");
                 return;
         }
             
@@ -143,6 +165,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     public void Placed()
     {
         _detectionArea.enabled = true;
+        _dragArea.enabled = false;
         GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
         GetComponent<SpaceShip>().enabled = true;
@@ -156,7 +179,8 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             ReleaseObject();
             return;
         }
-        Destroy(transform.parent.gameObject);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
+        Destroy(transform.parent.gameObject,_destroyTime);
     }
 
 }
@@ -167,3 +191,6 @@ enum SpaceShipState
     DRAGGING,
     RESETTING
 };
+
+
+//toby was here

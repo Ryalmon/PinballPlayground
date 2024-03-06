@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2193156186037136744
+--- !u!1 &5005599581930742511
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2893153971993569633}
-  - component: {fileID: 2205745658884146603}
+  - component: {fileID: 3319587645159367348}
+  - component: {fileID: 7513186299408543964}
   m_Layer: 0
-  m_Name: TimerManager
+  m_Name: BallSplitterSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2893153971993569633
+--- !u!4 &3319587645159367348
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2193156186037136744}
+  m_GameObject: {fileID: 5005599581930742511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.13782218, y: -0.95613915, z: 0.018556597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2205745658884146603
+--- !u!114 &7513186299408543964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2193156186037136744}
+  m_GameObject: {fileID: 5005599581930742511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895066f20c02aeb4daddb21848d36ee5, type: 3}
+  m_Script: {fileID: 11500000, guid: 082222a3eac9053439222152132ee800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeRemaining: 120
+  SplitterPrefab: {fileID: 8466248108494780780, guid: 3f4101ec52966a041bafdbf968004edf, type: 3}
+  XRight: 6.66
+  YUpperSpawnBounds: 5
+  XLeft: -6.66
+  YLowerSpawnBounds: -2.5
+  SpawnCountdown: 15

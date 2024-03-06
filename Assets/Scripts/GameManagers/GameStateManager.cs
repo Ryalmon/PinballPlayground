@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameStateManager : MonoBehaviour
 {
-    [SerializeField] private GameObject BallPrefab;
+    [SerializeField] UnityEvent _gameEndEvent;
     private const int _mainMeunScene = 0;
 
     internal GamePlayState GPS = GamePlayState.Intro;
@@ -17,16 +18,11 @@ public class GameStateManager : MonoBehaviour
     };
 
 
-    private void Awake()
-    {
-
-        
-
-    }
-
     public void StartGame()
     {
         if (GPS != GamePlayState.Intro) return;
+        //Populates all events
+        PopulateEvents();
         //Set currentgameplay state to play
         GPS = GamePlayState.Play;
         //Starts the timer
@@ -34,19 +30,21 @@ public class GameStateManager : MonoBehaviour
         
     }
 
+    private void PopulateEvents()
+    {
+        PopulateEndEvent();
+    }
+
+    private void PopulateEndEvent()
+    {
+        _gameEndEvent.AddListener(GameplayManagers.Instance.UI.GameEndUI);
+        _gameEndEvent.AddListener(GameplayManagers.Instance.Ball.RemoveAllBalls);
+    }
+
     public void EndGameState()
     {
         GPS = GamePlayState.End;
-        GameplayManagers.Instance.UI.GameEndUI();
-       
-    }
-
-    public void SpawnBall()
-    {
-        //Places a ball
-        Instantiate(BallPrefab, Vector2.zero, Quaternion.identity);
-
-        //---Currently the ball is placed at (0,0) this will change later!---
+        _gameEndEvent.Invoke();
     }
 
     public void EndScene()
