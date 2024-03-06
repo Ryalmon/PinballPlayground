@@ -65,7 +65,7 @@ public class Flippers : MonoBehaviour
     {
         hold = true;
         SoundManager.Instance.PlaySFX("FlipUp");
-        flipperButton.sprite = buttonPressed;
+        //flipperButton.sprite = buttonPressed;
         float tempTime = 0;
         while (tempTime < _flipUpTime)
         {
@@ -88,7 +88,7 @@ public class Flippers : MonoBehaviour
     public void TurnFalse()
     {
         hold = false;
-        flipperButton.sprite = buttonUnpressed;
+        //flipperButton.sprite = buttonUnpressed;
     }
     IEnumerator UnFlipProcess()
     {
