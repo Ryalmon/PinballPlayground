@@ -14068,6 +14068,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1392444875373052009, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
+      propertyPath: Spawnables.Array.data[0]
+      value: 
+      objectReference: {fileID: 5825183760435697442, guid: 242afcb5add371042b1faadb05a80275, type: 3}
+    - target: {fileID: 1392444875373052009, guid: 01009a6610e92b4469ef5d4d048c396c, type: 3}
       propertyPath: SpawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 383319118}
