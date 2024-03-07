@@ -12,20 +12,9 @@ public class BallSpawner : MonoBehaviour
     //private bool canLaunchBall;
     [SerializeField] private GameObject BallLaunchButton;
     [SerializeField] private GameObject _ballShooter;
-    //[SerializeField] private GameObject _ballShooterParent;
-    //private float launchDirection;
+    [SerializeField] private GameObject _ballSpawner;
     [SerializeField] private float _launchPower;
-    [SerializeField] private float _ballRemovalTime;
 
-    private void Start()
-    {
-        AssignEvents();
-    }
-    private void AssignEvents()
-    {
-        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(LaunchBall);
-        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(RemoveAllBalls);
-    }
 
     public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
     {
@@ -35,39 +24,7 @@ public class BallSpawner : MonoBehaviour
 
     public void LaunchBall()
     {
-        //BallSpawnLocation = _ballShooter.transform.position;
-        //GameObject Ball;
         GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
-
-
-        /*//BallTransform = Ball.transform;
-        //_ballShooter.transform.position.z 
-        Debug.Log(_ballShooterParent.transform.rotation.z);
-
-        float fRotation = _ballShooterParent.transform.rotation.z * Mathf.Deg2Rad;
-        float fX = Mathf.Sin(fRotation);
-        float fY = Mathf.Cos(fRotation);
-        Vector2 v2 = new Vector2(fY, fX);
-        Debug.Log(v2);
-        //Debug.Log(fY);
-        //Debug.Log(fX);
-        Vector2 BallShootAngle = new Vector2(fY, fX);
-        
-        /// Negative or positive direction modifier for the balls' direction
-        if (fY > 0)
-        {
-            launchDirection = -1;
-        }
-        else 
-        {
-            launchDirection = 1;
-        }
-        //BallShootAngle = _ballShooter.transform.forward;
-
-        
-
-        Ball.GetComponent<BallPhysics>().OverrideBallForce(BallShootAngle * _launchPower * launchDirection);*/
-
         //Determines direction and multiplies that by the launch power
         Ball.GetComponent<BallPhysics>().OverrideBallForce( _launchPower * _ballShooter.GetComponent<BallShooter>().ShootBallDir());
     }
@@ -80,35 +37,37 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
-        GameplayManagers.Instance.State.DeactivateBallState();
+        GameplayManagers.Instance.Score.StopScaling();
+        SetButtonActive();
+        //makes the launcher visible
+        _ballSpawner.SetActive(true);
     }
 
     public void RemoveBall(GameObject ball)
     {
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime,null);
-        Destroy(ball.gameObject,_ballRemovalTime);
-    }
-
-    public void RemoveAllBalls()
-    {
-        while(BallsInScene.Count > 0)
-        {
-            RemoveBall(BallsInScene[0].gameObject);
-        }
+        Destroy(ball.gameObject);
     }
 
 
-    /*public void SetButtonActive()
+    public void SetButtonActive()
     {
         BallLaunchButton.SetActive(true);
+
     }
 
+    public void SpawnBallButtonPressed()
+    {
+        BallLaunchButton.SetActive(false);
+        GameplayManagers.Instance.Score.StartScaling();
+        //makes the launcher invisible
+        _ballSpawner.SetActive(false);
+    }
 
     public int GetBallsInSceneCount()
     {
         return BallsInScene.Count;
-    }*/
+    }
 
 }

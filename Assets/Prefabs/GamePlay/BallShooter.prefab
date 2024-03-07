@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c93e3674b13cb8479e68150308b7446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 70
+  _rotateSpeed: 90
   _flipTime: 2
   _turnEnd1: {x: 0, y: 0, z: 30}
   _turnEnd2: {x: 0, y: 0, z: -30}
