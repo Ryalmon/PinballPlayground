@@ -52,6 +52,9 @@ MonoBehaviour:
   _upSpeed: 750
   _downSpeed: 750
   _rightFlipper: 1
+  flipperButton: {fileID: 0}
+  buttonPressed: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+  buttonUnpressed: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
   hold: 0
   _startingRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &6214323742151554232
@@ -154,7 +157,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1448200471
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 53ec2b1192dc2614e802e0a435c5b523, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
