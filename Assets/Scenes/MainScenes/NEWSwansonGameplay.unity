@@ -13739,6 +13739,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6798133673923901753, guid: c965fa0689d515e4c800c221725348c0, type: 3}
   m_PrefabInstance: {fileID: 41679558804892399}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &41679558804892401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5589181337981806954, guid: c965fa0689d515e4c800c221725348c0, type: 3}
+  m_PrefabInstance: {fileID: 41679558804892399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &55402230597507628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14196,6 +14201,10 @@ PrefabInstance:
       propertyPath: _ballShooter
       value: 
       objectReference: {fileID: 851840244}
+    - target: {fileID: 5192401535831067026, guid: 53a3aeb82f7839d4583b9c47cca34f76, type: 3}
+      propertyPath: _ballSpawner
+      value: 
+      objectReference: {fileID: 41679558804892401}
     - target: {fileID: 5192401535831067026, guid: 53a3aeb82f7839d4583b9c47cca34f76, type: 3}
       propertyPath: BallLaunchButton
       value: 

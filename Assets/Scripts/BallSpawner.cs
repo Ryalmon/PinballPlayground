@@ -27,6 +27,7 @@ public class BallSpawner : MonoBehaviour
         GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
         //Determines direction and multiplies that by the launch power
         Ball.GetComponent<BallPhysics>().OverrideBallForce( _launchPower * _ballShooter.GetComponent<BallShooter>().ShootBallDir());
+        Debug.Log("Ball has been fired");
     }
 
     public void CheckBallCountIsZero()
@@ -48,6 +49,7 @@ public class BallSpawner : MonoBehaviour
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
         Destroy(ball.gameObject);
+        Debug.Log("Ball has been removed");
     }
 
 
