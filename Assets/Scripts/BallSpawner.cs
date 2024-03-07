@@ -31,7 +31,9 @@ public class BallSpawner : MonoBehaviour
 
     public void LaunchBall()
     {
+        //Creates the ball
         GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
+        //Adds the ball to the list of balls in scene
         AddBall(Ball);
 
         //Determines direction and multiplies that by the launch power
@@ -46,7 +48,7 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
-        //GameplayManagers.Instance.Score.StopScaling();
+        //Make game enter the deactivate ball state
         GameplayManagers.Instance.State.DeactivateBallState();
     }
 
