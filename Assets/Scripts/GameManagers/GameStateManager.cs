@@ -34,7 +34,6 @@ public class GameStateManager : MonoBehaviour
     {
         if (GPS == GamePlayState.Intro)
             StartGame();
-
         ActivateBallState();
     }
 

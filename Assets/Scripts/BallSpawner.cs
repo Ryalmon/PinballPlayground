@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
+    [Header("Variables")]
+    [SerializeField] private float _launchPower;
+    [SerializeField] private float _ballRemovalTime;
     public GameObject BallPrefab;
-    public Vector2 BallSpawnLocation;
-    public bool MultiBallIsActive;
     public List<BallPhysics> BallsInScene;
-    public Transform BallTransform;
     //private bool canLaunchBall;
     [SerializeField] private GameObject BallLaunchButton;
     [SerializeField] private GameObject _ballShooter;
     [SerializeField] private GameObject _ballSpawner;
-    [SerializeField] private float _launchPower;
 
+    private void Start()
+    {
+        AssignEvents();
+    }
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(LaunchBall);
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(RemoveAllBalls);
+    }
 
     public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
     {
@@ -27,7 +35,6 @@ public class BallSpawner : MonoBehaviour
         GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
         //Determines direction and multiplies that by the launch power
         Ball.GetComponent<BallPhysics>().OverrideBallForce( _launchPower * _ballShooter.GetComponent<BallShooter>().ShootBallDir());
-        Debug.Log("Ball has been fired");
     }
 
     public void CheckBallCountIsZero()
@@ -38,8 +45,8 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
-        GameplayManagers.Instance.Score.StopScaling();
-        SetButtonActive();
+        //GameplayManagers.Instance.Score.StopScaling();
+        GameplayManagers.Instance.State.DeactivateBallState();
         //makes the launcher visible
         _ballSpawner.SetActive(true);
     }
@@ -48,23 +55,16 @@ public class BallSpawner : MonoBehaviour
     {
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
-        Destroy(ball.gameObject);
-        Debug.Log("Ball has been removed");
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime, null);
+        Destroy(ball.gameObject, _ballRemovalTime);
     }
 
-
-    public void SetButtonActive()
+    public void RemoveAllBalls()
     {
-        BallLaunchButton.SetActive(true);
-
-    }
-
-    public void SpawnBallButtonPressed()
-    {
-        BallLaunchButton.SetActive(false);
-        GameplayManagers.Instance.Score.StartScaling();
-        //makes the launcher invisible
-        _ballSpawner.SetActive(false);
+        while (BallsInScene.Count > 0)
+        {
+            RemoveBall(BallsInScene[0].gameObject);
+        }
     }
 
     public int GetBallsInSceneCount()
