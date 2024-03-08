@@ -23,13 +23,6 @@ public class BallSpawner : MonoBehaviour
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(RemoveAllBalls);
     }
 
-    public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
-    {
-        Destroy(Splitter);
-        GameObject splitBall = Instantiate(BallPrefab, CurrentLocation, Quaternion.identity);
-        AddBall(splitBall);
-    }
-
     public void LaunchBall()
     {
         //Creates the ball

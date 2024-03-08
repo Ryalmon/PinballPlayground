@@ -31,7 +31,8 @@ public class BallSplit : MonoBehaviour
 
     void SplitBall(Vector3 spawnLoc)
     {
-        Instantiate(_ballPrefab, spawnLoc, Quaternion.identity);
+        GameObject newBall = Instantiate(_ballPrefab, spawnLoc, Quaternion.identity);
+        GameplayManagers.Instance.Ball.AddBall(newBall);
     }
 
     void DestroySplitter()
