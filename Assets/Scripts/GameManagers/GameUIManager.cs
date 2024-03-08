@@ -54,6 +54,7 @@ public class GameUIManager : MonoBehaviour
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(GameEndUI);
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
     }
@@ -134,6 +135,8 @@ public class GameUIManager : MonoBehaviour
 
     public void SetLaunchButtonActive()
     {
+        if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) 
+        return;
         BallLaunchButton.SetActive(true);
     }
 
