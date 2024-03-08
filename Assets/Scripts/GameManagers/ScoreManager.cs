@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] float _startingBallMultiplier;
     [SerializeField] float _ballMultiplierScalingRate;
     [SerializeField] float _ballMultiplerScalingAmount;
+    [SerializeField] float _ballMultiplierMax;
     float _currentBallMultiplier;
     Coroutine _scalingCoroutine;
 
@@ -72,7 +73,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator ScalingProcess()
     {
-        while (true)
+        while (_currentBallMultiplier <= _ballMultiplierMax)
         {
             yield return new WaitForSeconds(_ballMultiplierScalingRate);
             SetCurrentMultiplier(_currentBallMultiplier + _ballMultiplerScalingAmount);
