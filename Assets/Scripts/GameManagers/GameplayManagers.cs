@@ -13,6 +13,7 @@ public class GameplayManagers : MonoBehaviour
     public BallSpawner Ball;
     public SpawningObjects Spawning;
     public ObjectFadingManager Fade;
+    public SpawnSplitter Splitter;
 
     // Start is called before the first frame update
     void Awake()
