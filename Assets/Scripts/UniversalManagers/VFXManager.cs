@@ -57,6 +57,8 @@ public class VFXManager : MonoBehaviour
         //Creates the point particle
         GameObject currentParticle = Instantiate(_pointParticle, spawnPos, Quaternion.identity);
         //Passes the direction and endPos values into the most recent particle
+        /*currentParticle.transform.eulerAngles = new Vector3(currentParticle.transform.eulerAngles.x,
+            currentParticle.transform.eulerAngles.y, Random.Range(0, 360));*/
         PointParticle pScript = currentParticle.GetComponent<PointParticle>();
         pScript.StartCoroutine(pScript.MoveAway(dir));
 
