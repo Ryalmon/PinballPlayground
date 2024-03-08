@@ -6168,7 +6168,7 @@ PrefabInstance:
       objectReference: {fileID: 1235496768}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scorePopupLocation.y
-      value: 475
+      value: 462
       objectReference: {fileID: 0}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scorePopUpSpawnSource
