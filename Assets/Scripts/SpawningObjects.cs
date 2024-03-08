@@ -5,6 +5,10 @@ using UnityEngine;
 public class SpawningObjects : MonoBehaviour
 {
     [SerializeField] List<GameObject> Spawnables = new List<GameObject>();
+
+    [SerializeField] List<DragTokenSO> Placeables = new List<DragTokenSO>();
+    [SerializeField] GameObject _placementToken;
+
     [SerializeField] List<Transform> SpawnPoints = new List<Transform>();
     [SerializeField] List<GameObject> SpawnedObjects = new List<GameObject>();
     [SerializeField] float _respawnObjectDelay;
@@ -16,9 +20,11 @@ public class SpawningObjects : MonoBehaviour
     {
         for (int i = 0; i < SpawnPoints.Count; i++)
         {
-            GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
-            GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);
-            SpawnedObjects.Add(newObject);
+            /*GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
+            GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);*/
+
+            GameObject newGameObj = CreateSpawnedObj(i);
+            SpawnedObjects.Add(newGameObj);
         }
     }
 
@@ -27,9 +33,20 @@ public class SpawningObjects : MonoBehaviour
         int index = SpawnedObjects.IndexOf(oldObject);
         if (index != -1)
         {
-            GameObject newGameObject = Instantiate(Spawnables[Random.Range(0,Spawnables.Count)], SpawnPoints[index].position, Quaternion.identity);
-            SpawnedObjects[index] = newGameObject;
+            GameObject newGameObj = CreateSpawnedObj(index);
+            /*GameObject newGameObj = Instantiate(_placementToken, SpawnPoints[index].position, Quaternion.identity);
+            newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);*/
+            //GameObject newGameObject = Instantiate(Spawnables[Random.Range(0,Spawnables.Count)], SpawnPoints[index].position, Quaternion.identity);
+            //SpawnedObjects[index] = newGameObject;
+            SpawnedObjects[index] = newGameObj;
         }
+    }
+
+    private GameObject CreateSpawnedObj(int index)
+    {
+        GameObject newGameObj = Instantiate(_placementToken, SpawnPoints[index].position, Quaternion.identity);
+        newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
+        return newGameObj;
     }
 
     public void StartSpawnDelay(GameObject oldObject)

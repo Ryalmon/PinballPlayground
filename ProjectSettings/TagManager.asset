@@ -74,6 +74,9 @@ TagManager:
   - name: GeneralGamePlay
     uniqueID: 3422660527
     locked: 0
+  - name: PlacementToken
+    uniqueID: 654572297
+    locked: 0
   - name: Pinball
     uniqueID: 1554611347
     locked: 0

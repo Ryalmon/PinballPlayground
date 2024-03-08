@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81031344e6d08054baf18f3846b377f7, type: 3}
+  m_Name: SpaceShip
+  m_EditorClassIdentifier: 
+  _objectToSpawn: {fileID: 2408790924656567570, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
+  _tokenVisuals: {fileID: 1475257843, guid: ff8ebcca80110754288e9004e7fd64e8, type: 3}

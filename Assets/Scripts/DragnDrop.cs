@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class DragnDrop : MonoBehaviour
 {
+    [SerializeField] DragTokenSO _placementData;
     [SerializeField] GameObject placeable;
 
     private bool dragging = false;
@@ -22,6 +23,18 @@ public class DragnDrop : MonoBehaviour
 
         originalPosition = transform.position;
        
+    }
+
+    public void AssignPlacementData(DragTokenSO newPlacementData)
+    {
+        _placementData = newPlacementData;
+        placeable = _placementData._objectToSpawn;
+        UpdatePlacementVisuals();
+    }
+
+    private void UpdatePlacementVisuals()
+    {
+        GetComponent<SpriteRenderer>().sprite = _placementData._tokenVisuals;
     }
 
     public void OnMouseDrag()
@@ -42,21 +55,23 @@ public class DragnDrop : MonoBehaviour
     public void OnMouseUp()
     {
         dragging = false;
-        Vector3 newPosition = transform.position;
 
-        if (!InvalidLocation(newPosition))
+        AttemptPlacement();
+    }
+    
+    private void AttemptPlacement()
+    {
+        if (!CheckLocationValidity(transform.position))
         {
             transform.position = originalPosition;
         }
         else
         {
-            placeable.GetComponent<IPlaceable>().Placed();
-            spawningObjects.StartSpawnDelay(gameObject);
-            //spawningObjects.SpawnNewObject(gameObject);
+            ValidPlacement();
         }
     }
-    
-    private bool InvalidLocation(Vector3 position)
+
+    private bool CheckLocationValidity(Vector3 position)
     {
         Collider2D[] colliders = Physics2D.OverlapPointAll(position);
         foreach (Collider2D collider in colliders)
@@ -67,6 +82,25 @@ public class DragnDrop : MonoBehaviour
             }
         }
         return false;   
+    }
+
+    private void ValidPlacement()
+    {
+        GameObject spawnedPlaceable = Instantiate(_placementData._objectToSpawn, transform.position, Quaternion.identity);
+
+        IPlaceable _placeableInterface;
+        if (spawnedPlaceable.GetComponent<IPlaceable>() != null)
+            _placeableInterface = spawnedPlaceable.GetComponent<IPlaceable>();
+        else if (spawnedPlaceable.GetComponentInChildren<IPlaceable>() != null)
+            _placeableInterface = spawnedPlaceable.GetComponentInChildren<IPlaceable>();
+        else return;
+
+        _placeableInterface.Placed();
+
+        //placeable.GetComponent<IPlaceable>().Placed();
+        spawningObjects.StartSpawnDelay(gameObject);
+        //spawningObjects.SpawnNewObject(gameObject);
+        Destroy(gameObject);
     }
 
     public void SetDragging(bool enabled)
