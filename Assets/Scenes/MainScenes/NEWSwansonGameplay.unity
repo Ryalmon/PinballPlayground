@@ -3964,6 +3964,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
+--- !u!114 &575131908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7513186299408543964, guid: 226f2717741e50f4292307203ffc488d, type: 3}
+  m_PrefabInstance: {fileID: 55402230597507628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082222a3eac9053439222152132ee800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &579458477
 GameObject:
   m_ObjectHideFlags: 0
@@ -11850,7 +11861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360, y: 175}
+  m_AnchoredPosition: {x: -360, y: 150}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842554927
@@ -11900,8 +11911,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13381,6 +13392,7 @@ MonoBehaviour:
   Ball: {fileID: 1039923384}
   Spawning: {fileID: 1478141794825186428}
   Fade: {fileID: 2168972681474543914}
+  Splitter: {fileID: 575131908}
 --- !u!1 &2009277764
 GameObject:
   m_ObjectHideFlags: 0
