@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 548764367
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8d529cf8c2228c4e841facfdf765b47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8828125}
+    oldSize: {x: 1.024, y: 1.024}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -164,7 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb26241eee147c4aa1ef40be347e3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallPrefab: {fileID: 6940565582449282592, guid: 869a610c578bdc7428f578774a96a525, type: 3}
+  _destroyTime: 1
+  _ballPrefab: {fileID: 6940565582449282592, guid: 869a610c578bdc7428f578774a96a525, type: 3}
+  _destroyedVisuals: {fileID: 21300000, guid: 922d08fe0d4bd3240936be7cc79e587f, type: 3}
 --- !u!114 &-362040558029122447
 MonoBehaviour:
   m_ObjectHideFlags: 0

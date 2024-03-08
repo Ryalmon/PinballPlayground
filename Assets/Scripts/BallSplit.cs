@@ -1,40 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallSplit : MonoBehaviour
 {
-    [SerializeField] GameObject BallPrefab;
-    private GameObject ballController;
-    private GameObject ball;
-    // Start is called before the first frame update
-    void Start()
-    {
-        ballController = GameObject.FindGameObjectWithTag("BallController");
-    }
+    [Header("Variables")]
+    [SerializeField] float _destroyTime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("References")]
+    [SerializeField] GameObject _ballPrefab;
+    [SerializeField] Sprite _destroyedVisuals;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
             SoundManager.Instance.PlaySFX("Laser 2");
-            ball = collision.gameObject;
-            SplitBall();
-            Destroy(gameObject);
-            //THIS SOUND MANAGER LINE IS CREATING ERRORS PLEASE FIX ALEX
-            
-            //ballController.GetComponent<BallSpawner>().BallSplit(transform.position, collision.gameObject);
+
+            SplitterHit(collision.gameObject.transform.position);
         }
     }
 
-    void SplitBall()
+    private void SplitterHit(Vector3 spawnLoc)
     {
-        Instantiate(BallPrefab, ball.transform.position, Quaternion.identity);
+        SplitBall(spawnLoc);
+        DestroySplitter();
+        SwitchToDestroyedVisuals();
+    }
+
+    void SplitBall(Vector3 spawnLoc)
+    {
+        Instantiate(_ballPrefab, spawnLoc, Quaternion.identity);
+    }
+
+    void DestroySplitter()
+    {
+        GetComponent<Collider2D>().enabled = false;
+
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime, null);
+        Destroy(gameObject, _destroyTime);
+    }
+
+    void SwitchToDestroyedVisuals()
+    {
+        GetComponent<SpriteRenderer>().sprite = _destroyedVisuals;
     }
 }

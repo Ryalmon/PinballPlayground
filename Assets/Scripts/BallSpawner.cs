@@ -7,12 +7,11 @@ public class BallSpawner : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private float _launchPower;
     [SerializeField] private float _ballRemovalTime;
-    public GameObject BallPrefab;
-    public List<BallPhysics> BallsInScene;
-    //private bool canLaunchBall;
-    [SerializeField] private GameObject BallLaunchButton;
+
+    [SerializeField] private GameObject BallPrefab;
     [SerializeField] private GameObject _ballShooter;
-    [SerializeField] private GameObject _ballSpawner;
+
+    private List<BallPhysics> BallsInScene = new List<BallPhysics>();
 
     private void Start()
     {
@@ -32,7 +31,11 @@ public class BallSpawner : MonoBehaviour
 
     public void LaunchBall()
     {
+        //Creates the ball
         GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
+        //Adds the ball to the list of balls in scene
+        AddBall(Ball);
+
         //Determines direction and multiplies that by the launch power
         Ball.GetComponent<BallPhysics>().OverrideBallForce( _launchPower * _ballShooter.GetComponent<BallShooter>().ShootBallDir());
     }
@@ -45,10 +48,13 @@ public class BallSpawner : MonoBehaviour
 
     private void BallCountIsZero()
     {
-        //GameplayManagers.Instance.Score.StopScaling();
+        //Make game enter the deactivate ball state
         GameplayManagers.Instance.State.DeactivateBallState();
-        //makes the launcher visible
-        _ballSpawner.SetActive(true);
+    }
+
+    public void AddBall(GameObject ball)
+    {
+        BallsInScene.Add(ball.GetComponent<BallPhysics>());
     }
 
     public void RemoveBall(GameObject ball)
