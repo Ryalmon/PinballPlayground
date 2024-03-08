@@ -11,6 +11,9 @@ public class BallSplit : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject _ballPrefab;
     [SerializeField] Sprite _destroyedVisuals;
+    private float ballXVelocity;
+    private float ballYVelocity;
+    private Vector2 ballVelocity = new Vector2(0,0);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,20 +21,25 @@ public class BallSplit : MonoBehaviour
         {
             SoundManager.Instance.PlaySFX("Laser 2");
 
-            SplitterHit(collision.gameObject.transform.position);
+            SplitterHit(collision.gameObject.transform.position, collision.gameObject);
+
         }
     }
 
-    private void SplitterHit(Vector3 spawnLoc)
+    private void SplitterHit(Vector3 spawnLoc, GameObject oldBall)
     {
-        SplitBall(spawnLoc);
+        SplitBall(spawnLoc, oldBall);
         DestroySplitter();
         SwitchToDestroyedVisuals();
     }
 
-    void SplitBall(Vector3 spawnLoc)
+    void SplitBall(Vector3 spawnLoc, GameObject oldBall)
     {
         GameObject newBall = Instantiate(_ballPrefab, spawnLoc, Quaternion.identity);
+        newBall.GetComponent<Rigidbody2D>().velocity = ballVelocity;
+        ballXVelocity = oldBall.gameObject.GetComponent<Rigidbody2D>().velocity.x * -1;
+        ballYVelocity = oldBall.gameObject.GetComponent<Rigidbody2D>().velocity.y;
+        ballVelocity = new Vector2 (ballXVelocity, ballYVelocity);
         GameplayManagers.Instance.Ball.AddBall(newBall);
     }
 
