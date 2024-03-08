@@ -533,7 +533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &133345898
 Transform:
   m_ObjectHideFlags: 0
@@ -6168,7 +6168,7 @@ PrefabInstance:
       objectReference: {fileID: 1235496768}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scorePopupLocation.y
-      value: 450
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scorePopUpSpawnSource

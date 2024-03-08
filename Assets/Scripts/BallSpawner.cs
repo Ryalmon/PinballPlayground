@@ -26,7 +26,8 @@ public class BallSpawner : MonoBehaviour
     public void BallSplit(Vector3 CurrentLocation, GameObject Splitter)
     {
         Destroy(Splitter);
-        Instantiate(BallPrefab, CurrentLocation, Quaternion.identity);
+        GameObject splitBall = Instantiate(BallPrefab, CurrentLocation, Quaternion.identity);
+        AddBall(splitBall);
     }
 
     public void LaunchBall()
