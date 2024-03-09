@@ -8,13 +8,20 @@ using TMPro;
 public class GameUIManager : MonoBehaviour
 {
     [Header("Gameplay")]
+    [Header("Text")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
     [SerializeField] TMP_Text _scoreMultiplierText;
     [Space]
+
+    [Header("TextData")]
     [SerializeField] Vector2 _scoreTextLocation;
     [SerializeField] float _roundTo2DigitsAt;
+    private float _scoreMultiplierStartingFontSize;
+    private string _roundScoreTo = "F1";
     [Space]
+
+    [Header("ScorePopup")]
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
     [SerializeField] Vector2 _scorePopupLocation;
@@ -22,17 +29,16 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _scorePopupYVariability;
     [SerializeField] float _scorePopupRate;
     [SerializeField] float _scorePopupRateScaler;
-    [Space]
-    [SerializeField] private GameObject BallLaunchButton;
     Queue<float> _scorePopupQueue = new Queue<float>();
     private Coroutine _scorePopupCoroutine;
-    private float _scoreMultiplierStartingFontSize;
-    private string _roundScoreTo = "F1";
     [Space]
-    [SerializeField] GameObject leftFlipperButton;
-    [SerializeField] GameObject rightFlipperButton;
-    [SerializeField] Sprite _buttonPassive;
-    [SerializeField] Sprite _buttonPressed;
+
+    [Header("Buttons")]
+    [SerializeField] private GameObject BallLaunchButton;
+    [SerializeField] private GameObject leftFlipperButton;
+    [SerializeField] private GameObject rightFlipperButton;
+    [SerializeField] private Sprite _flipperButtonPassive;
+    [SerializeField] private Sprite _flipperButtonPressed;
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
@@ -145,6 +151,27 @@ public class GameUIManager : MonoBehaviour
         BallLaunchButton.SetActive(false);
     }
 
+    #region FlipperButtons
+    public void LeftFlipperButtonPressed()
+    {
+        leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+    }
+
+    public void LeftFlipperButtonPassive()
+    {
+        leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+    }
+
+    public void RightFlipperButtonPressed()
+    {
+        rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+    }
+
+    public void RightFlipperButtonPassive()
+    {
+        rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+    }
+    #endregion
 
     private void DisplayFinalScore()
     {
