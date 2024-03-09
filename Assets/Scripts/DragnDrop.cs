@@ -8,6 +8,8 @@ public class DragnDrop : MonoBehaviour
     [SerializeField] DragTokenSO _placementData;
     [SerializeField] GameObject placeable;
 
+    [SerializeField] float _travelToSpawnTime;
+
     private bool dragging = false;
 
     private Vector3 offset;
@@ -85,6 +87,27 @@ public class DragnDrop : MonoBehaviour
     }
 
     private void ValidPlacement()
+    {
+        StartCoroutine(MoveTokenToNewPos(Vector3.zero));
+    }
+
+    private IEnumerator MoveTokenToNewPos(Vector3 newYHeight)
+    {
+        float progress = 0;
+        Vector3 startPos = transform.position;
+
+        while(progress < 1)
+        {
+            progress += Time.deltaTime / _travelToSpawnTime;
+            transform.position = Vector3.Lerp(startPos, newYHeight, progress);
+            yield return null;
+                
+        }
+
+        CreateTokenPlaceable();
+    }
+
+    private void CreateTokenPlaceable()
     {
         GameObject spawnedPlaceable = Instantiate(_placementData._objectToSpawn, transform.position, Quaternion.identity);
 

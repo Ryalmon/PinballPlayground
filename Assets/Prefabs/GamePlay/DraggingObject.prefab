@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placementData: {fileID: 0}
   placeable: {fileID: 0}
+  _travelToSpawnTime: 0.3
