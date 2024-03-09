@@ -43,9 +43,11 @@ public class ObjectFadingManager : MonoBehaviour
     private void ChangeObjectAlpha(GameObject fadeObj, float newAlpha)
     {
         if (fadeObj == null) return;
-        Color newColor = fadeObj.GetComponent<SpriteRenderer>().material.color;
+        //Color newColor = fadeObj.GetComponent<SpriteRenderer>().material.color;
+        Color newColor = fadeObj.GetComponent<SpriteRenderer>().color;
         newColor = new Color(newColor.r, newColor.g, newColor.b, newAlpha);
-        fadeObj.GetComponent<SpriteRenderer>().material.color = newColor;
+        //fadeObj.GetComponent<SpriteRenderer>().material.color = newColor;
+        fadeObj.GetComponent<SpriteRenderer>().color = newColor;
     }
 
     public void StopSpecifiedCoroutine(Coroutine toStop)

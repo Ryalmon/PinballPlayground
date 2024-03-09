@@ -5,7 +5,13 @@ using UnityEngine.InputSystem;
 
 public class DragnDrop : MonoBehaviour
 {
+    [SerializeField] float _minDistanceForValidPlacement;
+    [Space]
+
     [SerializeField] float _travelToSpawnTime;
+    [SerializeField] float _minDistForPlacement;
+    [SerializeField] float _minSpeedDist;
+    [SerializeField] float _maxSpeedDist;
 
     private DragTokenSO _placementData;
 
@@ -49,6 +55,7 @@ public class DragnDrop : MonoBehaviour
         if (!dragging)
         {
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
         }
     }
 
@@ -56,27 +63,29 @@ public class DragnDrop : MonoBehaviour
     {
         dragging = false;
 
-        PlaceItem();
+        AttemptPlacement();
     }
     
-    /*private void AttemptPlacement()
+    private void AttemptPlacement()
     {
-        
-        *//*if (!CheckLocationValidity(transform.position))
+        GameplayManagers.Instance.Placement.DecreaseItemsBeingDragged();
+
+        if (!CheckLocationValidity(transform.position))
         {
-            //transform.position = originalPosition;
-            
-            
+            transform.position = originalPosition;
         }
         else
         {
-            ValidPlacement();
-        }*//*
+            PlaceItem();
+        }
     }
 
-    private bool CheckLocationValidity(Vector3 position)
+    private bool CheckLocationValidity(Vector2 positionToCheck)
     {
-        Collider2D[] colliders = Physics2D.OverlapPointAll(position);
+        if (Vector2.Distance(positionToCheck, originalPosition) > _minDistanceForValidPlacement)
+            return true;
+        return false;
+        /*Collider2D[] colliders = Physics2D.OverlapPointAll(position);
         foreach (Collider2D collider in colliders)
         {
             if (collider.isTrigger && collider.gameObject != gameObject)
@@ -84,9 +93,10 @@ public class DragnDrop : MonoBehaviour
                 return true;
             }
         }
-        return false;   
+        return false;*/   
     }
 
+    /*
     private void ValidPlacement()
     {
         StartCoroutine(MoveTokenToNewPos(new Vector3(transform.position.x,-4, transform.position.z)));
@@ -94,25 +104,23 @@ public class DragnDrop : MonoBehaviour
 
     private void PlaceItem()
     {
-        Vector2 validPlacementLocation = GameplayManagers.Instance.PlaceArea.ClosestValidPlacementLocation(transform.position);
+        Vector2 validPlacementLocation = GameplayManagers.Instance.Placement.ClosestValidPlacementLocation(transform.position);
         StartCoroutine(MoveTokenToNewPos(validPlacementLocation));
     }
 
-    /*private Vector2 ClosestValidPlacementLocation()
-    {
-        return Physics2D.ClosestPoint
-                (transform.position, FindObjectOfType<SpawningObjects>().gameObject.GetComponent<Collider2D>());
-    }*/
-
-    private IEnumerator MoveTokenToNewPos(Vector3 newYHeight)
+    private IEnumerator MoveTokenToNewPos(Vector3 targetPos)
     {
         float progress = 0;
         Vector3 startPos = transform.position;
+        float currentDist = Vector2.Distance(transform.position, targetPos);
 
-        while(progress < 1)
+        while (currentDist > _minDistForPlacement)
         {
-            progress += Time.deltaTime / _travelToSpawnTime;
-            transform.position = Vector3.Lerp(startPos, newYHeight, progress);
+            currentDist = Vector2.Distance(transform.position, targetPos);
+            float speedFromDistance = Mathf.Clamp(currentDist, _minSpeedDist, _maxSpeedDist);
+
+            progress += Time.deltaTime / _travelToSpawnTime * speedFromDistance;
+            transform.position = Vector3.Lerp(startPos, targetPos, progress);
             yield return null;
                 
         }

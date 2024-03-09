@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e80e3b05b3363f489c75894f78be3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _placementData: {fileID: 0}
-  placeable: {fileID: 0}
-  _travelToSpawnTime: 0.3
+  _minDistanceForValidPlacement: 0.75
+  _travelToSpawnTime: 0.7
+  _minDistForPlacement: 0.1
+  _minSpeedDist: 0.2
+  _maxSpeedDist: 1.75

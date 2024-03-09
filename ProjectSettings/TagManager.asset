@@ -80,6 +80,9 @@ TagManager:
   - name: Pinball
     uniqueID: 1554611347
     locked: 0
+  - name: PlacementZone
+    uniqueID: 2282680909
+    locked: 0
   - name: Foreground
     uniqueID: 226181153
     locked: 0

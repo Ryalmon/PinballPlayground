@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 //using System;
 
@@ -34,11 +35,16 @@ public class GameUIManager : MonoBehaviour
     [Space]
 
     [Header("Buttons")]
-    [SerializeField] private GameObject BallLaunchButton;
-    [SerializeField] private GameObject leftFlipperButton;
-    [SerializeField] private GameObject rightFlipperButton;
+    [SerializeField] private GameObject _ballLaunchButton;
+    [SerializeField] private GameObject _leftFlipperButton;
+    [SerializeField] private GameObject _rightFlipperButton;
     [SerializeField] private Sprite _flipperButtonPassive;
     [SerializeField] private Sprite _flipperButtonPressed;
+    [Space]
+
+    [Header("Visuals")]
+    [SerializeField] private GameObject _placementRegion;
+    private Coroutine _placementRegionCoroutine;
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
@@ -98,8 +104,8 @@ public class GameUIManager : MonoBehaviour
 
     private IEnumerator GameEndUIProcess()
     {
-        leftFlipperButton.SetActive(false);
-        rightFlipperButton.SetActive(false);
+        _leftFlipperButton.SetActive(false);
+        _rightFlipperButton.SetActive(false);
 
         DisplayFinalScore();
         yield return new WaitForSeconds(_finalScoreWaitTime);
@@ -143,33 +149,71 @@ public class GameUIManager : MonoBehaviour
     {
         if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) 
         return;
-        BallLaunchButton.SetActive(true);
+        _ballLaunchButton.SetActive(true);
     }
 
     public void BallLaunchButtonPressed()
     {
-        BallLaunchButton.SetActive(false);
+        _ballLaunchButton.SetActive(false);
     }
 
     #region FlipperButtons
     public void LeftFlipperButtonPressed()
     {
-        leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+        _leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
     }
 
     public void LeftFlipperButtonPassive()
     {
-        leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+        _leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
     }
 
     public void RightFlipperButtonPressed()
     {
-        rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
     }
 
     public void RightFlipperButtonPassive()
     {
-        rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+    }
+    #endregion
+
+    #region ItemPlacementZone
+    public void ShowPlacementRegion()
+    {
+        if (_placementRegionCoroutine != null)
+            return;
+
+        UnityEvent postFadeIn = new UnityEvent();
+        postFadeIn.AddListener(StartRegionProcess);
+
+        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectIn(_placementRegion,1,postFadeIn);
+    }
+
+    private void StartRegionProcess()
+    {
+        StartCoroutine(ShowPlacementRegionProcess());
+    }
+
+    private IEnumerator ShowPlacementRegionProcess()
+    {
+        while (GameplayManagers.Instance.Placement.AreItemsBeingDragged() && _placementRegionCoroutine != null)
+            yield return null;
+        HidePlacementRegion();
+    }
+
+    public void HidePlacementRegion()
+    {
+        UnityEvent postFadeOut = new UnityEvent();
+        postFadeOut.AddListener(EndOfRegionVisuals);
+        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectOut(_placementRegion, 1, postFadeOut);
+        
+    }
+
+    private void EndOfRegionVisuals()
+    {
+        _placementRegionCoroutine = null;
     }
     #endregion
 
