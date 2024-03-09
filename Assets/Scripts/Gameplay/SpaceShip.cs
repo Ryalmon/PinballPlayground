@@ -18,6 +18,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _destroyTime;
     //private float _storedXVelocity;
     private Vector2 _storedVelocity;
+    private bool fadingOut = false;
     [Space]
 
     [Header("Refrences")]
@@ -35,7 +36,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE)
+        if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE && !fadingOut)
         {
             SoundManager.Instance.PlaySFX("Hit");
             ChangeShipState(SpaceShipState.DRAGGING);
@@ -180,6 +181,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             ReleaseObject();
             return;
         }
+        fadingOut = true;
         GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
         Destroy(transform.parent.gameObject,_destroyTime);
     }

@@ -14,14 +14,14 @@ public class ObjectFadingManager : MonoBehaviour
     /*active +=Placed;
         active?.Invoke();
     act?.Invoke(1);*/
-    public void FadeGameObjectIn(GameObject fadeObj, float timeToFade, UnityEvent postFade)
+    public Coroutine FadeGameObjectIn(GameObject fadeObj, float timeToFade, UnityEvent postFade)
     {
-        StartCoroutine(FadeProcess(fadeObj, 0, 1, timeToFade,postFade));
+        return StartCoroutine(FadeProcess(fadeObj, 0, 1, timeToFade,postFade));
     }
 
-    public void FadeGameObjectOut(GameObject fadeObj, float timeToFade, UnityEvent postFade)
+    public Coroutine FadeGameObjectOut(GameObject fadeObj, float timeToFade, UnityEvent postFade)
     {
-        StartCoroutine(FadeProcess(fadeObj, 1, 0, timeToFade,postFade));
+        return StartCoroutine(FadeProcess(fadeObj, 1, 0, timeToFade,postFade));
     }
 
     private IEnumerator FadeProcess(GameObject fadeObj, float startA, float endA, float timeToFade, UnityEvent postFade)
@@ -46,5 +46,10 @@ public class ObjectFadingManager : MonoBehaviour
         Color newColor = fadeObj.GetComponent<SpriteRenderer>().material.color;
         newColor = new Color(newColor.r, newColor.g, newColor.b, newAlpha);
         fadeObj.GetComponent<SpriteRenderer>().material.color = newColor;
+    }
+
+    public void StopSpecifiedCoroutine(Coroutine toStop)
+    {
+        StopCoroutine(toStop);
     }
 }

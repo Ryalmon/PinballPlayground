@@ -5,10 +5,9 @@ using UnityEngine.InputSystem;
 
 public class DragnDrop : MonoBehaviour
 {
-    [SerializeField] DragTokenSO _placementData;
-    [SerializeField] GameObject placeable;
-
     [SerializeField] float _travelToSpawnTime;
+
+    private DragTokenSO _placementData;
 
     private bool dragging = false;
 
@@ -29,8 +28,7 @@ public class DragnDrop : MonoBehaviour
 
     public void AssignPlacementData(DragTokenSO newPlacementData)
     {
-        _placementData = newPlacementData;
-        placeable = _placementData._objectToSpawn;
+        _placementData = newPlacementData; 
         UpdatePlacementVisuals();
     }
 
@@ -88,7 +86,7 @@ public class DragnDrop : MonoBehaviour
 
     private void ValidPlacement()
     {
-        StartCoroutine(MoveTokenToNewPos(Vector3.zero));
+        StartCoroutine(MoveTokenToNewPos(new Vector3(transform.position.x,-4, transform.position.z)));
     }
 
     private IEnumerator MoveTokenToNewPos(Vector3 newYHeight)
