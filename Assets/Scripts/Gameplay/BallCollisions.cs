@@ -18,23 +18,8 @@ public class BallKillBox : MonoBehaviour
         if (collision.gameObject.CompareTag("KillBox"))
         {
             UniversalManager.Instance.Sound.PlaySFX("Death");
-            //SoundManager.Instance.PlaySFX("Death");
             GameplayManagers.Instance.Ball.RemoveBall(gameObject);
-            /*BallController.GetComponent<BallSpawner>().BallsInScene.Remove(GetComponent<BallPhysics>());
-            BallController.GetComponent<BallSpawner>().CheckBallCountIsZero();
-            Destroy(gameObject);*/
-            /*if (BallController.GetComponent<BallSpawner>().BallsInScene.Count <= 0)
-            {
-                BallController.GetComponent<BallSpawner>().SetButtonInactive();
-            }
-            Destroy(gameObject);
-            BallController.GetComponent<BallSpawner>().SetButtonActive();*/
         }
-
-        //if(collision.gameObject.CompareTag("Splitter"))
-        //{
-        //    BallController.GetComponent<BallSpawner>().BallSplit(transform.position, collision.gameObject);
-        //}
     }
 
     

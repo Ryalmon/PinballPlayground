@@ -96,7 +96,6 @@ public class Flippers : MonoBehaviour
         float tempTime = 0;
 
         UniversalManager.Instance.Sound.PlaySFX("FlipDown");
-        //SoundManager.Instance.PlaySFX("FlipDown");
         while (tempTime < _flipDownTime)
         {
             //Flips the flippers down until a set time has passed
