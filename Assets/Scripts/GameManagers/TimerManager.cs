@@ -36,6 +36,7 @@ public class TimerManager : MonoBehaviour
             GameplayManagers.Instance.UI.UpdateTimerUI(TimeRemaining);
             yield return null;
         }
+        GameplayManagers.Instance.UI.UpdateTimerUI(0);
         //Activate anything that needs to happen after the timer reaches 0
         EndTimer();
     }
