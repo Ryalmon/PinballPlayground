@@ -119,7 +119,8 @@ public class DragnDrop : MonoBehaviour
         _placeableInterface.Placed();
 
         //placeable.GetComponent<IPlaceable>().Placed();
-        spawningObjects.StartSpawnDelay(gameObject);
+        //spawningObjects.StartSpawnDelay(gameObject);
+        spawningObjects.PlaceableObjectPlaced(gameObject);
         //spawningObjects.SpawnNewObject(gameObject);
         Destroy(gameObject);
     }
