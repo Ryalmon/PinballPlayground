@@ -13,12 +13,14 @@ public class BallSplit : MonoBehaviour
     [SerializeField] Sprite _destroyedVisuals;
     private float ballXVelocity;
     private float ballYVelocity;
-    private Vector2 ballVelocity = new Vector2(0,0);
+    private Vector2 ballVelocity;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
+            if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play)
+                return;
             SoundManager.Instance.PlaySFX("Laser 2");
 
             SplitterHit(collision.gameObject.transform.position, collision.gameObject);
