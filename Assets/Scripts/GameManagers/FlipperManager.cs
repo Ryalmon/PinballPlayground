@@ -8,6 +8,15 @@ public class FlipperManager : MonoBehaviour
     [SerializeField] List<Flippers> _leftFlippers = new List<Flippers>();
     [SerializeField] List<Flippers> _rightFlippers = new List<Flippers>();
 
+    private void Start()
+    {
+        AssignEvents();
+    }
+
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(DeactivateAllFlippers);
+    }
 
     public void AddToList(Flippers newFlipper, List<Flippers> flipList)
     {
@@ -52,6 +61,12 @@ public class FlipperManager : MonoBehaviour
         {
             currentFlipper.UnFlip();
         }
+    }
+
+    private void DeactivateAllFlippers()
+    {
+        DeactivateLeftFlippers();
+        DeactivateRightFlippers();
     }
 
 

@@ -98,12 +98,12 @@ public class GameUIManager : MonoBehaviour
 
     private IEnumerator GameEndUIProcess()
     {
+        leftFlipperButton.SetActive(false);
+        rightFlipperButton.SetActive(false);
+
         DisplayFinalScore();
         yield return new WaitForSeconds(_finalScoreWaitTime);
         _finalScoreDisplay.SetActive(false);
-
-        leftFlipperButton.SetActive(false);
-        rightFlipperButton.SetActive(false);
 
         if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {

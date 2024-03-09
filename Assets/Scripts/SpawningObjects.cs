@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawningObjects : MonoBehaviour
 {
-    [SerializeField] List<GameObject> Spawnables = new List<GameObject>();
+    //[SerializeField] List<GameObject> Spawnables = new List<GameObject>();
 
     [SerializeField] List<DragTokenSO> Placeables = new List<DragTokenSO>();
     [SerializeField] GameObject _placementToken;

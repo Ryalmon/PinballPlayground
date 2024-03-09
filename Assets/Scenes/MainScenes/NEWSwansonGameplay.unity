@@ -123,22 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &6571212 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-  m_PrefabInstance: {fileID: 2083293999}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6571214 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-  m_PrefabInstance: {fileID: 2083293999}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f92915b8ba52247968f36af940be34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &19650237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -984,33 +968,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1267799313}
-          m_TargetAssemblyTypeName: Flippers, Assembly-CSharp
-          m_MethodName: TurnFalse
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1799912070}
           m_TargetAssemblyTypeName: FlipperManager, Assembly-CSharp
           m_MethodName: DeactivateLeftFlippers
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1032712068}
-          m_TargetAssemblyTypeName: Flippers, Assembly-CSharp
-          m_MethodName: TurnFalse
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6336,9 +6296,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1267799311}
-  - {fileID: 1032712070}
   - {fileID: 638703077}
-  - {fileID: 6571212}
   m_Father: {fileID: 1191648920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908476077
@@ -7256,22 +7214,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012804628}
   m_CullTransparentMesh: 1
---- !u!114 &1032712068 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-  m_PrefabInstance: {fileID: 1357752123}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f92915b8ba52247968f36af940be34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1032712070 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-  m_PrefabInstance: {fileID: 1357752123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1038765693
 GameObject:
   m_ObjectHideFlags: 0
@@ -9080,104 +9022,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356830613}
   m_CullTransparentMesh: 1
---- !u!1001 &1357752123
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 906001218}
-    m_Modifications:
-    - target: {fileID: 1729461158070336910, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.621
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729461158070336910, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.164
-      objectReference: {fileID: 0}
-    - target: {fileID: 6524455004322170659, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_Name
-      value: FlipperLeft 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: buttonPressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
-    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: flipperButton
-      value: 
-      objectReference: {fileID: 189015883}
-    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: buttonUnpressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
-    - target: {fileID: 7347470351037366829, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.90000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.90000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659259
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.258819
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7595207591172660406, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
 --- !u!1 &1369162266
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,7 +9182,7 @@ PrefabInstance:
     - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
       propertyPath: _leftFlippers.Array.data[1]
       value: 
-      objectReference: {fileID: 1032712068}
+      objectReference: {fileID: 0}
     - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
       propertyPath: _rightFlippers.Array.data[0]
       value: 
@@ -9346,7 +9190,7 @@ PrefabInstance:
     - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
       propertyPath: _rightFlippers.Array.data[1]
       value: 
-      objectReference: {fileID: 6571214}
+      objectReference: {fileID: 0}
     - target: {fileID: 6489483446823189399, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11499,33 +11343,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 638703079}
-          m_TargetAssemblyTypeName: Flippers, Assembly-CSharp
-          m_MethodName: TurnFalse
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1799912070}
           m_TargetAssemblyTypeName: FlipperManager, Assembly-CSharp
           m_MethodName: DeactivateRightFlippers
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 6571214}
-          m_TargetAssemblyTypeName: Flippers, Assembly-CSharp
-          m_MethodName: TurnFalse
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13967,104 +13787,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069746761}
   m_CullTransparentMesh: 1
---- !u!1001 &2083293999
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 906001218}
-    m_Modifications:
-    - target: {fileID: 1729461158070336910, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.481
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729461158070336910, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.147
-      objectReference: {fileID: 0}
-    - target: {fileID: 6524455004322170659, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_Name
-      value: FlipperRight 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: _rightFlipper
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: buttonPressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: flipperButton
-      value: 
-      objectReference: {fileID: 1792820190}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: buttonUnpressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659258
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.2588191
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7595207591172660406, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
 --- !u!1 &2086138433
 GameObject:
   m_ObjectHideFlags: 0

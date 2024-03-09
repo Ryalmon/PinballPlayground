@@ -14,6 +14,7 @@ public class GameplayManagers : MonoBehaviour
     public SpawningObjects Spawning;
     public ObjectFadingManager Fade;
     public SpawnSplitter Splitter;
+    public PlacementLocation PlaceArea;
 
     // Start is called before the first frame update
     void Awake()

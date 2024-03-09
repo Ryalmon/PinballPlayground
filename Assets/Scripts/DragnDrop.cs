@@ -56,19 +56,22 @@ public class DragnDrop : MonoBehaviour
     {
         dragging = false;
 
-        AttemptPlacement();
+        PlaceItem();
     }
     
-    private void AttemptPlacement()
+    /*private void AttemptPlacement()
     {
-        if (!CheckLocationValidity(transform.position))
+        
+        *//*if (!CheckLocationValidity(transform.position))
         {
-            transform.position = originalPosition;
+            //transform.position = originalPosition;
+            
+            
         }
         else
         {
             ValidPlacement();
-        }
+        }*//*
     }
 
     private bool CheckLocationValidity(Vector3 position)
@@ -87,7 +90,19 @@ public class DragnDrop : MonoBehaviour
     private void ValidPlacement()
     {
         StartCoroutine(MoveTokenToNewPos(new Vector3(transform.position.x,-4, transform.position.z)));
+    }*/
+
+    private void PlaceItem()
+    {
+        Vector2 validPlacementLocation = GameplayManagers.Instance.PlaceArea.ClosestValidPlacementLocation(transform.position);
+        StartCoroutine(MoveTokenToNewPos(validPlacementLocation));
     }
+
+    /*private Vector2 ClosestValidPlacementLocation()
+    {
+        return Physics2D.ClosestPoint
+                (transform.position, FindObjectOfType<SpawningObjects>().gameObject.GetComponent<Collider2D>());
+    }*/
 
     private IEnumerator MoveTokenToNewPos(Vector3 newYHeight)
     {
