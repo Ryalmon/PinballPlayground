@@ -16,14 +16,10 @@ public class Bumper : MonoBehaviour, IPlaceable
 
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision));
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
-            SoundManager.Instance.PlaySFX("Bounce");
+            UniversalManager.Instance.Sound.PlaySFX("Bounce");
+            //SoundManager.Instance.PlaySFX("Bounce");
         }
     }
-
-    /*private Vector2 DetermineShootDirection(Vector2 otherObject)
-    {
-        return (otherObject - new Vector2(transform.position.x, transform.position.y)).normalized * _forceMultiplier;
-    }*/
 
     private Vector2 DetermineShootDirection(Collision2D collision)
     {

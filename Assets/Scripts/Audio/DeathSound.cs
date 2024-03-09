@@ -8,7 +8,8 @@ public class DeathSound : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null)
         {
-            SoundManager.Instance.PlaySFX("Death");
+            UniversalManager.Instance.Sound.PlaySFX("Death");
+            //SoundManager.Instance.PlaySFX("Death");
         }
     }
 }

@@ -8,12 +8,14 @@ public class BallAudio : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            SoundManager.Instance.PlaySFX("Hit");
+            UniversalManager.Instance.Sound.PlaySFX("Hit");
+            //SoundManager.Instance.PlaySFX("Hit");
         }
 
         if (collision.gameObject.CompareTag("Bumper"))
         {
-            SoundManager.Instance.PlaySFX("Bounce");
+            UniversalManager.Instance.Sound.PlaySFX("Bounce");
+            //SoundManager.Instance.PlaySFX("Bounce");
             Debug.Log("Bumped");
         }
     }

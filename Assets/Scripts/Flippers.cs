@@ -64,7 +64,8 @@ public class Flippers : MonoBehaviour
     IEnumerator FlipProcess()
     {
         hold = true;
-        SoundManager.Instance.PlaySFX("FlipUp");
+        UniversalManager.Instance.Sound.PlaySFX("FlipUp");
+        //SoundManager.Instance.PlaySFX("FlipUp");
         flipperButton.sprite = buttonPressed;
         float tempTime = 0;
         while (tempTime < _flipUpTime)
@@ -94,7 +95,8 @@ public class Flippers : MonoBehaviour
     {
         float tempTime = 0;
 
-        SoundManager.Instance.PlaySFX("FlipDown");
+        UniversalManager.Instance.Sound.PlaySFX("FlipDown");
+        //SoundManager.Instance.PlaySFX("FlipDown");
         while (tempTime < _flipDownTime)
         {
             //Flips the flippers down until a set time has passed
