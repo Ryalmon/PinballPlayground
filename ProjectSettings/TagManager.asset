@@ -53,6 +53,9 @@ TagManager:
   - name: GameBack
     uniqueID: 805626411
     locked: 0
+  - name: PlacementZone
+    uniqueID: 2282680909
+    locked: 0
   - name: SideBumper
     uniqueID: 2012120919
     locked: 0
@@ -79,9 +82,6 @@ TagManager:
     locked: 0
   - name: Pinball
     uniqueID: 1554611347
-    locked: 0
-  - name: PlacementZone
-    uniqueID: 2282680909
     locked: 0
   - name: Foreground
     uniqueID: 226181153

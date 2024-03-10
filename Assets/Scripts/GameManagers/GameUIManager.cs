@@ -44,6 +44,8 @@ public class GameUIManager : MonoBehaviour
 
     [Header("Visuals")]
     [SerializeField] private GameObject _placementRegion;
+    [SerializeField] private float _placementRegionFadeInTime;
+    [SerializeField] private float _placementRegionFadeOutTime;
     private Coroutine _placementRegionCoroutine;
 
     [Header("Game End")]
@@ -188,7 +190,7 @@ public class GameUIManager : MonoBehaviour
         UnityEvent postFadeIn = new UnityEvent();
         postFadeIn.AddListener(StartRegionProcess);
 
-        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectIn(_placementRegion,1,postFadeIn);
+        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectIn(_placementRegion,_placementRegionFadeInTime,postFadeIn);
     }
 
     private void StartRegionProcess()
@@ -207,7 +209,7 @@ public class GameUIManager : MonoBehaviour
     {
         UnityEvent postFadeOut = new UnityEvent();
         postFadeOut.AddListener(EndOfRegionVisuals);
-        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectOut(_placementRegion, 1, postFadeOut);
+        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectOut(_placementRegion, _placementRegionFadeOutTime, postFadeOut);
         
     }
 

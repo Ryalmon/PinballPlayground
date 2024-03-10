@@ -56,11 +56,14 @@ MonoBehaviour:
   _scorePopupYVariability: 75
   _scorePopupRate: 0.3
   _scorePopupRateScaler: 0.5
-  BallLaunchButton: {fileID: 0}
-  leftFlipperButton: {fileID: 0}
-  rightFlipperButton: {fileID: 0}
+  _ballLaunchButton: {fileID: 0}
+  _leftFlipperButton: {fileID: 0}
+  _rightFlipperButton: {fileID: 0}
   _flipperButtonPassive: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
   _flipperButtonPressed: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+  _placementRegion: {fileID: 0}
+  _placementRegionFadeInTime: 0.4
+  _placementRegionFadeOutTime: 0.4
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _inputKeyboardDisplay: {fileID: 0}

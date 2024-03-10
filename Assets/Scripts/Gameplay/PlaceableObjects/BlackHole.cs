@@ -10,6 +10,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
     [SerializeField] float _yForceMultiplier;
     [SerializeField] float _upwardsForceMultiplier;
     [SerializeField] float _ballSpeedForceInfluence;
+    [SerializeField] float _minimumHoldMagnitude;
     [Space]
     [SerializeField] float _scoreTickRate;
     [Space]
@@ -28,6 +29,9 @@ public class BlackHole : MonoBehaviour, IPlaceable
             time += Time.deltaTime;
             foreach (BallPhysics bp in _objectsInRadius)
             {
+                if (bp.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < _minimumHoldMagnitude)
+                    continue;
+                
                 bp.ApplyForceToBall(CalculateGravityForce(bp) / time);
             }
             yield return null;

@@ -108,7 +108,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 654572297
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -135,6 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minDistanceForValidPlacement: 0.75
   _travelToSpawnTime: 0.7
-  _minDistForPlacement: 0.1
+  _minDistForPlacement: 0.3
   _minSpeedDist: 0.2
   _maxSpeedDist: 1.75
