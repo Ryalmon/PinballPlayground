@@ -18,6 +18,8 @@ public class GameUIManager : MonoBehaviour
     [Header("TextData")]
     [SerializeField] Vector2 _scoreTextLocation;
     [SerializeField] float _roundTo2DigitsAt;
+    [SerializeField] float _scoreMultiplierScalingRate;
+    [SerializeField] private Gradient _gradient;
     private float _scoreMultiplierStartingFontSize;
     private string _roundScoreTo = "F1";
     [Space]
@@ -70,6 +72,7 @@ public class GameUIManager : MonoBehaviour
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(GameEndUI);
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplierSize);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
     }
 
@@ -96,7 +99,22 @@ public class GameUIManager : MonoBehaviour
         //Updates the score multiplier UI text
         _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
         //Updates the score multiplier UI size
-        _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
+        //_scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
+        _scoreMultiplierText.fontSize +=_scoreMultiplierScalingRate;
+
+        float colorGradientAmount = Mathf.Lerp(GameplayManagers.Instance.Score.GetStartingMultiplier(),
+            GameplayManagers.Instance.Score.GetMaxMultiplier(), multiplier / GameplayManagers.Instance.Score.GetMaxMultiplier()) /
+            GameplayManagers.Instance.Score.GetMaxMultiplier();
+
+        Debug.Log(multiplier / GameplayManagers.Instance.Score.GetMaxMultiplier());
+        Debug.Log(colorGradientAmount);
+        _scoreMultiplierText.color = _gradient.Evaluate(.5f); 
+            
+    }
+
+    public void ResetMultiplierSize()
+    {
+        _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize;
     }
 
     public void GameEndUI()

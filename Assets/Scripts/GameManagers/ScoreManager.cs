@@ -73,7 +73,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator ScalingProcess()
     {
-        while (_currentBallMultiplier <= _ballMultiplierMax)
+        while (_currentBallMultiplier < _ballMultiplierMax- _ballMultiplerScalingAmount)
         {
             yield return new WaitForSeconds(_ballMultiplierScalingRate);
             SetCurrentMultiplier(_currentBallMultiplier + _ballMultiplerScalingAmount);
@@ -134,6 +134,16 @@ public class ScoreManager : MonoBehaviour
     private int ScoreValueFromSource(ScoreSource source)
     {
         return _scoreDictionary[source];
+    }
+
+    public float GetStartingMultiplier()
+    {
+        return _startingBallMultiplier;
+    }
+
+    public float GetMaxMultiplier()
+    {
+        return _ballMultiplierMax;
     }
 }
 
