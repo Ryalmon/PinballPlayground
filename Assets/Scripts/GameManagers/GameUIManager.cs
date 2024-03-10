@@ -102,13 +102,11 @@ public class GameUIManager : MonoBehaviour
         //_scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
         _scoreMultiplierText.fontSize +=_scoreMultiplierScalingRate;
 
-        float colorGradientAmount = Mathf.Lerp(GameplayManagers.Instance.Score.GetStartingMultiplier(),
-            GameplayManagers.Instance.Score.GetMaxMultiplier(), multiplier / GameplayManagers.Instance.Score.GetMaxMultiplier()) /
-            GameplayManagers.Instance.Score.GetMaxMultiplier();
 
-        Debug.Log(multiplier / GameplayManagers.Instance.Score.GetMaxMultiplier());
-        Debug.Log(colorGradientAmount);
-        _scoreMultiplierText.color = _gradient.Evaluate(.5f); 
+        float colorGradientAmount = multiplier / (GameplayManagers.Instance.Score.GetStartingMultiplier() * GameplayManagers.Instance.Score.GetMaxMultiplier())
+            -(GameplayManagers.Instance.Score.GetStartingMultiplier() / GameplayManagers.Instance.Score.GetMaxMultiplier());
+
+        _scoreMultiplierText.color = _gradient.Evaluate(colorGradientAmount); 
             
     }
 
