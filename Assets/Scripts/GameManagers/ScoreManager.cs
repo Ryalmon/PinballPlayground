@@ -58,7 +58,7 @@ public class ScoreManager : MonoBehaviour
     {
         SetCurrentMultiplier(_startingBallMultiplier);
         _scalingCoroutine = StartCoroutine(ScalingProcess());
-        ScalingUIUpdate();
+        //ScalingUIUpdate();
     }
 
     private void SetStartingScale()
@@ -83,6 +83,7 @@ public class ScoreManager : MonoBehaviour
 
     private void ScalingUIUpdate()
     {
+        Debug.Log(_currentBallMultiplier);
         GameplayManagers.Instance.UI.UpdateMultiplierUI(_currentBallMultiplier);
     }
 

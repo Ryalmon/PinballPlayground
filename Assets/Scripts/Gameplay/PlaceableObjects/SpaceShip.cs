@@ -109,12 +109,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
 
-        if (Mathf.Abs(_storedVelocity.x) < _minSpeedToAddXVariability)
-            _storedVelocity += new Vector2 (Random.Range(-_releaseXVariability, _releaseXVariability) , 0 );
-        if (_storedVelocity.y < _releaseYForce)
-            _storedVelocity = new Vector2(_storedVelocity.x, _releaseYForce);
-        Vector2 releaseBallForce = new Vector2(_storedVelocity.x, _storedVelocity.y);
-        _dragObjectPhysics.OverrideBallForce(releaseBallForce);
+        _dragObjectPhysics.OverrideBallForce(DetermineReleaseForce());
 
         _dragObject = null;
         _dragObjectPhysics = null;
@@ -163,6 +158,16 @@ public class SpaceShip : MonoBehaviour, IPlaceable
                 return;
         }
             
+    }
+
+    private Vector2 DetermineReleaseForce()
+    {
+        if (Mathf.Abs(_storedVelocity.x) < _minSpeedToAddXVariability)
+            _storedVelocity += new Vector2 (Random.Range(-_releaseXVariability, _releaseXVariability) , 0 );
+        if (_storedVelocity.y < _releaseYForce)
+            _storedVelocity = new Vector2(_storedVelocity.x, _releaseYForce);
+
+        return new Vector2(_storedVelocity.x, _storedVelocity.y);
     }
 
     public void Placed()

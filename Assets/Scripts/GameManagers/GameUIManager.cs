@@ -72,7 +72,7 @@ public class GameUIManager : MonoBehaviour
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(GameEndUI);
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
-        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplierSize);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplier);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
     }
 
@@ -97,22 +97,33 @@ public class GameUIManager : MonoBehaviour
     public void UpdateMultiplierUI(float multiplier)
     {
         //Updates the score multiplier UI text
-        _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
+        UpdateMultiplierText(multiplier);
         //Updates the score multiplier UI size
         //_scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
         _scoreMultiplierText.fontSize +=_scoreMultiplierScalingRate;
 
-
-        float colorGradientAmount = multiplier / (GameplayManagers.Instance.Score.GetStartingMultiplier() * GameplayManagers.Instance.Score.GetMaxMultiplier())
-            -(GameplayManagers.Instance.Score.GetStartingMultiplier() / GameplayManagers.Instance.Score.GetMaxMultiplier());
-
-        _scoreMultiplierText.color = _gradient.Evaluate(colorGradientAmount); 
-            
+        //Updates the score multiplier UI color
+        UpdateMultiplierColor(multiplier); 
     }
 
-    public void ResetMultiplierSize()
+    private void UpdateMultiplierText(float multiplier)
     {
+        _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
+    }
+
+    public void UpdateMultiplierColor(float multiplier)
+    {
+        float colorGradientAmount = multiplier / (GameplayManagers.Instance.Score.GetStartingMultiplier() * GameplayManagers.Instance.Score.GetMaxMultiplier())
+            - (GameplayManagers.Instance.Score.GetStartingMultiplier() / GameplayManagers.Instance.Score.GetMaxMultiplier());
+
+        _scoreMultiplierText.color = _gradient.Evaluate(colorGradientAmount);
+    }
+
+    public void ResetMultiplier()
+    {
+        UpdateMultiplierText(GameplayManagers.Instance.Score.GetStartingMultiplier());
         _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize;
+        UpdateMultiplierColor(GameplayManagers.Instance.Score.GetStartingMultiplier());
     }
 
     public void GameEndUI()

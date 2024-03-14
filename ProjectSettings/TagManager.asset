@@ -59,6 +59,9 @@ TagManager:
   - name: SideBumper
     uniqueID: 2012120919
     locked: 0
+  - name: BallRedirector
+    uniqueID: 3388900661
+    locked: 0
   - name: BallSplitter
     uniqueID: 548764367
     locked: 0
