@@ -13,7 +13,6 @@ public class BallSplit : MonoBehaviour
     [SerializeField] Sprite _destroyedVisuals;
     private float ballXVelocity;
     private float ballYVelocity;
-    private Vector2 ballVelocity;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,7 +36,7 @@ public class BallSplit : MonoBehaviour
 
     void SplitBall(GameObject oldBall)
     {
-        GameObject newBall = Instantiate(_ballPrefab, oldBall.transform.position, Quaternion.identity);
+        GameObject newBall = GameplayManagers.Instance.Ball.CreateBall(oldBall.transform.position);
         
         SetNewBallVelocity(newBall,oldBall);
 
@@ -46,10 +45,9 @@ public class BallSplit : MonoBehaviour
 
     void SetNewBallVelocity(GameObject newBall, GameObject oldBall)
     {
-        newBall.GetComponent<Rigidbody2D>().velocity = ballVelocity;
         ballXVelocity = oldBall.gameObject.GetComponent<Rigidbody2D>().velocity.x * -1;
         ballYVelocity = oldBall.gameObject.GetComponent<Rigidbody2D>().velocity.y;
-        ballVelocity = new Vector2(ballXVelocity, ballYVelocity);
+        Vector2 ballVelocity = new Vector2(ballXVelocity, ballYVelocity);
         newBall.GetComponent<Rigidbody2D>().velocity = ballVelocity;
     }
 
