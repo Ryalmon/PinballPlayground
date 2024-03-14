@@ -83,7 +83,6 @@ public class ScoreManager : MonoBehaviour
 
     private void ScalingUIUpdate()
     {
-        Debug.Log(_currentBallMultiplier);
         GameplayManagers.Instance.UI.UpdateMultiplierUI(_currentBallMultiplier);
     }
 

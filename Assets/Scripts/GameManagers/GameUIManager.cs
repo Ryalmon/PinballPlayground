@@ -100,7 +100,7 @@ public class GameUIManager : MonoBehaviour
         UpdateMultiplierText(multiplier);
         //Updates the score multiplier UI size
         //_scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
-        _scoreMultiplierText.fontSize +=_scoreMultiplierScalingRate;
+        UpdateMultiplierSize(_scoreMultiplierText.fontSize + _scoreMultiplierScalingRate);
 
         //Updates the score multiplier UI color
         UpdateMultiplierColor(multiplier); 
@@ -109,6 +109,11 @@ public class GameUIManager : MonoBehaviour
     private void UpdateMultiplierText(float multiplier)
     {
         _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
+    }
+
+    private void UpdateMultiplierSize(float newSize)
+    {
+        _scoreMultiplierText.fontSize = newSize;
     }
 
     public void UpdateMultiplierColor(float multiplier)
@@ -122,7 +127,7 @@ public class GameUIManager : MonoBehaviour
     public void ResetMultiplier()
     {
         UpdateMultiplierText(GameplayManagers.Instance.Score.GetStartingMultiplier());
-        _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize;
+        UpdateMultiplierSize(_scoreMultiplierStartingFontSize);
         UpdateMultiplierColor(GameplayManagers.Instance.Score.GetStartingMultiplier());
     }
 
