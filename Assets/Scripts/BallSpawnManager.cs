@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallSpawner : MonoBehaviour
+public class BallSpawnManager : MonoBehaviour
 {
     [Header("Variables")]
     [SerializeField] private float _launchPower;
@@ -26,12 +26,17 @@ public class BallSpawner : MonoBehaviour
     public void LaunchBall()
     {
         //Creates the ball
-        GameObject Ball = Instantiate(BallPrefab, _ballShooter.transform.position, Quaternion.identity);
+        GameObject Ball = CreateBall(_ballShooter.transform.position);
         //Adds the ball to the list of balls in scene
         AddBall(Ball);
 
         //Determines direction and multiplies that by the launch power
         Ball.GetComponent<BallPhysics>().OverrideBallForce( _launchPower * _ballShooter.GetComponent<BallShooter>().ShootBallDir());
+    }
+
+    public GameObject CreateBall(Vector2 spawnPos)
+    {
+        return Instantiate(BallPrefab, spawnPos, Quaternion.identity);
     }
 
     public void CheckBallCountIsZero()

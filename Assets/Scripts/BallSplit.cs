@@ -24,30 +24,38 @@ public class BallSplit : MonoBehaviour
             UniversalManager.Instance.Sound.PlaySFX("Laser 2");
             //SoundManager.Instance.PlaySFX("Laser 2");
 
-            SplitterHit(collision.gameObject.transform.position, collision.gameObject);
+            SplitterHit(collision.gameObject);
 
         }
     }
 
-    private void SplitterHit(Vector3 spawnLoc, GameObject oldBall)
+    private void SplitterHit( GameObject oldBall)
     {
-        SplitBall(spawnLoc, oldBall);
         DestroySplitter();
-        SwitchToDestroyedVisuals();
+        SplitBall(oldBall);
     }
 
-    void SplitBall(Vector3 spawnLoc, GameObject oldBall)
+    void SplitBall(GameObject oldBall)
     {
-        GameObject newBall = Instantiate(_ballPrefab, spawnLoc, Quaternion.identity);
+        GameObject newBall = Instantiate(_ballPrefab, oldBall.transform.position, Quaternion.identity);
+        
+        SetNewBallVelocity(newBall,oldBall);
+
+        GameplayManagers.Instance.Ball.AddBall(newBall);
+    }
+
+    void SetNewBallVelocity(GameObject newBall, GameObject oldBall)
+    {
         newBall.GetComponent<Rigidbody2D>().velocity = ballVelocity;
         ballXVelocity = oldBall.gameObject.GetComponent<Rigidbody2D>().velocity.x * -1;
         ballYVelocity = oldBall.gameObject.GetComponent<Rigidbody2D>().velocity.y;
-        ballVelocity = new Vector2 (ballXVelocity, ballYVelocity);
-        GameplayManagers.Instance.Ball.AddBall(newBall);
+        ballVelocity = new Vector2(ballXVelocity, ballYVelocity);
+        newBall.GetComponent<Rigidbody2D>().velocity = ballVelocity;
     }
 
     void DestroySplitter()
     {
+        SwitchToDestroyedVisuals();
         GetComponent<Collider2D>().enabled = false;
 
         GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime, null);
