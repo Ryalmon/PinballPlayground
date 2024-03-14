@@ -110,7 +110,6 @@ MonoBehaviour:
   _resetFadeInTime: 1
   _destroyTime: 2
   _detectionArea: {fileID: 9193157069710995436}
-  _dragArea: {fileID: 593139920983052117}
   _holdingLocation: {fileID: 2387247319312278465}
   _idleXVariability: 1
   _idleYVariability: 1
@@ -211,7 +210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5465482642243203541}
   - component: {fileID: 3795884989796494523}
-  - component: {fileID: 593139920983052117}
   - component: {fileID: -2079052407640379130}
   m_Layer: 0
   m_Name: SpaceShipParent
@@ -288,41 +286,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &593139920983052117
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408790924656567570}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: -1
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &-2079052407640379130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2408790924656567570}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
   m_Name: 

@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517f02f1b31ba744dabb64a0c69a00fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tokenFadeInTime: 0.5
   _placementAreaHitbox: {fileID: 0}

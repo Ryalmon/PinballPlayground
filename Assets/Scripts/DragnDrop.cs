@@ -19,17 +19,11 @@ public class DragnDrop : MonoBehaviour
 
     private Vector3 offset;
     private Vector3 originalPosition;
-
-    private SpawningObjects spawningObjects;
-    private GameStateManager gameStateManager;
     
     private void Start()
     {
-        spawningObjects = FindObjectOfType<SpawningObjects>();
-        gameStateManager = FindObjectOfType<GameStateManager>();
-
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, GameplayManagers.Instance.Placement.GetTokenFadeInTime(), null);
         originalPosition = transform.position;
-       
     }
 
     public void AssignPlacementData(DragTokenSO newPlacementData)
@@ -45,7 +39,7 @@ public class DragnDrop : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if (!dragging && gameStateManager.GPS != GameStateManager.GamePlayState.End)
+        if (!dragging && GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.End)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
@@ -141,10 +135,9 @@ public class DragnDrop : MonoBehaviour
 
         _placeableInterface.Placed();
 
-        //placeable.GetComponent<IPlaceable>().Placed();
         //spawningObjects.StartSpawnDelay(gameObject);
-        spawningObjects.PlaceableObjectPlaced(gameObject);
-        //spawningObjects.SpawnNewObject(gameObject);
+        GameplayManagers.Instance.Spawning.PlaceableObjectPlaced(gameObject);
+        
         Destroy(gameObject);
     }
 

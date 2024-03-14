@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
+    [Header("Variables")]
+    [SerializeField] private float _tokenFadeInTime;
     [SerializeField] Collider2D _placementAreaHitbox;
     private int _itemsBeingDragged = 0;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public Vector2 ClosestValidPlacementLocation(Vector2 inPos)
     {
@@ -38,5 +36,10 @@ public class PlacementManager : MonoBehaviour
         if (_itemsBeingDragged > 0)
             return true;
         return false;
+    }
+
+    public float GetTokenFadeInTime()
+    {
+        return _tokenFadeInTime;
     }
 }
