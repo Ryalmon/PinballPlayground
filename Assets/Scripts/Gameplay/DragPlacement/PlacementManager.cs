@@ -20,6 +20,11 @@ public class PlacementManager : MonoBehaviour
     public void IncreaseItemsBeingDragged()
     {
         _itemsBeingDragged++;
+        StartPlacementVisualProcess();
+    }
+
+    private void StartPlacementVisualProcess()
+    {
         GameplayManagers.Instance.UI.ShowPlacementRegion();
     }
 

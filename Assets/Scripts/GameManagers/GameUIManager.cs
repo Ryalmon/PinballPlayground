@@ -248,6 +248,13 @@ public class GameUIManager : MonoBehaviour
     private void EndOfRegionVisuals()
     {
         _placementRegionCoroutine = null;
+        CheckRestartPlacementRegionVisuals();
+    }
+
+    private void CheckRestartPlacementRegionVisuals()
+    {
+        if (GameplayManagers.Instance.Placement.AreItemsBeingDragged())
+            ShowPlacementRegion();
     }
     #endregion
 
