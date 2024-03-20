@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7450189046566895120}
   - component: {fileID: 6287696058199840124}
   m_Layer: 0
-  m_Name: BallRedirector[EARLY]
+  m_Name: BallRedirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1466d8cd1126e2d42ba4de02bb5f785b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _redirectDirection: {x: 0, y: 1}
+  _redirectDirection: {x: 0, y: 0.6}
   _redirectForce: 15
 --- !u!58 &6287696058199840124
 CircleCollider2D:
@@ -132,6 +132,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
