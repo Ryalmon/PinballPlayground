@@ -20,8 +20,14 @@ public class BallShooter : MonoBehaviour
     void Start()
     {
         transform.eulerAngles = _startRotation;
+        AssignEvents();
         StartCoroutine(Rotation());
         StartCoroutine(Rotate2());
+    }
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(ShowBallShooter);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(HideBallShooter);
     }
 
     public Vector2 ShootBallDir()
@@ -48,6 +54,15 @@ public class BallShooter : MonoBehaviour
             yield return new WaitForSeconds(_flipTime);
             _rotateSpeed *= -1;
         }
+    }
+
+    private void ShowBallShooter()
+    {
+        GetComponentInChildren<SpriteRenderer>().enabled = true;
+    }
+    private void HideBallShooter()
+    {
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     public Vector3 GetBallShootPoint()

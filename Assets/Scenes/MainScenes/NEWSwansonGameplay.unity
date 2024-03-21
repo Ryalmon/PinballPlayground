@@ -864,6 +864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
   _destroyTime: 0
+  _visuals: {fileID: 0}
 --- !u!212 &177096366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5821,6 +5822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
   _destroyTime: 0
+  _visuals: {fileID: 0}
 --- !u!212 &847273689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7809,7 +7811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205745658884146603, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: TimeRemaining
-      value: 5
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2893153971993569633, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14594,6 +14596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
   _destroyTime: 0
+  _visuals: {fileID: 0}
 --- !u!1 &3076047731789237232
 GameObject:
   m_ObjectHideFlags: 0
