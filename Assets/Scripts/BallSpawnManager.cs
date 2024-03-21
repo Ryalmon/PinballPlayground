@@ -26,7 +26,7 @@ public class BallSpawnManager : MonoBehaviour
     public void LaunchBall()
     {
         //Creates the ball
-        GameObject Ball = CreateBall(_ballShooter.transform.position);
+        GameObject Ball = CreateBall(_ballShooter.GetComponent<BallShooter>().GetBallShootPoint());
         //Adds the ball to the list of balls in scene
         AddBall(Ball);
 

@@ -14,7 +14,7 @@ public class BallShooter : MonoBehaviour
 
     [SerializeField] private GameObject _ballShootPoint;
     [SerializeField] private Vector3 _startRotation;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +22,6 @@ public class BallShooter : MonoBehaviour
         transform.eulerAngles = _startRotation;
         StartCoroutine(Rotation());
         StartCoroutine(Rotate2());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public Vector2 ShootBallDir()
@@ -54,5 +48,10 @@ public class BallShooter : MonoBehaviour
             yield return new WaitForSeconds(_flipTime);
             _rotateSpeed *= -1;
         }
+    }
+
+    public Vector3 GetBallShootPoint()
+    {
+        return _ballShootPoint.transform.position;
     }
 }
