@@ -61,6 +61,7 @@ public class BallSpawnManager : MonoBehaviour
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
         GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime, null);
+        GameplayManagers.Instance.Fade.StartTrailFadeOut(ball, _ballRemovalTime);
         Destroy(ball.gameObject, _ballRemovalTime);
     }
 

@@ -12,8 +12,6 @@ public class BallRedirector : MonoBehaviour
         BallPhysics bp = collision.gameObject.GetComponent<BallPhysics>();
         if (bp != null)
         {
-            //bp.RedirectBall(_redirectDirection);
-            //collision.gameObject.transform.position = transform.position;
             bp.OverrideBallForce(_redirectDirection * _redirectForce);
         }
     }

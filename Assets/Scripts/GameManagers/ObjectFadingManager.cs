@@ -54,4 +54,35 @@ public class ObjectFadingManager : MonoBehaviour
     {
         StopCoroutine(toStop);
     }
+
+    public void StartTrailFadeOut(GameObject fadeObj, float timeToFade)
+    {
+        StartCoroutine(FadeTrail(fadeObj, 1, 0, timeToFade, null));
+    }
+    private IEnumerator FadeTrail(GameObject fadeObj, float startA, float endA, float timeToFade, UnityEvent postFade)
+    {
+        float fadeProcessTimer = 0;
+        float currentAlpha;
+
+        while (fadeProcessTimer < 1)
+        {
+            fadeProcessTimer += Time.deltaTime / timeToFade;
+            currentAlpha = Mathf.Lerp(startA, endA, fadeProcessTimer);
+            ChangeTrailAlpha(fadeObj, currentAlpha);
+            yield return null;
+        }
+        if (postFade != null)
+            postFade.Invoke();
+    }
+
+    private void ChangeTrailAlpha(GameObject fadeObj, float newAlpha)
+    {
+        if (fadeObj == null) return;
+        //Color newColor = fadeObj.GetComponent<SpriteRenderer>().material.color;
+        Color newColor = fadeObj.GetComponent<SpriteRenderer>().color;
+        newColor = new Color(newColor.r, newColor.g, newColor.b, newAlpha);
+        //fadeObj.GetComponent<SpriteRenderer>().material.color = newColor;
+        fadeObj.GetComponent<TrailRenderer>().material.color = newColor;
+    }
 }
+
