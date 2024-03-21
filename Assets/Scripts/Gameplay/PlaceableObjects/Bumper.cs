@@ -7,6 +7,8 @@ public class Bumper : MonoBehaviour, IPlaceable
     [SerializeField] float _forceMultiplier;
     [Space]
     [SerializeField] float _destroyTime;
+    [Space]
+    [SerializeField] GameObject _visuals;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -34,7 +36,7 @@ public class Bumper : MonoBehaviour, IPlaceable
 
     public void DestroyPlacedObject()
     {
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, _destroyTime,null);
         Destroy(gameObject,_destroyTime);
     }
 

@@ -5838,11 +5838,11 @@ Transform:
   m_GameObject: {fileID: 852543504}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.47, y: 2.6, z: 2.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1191648920}
+  m_Father: {fileID: 1984194562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &852543506
 BoxCollider2D:
@@ -7741,6 +7741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2205745658884146603, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
+      propertyPath: TimeRemaining
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2893153971993569633, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7825,7 +7829,6 @@ Transform:
   - {fileID: 2086138435}
   - {fileID: 5854040937169211112}
   - {fileID: 1442186048}
-  - {fileID: 852543505}
   m_Father: {fileID: 735998625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197521057
@@ -13051,7 +13054,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -4.5, z: 0}
   m_LocalScale: {x: 0.375, y: 0.375, z: 0.375}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 852543505}
   m_Father: {fileID: 2052368119}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988835613
@@ -13604,7 +13608,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.5
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

@@ -14,6 +14,8 @@ public class SpawningObjects : MonoBehaviour
     [SerializeField] float _respawnObjectDelay;
 
     List<GameObject> _spawnPointsUsedBeforeGameStart = new List<GameObject>();
+
+    int _currentOrderInLayer = 0;
     private void Start()
     {
         AssignEvents();
@@ -95,5 +97,10 @@ public class SpawningObjects : MonoBehaviour
     {
         yield return new WaitForSeconds(_respawnObjectDelay);
         SpawnNewObject(oldObject);
+    }
+
+    public int GetCurrentObjectLayer()
+    {
+        return _currentOrderInLayer++;
     }
 }
