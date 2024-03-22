@@ -45,10 +45,15 @@ public class GameUIManager : MonoBehaviour
     [Space]
 
     [Header("Visuals")]
+    [Header("PlacementRegion")]
     [SerializeField] private GameObject _placementRegion;
     [SerializeField] private float _placementRegionFadeInTime;
     [SerializeField] private float _placementRegionFadeOutTime;
     private Coroutine _placementRegionCoroutine;
+    [Header("PlaceableCooldown")]
+    [SerializeField] private Animator _leftCooldownButton;
+    [SerializeField] private Animator _rightCooldownButton;
+    [Space]
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
@@ -65,6 +70,12 @@ public class GameUIManager : MonoBehaviour
     {
         AssignEvents();
         _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+            ActivateLeftCooldownCircle();
     }
 
     private void AssignEvents()
@@ -255,6 +266,18 @@ public class GameUIManager : MonoBehaviour
     {
         if (GameplayManagers.Instance.Placement.AreItemsBeingDragged())
             ShowPlacementRegion();
+    }
+    #endregion
+
+    #region Cooldown Circles
+    private void ActivateLeftCooldownCircle()
+    {
+        _leftCooldownButton.SetTrigger("StartAnim");
+    }
+
+    private void ActivateRightCooldownCircle()
+    {
+        _rightCooldownButton.SetTrigger("StartAnim");
     }
     #endregion
 
