@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour
 {
+    [SerializeField] private Button _playButton;
     private const int _gameplayScene = 1;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void PlayGame()
     {
+        _playButton.interactable = false;
         UniversalManager.Instance.Scene.LoadScene(_gameplayScene);
     }
 

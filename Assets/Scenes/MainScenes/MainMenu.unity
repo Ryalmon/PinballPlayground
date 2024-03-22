@@ -564,7 +564,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 350, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175549580
 MonoBehaviour:
@@ -642,8 +642,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 658840ebd1a952a4984ec8f784a0282c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3740,6 +3740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9fa6bc0f5551746a24ab0d78c8f3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playButton: {fileID: 247918771}
 --- !u!1001 &1657222661
 PrefabInstance:
   m_ObjectHideFlags: 0

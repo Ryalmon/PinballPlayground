@@ -8,6 +8,15 @@ public class FlipperManager : MonoBehaviour
     [SerializeField] List<Flippers> _leftFlippers = new List<Flippers>();
     [SerializeField] List<Flippers> _rightFlippers = new List<Flippers>();
 
+    private void Start()
+    {
+        AssignEvents();
+    }
+
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(DeactivateAllFlippers);
+    }
 
     public void AddToList(Flippers newFlipper, List<Flippers> flipList)
     {
@@ -16,6 +25,7 @@ public class FlipperManager : MonoBehaviour
 
     public void ActivateLeftFlippers()
     {
+        GameplayManagers.Instance.UI.LeftFlipperButtonPressed();
         //Goes through the list of left flippers and activates them
         foreach(Flippers currentFlipper in _leftFlippers)
         {
@@ -25,6 +35,7 @@ public class FlipperManager : MonoBehaviour
 
     public void DeactivateLeftFlippers()
     {
+        GameplayManagers.Instance.UI.LeftFlipperButtonPassive();
         //Goes through the list of left flippers and activates them
         foreach (Flippers currentFlipper in _leftFlippers)
         {
@@ -34,6 +45,7 @@ public class FlipperManager : MonoBehaviour
 
     public void ActivateRightFlippers()
     {
+        GameplayManagers.Instance.UI.RightFlipperButtonPressed();
         //Goes through the list of right flippers and activates them
         foreach (Flippers currentFlipper in _rightFlippers)
         {
@@ -43,6 +55,7 @@ public class FlipperManager : MonoBehaviour
 
     public void DeactivateRightFlippers()
     {
+        GameplayManagers.Instance.UI.RightFlipperButtonPassive();
         //Goes through the list of right flippers and activates them
         foreach (Flippers currentFlipper in _rightFlippers)
         {
@@ -50,13 +63,12 @@ public class FlipperManager : MonoBehaviour
         }
     }
 
-    /*    public void AttachButtons()
-        {
-            GameObject LeftButton = GameObject.Find("LeftFlipperButton");
-            LeftButton.GetComponent<Button>().onClick.AddListener(ActivateLeftFlippers);
-            if (LeftButton.GetComponent<Button>() != null)
-                Debug.Log("FoundLeftButton");
-        }*/
+    private void DeactivateAllFlippers()
+    {
+        DeactivateLeftFlippers();
+        DeactivateRightFlippers();
+    }
+
 
     public void ResetLists()
     {

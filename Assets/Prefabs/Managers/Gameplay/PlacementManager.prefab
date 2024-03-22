@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3523006466619858912
+--- !u!1 &781410236072116401
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4006629902198132567}
-  - component: {fileID: 1392444875373052009}
+  - component: {fileID: 6641476615924297778}
+  - component: {fileID: -3207309384395384413}
   m_Layer: 0
-  m_Name: SpawningObjectsManager
+  m_Name: PlacementManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4006629902198132567
+--- !u!4 &6641476615924297778
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3523006466619858912}
+  m_GameObject: {fileID: 781410236072116401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.98, y: -0.3151673, z: 0.028573172}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1392444875373052009
+--- !u!114 &-3207309384395384413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3523006466619858912}
+  m_GameObject: {fileID: 781410236072116401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6785de482547ce346a391aa3eb6eb0b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 517f02f1b31ba744dabb64a0c69a00fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Placeables:
-  - {fileID: 11400000, guid: 816073621762a1b4c940f6943df5c854, type: 2}
-  - {fileID: 11400000, guid: b15dc3eb23f51e149859c17e50519128, type: 2}
-  - {fileID: 11400000, guid: 59c2dda5d1802be4594297f0bc54d6e2, type: 2}
-  _placementToken: {fileID: 4197409166718960366, guid: 80117a5654b54d54098d74b35ef8a223, type: 3}
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  SpawnedObjects: []
-  _respawnObjectDelay: 8
+  _tokenFadeInTime: 0.5
+  _placementAreaHitbox: {fileID: 0}

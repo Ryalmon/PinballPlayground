@@ -10,9 +10,11 @@ public class GameplayManagers : MonoBehaviour
     public ScoreManager Score;
     public FlipperManager Flippers;
     public GameUIManager UI;
-    public BallSpawner Ball;
+    public BallSpawnManager Ball;
     public SpawningObjects Spawning;
     public ObjectFadingManager Fade;
+    public SpawnSplitter Splitter;
+    public PlacementManager Placement;
 
     // Start is called before the first frame update
     void Awake()

@@ -2,19 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 //using System;
 
 public class GameUIManager : MonoBehaviour
 {
     [Header("Gameplay")]
+    [Header("Text")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
     [SerializeField] TMP_Text _scoreMultiplierText;
     [Space]
+
+    [Header("TextData")]
     [SerializeField] Vector2 _scoreTextLocation;
     [SerializeField] float _roundTo2DigitsAt;
+    [SerializeField] float _scoreMultiplierScalingRate;
+    [SerializeField] private Gradient _gradient;
+    private float _scoreMultiplierStartingFontSize;
+    private string _roundScoreTo = "F1";
     [Space]
+
+    [Header("ScorePopup")]
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
     [SerializeField] Vector2 _scorePopupLocation;
@@ -22,17 +32,23 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _scorePopupYVariability;
     [SerializeField] float _scorePopupRate;
     [SerializeField] float _scorePopupRateScaler;
-    [Space]
-    [SerializeField] private GameObject BallLaunchButton;
     Queue<float> _scorePopupQueue = new Queue<float>();
     private Coroutine _scorePopupCoroutine;
-    private float _scoreMultiplierStartingFontSize;
-    private string _roundScoreTo = "F1";
     [Space]
-    [SerializeField] GameObject leftFlipperButton;
-    [SerializeField] GameObject rightFlipperButton;
-    [SerializeField] Sprite _buttonPassive;
-    [SerializeField] Sprite _buttonPressed;
+
+    [Header("Buttons")]
+    [SerializeField] private GameObject _ballLaunchButton;
+    [SerializeField] private GameObject _leftFlipperButton;
+    [SerializeField] private GameObject _rightFlipperButton;
+    [SerializeField] private Sprite _flipperButtonPassive;
+    [SerializeField] private Sprite _flipperButtonPressed;
+    [Space]
+
+    [Header("Visuals")]
+    [SerializeField] private GameObject _placementRegion;
+    [SerializeField] private float _placementRegionFadeInTime;
+    [SerializeField] private float _placementRegionFadeOutTime;
+    private Coroutine _placementRegionCoroutine;
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
@@ -54,7 +70,9 @@ public class GameUIManager : MonoBehaviour
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(GameEndUI);
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplier);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
     }
 
@@ -79,9 +97,38 @@ public class GameUIManager : MonoBehaviour
     public void UpdateMultiplierUI(float multiplier)
     {
         //Updates the score multiplier UI text
-        _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
+        UpdateMultiplierText(multiplier);
         //Updates the score multiplier UI size
-        _scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
+        //_scoreMultiplierText.fontSize = _scoreMultiplierStartingFontSize * multiplier;
+        UpdateMultiplierSize(_scoreMultiplierText.fontSize + _scoreMultiplierScalingRate);
+
+        //Updates the score multiplier UI color
+        UpdateMultiplierColor(multiplier); 
+    }
+
+    private void UpdateMultiplierText(float multiplier)
+    {
+        _scoreMultiplierText.text = multiplier.ToString("F1") + "x";
+    }
+
+    private void UpdateMultiplierSize(float newSize)
+    {
+        _scoreMultiplierText.fontSize = newSize;
+    }
+
+    public void UpdateMultiplierColor(float multiplier)
+    {
+        float colorGradientAmount = multiplier / (GameplayManagers.Instance.Score.GetStartingMultiplier() * GameplayManagers.Instance.Score.GetMaxMultiplier())
+            - (GameplayManagers.Instance.Score.GetStartingMultiplier() / GameplayManagers.Instance.Score.GetMaxMultiplier());
+
+        _scoreMultiplierText.color = _gradient.Evaluate(colorGradientAmount);
+    }
+
+    public void ResetMultiplier()
+    {
+        UpdateMultiplierText(GameplayManagers.Instance.Score.GetStartingMultiplier());
+        UpdateMultiplierSize(_scoreMultiplierStartingFontSize);
+        UpdateMultiplierColor(GameplayManagers.Instance.Score.GetStartingMultiplier());
     }
 
     public void GameEndUI()
@@ -91,12 +138,12 @@ public class GameUIManager : MonoBehaviour
 
     private IEnumerator GameEndUIProcess()
     {
+        _leftFlipperButton.SetActive(false);
+        _rightFlipperButton.SetActive(false);
+
         DisplayFinalScore();
         yield return new WaitForSeconds(_finalScoreWaitTime);
         _finalScoreDisplay.SetActive(false);
-
-        leftFlipperButton.SetActive(false);
-        rightFlipperButton.SetActive(false);
 
         if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
@@ -134,14 +181,82 @@ public class GameUIManager : MonoBehaviour
 
     public void SetLaunchButtonActive()
     {
-        BallLaunchButton.SetActive(true);
+        if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) 
+        return;
+        _ballLaunchButton.SetActive(true);
     }
 
     public void BallLaunchButtonPressed()
     {
-        BallLaunchButton.SetActive(false);
+        _ballLaunchButton.SetActive(false);
     }
 
+    #region FlipperButtons
+    public void LeftFlipperButtonPressed()
+    {
+        _leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+    }
+
+    public void LeftFlipperButtonPassive()
+    {
+        _leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+    }
+
+    public void RightFlipperButtonPressed()
+    {
+        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+    }
+
+    public void RightFlipperButtonPassive()
+    {
+        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+    }
+    #endregion
+
+    #region ItemPlacementZone
+    public void ShowPlacementRegion()
+    {
+        if (_placementRegionCoroutine != null)
+            return;
+
+        UnityEvent postFadeIn = new UnityEvent();
+        postFadeIn.AddListener(StartRegionProcess);
+
+        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectIn(_placementRegion,_placementRegionFadeInTime,postFadeIn);
+    }
+
+    private void StartRegionProcess()
+    {
+        StartCoroutine(ShowPlacementRegionProcess());
+    }
+
+    private IEnumerator ShowPlacementRegionProcess()
+    {
+        while (GameplayManagers.Instance.Placement.AreItemsBeingDragged() && _placementRegionCoroutine != null)
+            yield return null;
+        HidePlacementRegion();
+    }
+
+    public void HidePlacementRegion()
+    {
+        UnityEvent postFadeOut = new UnityEvent();
+        postFadeOut.AddListener(EndOfRegionVisuals);
+        _placementRegionCoroutine = GameplayManagers.Instance.Fade.FadeGameObjectOut(_placementRegion, _placementRegionFadeOutTime, postFadeOut);
+        
+    }
+
+    private void EndOfRegionVisuals()
+    {
+        _placementRegionCoroutine = null;
+        CheckRestartPlacementRegionVisuals();
+    }
+
+    private void CheckRestartPlacementRegionVisuals()
+    {
+        if (GameplayManagers.Instance.Placement.AreItemsBeingDragged())
+            ShowPlacementRegion();
+    }
+    #endregion
 
     private void DisplayFinalScore()
     {
