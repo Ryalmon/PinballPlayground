@@ -32,7 +32,12 @@ public class ScoreBoardText : MonoBehaviour
 
     private void CheckForRecentScore()
     {
-
+        if (UniversalManager.Instance.Save.ReturnRecentScorePos() == _scorePosition)
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("Highlight");
+            //Debug.Log("highlight");
+        }
     }
     public IEnumerator TextUpdate()
     {

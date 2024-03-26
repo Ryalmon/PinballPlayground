@@ -22,6 +22,7 @@ public class MainMenuButtons : MonoBehaviour
     public void PlayGame()
     {
         _playButton.interactable = false;
+        UniversalManager.Instance.Save.ResetMostRecentScore();
         UniversalManager.Instance.Scene.LoadScene(_gameplayScene);
     }
 

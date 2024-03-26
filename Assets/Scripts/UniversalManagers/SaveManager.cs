@@ -61,6 +61,16 @@ public class SaveManager : MonoBehaviour
         return GSD.SaveScore.Length;
     }
 
+    public int ReturnRecentScorePos()
+    {
+        return _mostRecentScorePos;
+    }
+
+    public void ResetMostRecentScore()
+    {
+        _mostRecentScorePos = -1;
+    }
+
 /*    public string[] ReturnPlayerList()
     {
         return GSD.SaveNames;

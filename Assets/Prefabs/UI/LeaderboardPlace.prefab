@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
   m_sharedMaterial: {fileID: 643703137179681282, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
@@ -280,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2395077813618398518}
   - component: {fileID: 5997117597661032741}
+  - component: {fileID: 4133809022133421946}
   m_Layer: 5
   m_Name: LeaderboardPlace
   m_TagString: Untagged
@@ -323,3 +322,24 @@ MonoBehaviour:
   _scorePosition: 1
   _nameText: {fileID: 7343363981973838544}
   _scoreText: {fileID: 3582781218780650851}
+--- !u!95 &4133809022133421946
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219169969371752676}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e99de47c212a2340a8c7b4d16fe2486, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
