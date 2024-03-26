@@ -7,6 +7,7 @@ public class SaveManager : MonoBehaviour
 {
     public GameSaveData GSD;
     private string _path;
+    private int _mostRecentScorePos = -1;
 
     void Awake()
     {
@@ -98,6 +99,7 @@ public class SaveManager : MonoBehaviour
         if(InBoundsOfArray(pos+1))
         {
             SavePlayerValues(name, score, pos + 1);
+            _mostRecentScorePos = pos + 1;
             SaveText();
         }
         
