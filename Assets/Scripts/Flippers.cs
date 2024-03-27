@@ -12,20 +12,11 @@ public class Flippers : MonoBehaviour
     [SerializeField] private float _downSpeed;
     [SerializeField] private bool _rightFlipper;
 
-    public Image flipperButton;
-    public Sprite buttonPressed;
-    public Sprite buttonUnpressed;
-
     [SerializeField] private bool hold;
     private Coroutine _flipCoroutine;
     private Coroutine _unflipCoroutine;
-    /*    [SerializeField] private float _upperLimit;
-    private float _lowerLimit;*/
-    //[SerializeField] private Quaternion _upperLimit;
+
     [SerializeField] private Quaternion _startingRotation;
-    //private Quaternion _lowerLimit;
-    /*    [SerializeField] HingeJoint2D _hJ;
-        [SerializeField] JointMotor2D _motorJoint;*/
 
     private void Start()
     {
@@ -52,20 +43,13 @@ public class Flippers : MonoBehaviour
 
     public void UnFlip()
     {
-        //Checks that you are not currently flipping
-        /*if (_unflipCoroutine != null)
-        {
-            return;
-        }
-        //Assignes the coroutine value and starts the process of flipping
-        _unflipCoroutine = StartCoroutine(UnFlipProcess());*/
+        hold = false;
     }
 
     IEnumerator FlipProcess()
     {
         hold = true;
-        SoundManager.Instance.PlaySFX("FlipUp");
-        flipperButton.sprite = buttonPressed;
+        UniversalManager.Instance.Sound.PlaySFX("FlipUp");
         float tempTime = 0;
         while (tempTime < _flipUpTime)
         {
@@ -77,7 +61,7 @@ public class Flippers : MonoBehaviour
         }
         //Stops the flipping to wait
         rb.angularVelocity = 0;
-        while (hold == true)
+        while (hold)
             yield return null;
         StartCoroutine(UnFlipProcess());
         /*if (hold == false && done == true)
@@ -85,16 +69,11 @@ public class Flippers : MonoBehaviour
             StartCoroutine(UnFlipProcess());
         }*/
     }
-    public void TurnFalse()
-    {
-        hold = false;
-        flipperButton.sprite = buttonUnpressed;
-    }
     IEnumerator UnFlipProcess()
     {
         float tempTime = 0;
 
-        SoundManager.Instance.PlaySFX("FlipDown");
+        UniversalManager.Instance.Sound.PlaySFX("FlipDown");
         while (tempTime < _flipDownTime)
         {
             //Flips the flippers down until a set time has passed

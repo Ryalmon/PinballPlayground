@@ -18,11 +18,11 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _destroyTime;
     //private float _storedXVelocity;
     private Vector2 _storedVelocity;
+    private bool fadingOut = false;
     [Space]
 
     [Header("Refrences")]
     [SerializeField] Collider2D _detectionArea;
-    [SerializeField] Collider2D _dragArea;
     [SerializeField] GameObject _holdingLocation;
 
     private GameObject _dragObject;
@@ -35,9 +35,10 @@ public class SpaceShip : MonoBehaviour, IPlaceable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE)
+        if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE && !fadingOut)
         {
-            SoundManager.Instance.PlaySFX("Hit");
+            UniversalManager.Instance.Sound.PlaySFX("Hit");
+            //SoundManager.Instance.PlaySFX("Hit");
             ChangeShipState(SpaceShipState.DRAGGING);
             DragObject(collision.gameObject);
         }
@@ -107,12 +108,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         _dragObjectPhysics.PhysicsEnabled(true);
         _dragObjectPhysics.RemoveParent();
 
-        if (Mathf.Abs(_storedVelocity.x) < _minSpeedToAddXVariability)
-            _storedVelocity += new Vector2 (Random.Range(-_releaseXVariability, _releaseXVariability) , 0 );
-        if (_storedVelocity.y < _releaseYForce)
-            _storedVelocity = new Vector2(_storedVelocity.x, _releaseYForce);
-        Vector2 releaseBallForce = new Vector2(_storedVelocity.x, _storedVelocity.y);
-        _dragObjectPhysics.OverrideBallForce(releaseBallForce);
+        _dragObjectPhysics.OverrideBallForce(DetermineReleaseForce());
 
         _dragObject = null;
         _dragObjectPhysics = null;
@@ -163,13 +159,20 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             
     }
 
+    private Vector2 DetermineReleaseForce()
+    {
+        if (Mathf.Abs(_storedVelocity.x) < _minSpeedToAddXVariability)
+            _storedVelocity += new Vector2 (Random.Range(-_releaseXVariability, _releaseXVariability) , 0 );
+        if (_storedVelocity.y < _releaseYForce)
+            _storedVelocity = new Vector2(_storedVelocity.x, _releaseYForce);
+
+        return new Vector2(_storedVelocity.x, _storedVelocity.y);
+    }
+
     public void Placed()
     {
         _detectionArea.enabled = true;
-        _dragArea.enabled = false;
-        GetComponentInParent<Drift>().enabled = true;
         StartIdleMovement();
-        GetComponent<SpaceShip>().enabled = true;
     }
 
     public void DestroyPlacedObject()
@@ -180,6 +183,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
             ReleaseObject();
             return;
         }
+        fadingOut = true;
         GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
         Destroy(transform.parent.gameObject,_destroyTime);
     }

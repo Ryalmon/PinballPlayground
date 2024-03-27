@@ -5,30 +5,30 @@ using UnityEngine.InputSystem;
 
 public class DragnDrop : MonoBehaviour
 {
-    [SerializeField] DragTokenSO _placementData;
-    [SerializeField] GameObject placeable;
+    [SerializeField] float _minDistanceForValidPlacement;
+    [Space]
+
+    [SerializeField] float _travelToSpawnTime;
+    [SerializeField] float _minDistForPlacement;
+    [SerializeField] float _minSpeedDist;
+    [SerializeField] float _maxSpeedDist;
+
+    private DragTokenSO _placementData;
 
     private bool dragging = false;
 
     private Vector3 offset;
     private Vector3 originalPosition;
-
-    private SpawningObjects spawningObjects;
-    private GameStateManager gameStateManager;
     
     private void Start()
     {
-        spawningObjects = FindObjectOfType<SpawningObjects>();
-        gameStateManager = FindObjectOfType<GameStateManager>();
-
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, GameplayManagers.Instance.Placement.GetTokenFadeInTime(), null);
         originalPosition = transform.position;
-       
     }
 
     public void AssignPlacementData(DragTokenSO newPlacementData)
     {
-        _placementData = newPlacementData;
-        placeable = _placementData._objectToSpawn;
+        _placementData = newPlacementData; 
         UpdatePlacementVisuals();
     }
 
@@ -39,7 +39,7 @@ public class DragnDrop : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if (!dragging && gameStateManager.GPS != GameStateManager.GamePlayState.End)
+        if (!dragging && GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.End)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
@@ -49,6 +49,7 @@ public class DragnDrop : MonoBehaviour
         if (!dragging)
         {
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
         }
     }
 
@@ -61,19 +62,24 @@ public class DragnDrop : MonoBehaviour
     
     private void AttemptPlacement()
     {
+        GameplayManagers.Instance.Placement.DecreaseItemsBeingDragged();
+
         if (!CheckLocationValidity(transform.position))
         {
             transform.position = originalPosition;
         }
         else
         {
-            ValidPlacement();
+            PlaceItem();
         }
     }
 
-    private bool CheckLocationValidity(Vector3 position)
+    private bool CheckLocationValidity(Vector2 positionToCheck)
     {
-        Collider2D[] colliders = Physics2D.OverlapPointAll(position);
+        if (Vector2.Distance(positionToCheck, originalPosition) > _minDistanceForValidPlacement)
+            return true;
+        return false;
+        /*Collider2D[] colliders = Physics2D.OverlapPointAll(position);
         foreach (Collider2D collider in colliders)
         {
             if (collider.isTrigger && collider.gameObject != gameObject)
@@ -81,12 +87,46 @@ public class DragnDrop : MonoBehaviour
                 return true;
             }
         }
-        return false;   
+        return false;*/   
     }
 
+    /*
     private void ValidPlacement()
     {
+        StartCoroutine(MoveTokenToNewPos(new Vector3(transform.position.x,-4, transform.position.z)));
+    }*/
+
+    private void PlaceItem()
+    {
+        Vector2 validPlacementLocation = GameplayManagers.Instance.Placement.ClosestValidPlacementLocation(transform.position);
+        StartCoroutine(MoveTokenToNewPos(validPlacementLocation));
+    }
+
+    private IEnumerator MoveTokenToNewPos(Vector3 targetPos)
+    {
+        float progress = 0;
+        Vector3 startPos = transform.position;
+        float currentDist = Vector2.Distance(transform.position, targetPos);
+
+        while (currentDist > _minDistForPlacement)
+        {
+            currentDist = Vector2.Distance(transform.position, targetPos);
+            float speedFromDistance = Mathf.Clamp(currentDist, _minSpeedDist, _maxSpeedDist);
+
+            progress += Time.deltaTime / _travelToSpawnTime * speedFromDistance;
+            transform.position = Vector3.Lerp(startPos, targetPos, progress);
+            yield return null;
+                
+        }
+
+        CreateTokenPlaceable();
+    }
+
+    private void CreateTokenPlaceable()
+    {
         GameObject spawnedPlaceable = Instantiate(_placementData._objectToSpawn, transform.position, Quaternion.identity);
+        spawnedPlaceable.GetComponentInChildren<SpriteRenderer>().sortingOrder = 
+            GameplayManagers.Instance.Spawning.GetCurrentObjectLayer();
 
         IPlaceable _placeableInterface;
         if (spawnedPlaceable.GetComponent<IPlaceable>() != null)
@@ -97,9 +137,9 @@ public class DragnDrop : MonoBehaviour
 
         _placeableInterface.Placed();
 
-        //placeable.GetComponent<IPlaceable>().Placed();
-        spawningObjects.StartSpawnDelay(gameObject);
-        //spawningObjects.SpawnNewObject(gameObject);
+        //spawningObjects.StartSpawnDelay(gameObject);
+        GameplayManagers.Instance.Spawning.PlaceableObjectPlaced(gameObject);
+        
         Destroy(gameObject);
     }
 

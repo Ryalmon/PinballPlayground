@@ -17,6 +17,12 @@ public class SpawnSplitter : MonoBehaviour
     void Start()
     {
         currentTime = SpawnCountdown;
+        AssignEvents();
+    }
+
+    private void AssignEvents()
+    {
+        GameplayManagers.Instance.State.GetGameStartEvent().AddListener(StartSplitterCreation);
     }
 
     void CreateSplitter()
@@ -50,10 +56,14 @@ public class SpawnSplitter : MonoBehaviour
 
     }
 
-
-    private void Update()
+    public void StartSplitterCreation()
     {
-        if (GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.Play)
+        StartCoroutine(SplitterCreationCooldown());
+    }
+
+    private IEnumerator SplitterCreationCooldown()
+    {
+        while(GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.Play)
         {
             currentTime -= Time.deltaTime;
 
@@ -62,8 +72,8 @@ public class SpawnSplitter : MonoBehaviour
                 currentTime = SpawnCountdown;
                 CreateSplitter();
             }
+            yield return null;
         }
-    
     }
 
 }

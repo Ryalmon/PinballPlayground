@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class BallShooter : MonoBehaviour
 {
     private Vector3 currentRotation;
+    [SerializeField] private GameObject _visuals;
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private float _flipTime;
 
@@ -14,25 +15,26 @@ public class BallShooter : MonoBehaviour
 
     [SerializeField] private GameObject _ballShootPoint;
     [SerializeField] private Vector3 _startRotation;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         transform.eulerAngles = _startRotation;
+        AssignEvents();
         StartCoroutine(Rotation());
         StartCoroutine(Rotate2());
     }
-
-    // Update is called once per frame
-    void Update()
+    private void AssignEvents()
     {
-        
+        GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(ShowBallShooter);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(HideBallShooter);
     }
 
     public Vector2 ShootBallDir()
     {
-        SoundManager.Instance.PlaySFX("Launch");
+        UniversalManager.Instance.Sound.PlaySFX("Launch");
+        //SoundManager.Instance.PlaySFX("Launch");
         return (_ballShootPoint.transform.position - transform.position).normalized;
     }
 
@@ -53,5 +55,21 @@ public class BallShooter : MonoBehaviour
             yield return new WaitForSeconds(_flipTime);
             _rotateSpeed *= -1;
         }
+    }
+
+    private void ShowBallShooter()
+    {
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(_visuals, .5f, null);
+        //GetComponentInChildren<SpriteRenderer>().enabled = true;
+    }
+    private void HideBallShooter()
+    {
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, .5f, null);
+        //GetComponentInChildren<SpriteRenderer>().enabled = false;
+    }
+
+    public Vector3 GetBallShootPoint()
+    {
+        return _ballShootPoint.transform.position;
     }
 }

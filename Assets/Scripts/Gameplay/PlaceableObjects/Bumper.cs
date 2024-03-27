@@ -7,6 +7,8 @@ public class Bumper : MonoBehaviour, IPlaceable
     [SerializeField] float _forceMultiplier;
     [Space]
     [SerializeField] float _destroyTime;
+    [Space]
+    [SerializeField] GameObject _visuals;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,14 +18,13 @@ public class Bumper : MonoBehaviour, IPlaceable
 
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision));
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
-            SoundManager.Instance.PlaySFX("Bounce");
+            UniversalManager.Instance.Sound.PlaySFX("Bounce");
+            //SoundManager.Instance.PlaySFX("Bounce");
+            Animator animator = GetComponent<Animator>();
+            if (animator == null) return;
+            animator.SetTrigger("Hit");
         }
     }
-
-    /*private Vector2 DetermineShootDirection(Vector2 otherObject)
-    {
-        return (otherObject - new Vector2(transform.position.x, transform.position.y)).normalized * _forceMultiplier;
-    }*/
 
     private Vector2 DetermineShootDirection(Collision2D collision)
     {
@@ -38,7 +39,7 @@ public class Bumper : MonoBehaviour, IPlaceable
 
     public void DestroyPlacedObject()
     {
-        GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, _destroyTime,null);
         Destroy(gameObject,_destroyTime);
     }
 

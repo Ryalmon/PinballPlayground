@@ -53,8 +53,14 @@ TagManager:
   - name: GameBack
     uniqueID: 805626411
     locked: 0
+  - name: PlacementZone
+    uniqueID: 2282680909
+    locked: 0
   - name: SideBumper
     uniqueID: 2012120919
+    locked: 0
+  - name: BallRedirector
+    uniqueID: 3388900661
     locked: 0
   - name: BallSplitter
     uniqueID: 548764367

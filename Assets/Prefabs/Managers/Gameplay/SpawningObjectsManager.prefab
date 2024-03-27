@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4006629902198132567}
   - component: {fileID: 1392444875373052009}
-  - component: {fileID: 8203163027244516565}
   m_Layer: 0
   m_Name: SpawningObjectsManager
   m_TagString: Untagged
@@ -45,10 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6785de482547ce346a391aa3eb6eb0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawnables:
-  - {fileID: 5825183760435697442, guid: 4c5b09192473a214e9ee97f5d8b26b3e, type: 3}
-  - {fileID: 4158817482814993248, guid: 3adc74b1a405eff4c9b313b4440d1423, type: 3}
-  - {fileID: 2408790924656567570, guid: ea1dd6e0e7751de46b154e239effacb9, type: 3}
   Placeables:
   - {fileID: 11400000, guid: 816073621762a1b4c940f6943df5c854, type: 2}
   - {fileID: 11400000, guid: b15dc3eb23f51e149859c17e50519128, type: 2}
@@ -59,48 +54,3 @@ MonoBehaviour:
   - {fileID: 0}
   SpawnedObjects: []
   _respawnObjectDelay: 8
---- !u!61 &8203163027244516565
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3523006466619858912}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9, y: 4}
-  m_EdgeRadius: 0
