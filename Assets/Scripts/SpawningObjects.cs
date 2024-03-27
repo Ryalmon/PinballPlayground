@@ -12,17 +12,33 @@ public class SpawningObjects : MonoBehaviour
     [SerializeField] List<Transform> SpawnPoints = new List<Transform>();
     [SerializeField] List<GameObject> SpawnedObjects = new List<GameObject>();
     [SerializeField] float _respawnObjectDelay;
+
+    //[SerializeField] List<DragTokenSO> ShuffledTokens = new List<DragTokenSO>();
+    [SerializeField] Queue<DragTokenSO> ShuffledTokens = new Queue<DragTokenSO>();
+
     private void Start()
     {
+        ShuffleTokens();
         ObjectsSpawn(); 
+    }
+
+    private void ShuffleTokens()
+    {
+        List<DragTokenSO> tempTokens = new List<DragTokenSO>(Placeables);
+        while (tempTokens.Count > 0)
+        {
+            int index = Random.Range(0, tempTokens.Count);
+            DragTokenSO token = tempTokens[index];
+            tempTokens.RemoveAt(index);
+            ShuffledTokens.Enqueue(token);
+        }
     }
     private void ObjectsSpawn()
     {
         for (int i = 0; i < SpawnPoints.Count; i++)
         {
             /*GameObject gameObject = Spawnables[Random.Range(0, Spawnables.Count)];
-            GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);*/
-
+            GameObject newObject = Instantiate(gameObject, SpawnPoints[i].position, Quaternion.identity);*/   
             GameObject newGameObj = CreateSpawnedObj(i);
             SpawnedObjects.Add(newGameObj);
         }
@@ -41,11 +57,19 @@ public class SpawningObjects : MonoBehaviour
             SpawnedObjects[index] = newGameObj;
         }
     }
-
     private GameObject CreateSpawnedObj(int index)
     {
+        if (ShuffledTokens.Count == 0)
+        {
+            ShuffleTokens();
+        }
+
+        DragTokenSO nextToken = ShuffledTokens.Dequeue();
+        ShuffledTokens.Enqueue(nextToken);
+
         GameObject newGameObj = Instantiate(_placementToken, SpawnPoints[index].position, Quaternion.identity);
-        newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
+        //newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
+        newGameObj.GetComponent<DragnDrop>().AssignPlacementData(nextToken);
         return newGameObj;
     }
 
