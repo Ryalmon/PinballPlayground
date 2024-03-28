@@ -4005,45 +4005,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906001218}
     m_Modifications:
-    - target: {fileID: 1729461158070336910, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.481
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729461158070336910, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.147
-      objectReference: {fileID: 0}
     - target: {fileID: 6524455004322170659, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
       propertyPath: m_Name
       value: FlipperRight
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: _rightFlipper
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: buttonPressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: flipperButton
-      value: 
-      objectReference: {fileID: 1792820190}
-    - target: {fileID: 7095757312968965981, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: buttonUnpressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4084,10 +4048,6 @@ PrefabInstance:
     - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 8aeeec9b1bf290f4cbacb5d8137d10d9, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
