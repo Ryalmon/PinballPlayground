@@ -124,6 +124,8 @@ public class DragnDrop : MonoBehaviour
 
     private void CreateTokenPlaceable()
     {
+        GameplayManagers.Instance.Spawning.ReshuffleSpecificToken(_placementData);
+
         GameObject spawnedPlaceable = Instantiate(_placementData._objectToSpawn, transform.position, Quaternion.identity);
         spawnedPlaceable.GetComponentInChildren<SpriteRenderer>().sortingOrder = 
             GameplayManagers.Instance.Spawning.GetCurrentObjectLayer();
