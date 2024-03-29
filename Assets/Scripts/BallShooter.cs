@@ -16,20 +16,29 @@ public class BallShooter : MonoBehaviour
     [SerializeField] private GameObject _ballShootPoint;
     [SerializeField] private Vector3 _startRotation;
 
+    private Coroutine rotate1;
+    private Coroutine rotate2;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.eulerAngles = _startRotation;
         AssignEvents();
-        StartCoroutine(Rotation());
-        StartCoroutine(Rotate2());
+        rotate1 = StartCoroutine(Rotation());
+        rotate2 = StartCoroutine(Rotate2());
     }
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(ShowBallShooter);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(FireAnimation);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(HideBallShooter);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(StopRotation);
+    }
+
+    private void StopRotation()
+    {
+        StopCoroutine(rotate1);
+        StopCoroutine(rotate2);
     }
 
     public Vector2 ShootBallDir()
@@ -67,13 +76,18 @@ public class BallShooter : MonoBehaviour
 
     private void ShowBallShooter()
     {
+        _visuals.transform.eulerAngles = new Vector3(0, 0, 90);
         GameplayManagers.Instance.Fade.FadeGameObjectIn(_visuals, .5f, null);
         //GetComponentInChildren<SpriteRenderer>().enabled = true;
+        _rotateSpeed = 90;
+        rotate1 = StartCoroutine(Rotation());
+        rotate2 = StartCoroutine(Rotate2());
     }
     private void HideBallShooter()
     {
         GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, .5f, null);
         //GetComponentInChildren<SpriteRenderer>().enabled = false;
+        
     }
 
     public Vector3 GetBallShootPoint()
