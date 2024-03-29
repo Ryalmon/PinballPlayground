@@ -275,12 +275,12 @@ public class GameUIManager : MonoBehaviour
     #endregion
 
     #region Cooldown Circles
-    private void ActivateLeftCooldownCircle()
+    public void ActivateLeftCooldownCircle()
     {
         _leftCooldownButton.SetTrigger("StartAnim");
     }
 
-    private void ActivateRightCooldownCircle()
+    public void ActivateRightCooldownCircle()
     {
         _rightCooldownButton.SetTrigger("StartAnim");
     }
