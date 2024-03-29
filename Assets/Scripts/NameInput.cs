@@ -47,6 +47,7 @@ public class NameInput : MonoBehaviour
     {
         UniversalManager.Instance.Save.PlaceScoreInArray(Name,GameplayManagers.Instance.Score.CurrentScore, UniversalManager.Instance.Save.ReturnArrayLength()-1);
         GameplayManagers.Instance.State.EndScene();
+        _enterButton.interactable = false;
     }
 
     private void CheckInteractableStatus()

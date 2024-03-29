@@ -83,6 +83,7 @@ public class ObjectFadingManager : MonoBehaviour
         newColor = new Color(newColor.r, newColor.g, newColor.b, newAlpha);
         //fadeObj.GetComponent<SpriteRenderer>().material.color = newColor;
         fadeObj.GetComponent<TrailRenderer>().material.color = newColor;
+        //fadeObj.GetComponent<TrailRenderer>().colorGradient.co
     }
 }
 

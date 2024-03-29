@@ -45,18 +45,26 @@ public class GameUIManager : MonoBehaviour
     [Space]
 
     [Header("Visuals")]
+    [Header("PlacementRegion")]
     [SerializeField] private GameObject _placementRegion;
     [SerializeField] private float _placementRegionFadeInTime;
     [SerializeField] private float _placementRegionFadeOutTime;
     private Coroutine _placementRegionCoroutine;
+    [Header("PlaceableCooldown")]
+    [SerializeField] private Animator _leftCooldownButton;
+    [SerializeField] private Animator _rightCooldownButton;
+    [Space]
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
     [SerializeField] TMP_Text _finalScoreText;
     [Space]
-    [SerializeField] GameObject _inputKeyboardDisplay;
+    [SerializeField] GameObject _CongratsGameEndDisplay;
+    [SerializeField] GameObject _KeyboardDisplay;
 
     [Space]
+    [SerializeField] float _startTimeForEnd;
+    [SerializeField] float _waitTimeAfterScore;
     [SerializeField] float _finalScoreWaitTime;
 
 
@@ -65,6 +73,12 @@ public class GameUIManager : MonoBehaviour
     {
         AssignEvents();
         _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+            ActivateLeftCooldownCircle();
     }
 
     private void AssignEvents()
@@ -141,16 +155,18 @@ public class GameUIManager : MonoBehaviour
         _leftFlipperButton.SetActive(false);
         _rightFlipperButton.SetActive(false);
 
+        yield return new WaitForSeconds(_startTimeForEnd);
         DisplayFinalScore();
-        yield return new WaitForSeconds(_finalScoreWaitTime);
-        _finalScoreDisplay.SetActive(false);
+        yield return new WaitForSeconds(_waitTimeAfterScore);
 
         if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
-            DisplayKeyboard();
+            DisplayCongrats();
+            DisplayLeaderboardGameEnd();
         }
         else
         {
+            yield return new WaitForSeconds(_finalScoreWaitTime);
             GameplayManagers.Instance.State.EndScene();
         }
     }
@@ -258,16 +274,33 @@ public class GameUIManager : MonoBehaviour
     }
     #endregion
 
+    #region Cooldown Circles
+    private void ActivateLeftCooldownCircle()
+    {
+        _leftCooldownButton.SetTrigger("StartAnim");
+    }
+
+    private void ActivateRightCooldownCircle()
+    {
+        _rightCooldownButton.SetTrigger("StartAnim");
+    }
+    #endregion
+
     private void DisplayFinalScore()
     {
         _finalScoreText.text = GameplayManagers.Instance.Score.CurrentScore.ToString();
         _finalScoreDisplay.SetActive(true);
     }
 
-    private void DisplayKeyboard()
+    private void DisplayCongrats()
+    {
+        _CongratsGameEndDisplay.SetActive(true);
+    }
+
+    private void DisplayLeaderboardGameEnd()
     {
         //Debug.Log("DisplayKeyboard");
-        _inputKeyboardDisplay.SetActive(true);
+        _KeyboardDisplay.SetActive(true);
     }
 
     public Vector2 GetScoreTextLocation()

@@ -147,45 +147,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 906001218}
     m_Modifications:
-    - target: {fileID: 1729461158070336910, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.621
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729461158070336910, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.164
-      objectReference: {fileID: 0}
     - target: {fileID: 6524455004322170659, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
       propertyPath: m_Name
       value: FlipperLeft
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: buttonPressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
-    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: flipperButton
-      value: 
-      objectReference: {fileID: 189015883}
-    - target: {fileID: 7095757312968965981, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: buttonUnpressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
-    - target: {fileID: 7347470351037366829, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.90000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.90000004
       objectReference: {fileID: 0}
     - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -226,10 +190,6 @@ PrefabInstance:
     - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920425251821717986, guid: 1be31b6ca9608634cac0b08c4bbf6b85, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -734,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
   _destroyTime: 0
+  _visuals: {fileID: 0}
 --- !u!212 &177096366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -773,7 +734,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 168427789
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -4872,6 +4833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9fa6bc0f5551746a24ab0d78c8f3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playButton: {fileID: 0}
 --- !u!114 &711346476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5807,6 +5769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
   _destroyTime: 0
+  _visuals: {fileID: 0}
 --- !u!212 &847273689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5846,7 +5809,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 168427789
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -7211,17 +7174,6 @@ Transform:
   - {fileID: 711346479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1039923384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5192401535831067026, guid: 53a3aeb82f7839d4583b9c47cca34f76, type: 3}
-  m_PrefabInstance: {fileID: 7071959938456312137}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c1a05ad8f46414eb89f87206d0faa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1039923385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6340566386142125359, guid: 53a3aeb82f7839d4583b9c47cca34f76, type: 3}
@@ -13189,9 +13141,11 @@ MonoBehaviour:
   Score: {fileID: 2001141391}
   Flippers: {fileID: 1799912070}
   UI: {fileID: 880333033}
-  Ball: {fileID: 1039923384}
+  Ball: {fileID: 0}
   Spawning: {fileID: 1478141794825186428}
   Fade: {fileID: 2168972681474543914}
+  Splitter: {fileID: 0}
+  Placement: {fileID: 0}
 --- !u!1 &2009277764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14263,6 +14217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
   _destroyTime: 0
+  _visuals: {fileID: 0}
 --- !u!1 &3076047731789237232
 GameObject:
   m_ObjectHideFlags: 0
@@ -14321,7 +14276,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 168427789
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}

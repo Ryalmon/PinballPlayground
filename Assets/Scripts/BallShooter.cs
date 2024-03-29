@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class BallShooter : MonoBehaviour
 {
     private Vector3 currentRotation;
+    [SerializeField] private GameObject _visuals;
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private float _flipTime;
 
@@ -27,6 +28,7 @@ public class BallShooter : MonoBehaviour
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(ShowBallShooter);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(FireAnimation);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(HideBallShooter);
     }
 
@@ -56,13 +58,22 @@ public class BallShooter : MonoBehaviour
         }
     }
 
+
+    public void FireAnimation()
+    {
+        Animator animator = GetComponentInChildren<Animator>();
+        animator.SetTrigger("Fire");
+    }
+
     private void ShowBallShooter()
     {
-        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        GameplayManagers.Instance.Fade.FadeGameObjectIn(_visuals, .5f, null);
+        //GetComponentInChildren<SpriteRenderer>().enabled = true;
     }
     private void HideBallShooter()
     {
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, .5f, null);
+        //GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     public Vector3 GetBallShootPoint()

@@ -20,6 +20,9 @@ public class Bumper : MonoBehaviour, IPlaceable
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
             UniversalManager.Instance.Sound.PlaySFX("Bounce");
             //SoundManager.Instance.PlaySFX("Bounce");
+            Animator animator = GetComponent<Animator>();
+            if (animator == null) return;
+            animator.SetTrigger("Hit");
         }
     }
 
