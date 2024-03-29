@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BlackHole
   m_EditorClassIdentifier: 
   _objectToSpawn: {fileID: 4158817482814993248, guid: 3adc74b1a405eff4c9b313b4440d1423, type: 3}
-  _tokenVisuals: {fileID: 21300000, guid: fbef004b4b9bacf4d9d82226fb419c64, type: 3}
+  _tokenVisuals: {fileID: 21300000, guid: bc45a32729410624b91764f03dd745b6, type: 3}

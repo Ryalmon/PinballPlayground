@@ -59,7 +59,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _finalScoreDisplay;
     [SerializeField] TMP_Text _finalScoreText;
     [Space]
-    [SerializeField] GameObject _inputKeyboardDisplay;
+    [SerializeField] GameObject _CongratsGameEndDisplay;
+    [SerializeField] GameObject _KeyboardDisplay;
 
     [Space]
     [SerializeField] float _finalScoreWaitTime;
@@ -158,7 +159,7 @@ public class GameUIManager : MonoBehaviour
 
         if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
-            DisplayKeyboard();
+            DisplayLeaderboardGameEnd();
         }
         else
         {
@@ -287,10 +288,10 @@ public class GameUIManager : MonoBehaviour
         _finalScoreDisplay.SetActive(true);
     }
 
-    private void DisplayKeyboard()
+    private void DisplayLeaderboardGameEnd()
     {
         //Debug.Log("DisplayKeyboard");
-        _inputKeyboardDisplay.SetActive(true);
+        _CongratsGameEndDisplay.SetActive(true);
     }
 
     public Vector2 GetScoreTextLocation()
