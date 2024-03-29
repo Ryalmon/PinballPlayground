@@ -61,7 +61,6 @@ public class BallShooter : MonoBehaviour
 
     public void FireAnimation()
     {
-        Debug.Log("Fire");
         Animator animator = GetComponentInChildren<Animator>();
         animator.SetTrigger("Fire");
     }

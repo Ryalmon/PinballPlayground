@@ -101,5 +101,6 @@ MonoBehaviour:
   _finalScoreText: {fileID: 0}
   _CongratsGameEndDisplay: {fileID: 0}
   _KeyboardDisplay: {fileID: 0}
+  _startTimeForEnd: 1
   _waitTimeAfterScore: 0.5
   _finalScoreWaitTime: 4

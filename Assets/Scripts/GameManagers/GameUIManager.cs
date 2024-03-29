@@ -63,6 +63,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _KeyboardDisplay;
 
     [Space]
+    [SerializeField] float _startTimeForEnd;
     [SerializeField] float _waitTimeAfterScore;
     [SerializeField] float _finalScoreWaitTime;
 
@@ -154,6 +155,7 @@ public class GameUIManager : MonoBehaviour
         _leftFlipperButton.SetActive(false);
         _rightFlipperButton.SetActive(false);
 
+        yield return new WaitForSeconds(_startTimeForEnd);
         DisplayFinalScore();
         yield return new WaitForSeconds(_waitTimeAfterScore);
 
