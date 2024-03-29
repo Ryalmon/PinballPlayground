@@ -20,7 +20,7 @@ public class BallSplit : MonoBehaviour
         {
             if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play)
                 return;
-            UniversalManager.Instance.Sound.PlaySFX("Laser 2");
+            UniversalManager.Instance.Sound.PlaySFX("BallMultHit");
             //SoundManager.Instance.PlaySFX("Laser 2");
 
             SplitterHit(collision.gameObject);
