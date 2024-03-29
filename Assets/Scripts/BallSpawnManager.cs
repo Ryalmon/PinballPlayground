@@ -19,7 +19,7 @@ public class BallSpawnManager : MonoBehaviour
     }
     private void AssignEvents()
     {
-        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(LaunchBall);
+        //GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(LaunchBall);
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(RemoveAllBalls);
     }
 
