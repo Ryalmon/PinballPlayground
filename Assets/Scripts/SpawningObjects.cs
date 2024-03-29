@@ -16,9 +16,14 @@ public class SpawningObjects : MonoBehaviour
     List<GameObject> _spawnPointsUsedBeforeGameStart = new List<GameObject>();
 
     int _currentOrderInLayer = 0;
+
+    //[SerializeField] List<DragTokenSO> ShuffledTokens = new List<DragTokenSO>();
+    [SerializeField] Queue<DragTokenSO> ShuffledTokens = new Queue<DragTokenSO>();
+
     private void Start()
     {
         AssignEvents();
+        ShuffleTokens();
         ObjectsSpawn(); 
     }
 
@@ -28,6 +33,18 @@ public class SpawningObjects : MonoBehaviour
     }
 
     //Creates placeables at game start
+
+    private void ShuffleTokens()
+    {
+        List<DragTokenSO> tempTokens = new List<DragTokenSO>(Placeables);
+        while (tempTokens.Count > 0)
+        {
+            int index = Random.Range(0, tempTokens.Count);
+            DragTokenSO token = tempTokens[index];
+            tempTokens.RemoveAt(index);
+            ShuffledTokens.Enqueue(token);
+        }
+    }
     private void ObjectsSpawn()
     {
         for (int i = 0; i < SpawnPoints.Count; i++)
@@ -51,9 +68,24 @@ public class SpawningObjects : MonoBehaviour
     //Creates the placeable object at the correct spawn point
     private GameObject CreateSpawnedObj(int index)
     {
+        /*if (ShuffledTokens.Count == 0)
+        {
+            Debug.Log("Shuffle");
+            ShuffleTokens();
+        }*/
+
+        DragTokenSO nextToken = ShuffledTokens.Dequeue();
+        //ShuffledTokens.Enqueue(nextToken);
+
         GameObject newGameObj = Instantiate(_placementToken, SpawnPoints[index].position, Quaternion.identity);
-        newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
+        //newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
+        newGameObj.GetComponent<DragnDrop>().AssignPlacementData(nextToken);
         return newGameObj;
+    }
+
+    public void ReshuffleSpecificToken(DragTokenSO newToken)
+    {
+        ShuffledTokens.Enqueue(newToken);
     }
 
 
