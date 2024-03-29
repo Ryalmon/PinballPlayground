@@ -9,10 +9,10 @@ public class BallRedirector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        BallPhysics bp = collision.gameObject.GetComponent<BallPhysics>();
-        if (bp != null)
+        BallPhysics ballphysics = collision.gameObject.GetComponent<BallPhysics>();
+        if (ballphysics != null)
         {
-            bp.OverrideBallForce(_redirectDirection * _redirectForce);
+            ballphysics.OverrideBallForce(_redirectDirection * _redirectForce);
         }
     }
 }
