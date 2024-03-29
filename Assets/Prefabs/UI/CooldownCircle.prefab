@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 819081662233698590}
   - component: {fileID: 5717850015265814475}
   - component: {fileID: 7897822576325462102}
+  - component: {fileID: 5115089425941275894}
   m_Layer: 5
   m_Name: CooldownCircle
   m_TagString: Untagged
@@ -97,3 +98,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5115089425941275894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411044703511862829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250f97c5736aad24bb3e20b817f7ca23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -107,7 +107,6 @@ public class SpawningObjects : MonoBehaviour
     //Determines if the item was placed before the game started or after
     public void PlaceableObjectPlaced(GameObject placed)
     {
-        Debug.Log(SpawnedObjects.IndexOf(placed));
         if (SpawnedObjects.IndexOf(placed) == 0)
             GameplayManagers.Instance.UI.ActivateLeftCooldownCircle();
         else

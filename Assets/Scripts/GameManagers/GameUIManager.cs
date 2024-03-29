@@ -51,8 +51,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private float _placementRegionFadeOutTime;
     private Coroutine _placementRegionCoroutine;
     [Header("PlaceableCooldown")]
-    [SerializeField] private Animator _leftCooldownButton;
-    [SerializeField] private Animator _rightCooldownButton;
+    [SerializeField] private CooldownCircle _leftCooldown;
+    [SerializeField] private CooldownCircle _rightCooldown;
     [Space]
 
     [Header("Game End")]
@@ -277,12 +277,12 @@ public class GameUIManager : MonoBehaviour
     #region Cooldown Circles
     public void ActivateLeftCooldownCircle()
     {
-        _leftCooldownButton.SetTrigger("StartAnim");
+        _leftCooldown.Activate();
     }
 
     public void ActivateRightCooldownCircle()
     {
-        _rightCooldownButton.SetTrigger("StartAnim");
+        _rightCooldown.Activate();
     }
     #endregion
 
