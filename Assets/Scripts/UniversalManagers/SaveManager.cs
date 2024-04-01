@@ -30,11 +30,6 @@ public class SaveManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }*/
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-            ResetSaveData();
-    }
 
     private void EstablishPath()
     {
