@@ -15,7 +15,7 @@ public class GameStateManager : MonoBehaviour
     private const int _mainMenuScene = 0;
 
     internal GamePlayState GPS = GamePlayState.Intro;
-    private BallActiveGameplayState BallActiveEnum = BallActiveGameplayState.BallInactive;
+    //private BallActiveGameplayState BallActiveEnum = BallActiveGameplayState.BallInactive;
     
 
     public enum GamePlayState { 
@@ -24,11 +24,11 @@ public class GameStateManager : MonoBehaviour
         End
     };
 
-    public enum BallActiveGameplayState
+    /*public enum BallActiveGameplayState
     {
         BallActive,
         BallInactive
-    };
+    };*/
 
     public void LaunchBallButtonPress()
     {
@@ -54,13 +54,13 @@ public class GameStateManager : MonoBehaviour
 
     public void ActivateBallState()
     {
-        BallActiveEnum = BallActiveGameplayState.BallActive;
+        //BallActiveEnum = BallActiveGameplayState.BallActive;
         _ballActivatedEvent.Invoke();
     }
 
     public void DeactivateBallState()
     {
-        BallActiveEnum = BallActiveGameplayState.BallInactive;
+        //BallActiveEnum = BallActiveGameplayState.BallInactive;
         _ballDeactivatedEvent.Invoke();
     }
 
