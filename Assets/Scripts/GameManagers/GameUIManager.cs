@@ -58,6 +58,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private CooldownCircle _rightCooldown;
     [Header("Countdown")]
     [SerializeField] private Animator _countdownAnim;
+    [SerializeField] private TMP_Text _countdownText;
     [Space]
 
     [Header("Game End")]
@@ -135,11 +136,22 @@ public class GameUIManager : MonoBehaviour
     {
         if (time < _startCountDownAnimAt)
         {
+            StartCoroutine(CountdownTextChange());
             _countdownAnim.SetTrigger("StartCountDown");
             _timerChecks.RemoveListener(CheckStartCountDownAnim);
         }
     }
 
+    private IEnumerator CountdownTextChange()
+    {
+        float timeRemaining = _startCountDownAnimAt;
+        while(timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            _countdownText.text = ((int)timeRemaining).ToString();
+            yield return null;
+        }
+    }
     #endregion
 
     public void UpdateMultiplierUI(float multiplier)
