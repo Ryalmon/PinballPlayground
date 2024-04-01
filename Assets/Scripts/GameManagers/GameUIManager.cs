@@ -17,11 +17,14 @@ public class GameUIManager : MonoBehaviour
 
     [Header("TextData")]
     [SerializeField] Vector2 _scoreTextLocation;
+    [SerializeField] float _roundTo1DigitsAt;
     [SerializeField] float _roundTo2DigitsAt;
+    [SerializeField] float _startCountDownAnimAt;
     [SerializeField] float _scoreMultiplierScalingRate;
     [SerializeField] private Gradient _gradient;
     private float _scoreMultiplierStartingFontSize;
-    private string _roundScoreTo = "F1";
+    private string _roundScoreTo = "F0";
+    private UnityEvent<float> _timerChecks;
     [Space]
 
     [Header("ScorePopup")]
@@ -75,12 +78,6 @@ public class GameUIManager : MonoBehaviour
         _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-            ActivateLeftCooldownCircle();
-    }
-
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetGameEndEvent().AddListener(GameEndUI);
@@ -88,6 +85,8 @@ public class GameUIManager : MonoBehaviour
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplier);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
+
+        _timerChecks.AddListener(OneDigitRound);
     }
 
     public void UpdateScoreUI(int currentScore, int newScore)
@@ -101,12 +100,45 @@ public class GameUIManager : MonoBehaviour
         _scoreText.text = newScore.ToString();
     }
 
+    #region TimerUI
     public void UpdateTimerUI(float time)
     {
-        if (time < _roundTo2DigitsAt) _roundScoreTo = "F2";
+        _timerChecks?.Invoke(time);
         //time = Mathf.Round(time * 10) * .1f;
         _timerText.text = time.ToString(_roundScoreTo);
     }
+
+
+
+    private void OneDigitRound(float time)
+    {
+        if (time < _roundTo1DigitsAt)
+        {
+            _roundScoreTo = "F1";
+            _timerChecks.AddListener(TwoDigitRound);
+            _timerChecks.RemoveListener(OneDigitRound);
+        }
+    }
+
+    private void TwoDigitRound(float time)
+    {
+        if (time < _roundTo2DigitsAt)
+        {
+            _roundScoreTo = "F2";
+            _timerChecks.AddListener(CheckStartCountDownAnim);
+            _timerChecks.RemoveListener(TwoDigitRound);
+        }
+    }
+    private void CheckStartCountDownAnim(float time)
+    {
+        if (time < _startCountDownAnimAt)
+        {
+
+            _timerChecks.RemoveListener(CheckStartCountDownAnim);
+        }
+    }
+
+    #endregion
 
     public void UpdateMultiplierUI(float multiplier)
     {
