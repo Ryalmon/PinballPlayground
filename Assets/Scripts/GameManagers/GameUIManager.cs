@@ -136,13 +136,13 @@ public class GameUIManager : MonoBehaviour
     {
         if (time < _startCountDownAnimAt)
         {
-            StartCoroutine(CountdownTextChange());
+            //StartCoroutine(CountdownTextChange());
             _countdownAnim.SetTrigger("StartCountDown");
             _timerChecks.RemoveListener(CheckStartCountDownAnim);
         }
     }
 
-    private IEnumerator CountdownTextChange()
+    /*private IEnumerator CountdownTextChange()
     {
         float timeRemaining = _startCountDownAnimAt;
         while(timeRemaining > 0)
@@ -151,7 +151,7 @@ public class GameUIManager : MonoBehaviour
             _countdownText.text = Mathf.CeilToInt(timeRemaining).ToString();
             yield return null;
         }
-    }
+    }*/
     #endregion
 
     public void UpdateMultiplierUI(float multiplier)
