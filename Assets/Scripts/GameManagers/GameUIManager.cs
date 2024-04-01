@@ -24,7 +24,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private Gradient _gradient;
     private float _scoreMultiplierStartingFontSize;
     private string _roundScoreTo = "F0";
-    private UnityEvent<float> _timerChecks;
+    private UnityEvent<float> _timerChecks = new UnityEvent<float>();
     [Space]
 
     [Header("ScorePopup")]
@@ -56,6 +56,8 @@ public class GameUIManager : MonoBehaviour
     [Header("PlaceableCooldown")]
     [SerializeField] private CooldownCircle _leftCooldown;
     [SerializeField] private CooldownCircle _rightCooldown;
+    [Header("Countdown")]
+    [SerializeField] private Animator _countdownAnim;
     [Space]
 
     [Header("Game End")]
@@ -133,7 +135,7 @@ public class GameUIManager : MonoBehaviour
     {
         if (time < _startCountDownAnimAt)
         {
-
+            _countdownAnim.SetTrigger("StartCountDown");
             _timerChecks.RemoveListener(CheckStartCountDownAnim);
         }
     }
