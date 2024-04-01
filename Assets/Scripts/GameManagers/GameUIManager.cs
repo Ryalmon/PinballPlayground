@@ -148,7 +148,7 @@ public class GameUIManager : MonoBehaviour
         while(timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            _countdownText.text = ((int)timeRemaining).ToString();
+            _countdownText.text = Mathf.CeilToInt(timeRemaining).ToString();
             yield return null;
         }
     }

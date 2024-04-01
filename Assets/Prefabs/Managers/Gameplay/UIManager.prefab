@@ -50,6 +50,7 @@ MonoBehaviour:
   _scoreTextLocation: {x: 0, y: 8}
   _roundTo1DigitsAt: 30
   _roundTo2DigitsAt: 10
+  _startCountDownAnimAt: 3
   _scoreMultiplierScalingRate: 1.3
   _gradient:
     serializedVersion: 2
@@ -98,6 +99,8 @@ MonoBehaviour:
   _placementRegionFadeOutTime: 0.4
   _leftCooldown: {fileID: 0}
   _rightCooldown: {fileID: 0}
+  _countdownAnim: {fileID: 0}
+  _countdownText: {fileID: 0}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _CongratsGameEndDisplay: {fileID: 0}
