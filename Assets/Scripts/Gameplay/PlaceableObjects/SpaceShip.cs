@@ -185,6 +185,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         }
         fadingOut = true;
         GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
+        GameplayManagers.Instance.Fade.FadeGameObjectToRed(gameObject, _destroyTime);
         Destroy(transform.parent.gameObject,_destroyTime);
     }
 

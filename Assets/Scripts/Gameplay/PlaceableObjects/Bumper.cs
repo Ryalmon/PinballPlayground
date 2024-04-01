@@ -40,6 +40,7 @@ public class Bumper : MonoBehaviour, IPlaceable
     public void DestroyPlacedObject()
     {
         GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, _destroyTime,null);
+        GameplayManagers.Instance.Fade.FadeGameObjectToRed(_visuals, _destroyTime);
         Destroy(gameObject,_destroyTime);
     }
 
