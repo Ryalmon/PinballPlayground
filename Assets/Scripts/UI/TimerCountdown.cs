@@ -7,14 +7,8 @@ public class TimerCountdown : MonoBehaviour
 {
     [SerializeField] TMP_Text _timerCountdownText;
 
-    // Update is called once per frame
-    void Update()
+    public void SetTime(string newText)
     {
-        
-    }
-
-    public void SetTime(int i)
-    {
-
+        _timerCountdownText.text = newText;
     }
 }
