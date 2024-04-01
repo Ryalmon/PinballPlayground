@@ -6,6 +6,7 @@ public class BallRedirector : MonoBehaviour
 {
     [SerializeField] Vector2 _redirectDirection;
     [SerializeField] float _redirectForce;
+    [SerializeField] float _holdTime;
     private GameObject ball;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,7 +25,7 @@ public class BallRedirector : MonoBehaviour
         ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ball.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_holdTime);
         ball.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         ball.GetComponent<BallPhysics>().OverrideBallForce(_redirectDirection * _redirectForce);
         
