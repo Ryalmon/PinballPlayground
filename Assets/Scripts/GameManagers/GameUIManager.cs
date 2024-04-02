@@ -153,7 +153,7 @@ public class GameUIManager : MonoBehaviour
         if (time < _roundTo2DigitsAt)
         {
             _roundScoreTo = "F2";
-            StartTimerAlertAnim();
+            TimerAlertAnimActive(true);
             _timerChecks.AddListener(CheckStartCountDownAnim);
             _timerChecks.RemoveListener(TwoDigitRound);
         }
@@ -169,9 +169,9 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    private void StartTimerAlertAnim()
+    private void TimerAlertAnimActive(bool active)
     {
-        _timerAlertAnim.SetTrigger("StartAlert");
+        _timerAlertAnim.SetBool("AlertActive", active);
     }
     #endregion
 
@@ -214,6 +214,7 @@ public class GameUIManager : MonoBehaviour
 
     public void GameEndUI()
     {
+        TimerAlertAnimActive(false);
         StartCoroutine(GameEndUIProcess());
     }
 
