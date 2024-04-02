@@ -17,12 +17,17 @@ public class GameUIManager : MonoBehaviour
 
     [Header("TextData")]
     [SerializeField] Vector2 _scoreTextLocation;
-    [SerializeField] float _roundTo1DigitsAt;
-    [SerializeField] float _roundTo2DigitsAt;
-    [SerializeField] float _startCountDownAnimAt;
     [SerializeField] float _scoreMultiplierScalingRate;
     [SerializeField] private Gradient _gradient;
     private float _scoreMultiplierStartingFontSize;
+    
+    [Space]
+
+    [Header("Timer")]
+    [SerializeField] float _roundTo1DigitsAt;
+    [SerializeField] float _roundTo2DigitsAt;
+    [SerializeField] float _startCountDownAnimAt;
+    [SerializeField] private Animator _timerAlertAnim;
     private string _roundScoreTo = "F0";
     private UnityEvent<float> _timerChecks = new UnityEvent<float>();
     [Space]
