@@ -11,4 +11,9 @@ public class TimerCountdown : MonoBehaviour
     {
         _timerCountdownText.text = newText;
     }
+
+    public void TriggerTickSFX()
+    {
+        //Salmon add the audio here
+    }
 }
