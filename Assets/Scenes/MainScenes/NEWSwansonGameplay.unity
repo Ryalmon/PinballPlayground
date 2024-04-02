@@ -1888,6 +1888,7 @@ GameObject:
   - component: {fileID: 611447658}
   - component: {fileID: 611447660}
   - component: {fileID: 611447659}
+  - component: {fileID: 611447661}
   m_Layer: 5
   m_Name: TimerUI
   m_TagString: Untagged
@@ -2011,6 +2012,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611447657}
   m_CullTransparentMesh: 1
+--- !u!95 &611447661
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611447657}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5759e6c616b313f47806d28e68780cff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &635931384
 PrefabInstance:
   m_ObjectHideFlags: 0

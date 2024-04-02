@@ -153,10 +153,12 @@ public class GameUIManager : MonoBehaviour
         if (time < _roundTo2DigitsAt)
         {
             _roundScoreTo = "F2";
+            StartTimerAlertAnim();
             _timerChecks.AddListener(CheckStartCountDownAnim);
             _timerChecks.RemoveListener(TwoDigitRound);
         }
     }
+
     private void CheckStartCountDownAnim(float time)
     {
         if (time < _startCountDownAnimAt)
@@ -165,6 +167,11 @@ public class GameUIManager : MonoBehaviour
             _countdownAnim.SetTrigger("StartCountDown");
             _timerChecks.RemoveListener(CheckStartCountDownAnim);
         }
+    }
+
+    private void StartTimerAlertAnim()
+    {
+        _timerAlertAnim.SetTrigger("StartAlert");
     }
     #endregion
 
