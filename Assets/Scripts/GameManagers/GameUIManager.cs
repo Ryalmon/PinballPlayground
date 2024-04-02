@@ -21,10 +21,12 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _roundTo2DigitsAt;
     [SerializeField] float _startCountDownAnimAt;
     [SerializeField] float _scoreMultiplierScalingRate;
+    [SerializeField] int _milestoneIncrement;
     [SerializeField] private Gradient _gradient;
     private float _scoreMultiplierStartingFontSize;
     private string _roundScoreTo = "F0";
     private UnityEvent<float> _timerChecks = new UnityEvent<float>();
+    private float _currentMilestoneGoal = 0;
     [Space]
 
     [Header("ScorePopup")]
@@ -79,6 +81,7 @@ public class GameUIManager : MonoBehaviour
     {
         AssignEvents();
         _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
+        _currentMilestoneGoal = _milestoneIncrement;
     }
 
     private void AssignEvents()
@@ -95,12 +98,27 @@ public class GameUIManager : MonoBehaviour
     public void UpdateScoreUI(int currentScore, int newScore)
     {
         UpdateScoreBoard(currentScore);
+        CheckForMilestoneHit(currentScore);
         CreateScorePopUp(newScore);
     }
 
     private void UpdateScoreBoard(int newScore)
     {
         _scoreText.text = newScore.ToString();
+    }
+
+    private void CheckForMilestoneHit(int currentScore)
+    {
+        if(currentScore >= _currentMilestoneGoal)
+        {
+            _currentMilestoneGoal += _milestoneIncrement;
+            TriggerMilestoneAnimation();
+        }
+    }
+
+    private void TriggerMilestoneAnimation()
+    {
+
     }
 
     #region TimerUI
