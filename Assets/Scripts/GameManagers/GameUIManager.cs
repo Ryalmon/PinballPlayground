@@ -21,12 +21,10 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _roundTo2DigitsAt;
     [SerializeField] float _startCountDownAnimAt;
     [SerializeField] float _scoreMultiplierScalingRate;
-    [SerializeField] int _milestoneIncrement;
     [SerializeField] private Gradient _gradient;
     private float _scoreMultiplierStartingFontSize;
     private string _roundScoreTo = "F0";
     private UnityEvent<float> _timerChecks = new UnityEvent<float>();
-    private float _currentMilestoneGoal = 0;
     [Space]
 
     [Header("ScorePopup")]
@@ -61,6 +59,10 @@ public class GameUIManager : MonoBehaviour
     [Header("Countdown")]
     [SerializeField] private Animator _countdownAnim;
     [SerializeField] private TMP_Text _countdownText;
+    [Header("Milestone")]
+    [SerializeField] int _milestoneIncrement;
+    [SerializeField] Animator _milestoneAnimation;
+    private float _currentMilestoneGoal = 0;
     [Space]
 
     [Header("Game End")]
