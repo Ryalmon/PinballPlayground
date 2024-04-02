@@ -101,6 +101,8 @@ MonoBehaviour:
   _rightCooldown: {fileID: 0}
   _countdownAnim: {fileID: 0}
   _countdownText: {fileID: 0}
+  _milestoneIncrement: 10000
+  _milestoneAnimation: {fileID: 0}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _CongratsGameEndDisplay: {fileID: 0}

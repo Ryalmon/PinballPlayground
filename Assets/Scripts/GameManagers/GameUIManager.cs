@@ -120,7 +120,7 @@ public class GameUIManager : MonoBehaviour
 
     private void TriggerMilestoneAnimation()
     {
-
+        _milestoneAnimation.SetTrigger("ActivateMilestoneEffect");
     }
 
     #region TimerUI
@@ -161,17 +161,6 @@ public class GameUIManager : MonoBehaviour
             _timerChecks.RemoveListener(CheckStartCountDownAnim);
         }
     }
-
-    /*private IEnumerator CountdownTextChange()
-    {
-        float timeRemaining = _startCountDownAnimAt;
-        while(timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-            _countdownText.text = Mathf.CeilToInt(timeRemaining).ToString();
-            yield return null;
-        }
-    }*/
     #endregion
 
     public void UpdateMultiplierUI(float multiplier)
