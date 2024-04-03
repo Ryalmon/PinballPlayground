@@ -14,13 +14,18 @@ public class BallSplit : MonoBehaviour
     private float ballXVelocity;
     private float ballYVelocity;
 
+    private void Start()
+    {
+        UniversalManager.Instance.Sound.PlaySFX("SplitterSpawn");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
             if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play)
                 return;
-            UniversalManager.Instance.Sound.PlaySFX("BallMultHit");
+            UniversalManager.Instance.Sound.PlaySFX("SplitterDestroyed");
             //SoundManager.Instance.PlaySFX("Laser 2");
 
             SplitterHit(collision.gameObject);

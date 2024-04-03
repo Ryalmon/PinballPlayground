@@ -48,28 +48,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - soundName: Music
-    clip: {fileID: 8300000, guid: 182058e8e341a204997f4044a435df29, type: 3}
+    clip: {fileID: 8300000, guid: c82c426db15928c428a807d65d2a359e, type: 3}
   sfxSounds:
-  - soundName: Laser 1
-    clip: {fileID: 8300000, guid: 6fddfb48f44ba6e43bf506e77c7b4c69, type: 3}
-  - soundName: Laser 2
-    clip: {fileID: 8300000, guid: 5973412ea3aa8d446afa9a2147f50d66, type: 3}
-  - soundName: Bounce
-    clip: {fileID: 8300000, guid: 5f60d2d1294ca6d42941b2335d7a72a9, type: 3}
-  - soundName: Hit
-    clip: {fileID: 8300000, guid: 6a3d83c37f783564d9636af273faf964, type: 3}
-  - soundName: Launch
-    clip: {fileID: 8300000, guid: d64ec337fe9823045bda428f84e677cd, type: 3}
-  - soundName: Death
-    clip: {fileID: 8300000, guid: 5973412ea3aa8d446afa9a2147f50d66, type: 3}
-  - soundName: FlipUp
+  - soundName: FlipperUp
     clip: {fileID: 8300000, guid: 91acea86d6afdeb44bf63735d3a0e26c, type: 3}
-  - soundName: FlipDown
-    clip: {fileID: 8300000, guid: 8bea791506e66da4a9bbe8bb674f6b05, type: 3}
-  - soundName: 8Hit
-    clip: {fileID: 8300000, guid: ec9bbbbfa621af04bb71683d79f4bb7e, type: 3}
-  - soundName: BallMultHit
+  - soundName: FlipperDown
+    clip: {fileID: 8300000, guid: da53792ccb21dc743812a5cee8e666f7, type: 3}
+  - soundName: BallLoss
+    clip: {fileID: 8300000, guid: 1f011e97bdfd62649a497fc06dd08320, type: 3}
+  - soundName: BallLossLast
+    clip: {fileID: 8300000, guid: 81d50520d33d1494eb44c6a3e1f33aa0, type: 3}
+  - soundName: BallLaunch
+    clip: {fileID: 8300000, guid: 3c3732aa0740b854e829d7784cdb26a4, type: 3}
+  - soundName: HitUFO
+    clip: {fileID: 8300000, guid: 6fddfb48f44ba6e43bf506e77c7b4c69, type: 3}
+  - soundName: HitBumper
+    clip: {fileID: 8300000, guid: 30310e6297d4459489d7f38806dc9c6d, type: 3}
+  - soundName: HitWall
+    clip: {fileID: 8300000, guid: bf63d40e346aabc46b8f822648c09fb7, type: 3}
+  - soundName: SplitterSpawn
+    clip: {fileID: 8300000, guid: 55d93422e441797499e77bba28e1121c, type: 3}
+  - soundName: SplitterDestroyed
     clip: {fileID: 8300000, guid: 1923e9bc42410ac45abbd1afce1a702e, type: 3}
+  - soundName: ScoreMilestone
+    clip: {fileID: 0}
+  - soundName: TimerTick
+    clip: {fileID: 0}
   musicSource: {fileID: 632983649218979711}
   sfxSource: {fileID: 2874589334072883463}
 --- !u!1 &4277381805131339752
@@ -116,7 +120,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1.2
   Loop: 0
   Mute: 0
@@ -244,7 +248,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
