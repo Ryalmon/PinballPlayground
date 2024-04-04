@@ -514,17 +514,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &143541198 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3042923880385571499, guid: c0f0dbc66e7f54447a034207ed6ac1a6, type: 3}
-  m_PrefabInstance: {fileID: 6914351404032154344}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &177096362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,7 +2910,7 @@ PrefabInstance:
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _countdownText
       value: 
-      objectReference: {fileID: 143541198}
+      objectReference: {fileID: 0}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _rightCooldown
       value: 
@@ -3636,7 +3625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205745658884146603, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: TimeRemaining
-      value: 120
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2893153971993569633, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: m_LocalPosition.x

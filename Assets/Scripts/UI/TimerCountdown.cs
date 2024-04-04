@@ -5,13 +5,6 @@ using TMPro;
 
 public class TimerCountdown : MonoBehaviour
 {
-    [SerializeField] TMP_Text _timerCountdownText;
-
-    public void SetTime(string newText)
-    {
-        _timerCountdownText.text = newText;
-    }
-
     public void TriggerTickSFX()
     {
         //Salmon add the audio here
