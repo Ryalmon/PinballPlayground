@@ -69,6 +69,9 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] Animator _milestoneAnimation;
     private float _currentMilestoneGoal = 0;
     [Space]
+    [Header("Game Hints")]
+    [SerializeField] private Animator _placeablesHints;
+    [Space]
 
     [Header("Game End")]
     [SerializeField] GameObject _finalScoreDisplay;
@@ -357,6 +360,13 @@ public class GameUIManager : MonoBehaviour
     public void ActivateRightCooldownCircle()
     {
         _rightCooldown.Activate();
+    }
+    #endregion
+
+    #region Hints
+    public void ShowPlaceableHints()
+    {
+        
     }
     #endregion
 
