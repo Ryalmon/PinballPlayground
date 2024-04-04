@@ -2968,6 +2968,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1792820187}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _multiplierAnimation
+      value: 
+      objectReference: {fileID: 1842554929}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _rightCooldownButton
       value: 
       objectReference: {fileID: 2131226323}
@@ -3622,10 +3626,6 @@ PrefabInstance:
     - target: {fileID: 2193156186037136744, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: m_Name
       value: TimerManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2205745658884146603, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
-      propertyPath: TimeRemaining
-      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2893153971993569633, guid: ee183f5426da5d54f928b7f8fe8cd15f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5435,6 +5435,7 @@ GameObject:
   - component: {fileID: 1842554926}
   - component: {fileID: 1842554928}
   - component: {fileID: 1842554927}
+  - component: {fileID: 1842554929}
   m_Layer: 5
   m_Name: PointMultiplierUI
   m_TagString: Untagged
@@ -5558,6 +5559,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842554925}
   m_CullTransparentMesh: 1
+--- !u!95 &1842554929
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842554925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2ecaba8a3a4d5d4d8c11ff58df7507c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1941380912
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,14 +6187,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2007641630}
     m_Modifications:
-    - target: {fileID: 1015548266078414722, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
-      propertyPath: leftFlipperButton
-      value: 
-      objectReference: {fileID: 189015880}
-    - target: {fileID: 1015548266078414722, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
-      propertyPath: rightFlipperButton
-      value: 
-      objectReference: {fileID: 1792820187}
     - target: {fileID: 1142893909840185829, guid: e982f773ac5b93a459766eabf7c5ad47, type: 3}
       propertyPath: m_Name
       value: GameStateManager

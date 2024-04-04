@@ -19,6 +19,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] Vector2 _scoreTextLocation;
     [SerializeField] float _scoreMultiplierScalingRate;
     [SerializeField] private Gradient _gradient;
+    [SerializeField] private Animator _multiplierAnimation;
     private float _scoreMultiplierStartingFontSize;
     
     [Space]
@@ -63,7 +64,6 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private CooldownCircle _rightCooldown;
     [Header("Countdown")]
     [SerializeField] private Animator _countdownAnim;
-    [SerializeField] private TMP_Text _countdownText;
     [Header("Milestone")]
     [SerializeField] int _milestoneIncrement;
     [SerializeField] Animator _milestoneAnimation;
@@ -210,6 +210,12 @@ public class GameUIManager : MonoBehaviour
         UpdateMultiplierText(GameplayManagers.Instance.Score.GetStartingMultiplier());
         UpdateMultiplierSize(_scoreMultiplierStartingFontSize);
         UpdateMultiplierColor(GameplayManagers.Instance.Score.GetStartingMultiplier());
+        UpdateMultiplierAnimation(false);
+    }
+
+    public void UpdateMultiplierAnimation(bool active)
+    {
+        _multiplierAnimation.SetBool("Shake", active);
     }
 
     public void GameEndUI()
