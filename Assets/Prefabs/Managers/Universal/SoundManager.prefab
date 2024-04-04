@@ -71,9 +71,11 @@ MonoBehaviour:
   - soundName: SplitterDestroyed
     clip: {fileID: 8300000, guid: 1923e9bc42410ac45abbd1afce1a702e, type: 3}
   - soundName: ScoreMilestone
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 657e4011e76311c48a8970d1e9767fbb, type: 3}
   - soundName: TimerTick
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d0a63d5d0d5a1ba45ace468d993bd4ea, type: 3}
+  - soundName: SlingRing
+    clip: {fileID: 8300000, guid: 0daf3047115481e4299c96323ec228c5, type: 3}
   musicSource: {fileID: 632983649218979711}
   sfxSource: {fileID: 2874589334072883463}
 --- !u!1 &4277381805131339752
