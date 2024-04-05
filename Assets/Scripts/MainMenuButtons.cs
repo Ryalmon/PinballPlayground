@@ -7,17 +7,6 @@ public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private Button _playButton;
     private const int _gameplayScene = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PlayGame()
     {
@@ -39,6 +28,14 @@ public class MainMenuButtons : MonoBehaviour
             Application.Quit();
         }*/
 
+    }
+
+    public void GoToMainMenu()
+    {
+        //_playButton in this case is the button that goes to the main menu.
+        //Both buttons are never in the same scene. That's why this is fine. Maybe
+        _playButton.interactable = false;
+        UniversalManager.Instance.Scene.LoadScene(0);
     }
 
 }
