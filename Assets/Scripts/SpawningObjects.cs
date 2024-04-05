@@ -68,18 +68,24 @@ public class SpawningObjects : MonoBehaviour
     //Creates the placeable object at the correct spawn point
     private GameObject CreateSpawnedObj(int index)
     {
-        if (ShuffledTokens.Count == 0)
+        /*if (ShuffledTokens.Count == 0)
         {
+            Debug.Log("Shuffle");
             ShuffleTokens();
-        }
+        }*/
 
         DragTokenSO nextToken = ShuffledTokens.Dequeue();
-        ShuffledTokens.Enqueue(nextToken);
+        //ShuffledTokens.Enqueue(nextToken);
 
         GameObject newGameObj = Instantiate(_placementToken, SpawnPoints[index].position, Quaternion.identity);
         //newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
         newGameObj.GetComponent<DragnDrop>().AssignPlacementData(nextToken);
         return newGameObj;
+    }
+
+    public void ReshuffleSpecificToken(DragTokenSO newToken)
+    {
+        ShuffledTokens.Enqueue(newToken);
     }
 
 
