@@ -6,12 +6,11 @@ using UnityEngine.UI;
 
 public class CreditsButtons : MonoBehaviour
 {
-    [SerializeField] private Button _viewCreditsButton;
-    [SerializeField] private const int _mainMenuScene = 2;
+    [SerializeField] private Button _button;
 
-    public void ViewCredits()
+    public void GoToMainMenu()
     {
-        _viewCreditsButton.interactable = false;
-        UniversalManager.Instance.Scene.LoadScene(_mainMenuScene);
+        _button.interactable = false;
+        UniversalManager.Instance.Scene.LoadScene(0);
     }
 }

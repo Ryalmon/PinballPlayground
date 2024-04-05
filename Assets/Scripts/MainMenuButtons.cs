@@ -6,13 +6,27 @@ using UnityEngine.UI;
 public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private Button _playButton;
+    [SerializeField] private Button _otherButton;
+    [SerializeField] private Button _viewCreditsButton;
     private const int _gameplayScene = 1;
 
+    private void Start()
+    {
+        if(_otherButton == null)
+        {
+            _otherButton = GetComponent<Button>();
+        }
+
+    }
     public void PlayGame()
     {
         _playButton.interactable = false;
+        _otherButton = _viewCreditsButton.GetComponent<Button>();
+        _otherButton.interactable = false;
         UniversalManager.Instance.Save.ResetMostRecentScore();
         UniversalManager.Instance.Scene.LoadScene(_gameplayScene);
+
+        
     }
 
     public static void QuitGame()
@@ -30,12 +44,14 @@ public class MainMenuButtons : MonoBehaviour
 
     }
 
-    public void GoToMainMenu()
+
+    public void ViewCredits()
     {
-        //_playButton in this case is the button that goes to the main menu.
-        //Both buttons are never in the same scene. That's why this is fine. Maybe
-        _playButton.interactable = false;
-        UniversalManager.Instance.Scene.LoadScene(0);
+        _viewCreditsButton.interactable = false;
+        _otherButton = _playButton.GetComponent<Button>();
+        _otherButton.interactable = false;
+        UniversalManager.Instance.Scene.LoadScene(2);
     }
+
 
 }
