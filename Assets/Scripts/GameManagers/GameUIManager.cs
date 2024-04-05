@@ -367,7 +367,7 @@ public class GameUIManager : MonoBehaviour
     #region Hints
     public void ShowPlaceableHints()
     {
-        
+        _placeablesHints.SetTrigger("Show");
     }
     #endregion
 
