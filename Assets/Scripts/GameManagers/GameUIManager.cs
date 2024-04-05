@@ -310,7 +310,7 @@ public class GameUIManager : MonoBehaviour
     #region ItemPlacementZone
     public void ShowPlacementRegion()
     {
-        if (_placementRegionCoroutine != null)
+        if (_placementRegionCoroutine != null|| GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.End)
             return;
 
         UnityEvent postFadeIn = new UnityEvent();
