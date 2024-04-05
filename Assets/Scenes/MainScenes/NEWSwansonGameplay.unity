@@ -2351,6 +2351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playButton: {fileID: 0}
+  _otherButton: {fileID: 0}
+  _viewCreditsButton: {fileID: 0}
 --- !u!114 &711346476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3796,7 +3798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5850581696932136183, guid: 942f22477662d6444a405b62b40d107f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 5850581696932136183, guid: 942f22477662d6444a405b62b40d107f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4121,7 +4123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5850581696932136183, guid: 942f22477662d6444a405b62b40d107f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.9
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 5850581696932136183, guid: 942f22477662d6444a405b62b40d107f, type: 3}
       propertyPath: m_LocalPosition.y
