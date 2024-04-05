@@ -17,7 +17,7 @@ public class BallKillBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("KillBox"))
         {
-            UniversalManager.Instance.Sound.PlaySFX("Death");
+            UniversalManager.Instance.Sound.PlaySFX("BallLoss");
             GameplayManagers.Instance.Ball.RemoveBall(gameObject);
         }
     }

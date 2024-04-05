@@ -129,6 +129,7 @@ public class GameUIManager : MonoBehaviour
     private void TriggerMilestoneAnimation()
     {
         _milestoneAnimation.SetTrigger("ActivateMilestoneEffect");
+        UniversalManager.Instance.Sound.PlaySFX("ScoreMilestone");
     }
 
     #region TimerUI

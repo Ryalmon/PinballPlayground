@@ -25,6 +25,7 @@ public class BallRedirector : MonoBehaviour
         newBall.transform.position = transform.position;
         newBall.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         newBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        UniversalManager.Instance.Sound.PlaySFX("SlingRing");
     }
 
     private void BallFire()
@@ -34,6 +35,7 @@ public class BallRedirector : MonoBehaviour
             ,_redirectDirection.y);
         ballReleased.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         ballReleased.GetComponent<BallPhysics>().OverrideBallForce(currentFireForce * _redirectForce);
+        UniversalManager.Instance.Sound.PlaySFX("BallLaunch");
     }
 
     private IEnumerator RedirectProcess(GameObject newBall)
