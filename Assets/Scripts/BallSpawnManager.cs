@@ -42,13 +42,21 @@ public class BallSpawnManager : MonoBehaviour
     public void CheckBallCountIsZero()
     {
         if (BallsInScene.Count <= 0)
+        {
             BallCountIsZero();
+            
+        }
+        else
+        {
+            UniversalManager.Instance.Sound.PlaySFX("BallLoss");
+        }
     }
 
     private void BallCountIsZero()
     {
         //Make game enter the deactivate ball state
         GameplayManagers.Instance.State.DeactivateBallState();
+        UniversalManager.Instance.Sound.PlaySFX("BallLossLast");
     }
 
     public void AddBall(GameObject ball)

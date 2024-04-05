@@ -7,6 +7,6 @@ public class TimerCountdown : MonoBehaviour
 {
     public void TriggerTickSFX()
     {
-        //Salmon add the audio here
+        UniversalManager.Instance.Sound.PlaySFX("TimerTick");
     }
 }
