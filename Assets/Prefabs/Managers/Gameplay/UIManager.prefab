@@ -95,7 +95,12 @@ MonoBehaviour:
   _placementRegion: {fileID: 0}
   _placementRegionFadeInTime: 0.4
   _placementRegionFadeOutTime: 0.4
+  _leftCooldownButton: {fileID: 0}
+  _rightCooldownButton: {fileID: 0}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
-  _inputKeyboardDisplay: {fileID: 0}
+  _CongratsGameEndDisplay: {fileID: 0}
+  _KeyboardDisplay: {fileID: 0}
+  _startTimeForEnd: 1
+  _waitTimeAfterScore: 0.5
   _finalScoreWaitTime: 4

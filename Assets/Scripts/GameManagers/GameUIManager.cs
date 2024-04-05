@@ -59,9 +59,12 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _finalScoreDisplay;
     [SerializeField] TMP_Text _finalScoreText;
     [Space]
-    [SerializeField] GameObject _inputKeyboardDisplay;
+    [SerializeField] GameObject _CongratsGameEndDisplay;
+    [SerializeField] GameObject _KeyboardDisplay;
 
     [Space]
+    [SerializeField] float _startTimeForEnd;
+    [SerializeField] float _waitTimeAfterScore;
     [SerializeField] float _finalScoreWaitTime;
 
 
@@ -152,16 +155,18 @@ public class GameUIManager : MonoBehaviour
         _leftFlipperButton.SetActive(false);
         _rightFlipperButton.SetActive(false);
 
+        yield return new WaitForSeconds(_startTimeForEnd);
         DisplayFinalScore();
-        yield return new WaitForSeconds(_finalScoreWaitTime);
-        _finalScoreDisplay.SetActive(false);
+        yield return new WaitForSeconds(_waitTimeAfterScore);
 
         if (UniversalManager.Instance.Save.ValidScoreInput(GameplayManagers.Instance.Score.CurrentScore))
         {
-            DisplayKeyboard();
+            DisplayCongrats();
+            DisplayLeaderboardGameEnd();
         }
         else
         {
+            yield return new WaitForSeconds(_finalScoreWaitTime);
             GameplayManagers.Instance.State.EndScene();
         }
     }
@@ -287,10 +292,15 @@ public class GameUIManager : MonoBehaviour
         _finalScoreDisplay.SetActive(true);
     }
 
-    private void DisplayKeyboard()
+    private void DisplayCongrats()
+    {
+        _CongratsGameEndDisplay.SetActive(true);
+    }
+
+    private void DisplayLeaderboardGameEnd()
     {
         //Debug.Log("DisplayKeyboard");
-        _inputKeyboardDisplay.SetActive(true);
+        _KeyboardDisplay.SetActive(true);
     }
 
     public Vector2 GetScoreTextLocation()

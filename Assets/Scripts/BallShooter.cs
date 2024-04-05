@@ -28,6 +28,7 @@ public class BallShooter : MonoBehaviour
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(ShowBallShooter);
+        GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(FireAnimation);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(HideBallShooter);
     }
 
@@ -55,6 +56,13 @@ public class BallShooter : MonoBehaviour
             yield return new WaitForSeconds(_flipTime);
             _rotateSpeed *= -1;
         }
+    }
+
+
+    public void FireAnimation()
+    {
+        Animator animator = GetComponentInChildren<Animator>();
+        animator.SetTrigger("Fire");
     }
 
     private void ShowBallShooter()
