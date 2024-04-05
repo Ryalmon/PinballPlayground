@@ -17,7 +17,7 @@ public class SpawningObjects : MonoBehaviour
 
     [SerializeField] float _hintWaitTime;
 
-    private Coroutine _hintCoroutine;
+    private Coroutine _hintCoroutine = null;
 
     int _currentOrderInLayer = 0;
 
@@ -144,8 +144,10 @@ public class SpawningObjects : MonoBehaviour
 
     private void StartShowHint()
     {
-        if (_hintCoroutine == null)
-            StopCoroutine(ShowHints());
+        if(_hintCoroutine != null)
+        {
+            StopCoroutine(_hintCoroutine);
+        }    
         _hintCoroutine = StartCoroutine(ShowHints());
     }
 
