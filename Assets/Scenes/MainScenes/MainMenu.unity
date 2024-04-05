@@ -577,7 +577,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1603302215}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1603302215}
+      - m_Target: {fileID: 1822377092}
         m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
@@ -3994,7 +3994,6 @@ GameObject:
   - component: {fileID: 1603302213}
   - component: {fileID: 1603302212}
   - component: {fileID: 1603302211}
-  - component: {fileID: 1603302215}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -4088,19 +4087,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1603302215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603302210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef9fa6bc0f5551746a24ab0d78c8f3d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playButton: {fileID: 247918771}
 --- !u!1001 &1632630332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4640,9 +4626,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1822377090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e548a739144cd46b0a58076eae4f28, type: 3}
+  m_Script: {fileID: 11500000, guid: ef9fa6bc0f5551746a24ab0d78c8f3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playButton: {fileID: 247918771}
+  _otherButton: {fileID: 0}
   _viewCreditsButton: {fileID: 1933651045}
 --- !u!1001 &1825073450
 PrefabInstance:
@@ -5036,7 +5024,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1822377092}
-        m_TargetAssemblyTypeName: CreditsButtons, Assembly-CSharp
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
         m_MethodName: ViewCredits
         m_Mode: 1
         m_Arguments:

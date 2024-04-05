@@ -48,7 +48,9 @@ MonoBehaviour:
   _timerText: {fileID: 0}
   _scoreMultiplierText: {fileID: 0}
   _scoreTextLocation: {x: 0, y: 8}
+  _roundTo1DigitsAt: 30
   _roundTo2DigitsAt: 10
+  _startCountDownAnimAt: 3.5
   _scoreMultiplierScalingRate: 1.3
   _gradient:
     serializedVersion: 2
@@ -95,12 +97,16 @@ MonoBehaviour:
   _placementRegion: {fileID: 0}
   _placementRegionFadeInTime: 0.4
   _placementRegionFadeOutTime: 0.4
-  _leftCooldownButton: {fileID: 0}
-  _rightCooldownButton: {fileID: 0}
+  _leftCooldown: {fileID: 0}
+  _rightCooldown: {fileID: 0}
+  _countdownAnim: {fileID: 0}
+  _countdownText: {fileID: 0}
+  _milestoneIncrement: 10000
+  _milestoneAnimation: {fileID: 0}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _CongratsGameEndDisplay: {fileID: 0}
   _KeyboardDisplay: {fileID: 0}
-  _startTimeForEnd: 1
+  _startTimeForEnd: 2
   _waitTimeAfterScore: 0.5
   _finalScoreWaitTime: 4

@@ -19,16 +19,17 @@ public class SaveManager : MonoBehaviour
         PlaceScoreInArray("a", p, GSD.SaveScore.Length-1);*/
     }
 
-/*    private void EstablishSingleton()
-    {
-        if (M_Instance != null && M_Instance != this)
+    /*    private void EstablishSingleton()
         {
-            Destroy(gameObject);
-        }
+            if (M_Instance != null && M_Instance != this)
+            {
+                Destroy(gameObject);
+            }
 
-        M_Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }*/
+            M_Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }*/
+
 
     private void EstablishPath()
     {
@@ -174,6 +175,13 @@ public class SaveManager : MonoBehaviour
 
             SaveText();
         }
+    }
+
+    public void ResetSaveData()
+    {
+        GSD = new GameSaveData();
+        PopulateArrays();
+        SaveText();
     }
 }
 

@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _redirectDirection: {x: 0, y: 0.6}
   _redirectForce: 15
+  _xVariance: 0.2
+  _holdTime: 0.5
 --- !u!58 &6287696058199840124
 CircleCollider2D:
   m_ObjectHideFlags: 0

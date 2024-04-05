@@ -42,13 +42,21 @@ public class BallSpawnManager : MonoBehaviour
     public void CheckBallCountIsZero()
     {
         if (BallsInScene.Count <= 0)
+        {
             BallCountIsZero();
+            
+        }
+        else
+        {
+            UniversalManager.Instance.Sound.PlaySFX("BallLoss");
+        }
     }
 
     private void BallCountIsZero()
     {
         //Make game enter the deactivate ball state
         GameplayManagers.Instance.State.DeactivateBallState();
+        UniversalManager.Instance.Sound.PlaySFX("BallLossLast");
     }
 
     public void AddBall(GameObject ball)
@@ -61,7 +69,7 @@ public class BallSpawnManager : MonoBehaviour
         BallsInScene.Remove(ball.GetComponent<BallPhysics>());
         CheckBallCountIsZero();
         GameplayManagers.Instance.Fade.FadeGameObjectOut(ball, _ballRemovalTime, null);
-        GameplayManagers.Instance.Fade.StartTrailFadeOut(ball, _ballRemovalTime/3);
+        GameplayManagers.Instance.Fade.StartTrailFadeOut(ball, _ballRemovalTime/2);
         Destroy(ball.gameObject, _ballRemovalTime);
     }
 

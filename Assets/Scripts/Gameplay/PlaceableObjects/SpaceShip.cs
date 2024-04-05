@@ -37,7 +37,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null && _shipState == SpaceShipState.IDLE && !fadingOut)
         {
-            UniversalManager.Instance.Sound.PlaySFX("Hit");
+            UniversalManager.Instance.Sound.PlaySFX("HitUFO");
             //SoundManager.Instance.PlaySFX("Hit");
             ChangeShipState(SpaceShipState.DRAGGING);
             DragObject(collision.gameObject);
@@ -185,6 +185,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         }
         fadingOut = true;
         GameplayManagers.Instance.Fade.FadeGameObjectOut(gameObject, _destroyTime,null);
+        GameplayManagers.Instance.Fade.FadeGameObjectToRed(gameObject, _destroyTime);
         Destroy(transform.parent.gameObject,_destroyTime);
     }
 

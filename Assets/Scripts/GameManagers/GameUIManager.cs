@@ -17,11 +17,20 @@ public class GameUIManager : MonoBehaviour
 
     [Header("TextData")]
     [SerializeField] Vector2 _scoreTextLocation;
-    [SerializeField] float _roundTo2DigitsAt;
     [SerializeField] float _scoreMultiplierScalingRate;
     [SerializeField] private Gradient _gradient;
+    [SerializeField] private Animator _multiplierAnimation;
     private float _scoreMultiplierStartingFontSize;
-    private string _roundScoreTo = "F1";
+    
+    [Space]
+
+    [Header("Timer")]
+    [SerializeField] float _roundTo1DigitsAt;
+    [SerializeField] float _roundTo2DigitsAt;
+    [SerializeField] float _startCountDownAnimAt;
+    [SerializeField] private Animator _timerAlertAnim;
+    private string _roundScoreTo = "F0";
+    private UnityEvent<float> _timerChecks = new UnityEvent<float>();
     [Space]
 
     [Header("ScorePopup")]
@@ -51,8 +60,17 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private float _placementRegionFadeOutTime;
     private Coroutine _placementRegionCoroutine;
     [Header("PlaceableCooldown")]
-    [SerializeField] private Animator _leftCooldownButton;
-    [SerializeField] private Animator _rightCooldownButton;
+    [SerializeField] private CooldownCircle _leftCooldown;
+    [SerializeField] private CooldownCircle _rightCooldown;
+    [Header("Countdown")]
+    [SerializeField] private Animator _countdownAnim;
+    [Header("Milestone")]
+    [SerializeField] int _milestoneIncrement;
+    [SerializeField] Animator _milestoneAnimation;
+    private float _currentMilestoneGoal = 0;
+    [Space]
+    [Header("Game Hints")]
+    [SerializeField] private Animator _placeablesHints;
     [Space]
 
     [Header("Game End")]
@@ -73,12 +91,7 @@ public class GameUIManager : MonoBehaviour
     {
         AssignEvents();
         _scoreMultiplierStartingFontSize = _scoreMultiplierText.fontSize;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-            ActivateLeftCooldownCircle();
+        _currentMilestoneGoal = _milestoneIncrement;
     }
 
     private void AssignEvents()
@@ -88,11 +101,14 @@ public class GameUIManager : MonoBehaviour
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplier);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
+
+        _timerChecks.AddListener(OneDigitRound);
     }
 
     public void UpdateScoreUI(int currentScore, int newScore)
     {
         UpdateScoreBoard(currentScore);
+        CheckForMilestoneHit(currentScore);
         CreateScorePopUp(newScore);
     }
 
@@ -101,12 +117,67 @@ public class GameUIManager : MonoBehaviour
         _scoreText.text = newScore.ToString();
     }
 
+    private void CheckForMilestoneHit(int currentScore)
+    {
+        if(currentScore >= _currentMilestoneGoal)
+        {
+            _currentMilestoneGoal += _milestoneIncrement;
+            TriggerMilestoneAnimation();
+        }
+    }
+
+    private void TriggerMilestoneAnimation()
+    {
+        _milestoneAnimation.SetTrigger("ActivateMilestoneEffect");
+        UniversalManager.Instance.Sound.PlaySFX("ScoreMilestone");
+    }
+
+    #region TimerUI
     public void UpdateTimerUI(float time)
     {
-        if (time < _roundTo2DigitsAt) _roundScoreTo = "F2";
+        _timerChecks?.Invoke(time);
         //time = Mathf.Round(time * 10) * .1f;
         _timerText.text = time.ToString(_roundScoreTo);
     }
+
+
+
+    private void OneDigitRound(float time)
+    {
+        if (time < _roundTo1DigitsAt)
+        {
+            _roundScoreTo = "F1";
+            _timerChecks.AddListener(TwoDigitRound);
+            _timerChecks.RemoveListener(OneDigitRound);
+        }
+    }
+
+    private void TwoDigitRound(float time)
+    {
+        if (time < _roundTo2DigitsAt)
+        {
+            _roundScoreTo = "F2";
+            TimerAlertAnimActive(true);
+            _timerChecks.AddListener(CheckStartCountDownAnim);
+            _timerChecks.RemoveListener(TwoDigitRound);
+        }
+    }
+
+    private void CheckStartCountDownAnim(float time)
+    {
+        if (time < _startCountDownAnimAt)
+        {
+            //StartCoroutine(CountdownTextChange());
+            _countdownAnim.SetTrigger("StartCountDown");
+            _timerChecks.RemoveListener(CheckStartCountDownAnim);
+        }
+    }
+
+    private void TimerAlertAnimActive(bool active)
+    {
+        _timerAlertAnim.SetBool("AlertActive", active);
+    }
+    #endregion
 
     public void UpdateMultiplierUI(float multiplier)
     {
@@ -143,10 +214,17 @@ public class GameUIManager : MonoBehaviour
         UpdateMultiplierText(GameplayManagers.Instance.Score.GetStartingMultiplier());
         UpdateMultiplierSize(_scoreMultiplierStartingFontSize);
         UpdateMultiplierColor(GameplayManagers.Instance.Score.GetStartingMultiplier());
+        UpdateMultiplierAnimation(false);
+    }
+
+    public void UpdateMultiplierAnimation(bool active)
+    {
+        _multiplierAnimation.SetBool("Shake", active);
     }
 
     public void GameEndUI()
     {
+        TimerAlertAnimActive(false);
         StartCoroutine(GameEndUIProcess());
     }
 
@@ -277,12 +355,19 @@ public class GameUIManager : MonoBehaviour
     #region Cooldown Circles
     public void ActivateLeftCooldownCircle()
     {
-        _leftCooldownButton.SetTrigger("StartAnim");
+        _leftCooldown.Activate();
     }
 
     public void ActivateRightCooldownCircle()
     {
-        _rightCooldownButton.SetTrigger("StartAnim");
+        _rightCooldown.Activate();
+    }
+    #endregion
+
+    #region Hints
+    public void ShowPlaceableHints()
+    {
+        
     }
     #endregion
 

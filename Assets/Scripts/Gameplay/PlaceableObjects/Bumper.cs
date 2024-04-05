@@ -18,7 +18,7 @@ public class Bumper : MonoBehaviour, IPlaceable
 
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision));
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper);
-            UniversalManager.Instance.Sound.PlaySFX("Bounce");
+            UniversalManager.Instance.Sound.PlaySFX("HitBumper");
             //SoundManager.Instance.PlaySFX("Bounce");
             Animator animator = GetComponent<Animator>();
             if (animator == null) return;
@@ -40,6 +40,7 @@ public class Bumper : MonoBehaviour, IPlaceable
     public void DestroyPlacedObject()
     {
         GameplayManagers.Instance.Fade.FadeGameObjectOut(_visuals, _destroyTime,null);
+        GameplayManagers.Instance.Fade.FadeGameObjectToRed(_visuals, _destroyTime);
         Destroy(gameObject,_destroyTime);
     }
 
