@@ -1158,7 +1158,7 @@ EdgeCollider2D:
   - {x: -0.2, y: 0.5}
   - {x: 0, y: -2}
   - {x: 0.2, y: -3.5}
-  - {x: 0.4, y: -5}
+  - {x: 0.4, y: -4.5}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1952,7 +1952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -366.6, y: -178.95}
+  m_AnchoredPosition: {x: -366.6, y: -181.07}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611447659
@@ -4641,8 +4641,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.7499979}
+  m_SizeDelta: {x: 0, y: -1.5000042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464851469
 MonoBehaviour:
@@ -5197,7 +5197,7 @@ EdgeCollider2D:
   - {x: -0.2, y: 0.5}
   - {x: 0, y: -2}
   - {x: 0.2, y: -3.5}
-  - {x: 0.4, y: -5}
+  - {x: 0.4, y: -4.5}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -6954,6 +6954,7 @@ GameObject:
   - component: {fileID: 3179995230106612982}
   - component: {fileID: 2278111040970129774}
   - component: {fileID: 8448350529619089223}
+  - component: {fileID: 8448350529619089224}
   m_Layer: 0
   m_Name: Bumper
   m_TagString: Untagged
@@ -7337,6 +7338,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &8448350529619089224
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076047731789237232}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
