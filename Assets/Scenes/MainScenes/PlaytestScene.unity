@@ -4834,6 +4834,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playButton: {fileID: 0}
+  _otherButton: {fileID: 0}
+  _viewCreditsButton: {fileID: 0}
 --- !u!114 &711346476
 MonoBehaviour:
   m_ObjectHideFlags: 0
