@@ -55,3 +55,4 @@ MonoBehaviour:
   SpawnedObjects: []
   _respawnObjectDelay: 8
   _hintWaitTime: 25
+  _shortWaitTime: 5

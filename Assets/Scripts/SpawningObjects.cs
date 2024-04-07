@@ -16,6 +16,7 @@ public class SpawningObjects : MonoBehaviour
     List<GameObject> _spawnPointsUsedBeforeGameStart = new List<GameObject>();
 
     [SerializeField] float _hintWaitTime;
+    [SerializeField] float _shortWaitTime;
 
     private Coroutine _hintCoroutine = null;
 
@@ -148,14 +149,16 @@ public class SpawningObjects : MonoBehaviour
         {
             StopCoroutine(_hintCoroutine);
         }    
-        _hintCoroutine = StartCoroutine(ShowHints());
+        _hintCoroutine = StartCoroutine(ShowHints(_hintWaitTime));
     }
 
-    private IEnumerator ShowHints()
+    private IEnumerator ShowHints(float waitTime)
     {
-        yield return new WaitForSeconds(_hintWaitTime);
+        yield return new WaitForSeconds(waitTime);
         GameplayManagers.Instance.UI.ShowPlaceableHints();
         _hintCoroutine = null;
+
+        _hintCoroutine = StartCoroutine(ShowHints(_shortWaitTime));
     }
 
     public int GetCurrentObjectLayer()
