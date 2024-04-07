@@ -2414,7 +2414,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 932580723}
         m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
-        m_MethodName: setTutorialStateFalse
+        m_MethodName: SetTutorialStateFalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3293,16 +3293,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932580721}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79bf981a9be30974ab01acd79a7f5800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waitTime: 1
   _placementField: {fileID: 14044722}
   _ballLauncher: {fileID: 1269371850}
   _ContinueButton: {fileID: 689269037}
   _backgroundImage: {fileID: 1584008984}
   _borderImage: {fileID: 1547561947}
+  _darken: {r: 0.45, g: 0.45, b: 0.45, a: 1}
+  _normal: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &956216491
 GameObject:
   m_ObjectHideFlags: 0

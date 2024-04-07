@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+    [SerializeField] private float _waitTime;
+
     [SerializeField] private GameObject _placementField;
     [SerializeField] private GameObject _ballLauncher;
     [SerializeField] private GameObject _ContinueButton;
+    [Space]
 
     [SerializeField] private SpriteRenderer _backgroundImage;
     [SerializeField] private SpriteRenderer _borderImage;
+    [Space]
 
-    private Color _darken = new Color(0.45f, 0.45f, 0.45f);
-    private Color _normal = new Color(1, 1, 1);
-
-    private bool _tutorialActive = true;
+    [SerializeField] private Color _darken = new Color(0.45f, 0.45f, 0.45f);
+    [SerializeField] private Color _normal = new Color(1, 1, 1);
    
     // Start is called before the first frame update
     void Start()
@@ -22,26 +24,9 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(TutorialPopUp());
     }
 
-    private void Update()
-    {
-        if(_tutorialActive == false)
-        {
-            _tutorialActive = false;
-
-            Time.timeScale = 1f;
-
-            _ContinueButton.SetActive(false);
-            _placementField.SetActive(false);
-            _ballLauncher.SetActive(true);
-
-            _backgroundImage.color = _normal;
-            _borderImage.color = _normal;
-        }
-    }
-
     private IEnumerator TutorialPopUp()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(_waitTime);
 
         Time.timeScale = 0f;
 
@@ -53,8 +38,15 @@ public class Tutorial : MonoBehaviour
         _borderImage.color = _darken;
     }
 
-    public void setTutorialStateFalse()
+    public void SetTutorialStateFalse()
     {
-        _tutorialActive = false;
+        Time.timeScale = 1f;
+
+        _ContinueButton.SetActive(false);
+        _placementField.SetActive(false);
+        _ballLauncher.SetActive(true);
+
+        _backgroundImage.color = _normal;
+        _borderImage.color = _normal;
     }
 }
