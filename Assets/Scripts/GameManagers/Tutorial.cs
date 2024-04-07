@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+    [SerializeField] private float _tutorialWaitTime;
+
     [SerializeField] private GameObject _placementField;
     [SerializeField] private GameObject _ballLauncher;
     [SerializeField] private GameObject _ContinueButton;
@@ -15,8 +17,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private SpriteRenderer _backgroundImage;
     [SerializeField] private SpriteRenderer _borderImage;
 
-    private Color _darken = new Color(0.45f, 0.45f, 0.45f);
-    private Color _normal = new Color(1, 1, 1);
+    [SerializeField] private Color _darken = new Color(0.45f, 0.45f, 0.45f);
+    [SerializeField] private Color _normal = new Color(1, 1, 1);
    
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class Tutorial : MonoBehaviour
     
     private IEnumerator TutorialPopUp()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(_tutorialWaitTime);
 
         Time.timeScale = 0f;
 
@@ -42,6 +44,7 @@ public class Tutorial : MonoBehaviour
 
         for(int i = 0; i < _nonImportantItems.Length; ++i)
         {
+            if (_nonImportantItems[i] == null) continue;
             _nonImportantItems[i].color = _darken;
         }
     }
@@ -61,6 +64,7 @@ public class Tutorial : MonoBehaviour
 
         for (int i = 0; i < _nonImportantItems.Length; ++i)
         {
+            if (_nonImportantItems[i] == null) continue;
             _nonImportantItems[i].color = _normal;
         }
     }
