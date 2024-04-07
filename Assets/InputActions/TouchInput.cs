@@ -90,6 +90,114 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DebugButtons"",
+            ""id"": ""a43da25d-a420-466f-8275-a029257c6b3d"",
+            ""actions"": [
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a977dc5-da89-4be3-b9f4-7a0c184b6885"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetScore"",
+                    ""type"": ""Button"",
+                    ""id"": ""26989c63-9c36-40cb-9cc0-6f4006feffe8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LoadMainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""421c53c6-6542-4de0-8268-207bd33f76f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DestroyBalls"",
+                    ""type"": ""Button"",
+                    ""id"": ""4db182f4-b999-42c1-bc88-7578ce9e630e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadCurrentScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""32487377-fc10-4866-861b-d31452d079bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5be8b327-85c9-4b25-a4db-b92f8c61a573"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d34aa831-9e65-40df-9c56-9690d364ccfc"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetScore"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7353ad55-986b-40d2-8ac8-888908c19976"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""765109f5-2b00-4407-9015-4aeea66e07c3"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DestroyBalls"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7a051b8-194d-4922-ac89-2a00135b8f4b"",
+                    ""path"": ""<Keyboard>/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadCurrentScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -99,6 +207,13 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
         m_Controls_Touch = m_Controls.FindAction("Touch", throwIfNotFound: true);
         m_Controls_TestTouch = m_Controls.FindAction("TestTouch", throwIfNotFound: true);
         m_Controls_TestTouch2 = m_Controls.FindAction("TestTouch2", throwIfNotFound: true);
+        // DebugButtons
+        m_DebugButtons = asset.FindActionMap("DebugButtons", throwIfNotFound: true);
+        m_DebugButtons_Escape = m_DebugButtons.FindAction("Escape", throwIfNotFound: true);
+        m_DebugButtons_ResetScore = m_DebugButtons.FindAction("ResetScore", throwIfNotFound: true);
+        m_DebugButtons_LoadMainMenu = m_DebugButtons.FindAction("LoadMainMenu", throwIfNotFound: true);
+        m_DebugButtons_DestroyBalls = m_DebugButtons.FindAction("DestroyBalls", throwIfNotFound: true);
+        m_DebugButtons_ReloadCurrentScene = m_DebugButtons.FindAction("ReloadCurrentScene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,10 +333,96 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
         }
     }
     public ControlsActions @Controls => new ControlsActions(this);
+
+    // DebugButtons
+    private readonly InputActionMap m_DebugButtons;
+    private List<IDebugButtonsActions> m_DebugButtonsActionsCallbackInterfaces = new List<IDebugButtonsActions>();
+    private readonly InputAction m_DebugButtons_Escape;
+    private readonly InputAction m_DebugButtons_ResetScore;
+    private readonly InputAction m_DebugButtons_LoadMainMenu;
+    private readonly InputAction m_DebugButtons_DestroyBalls;
+    private readonly InputAction m_DebugButtons_ReloadCurrentScene;
+    public struct DebugButtonsActions
+    {
+        private @TouchInput m_Wrapper;
+        public DebugButtonsActions(@TouchInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Escape => m_Wrapper.m_DebugButtons_Escape;
+        public InputAction @ResetScore => m_Wrapper.m_DebugButtons_ResetScore;
+        public InputAction @LoadMainMenu => m_Wrapper.m_DebugButtons_LoadMainMenu;
+        public InputAction @DestroyBalls => m_Wrapper.m_DebugButtons_DestroyBalls;
+        public InputAction @ReloadCurrentScene => m_Wrapper.m_DebugButtons_ReloadCurrentScene;
+        public InputActionMap Get() { return m_Wrapper.m_DebugButtons; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugButtonsActions set) { return set.Get(); }
+        public void AddCallbacks(IDebugButtonsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DebugButtonsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DebugButtonsActionsCallbackInterfaces.Add(instance);
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
+            @ResetScore.started += instance.OnResetScore;
+            @ResetScore.performed += instance.OnResetScore;
+            @ResetScore.canceled += instance.OnResetScore;
+            @LoadMainMenu.started += instance.OnLoadMainMenu;
+            @LoadMainMenu.performed += instance.OnLoadMainMenu;
+            @LoadMainMenu.canceled += instance.OnLoadMainMenu;
+            @DestroyBalls.started += instance.OnDestroyBalls;
+            @DestroyBalls.performed += instance.OnDestroyBalls;
+            @DestroyBalls.canceled += instance.OnDestroyBalls;
+            @ReloadCurrentScene.started += instance.OnReloadCurrentScene;
+            @ReloadCurrentScene.performed += instance.OnReloadCurrentScene;
+            @ReloadCurrentScene.canceled += instance.OnReloadCurrentScene;
+        }
+
+        private void UnregisterCallbacks(IDebugButtonsActions instance)
+        {
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
+            @ResetScore.started -= instance.OnResetScore;
+            @ResetScore.performed -= instance.OnResetScore;
+            @ResetScore.canceled -= instance.OnResetScore;
+            @LoadMainMenu.started -= instance.OnLoadMainMenu;
+            @LoadMainMenu.performed -= instance.OnLoadMainMenu;
+            @LoadMainMenu.canceled -= instance.OnLoadMainMenu;
+            @DestroyBalls.started -= instance.OnDestroyBalls;
+            @DestroyBalls.performed -= instance.OnDestroyBalls;
+            @DestroyBalls.canceled -= instance.OnDestroyBalls;
+            @ReloadCurrentScene.started -= instance.OnReloadCurrentScene;
+            @ReloadCurrentScene.performed -= instance.OnReloadCurrentScene;
+            @ReloadCurrentScene.canceled -= instance.OnReloadCurrentScene;
+        }
+
+        public void RemoveCallbacks(IDebugButtonsActions instance)
+        {
+            if (m_Wrapper.m_DebugButtonsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDebugButtonsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DebugButtonsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DebugButtonsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DebugButtonsActions @DebugButtons => new DebugButtonsActions(this);
     public interface IControlsActions
     {
         void OnTouch(InputAction.CallbackContext context);
         void OnTestTouch(InputAction.CallbackContext context);
         void OnTestTouch2(InputAction.CallbackContext context);
+    }
+    public interface IDebugButtonsActions
+    {
+        void OnEscape(InputAction.CallbackContext context);
+        void OnResetScore(InputAction.CallbackContext context);
+        void OnLoadMainMenu(InputAction.CallbackContext context);
+        void OnDestroyBalls(InputAction.CallbackContext context);
+        void OnReloadCurrentScene(InputAction.CallbackContext context);
     }
 }
