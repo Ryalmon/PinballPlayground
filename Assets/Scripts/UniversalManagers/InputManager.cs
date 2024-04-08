@@ -5,24 +5,64 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public TouchInput TI;
+    public PlayerInputActions PIA;
 
-    void Awake()
+    void Start()
     {
-        //EstablishSingleton();
-        /*SetupInput();*/
+        EstablishInput();
     }
 
-    /*private void EstablishSingleton()
+    #region DebugButtons
+    private void CloseGame(InputAction.CallbackContext obj)
     {
-        if (M_Instance != null && M_Instance != this)
-        {
-            Destroy(gameObject);
-        }
+        Application.Quit();
+    }
 
-        M_Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }*/
+    private void ResetScores(InputAction.CallbackContext obj)
+    {
+        UniversalManager.Instance.Save.ResetSaveData();
+    }
+
+    private void ToMainMenu(InputAction.CallbackContext obj)
+    {
+        UniversalManager.Instance.Scene.LoadScene(0);
+    }
+    private void RefreshScene(InputAction.CallbackContext obj)
+    {
+        UniversalManager.Instance.Scene.ReloadScene();
+    }
+
+    private void DestroyBalls(InputAction.CallbackContext obj)
+    {
+        if (GameplayManagers.Instance != null)
+            GameplayManagers.Instance.Ball.RemoveAllBalls();
+    }
+
+    #endregion
+
+    private void EstablishInput()
+    {
+        PIA = new PlayerInputActions();
+        PIA.DebugButtons.Enable();
+
+        PIA.DebugButtons.Escape.started += CloseGame;
+        PIA.DebugButtons.ResetScore.started += ResetScores;
+        PIA.DebugButtons.LoadMainMenu.started += ToMainMenu;
+        PIA.DebugButtons.ReloadCurrentScene.started += RefreshScene;
+        PIA.DebugButtons.DestroyBalls.started += DestroyBalls;
+
+    }
+
+    private void OnDestroy()
+    {
+        PIA.DebugButtons.Escape.started -= CloseGame;
+        PIA.DebugButtons.ResetScore.started -= ResetScores;
+        PIA.DebugButtons.LoadMainMenu.started -= ToMainMenu;
+        PIA.DebugButtons.ReloadCurrentScene.started -= RefreshScene;
+        PIA.DebugButtons.DestroyBalls.started -= DestroyBalls;
+
+        PIA.DebugButtons.Disable();
+    }
 
     /*void SetupInput()
     {

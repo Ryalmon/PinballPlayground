@@ -1,5 +1,5 @@
 {
-    "name": "TouchInput",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Controls",
@@ -101,18 +101,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DestroyBalls",
+                    "name": "ReloadCurrentScene",
                     "type": "Button",
-                    "id": "4db182f4-b999-42c1-bc88-7578ce9e630e",
+                    "id": "32487377-fc10-4866-861b-d31452d079bb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ReloadCurrentScene",
+                    "name": "DestroyBalls",
                     "type": "Button",
-                    "id": "32487377-fc10-4866-861b-d31452d079bb",
+                    "id": "4db182f4-b999-42c1-bc88-7578ce9e630e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -155,23 +155,23 @@
                 },
                 {
                     "name": "",
-                    "id": "765109f5-2b00-4407-9015-4aeea66e07c3",
+                    "id": "f7a051b8-194d-4922-ac89-2a00135b8f4b",
                     "path": "<Keyboard>/numpad4",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DestroyBalls",
+                    "action": "ReloadCurrentScene",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f7a051b8-194d-4922-ac89-2a00135b8f4b",
+                    "id": "765109f5-2b00-4407-9015-4aeea66e07c3",
                     "path": "<Keyboard>/numpad5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ReloadCurrentScene",
+                    "action": "DestroyBalls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

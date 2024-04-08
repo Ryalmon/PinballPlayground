@@ -15,6 +15,11 @@ public class SceneLoadingManager : MonoBehaviour
         StartCoroutine(SceneLoadDelay(index));
     }
 
+    public void ReloadScene()
+    {
+        LoadScene(CurrentScene());
+    }
+
     public IEnumerator SceneLoadDelay(int index)
     {
         SceneTransition st = FindObjectOfType<SceneTransition>();
