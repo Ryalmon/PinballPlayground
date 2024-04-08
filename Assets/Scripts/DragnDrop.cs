@@ -15,15 +15,62 @@ public class DragnDrop : MonoBehaviour
 
     private DragTokenSO _placementData;
 
+    bool isFollowingTouch = false;
     private bool dragging = false;
 
     private Vector3 offset;
     private Vector3 originalPosition;
-    
+
+
+    bool onlyCollideOnce = false;
+    bool stoppedFollowing = false;
+    bool failsafeTriggered = false;
+    [SerializeField] Collider2D circleTrigger;
+    [SerializeField] Collider2D physicalCollider;
+    Transform playerTouch;
+    Vector2 initialPos;
+    Vector2 delta;
+
+
+    private void Awake()
+    {
+        initialPos = transform.position;
+        physicalCollider.enabled = false;
+    }
+
     private void Start()
     {
         GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, GameplayManagers.Instance.Placement.GetTokenFadeInTime(), null);
         originalPosition = transform.position;
+    }
+
+    private void Update()
+    {
+        // Failsafe
+        if (!failsafeTriggered && GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+        {
+            Debug.Log("Failsafe triggered");
+            failsafeTriggered = true;
+           // StopFollowing();
+        }
+
+        if (isFollowingTouch && Mathf.Abs(Vector3.Distance(initialPos, transform.position)) >= 1f)
+        {
+            
+            if (circleTrigger != null)
+            {
+                Destroy(circleTrigger);
+            }
+           // StopFollowing();
+        }
+        else if (isFollowingTouch && playerTouch != null)
+        {
+
+            transform.position = (Vector2)playerTouch.position;
+            delta = (Vector2)transform.position - initialPos;
+            float aimAngle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, aimAngle);
+        }
     }
 
     public void AssignPlacementData(DragTokenSO newPlacementData)
@@ -148,5 +195,46 @@ public class DragnDrop : MonoBehaviour
     public void SetDragging(bool enabled)
     {
         dragging = enabled;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!onlyCollideOnce && collision.gameObject.CompareTag("PlayerTouch"))
+        {
+            GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
+            Debug.Log("Trigger Enter");
+            onlyCollideOnce = true;
+            isFollowingTouch = true;
+            playerTouch = collision.gameObject.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerTouch"))
+        {
+            Debug.Log("Trigger Exit");
+            if (circleTrigger != null)
+            {
+                Destroy(circleTrigger);
+            }
+            StopFollowing();
+            AttemptPlacement();
+        }
+    }
+
+    private void StopFollowing()
+    {
+        if (!stoppedFollowing)
+        {
+            Debug.Log("Stopped Following");
+            stoppedFollowing = true;
+
+            isFollowingTouch = false;
+            playerTouch = null;
+            //circleTrigger.enabled = false;
+
+            physicalCollider.enabled = true;
+        }
     }
 }
