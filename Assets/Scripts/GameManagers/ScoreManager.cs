@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         { ScoreSource.Bumper,0},
         { ScoreSource.SpaceShip,0},
         { ScoreSource.BlackHole,0},
-        { ScoreSource.Ceiling,0}
+        { ScoreSource.Redirector,0}
     };
 
     
@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
         _scoreDictionary[ScoreSource.Bumper] = _scoreFromBumper;
         _scoreDictionary[ScoreSource.SpaceShip] = _scoreFromSpaceShip;
         _scoreDictionary[ScoreSource.BlackHole] = _scoreFromBlackHole;
-        _scoreDictionary[ScoreSource.Ceiling] = _scoreFromCeiling;
+        _scoreDictionary[ScoreSource.Redirector] = _scoreFromCeiling;
     }
 
     #region BallPointMultiplier
@@ -153,5 +153,5 @@ public enum ScoreSource
     Bumper,
     SpaceShip,
     BlackHole,
-    Ceiling
+    Redirector
 };
