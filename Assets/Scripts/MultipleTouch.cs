@@ -19,11 +19,6 @@ public class MultipleTouch : MonoBehaviour
         UniversalManager.Instance.Scene.PostSceneChangeEvent().AddListener(CameraUpdate);
     }
 
-    public void OnSceneChange()
-    {
-        
-    }
-
     /// <summary>
     /// Update is called once per frame
     /// </summary>
@@ -81,7 +76,7 @@ public class MultipleTouch : MonoBehaviour
     Vector2 GetTouchPosition(Vector2 touchPosition)
     {
         if (mainCam == null)
-            return Vector2.zero;
+            CameraUpdate();
 
         return mainCam.GetComponent<Camera>().ScreenToWorldPoint(
             new Vector3(touchPosition.x, touchPosition.y, 0));
