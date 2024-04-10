@@ -104,5 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057c271af6a9d9840ad493e75abd4b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circle: {fileID: 0}
-  mainCam: {fileID: 0}
+  circle: {fileID: 2002618062165718921, guid: 761de52379854ea45bd1447ca9be4662, type: 3}
