@@ -28,16 +28,8 @@ public class DragnDrop : MonoBehaviour
     [SerializeField] Collider2D circleTrigger;
     //[SerializeField] Collider2D physicalCollider;
     Transform playerTouch;
-    Vector2 initialPos;
-    Vector2 delta;
     Vector2 _lastPos;
 
-
-    private void Awake()
-    {
-        initialPos = transform.position;
-        //physicalCollider.enabled = false;
-    }
 
     private void Start()
     {
@@ -110,6 +102,10 @@ public class DragnDrop : MonoBehaviour
     private void AttemptPlacement()
     {
         GameplayManagers.Instance.Placement.DecreaseItemsBeingDragged();
+        if (circleTrigger != null)
+        {
+            Destroy(circleTrigger);
+        }
 
         if (!CheckLocationValidity(transform.position))
         {
@@ -213,11 +209,7 @@ public class DragnDrop : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerTouch"))
         {
-            Debug.Log("Trigger Exit");
-            if (circleTrigger != null)
-            {
-                Destroy(circleTrigger);
-            }
+            
             StopFollowing();
             AttemptPlacement();
         }
