@@ -47,7 +47,7 @@ public class DragnDrop : MonoBehaviour
            // StopFollowing();
         }
 
-        if (isFollowingTouch && Mathf.Abs(Vector3.Distance(_lastPos, transform.position)) >= 1f)
+        /*if (isFollowingTouch && Mathf.Abs(Vector3.Distance(_lastPos, transform.position)) >= 1f)
         {
             
             if (circleTrigger != null)
@@ -55,7 +55,7 @@ public class DragnDrop : MonoBehaviour
                 Destroy(circleTrigger);
             }
            // StopFollowing();
-        }
+        }*/
         else if (isFollowingTouch && playerTouch != null)
         {
 
