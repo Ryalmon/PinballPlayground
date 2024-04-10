@@ -10,6 +10,7 @@ TagManager:
   - Splitter
   - Bumper
   - Wall
+  - PlayerTouch
   layers:
   - Default
   - TransparentFX

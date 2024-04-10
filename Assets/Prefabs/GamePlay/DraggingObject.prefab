@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1998937064138267077}
   - component: {fileID: 5504716591517409997}
   - component: {fileID: 2503505305801440470}
+  - component: {fileID: 6057492609687936269}
   m_Layer: 0
   m_Name: DraggingObject
   m_TagString: Untagged
@@ -139,6 +140,8 @@ MonoBehaviour:
   _minDistForPlacement: 0.3
   _minSpeedDist: 0.2
   _maxSpeedDist: 1.75
+  circleTrigger: {fileID: 1484192007461822283}
+  physicalCollider: {fileID: 6570637746972116661, guid: d5da5eb059820e84697200fdd22f841a, type: 3}
 --- !u!95 &2503505305801440470
 Animator:
   serializedVersion: 5
@@ -160,3 +163,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &6057492609687936269
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197409166718960366}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
