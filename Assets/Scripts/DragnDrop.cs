@@ -102,10 +102,6 @@ public class DragnDrop : MonoBehaviour
     private void AttemptPlacement()
     {
         GameplayManagers.Instance.Placement.DecreaseItemsBeingDragged();
-        if (circleTrigger != null)
-        {
-            Destroy(circleTrigger);
-        }
 
         if (!CheckLocationValidity(transform.position))
         {
@@ -113,6 +109,10 @@ public class DragnDrop : MonoBehaviour
         }
         else
         {
+            if (circleTrigger != null)
+            {
+                Destroy(circleTrigger);
+            }
             PlaceItem();
         }
     }
