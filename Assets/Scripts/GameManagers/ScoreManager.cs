@@ -100,7 +100,7 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region PointParticles
-    public void CreatePointParticles(GameObject spawnSource, ScoreSource source)
+    public void CreatePointParticles(GameObject spawnSource, ScoreSource source, float incomingMultiplier)
     {
         //Starts the spawn point particles coroutine on the vfx manager
         //Spawnsource is where to spawn them
@@ -109,12 +109,12 @@ public class ScoreManager : MonoBehaviour
         //ScoreValueFromSource gets the score based on the source of what called it.
         VFXManager vfxMan = UniversalManager.Instance.VFX;
         vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource, GameplayManagers.Instance.UI.GetScoreTextLocation(),
-            ScoreTimesBallMultiplier(ScoreValueFromSource(source))));
+            (ScoreTimesBallMultiplier(ScoreValueFromSource(source), incomingMultiplier))));
     }
 
-    private int ScoreTimesBallMultiplier(int score)
+    private int ScoreTimesBallMultiplier(int score, float incomingMultiplier)
     {
-        return Mathf.CeilToInt(score * GetBallLifetimeMultiplier());
+        return Mathf.CeilToInt(score * incomingMultiplier * GetBallLifetimeMultiplier());
     }
 
     #endregion
