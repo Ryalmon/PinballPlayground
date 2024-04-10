@@ -139,6 +139,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DisableEventSystem"",
+                    ""type"": ""Button"",
+                    ""id"": ""30d34f4c-feba-42ce-8bc2-384f5417e833"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""DestroyBalls"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9388dfa1-509c-4541-b5f0-8c102c3af01a"",
+                    ""path"": ""<Keyboard>/numpad6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DisableEventSystem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -214,6 +234,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_DebugButtons_LoadMainMenu = m_DebugButtons.FindAction("LoadMainMenu", throwIfNotFound: true);
         m_DebugButtons_ReloadCurrentScene = m_DebugButtons.FindAction("ReloadCurrentScene", throwIfNotFound: true);
         m_DebugButtons_DestroyBalls = m_DebugButtons.FindAction("DestroyBalls", throwIfNotFound: true);
+        m_DebugButtons_DisableEventSystem = m_DebugButtons.FindAction("DisableEventSystem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -342,6 +363,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_DebugButtons_LoadMainMenu;
     private readonly InputAction m_DebugButtons_ReloadCurrentScene;
     private readonly InputAction m_DebugButtons_DestroyBalls;
+    private readonly InputAction m_DebugButtons_DisableEventSystem;
     public struct DebugButtonsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -351,6 +373,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @LoadMainMenu => m_Wrapper.m_DebugButtons_LoadMainMenu;
         public InputAction @ReloadCurrentScene => m_Wrapper.m_DebugButtons_ReloadCurrentScene;
         public InputAction @DestroyBalls => m_Wrapper.m_DebugButtons_DestroyBalls;
+        public InputAction @DisableEventSystem => m_Wrapper.m_DebugButtons_DisableEventSystem;
         public InputActionMap Get() { return m_Wrapper.m_DebugButtons; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -375,6 +398,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @DestroyBalls.started += instance.OnDestroyBalls;
             @DestroyBalls.performed += instance.OnDestroyBalls;
             @DestroyBalls.canceled += instance.OnDestroyBalls;
+            @DisableEventSystem.started += instance.OnDisableEventSystem;
+            @DisableEventSystem.performed += instance.OnDisableEventSystem;
+            @DisableEventSystem.canceled += instance.OnDisableEventSystem;
         }
 
         private void UnregisterCallbacks(IDebugButtonsActions instance)
@@ -394,6 +420,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @DestroyBalls.started -= instance.OnDestroyBalls;
             @DestroyBalls.performed -= instance.OnDestroyBalls;
             @DestroyBalls.canceled -= instance.OnDestroyBalls;
+            @DisableEventSystem.started -= instance.OnDisableEventSystem;
+            @DisableEventSystem.performed -= instance.OnDisableEventSystem;
+            @DisableEventSystem.canceled -= instance.OnDisableEventSystem;
         }
 
         public void RemoveCallbacks(IDebugButtonsActions instance)
@@ -424,5 +453,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnLoadMainMenu(InputAction.CallbackContext context);
         void OnReloadCurrentScene(InputAction.CallbackContext context);
         void OnDestroyBalls(InputAction.CallbackContext context);
+        void OnDisableEventSystem(InputAction.CallbackContext context);
     }
 }

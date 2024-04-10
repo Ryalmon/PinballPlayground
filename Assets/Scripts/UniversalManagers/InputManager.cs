@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.InputSystem.UI;
 
 public class InputManager : MonoBehaviour
 {
@@ -38,6 +41,13 @@ public class InputManager : MonoBehaviour
             GameplayManagers.Instance.Ball.RemoveAllBalls();
     }
 
+    private void DisableEvent(InputAction.CallbackContext obj)
+    {
+        InputSystemUIInputModule iSUIIM = FindObjectOfType<InputSystemUIInputModule>();
+        if (iSUIIM != null)
+            iSUIIM.enabled = !iSUIIM.enabled;
+    }
+
     #endregion
 
     private void EstablishInput()
@@ -50,6 +60,7 @@ public class InputManager : MonoBehaviour
         PIA.DebugButtons.LoadMainMenu.started += ToMainMenu;
         PIA.DebugButtons.ReloadCurrentScene.started += RefreshScene;
         PIA.DebugButtons.DestroyBalls.started += DestroyBalls;
+        PIA.DebugButtons.DisableEventSystem.started += DisableEvent;
 
     }
 
@@ -60,6 +71,7 @@ public class InputManager : MonoBehaviour
         PIA.DebugButtons.LoadMainMenu.started -= ToMainMenu;
         PIA.DebugButtons.ReloadCurrentScene.started -= RefreshScene;
         PIA.DebugButtons.DestroyBalls.started -= DestroyBalls;
+        PIA.DebugButtons.DisableEventSystem.started -= DisableEvent;
 
         PIA.DebugButtons.Disable();
     }
