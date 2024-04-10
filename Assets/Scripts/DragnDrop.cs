@@ -30,6 +30,7 @@ public class DragnDrop : MonoBehaviour
     Transform playerTouch;
     Vector2 initialPos;
     Vector2 delta;
+    Vector2 _lastPos;
 
 
     private void Awake()
@@ -54,7 +55,7 @@ public class DragnDrop : MonoBehaviour
            // StopFollowing();
         }
 
-        if (isFollowingTouch && Mathf.Abs(Vector3.Distance(initialPos, transform.position)) >= 1f)
+        if (isFollowingTouch && Mathf.Abs(Vector3.Distance(_lastPos, transform.position)) >= 1f)
         {
             
             if (circleTrigger != null)
@@ -67,10 +68,9 @@ public class DragnDrop : MonoBehaviour
         {
 
             transform.position = (Vector2)playerTouch.position;
-            delta = (Vector2)transform.position - initialPos;
-            float aimAngle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, aimAngle);
+            
         }
+        _lastPos = transform.position;
     }
 
     public void AssignPlacementData(DragTokenSO newPlacementData)
@@ -84,7 +84,7 @@ public class DragnDrop : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _placementData._tokenVisuals;
     }
 
-    public void OnMouseDrag()
+    /*public void OnMouseDrag()
     {
         if (!dragging && GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.End)
         {
@@ -105,7 +105,7 @@ public class DragnDrop : MonoBehaviour
         dragging = false;
 
         AttemptPlacement();
-    }
+    }*/
     
     private void AttemptPlacement()
     {
