@@ -109,6 +109,7 @@ public class DragnDrop : MonoBehaviour
         }
         else
         {
+            onlyCollideOnce = true;
             if (circleTrigger != null)
             {
                 Destroy(circleTrigger);
@@ -199,7 +200,6 @@ public class DragnDrop : MonoBehaviour
         {
             GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
             Debug.Log("Trigger Enter");
-            onlyCollideOnce = true;
             isFollowingTouch = true;
             playerTouch = collision.gameObject.transform;
         }
