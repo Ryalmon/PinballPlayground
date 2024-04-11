@@ -52,7 +52,7 @@ public class Tutorial : MonoBehaviour
         for(int i = 0; i < _specialItems.Length; ++i)
         {
             if (_specialItems[i] == null) continue;
-            _specialItems[i].color = new Color(_specialItems[i].color.r, _specialItems[i].color.g, _specialItems[i].color.b, 0.45f);
+            _specialItems[i].color = new Color(_specialItems[i].color.r, _specialItems[i].color.g, _specialItems[i].color.b, 0.25f);
         }
     }
 
