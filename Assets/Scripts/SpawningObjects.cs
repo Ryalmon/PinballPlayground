@@ -15,6 +15,11 @@ public class SpawningObjects : MonoBehaviour
 
     List<GameObject> _spawnPointsUsedBeforeGameStart = new List<GameObject>();
 
+    [SerializeField] float _hintWaitTime;
+    [SerializeField] float _shortWaitTime;
+
+    private Coroutine _hintCoroutine = null;
+
     int _currentOrderInLayer = 0;
 
     //[SerializeField] List<DragTokenSO> ShuffledTokens = new List<DragTokenSO>();
@@ -30,6 +35,7 @@ public class SpawningObjects : MonoBehaviour
     private void AssignEvents()
     {
         GameplayManagers.Instance.State.GetGameStartEvent().AddListener(ActivatePregameList);
+        GameplayManagers.Instance.State.GetGameStartEvent().AddListener(StartShowHint);
     }
 
     //Creates placeables at game start
@@ -119,6 +125,7 @@ public class SpawningObjects : MonoBehaviour
                 return;
             case (GameStateManager.GamePlayState.Play):
                 StartSpawnDelay(placed);
+                StartShowHint();
                 return;
         }
     }
@@ -134,6 +141,24 @@ public class SpawningObjects : MonoBehaviour
     {
         yield return new WaitForSeconds(_respawnObjectDelay);
         SpawnNewObject(oldObject);
+    }
+
+    private void StartShowHint()
+    {
+        if(_hintCoroutine != null)
+        {
+            StopCoroutine(_hintCoroutine);
+        }    
+        _hintCoroutine = StartCoroutine(ShowHints(_hintWaitTime));
+    }
+
+    private IEnumerator ShowHints(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        GameplayManagers.Instance.UI.ShowPlaceableHints();
+        _hintCoroutine = null;
+
+        _hintCoroutine = StartCoroutine(ShowHints(_shortWaitTime));
     }
 
     public int GetCurrentObjectLayer()

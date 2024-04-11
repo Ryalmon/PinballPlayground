@@ -47,7 +47,7 @@ MonoBehaviour:
   _scoreFromBumper: 100
   _scoreFromSpaceShip: 100
   _scoreFromBlackHole: 25
-  _scoreFromCeiling: 250
+  _scoreFromRedirector: 50
   _startingBallMultiplier: 1
   _ballMultiplierScalingRate: 5.5
   _ballMultiplerScalingAmount: 0.1

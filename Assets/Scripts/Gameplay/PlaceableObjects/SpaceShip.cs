@@ -14,6 +14,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
     [SerializeField] float _minSpeedToAddXVariability;
     [SerializeField] float _resetFadeOutTime;
     [SerializeField] float _resetFadeInTime;
+    [SerializeField] float _scoreMultiplier = 1;
     [Space]
     [SerializeField] float _destroyTime;
     //private float _storedXVelocity;
@@ -113,7 +114,7 @@ public class SpaceShip : MonoBehaviour, IPlaceable
         _dragObject = null;
         _dragObjectPhysics = null;
 
-        GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.SpaceShip);
+        GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.SpaceShip, _scoreMultiplier);
 
         ChangeShipState(SpaceShipState.RESETTING);
     }

@@ -16,6 +16,7 @@ public class BallSplit : MonoBehaviour
 
     private void Start()
     {
+        Destroy(gameObject, 20);
         UniversalManager.Instance.Sound.PlaySFX("SplitterSpawn");
     }
 

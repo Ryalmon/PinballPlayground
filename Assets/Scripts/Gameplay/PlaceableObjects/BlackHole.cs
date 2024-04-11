@@ -12,6 +12,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
     [SerializeField] float _ballSpeedForceInfluence;
     [SerializeField] float _minimumHoldMagnitude;
     [Space]
+    [SerializeField] float _scoreMultiplier = 1;
     [SerializeField] float _scoreTickRate;
     [Space]
     [SerializeField] float _destroyTime;
@@ -46,7 +47,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
         while(_objectsInRadius.Count > 0)
         {
             for(int i = 0; i < _objectsInRadius.Count;i++)
-                GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole);
+                GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.BlackHole, _scoreMultiplier);
             yield return new WaitForSeconds(_scoreTickRate);
         }
         _addScoreCoroutine = null;

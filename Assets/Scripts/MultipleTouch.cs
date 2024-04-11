@@ -1,28 +1,22 @@
-/******************************************************************************
-// File Name :         MultipleTouch.cs
-// Author :            Peter Campbell
-// Creation Date :     December 21st 2022
-//
-// Brief Description : Used to display touch inputs for testing. Based off code
-//                     from https://www.youtube.com/watch?v=98dQBWUyy9M
-******************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MultipleTouch : MonoBehaviour
 {
     // Vars
-    public GameObject circle;
-    public Camera mainCam;
-    public List<TouchLocations> touches = new List<TouchLocations>();
+    [SerializeField] private GameObject circle;
+    private Camera mainCam;
+    private List<TouchLocations> touches = new List<TouchLocations>();
 
     /// <summary>
     /// Start is called before the first frame update
     /// </summary>
     void Start()
     {
-
+        CameraUpdate();
+        UniversalManager.Instance.Scene.PostSceneChangeEvent().AddListener(CameraUpdate);
     }
 
     /// <summary>
@@ -81,6 +75,9 @@ public class MultipleTouch : MonoBehaviour
     /// <returns>world coords of touch</returns>
     Vector2 GetTouchPosition(Vector2 touchPosition)
     {
+        if (mainCam == null)
+            CameraUpdate();
+
         return mainCam.GetComponent<Camera>().ScreenToWorldPoint(
             new Vector3(touchPosition.x, touchPosition.y, 0));
     }
@@ -98,6 +95,11 @@ public class MultipleTouch : MonoBehaviour
         //Assigns its position to be where the touch occured
         c.transform.position = GetTouchPosition(t.position);
         return c;
+    }
+
+    void CameraUpdate()
+    {
+        mainCam = FindObjectOfType<Camera>();
     }
 
     /// <summary>

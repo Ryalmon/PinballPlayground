@@ -193,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -211,6 +211,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 10
@@ -218,6 +234,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -826,6 +846,7 @@ GameObject:
   - component: {fileID: 247918773}
   - component: {fileID: 247918772}
   - component: {fileID: 247918771}
+  - component: {fileID: 247918774}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -842,8 +863,8 @@ RectTransform:
   m_GameObject: {fileID: 247918769}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1119629577}
   m_Father: {fileID: 1822377091}
@@ -929,8 +950,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7f6614d5154caee449cd893ee678d30b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -947,6 +968,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247918769}
   m_CullTransparentMesh: 1
+--- !u!95 &247918774
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247918769}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80d8c237d55dd4f4ea036913c484ed07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &310633066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 29, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &395521809
@@ -1530,7 +1572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -90
+      value: -110
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1548,6 +1590,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 2
@@ -1555,6 +1613,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1798,7 +1860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1816,6 +1878,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 8
@@ -1823,6 +1901,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2038,7 +2120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2056,6 +2138,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 7
@@ -2063,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3259,7 +3361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3277,6 +3379,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 5
@@ -3284,6 +3402,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4157,7 +4279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4175,6 +4297,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 6
@@ -4182,6 +4320,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4702,7 +4844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 120
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4720,6 +4862,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 9
@@ -4727,6 +4885,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4927,6 +5089,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 4
@@ -4934,6 +5112,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5055,8 +5237,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4d220cea65b5cb3408dccb70bb0a7f0c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5179,7 +5361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -60
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5197,6 +5379,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 5997117597661032741, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: _scorePosition
       value: 3
@@ -5204,6 +5402,10 @@ PrefabInstance:
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5555,7 +5757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -120
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 2395077813618398518, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5573,9 +5775,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3532567084992383910, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: 12345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582781218780650851, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377636060225023657, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
     - target: {fileID: 6219169969371752676, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
       propertyPath: m_Name
       value: LeaderboardPlace1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343363981973838544, guid: 69b4cc01d38149844ae2b561201fcb34, type: 3}
+      propertyPath: m_text
+      value: EXA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

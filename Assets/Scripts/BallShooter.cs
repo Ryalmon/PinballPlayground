@@ -64,6 +64,8 @@ public class BallShooter : MonoBehaviour
         {
             yield return new WaitForSeconds(_flipTime);
             _rotateSpeed *= -1;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                Mathf.Round(transform.eulerAngles.z / 90) * 90);
         }
     }
 

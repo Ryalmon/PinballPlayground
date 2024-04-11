@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] int _scoreFromBumper;
     [SerializeField] int _scoreFromSpaceShip;
     [SerializeField] int _scoreFromBlackHole;
-    [SerializeField] int _scoreFromCeiling;
+    [SerializeField] int _scoreFromRedirector;
     
     [Space]
 
@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         { ScoreSource.Bumper,0},
         { ScoreSource.SpaceShip,0},
         { ScoreSource.BlackHole,0},
-        { ScoreSource.Ceiling,0}
+        { ScoreSource.Redirector,0}
     };
 
     
@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
         _scoreDictionary[ScoreSource.Bumper] = _scoreFromBumper;
         _scoreDictionary[ScoreSource.SpaceShip] = _scoreFromSpaceShip;
         _scoreDictionary[ScoreSource.BlackHole] = _scoreFromBlackHole;
-        _scoreDictionary[ScoreSource.Ceiling] = _scoreFromCeiling;
+        _scoreDictionary[ScoreSource.Redirector] = _scoreFromRedirector;
     }
 
     #region BallPointMultiplier
@@ -100,7 +100,7 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region PointParticles
-    public void CreatePointParticles(GameObject spawnSource, ScoreSource source)
+    public void CreatePointParticles(GameObject spawnSource, ScoreSource source, float incomingMultiplier)
     {
         //Starts the spawn point particles coroutine on the vfx manager
         //Spawnsource is where to spawn them
@@ -109,12 +109,12 @@ public class ScoreManager : MonoBehaviour
         //ScoreValueFromSource gets the score based on the source of what called it.
         VFXManager vfxMan = UniversalManager.Instance.VFX;
         vfxMan.StartCoroutine(vfxMan.SpawnPointParticles(spawnSource, GameplayManagers.Instance.UI.GetScoreTextLocation(),
-            ScoreTimesBallMultiplier(ScoreValueFromSource(source))));
+            (ScoreTimesBallMultiplier(ScoreValueFromSource(source), incomingMultiplier))));
     }
 
-    private int ScoreTimesBallMultiplier(int score)
+    private int ScoreTimesBallMultiplier(int score, float incomingMultiplier)
     {
-        return Mathf.CeilToInt(score * GetBallLifetimeMultiplier());
+        return Mathf.CeilToInt(score * incomingMultiplier * GetBallLifetimeMultiplier());
     }
 
     #endregion
@@ -153,5 +153,5 @@ public enum ScoreSource
     Bumper,
     SpaceShip,
     BlackHole,
-    Ceiling
+    Redirector
 };
