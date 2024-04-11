@@ -3398,6 +3398,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1202462096}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _launchAnimator
+      value: 
+      objectReference: {fileID: 1269371855}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _timerAlertAnim
       value: 
       objectReference: {fileID: 611447661}
@@ -4966,6 +4970,7 @@ GameObject:
   - component: {fileID: 1269371853}
   - component: {fileID: 1269371852}
   - component: {fileID: 1269371851}
+  - component: {fileID: 1269371855}
   m_Layer: 5
   m_Name: BallLaunchButton
   m_TagString: Untagged
@@ -5087,6 +5092,27 @@ RectTransform:
   m_AnchoredPosition: {x: 286.99997, y: 0}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1269371855
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269371850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 140784a0b59ae66429246561d3723e6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1324174160
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,7 @@ public class GameUIManager : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private GameObject _ballLaunchButton;
+    [SerializeField] private Animator _launchAnimator;
     [SerializeField] private GameObject _leftFlipperButton;
     [SerializeField] private GameObject _rightFlipperButton;
     [SerializeField] private Sprite _flipperButtonPassive;
@@ -277,12 +278,14 @@ public class GameUIManager : MonoBehaviour
     {
         if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) 
         return;
-        _ballLaunchButton.SetActive(true);
+        //_ballLaunchButton.SetActive(true);
+        _launchAnimator.SetBool("ButtonVisible", true);
     }
 
     public void BallLaunchButtonPressed()
     {
-        _ballLaunchButton.SetActive(false);
+        //_ballLaunchButton.SetActive(false);
+        _launchAnimator.SetBool("ButtonVisible", false);
     }
 
     #region FlipperButtons
