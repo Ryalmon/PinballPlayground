@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] int _scoreFromBumper;
     [SerializeField] int _scoreFromSpaceShip;
     [SerializeField] int _scoreFromBlackHole;
-    [SerializeField] int _scoreFromCeiling;
+    [SerializeField] int _scoreFromRedirector;
     
     [Space]
 
@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
         _scoreDictionary[ScoreSource.Bumper] = _scoreFromBumper;
         _scoreDictionary[ScoreSource.SpaceShip] = _scoreFromSpaceShip;
         _scoreDictionary[ScoreSource.BlackHole] = _scoreFromBlackHole;
-        _scoreDictionary[ScoreSource.Redirector] = _scoreFromCeiling;
+        _scoreDictionary[ScoreSource.Redirector] = _scoreFromRedirector;
     }
 
     #region BallPointMultiplier

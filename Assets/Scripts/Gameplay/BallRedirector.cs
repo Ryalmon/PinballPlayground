@@ -8,6 +8,7 @@ public class BallRedirector : MonoBehaviour
     [SerializeField] float _redirectForce;
     [SerializeField] float _xVariance;
     [SerializeField] float _holdTime;
+    [SerializeField] float _scoreMultiplier = 1;
     private Queue<GameObject> balls = new Queue<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,6 +27,8 @@ public class BallRedirector : MonoBehaviour
         newBall.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         newBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         UniversalManager.Instance.Sound.PlaySFX("SlingRing");
+
+        GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Redirector, _scoreMultiplier);
     }
 
     private void BallFire()

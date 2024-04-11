@@ -105,6 +105,7 @@ MonoBehaviour:
   _redirectForce: 15
   _xVariance: 0.2
   _holdTime: 0.5
+  _scoreMultiplier: 1
 --- !u!95 &1081590537385088494
 Animator:
   serializedVersion: 5
