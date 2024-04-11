@@ -182,7 +182,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5b97e5a453df7474a9b193f9772342de, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6792, g: 0.6792, b: 0.6792, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2211,6 +2211,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7757500734710360290, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
   m_PrefabInstance: {fileID: 573427429}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &574956947 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 300212454891572425, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+  m_PrefabInstance: {fileID: 1442186047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &575131908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7513186299408543964, guid: 226f2717741e50f4292307203ffc488d, type: 3}
@@ -3164,6 +3169,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3320132842764002213, guid: 8d76f508009f5c84baf52c041725a772, type: 3}
   m_PrefabInstance: {fileID: 2610877276101417663}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &749378042 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 300212454891572425, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+  m_PrefabInstance: {fileID: 2083274481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832802974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,6 +3889,10 @@ MonoBehaviour:
   - {fileID: 314209577}
   - {fileID: 1627401671}
   - {fileID: 560822739}
+  - {fileID: 1240311764}
+  - {fileID: 574956947}
+  - {fileID: 749378042}
+  - {fileID: 2139764757}
   _backgroundImage: {fileID: 1584008984}
   _borderImage: {fileID: 1547561947}
   _darken: {r: 0.45, g: 0.45, b: 0.45, a: 1}
@@ -4807,6 +4821,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8753747113841865164, guid: 8d76f508009f5c84baf52c041725a772, type: 3}
   m_PrefabInstance: {fileID: 2610877276101417663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1240311764 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 300212454891572425, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+  m_PrefabInstance: {fileID: 5854040937169211111}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1253142284
 GameObject:
@@ -5936,7 +5955,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 226181153
   m_SortingLayer: 14
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0e9516ec72452364d92217e35dd14fe5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8640,6 +8659,11 @@ BoxCollider2D:
 Animator:
   m_CorrespondingSourceObject: {fileID: 7897822576325462102, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
   m_PrefabInstance: {fileID: 1960137465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2139764757 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 300212454891572425, guid: bf8704d4708781842871113b9b518fd9, type: 3}
+  m_PrefabInstance: {fileID: 39156896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &41679558804892399
 PrefabInstance:
