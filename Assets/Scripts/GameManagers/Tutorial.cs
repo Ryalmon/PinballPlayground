@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject _tutorialText;
 
     [SerializeField] private SpriteRenderer[] _nonImportantItems;
+    [SerializeField] private SpriteRenderer[] _specialItems;
 
     [SerializeField] private SpriteRenderer _backgroundImage;
     [SerializeField] private SpriteRenderer _borderImage;
@@ -47,6 +48,12 @@ public class Tutorial : MonoBehaviour
             if (_nonImportantItems[i] == null) continue;
             _nonImportantItems[i].color = _darken;
         }
+
+        for(int i = 0; i < _specialItems.Length; ++i)
+        {
+            if (_specialItems[i] == null) continue;
+            _specialItems[i].color = new Color(_specialItems[i].color.r, _specialItems[i].color.g, _specialItems[i].color.b, 0.45f);
+        }
     }
 
     public void setTutorialStateFalse()
@@ -66,6 +73,12 @@ public class Tutorial : MonoBehaviour
         {
             if (_nonImportantItems[i] == null) continue;
             _nonImportantItems[i].color = _normal;
+        }
+
+        for (int i = 0; i < _specialItems.Length; ++i)
+        {
+            if (_specialItems[i] == null) continue;
+            _specialItems[i].color = new Color(_specialItems[i].color.r, _specialItems[i].color.g, _specialItems[i].color.b, 1f);
         }
     }
 }

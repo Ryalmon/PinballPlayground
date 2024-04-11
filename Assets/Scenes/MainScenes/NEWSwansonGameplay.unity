@@ -1087,6 +1087,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6048422233144181833, guid: bf8704d4708781842871113b9b518fd9, type: 3}
   m_PrefabInstance: {fileID: 2083274481}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &354920944 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2869471957064365998, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
+  m_PrefabInstance: {fileID: 573427429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &362394799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3179,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 300212454891572425, guid: bf8704d4708781842871113b9b518fd9, type: 3}
   m_PrefabInstance: {fileID: 2083274481}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &808270262 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2869471957064365998, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
+  m_PrefabInstance: {fileID: 1601833623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832802974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,6 +3903,11 @@ MonoBehaviour:
   - {fileID: 574956947}
   - {fileID: 749378042}
   - {fileID: 2139764757}
+  _specialItems:
+  - {fileID: 956216493}
+  - {fileID: 808270262}
+  - {fileID: 354920944}
+  - {fileID: 1282116411}
   _backgroundImage: {fileID: 1584008984}
   _borderImage: {fileID: 1547561947}
   _darken: {r: 0.45, g: 0.45, b: 0.45, a: 1}
@@ -5132,6 +5147,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1282116411 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2869471957064365998, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
+  m_PrefabInstance: {fileID: 1910101853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1324174160
 GameObject:
   m_ObjectHideFlags: 0
@@ -6548,6 +6568,10 @@ PrefabInstance:
     - target: {fileID: 1937808403352382397, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
       propertyPath: m_Name
       value: TopBumper
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869471957064365998, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7757500734710360290, guid: 55cd256da700af54f925d39ff2e06a92, type: 3}
       propertyPath: m_LocalPosition.x
