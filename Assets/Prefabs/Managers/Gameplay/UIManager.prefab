@@ -48,10 +48,7 @@ MonoBehaviour:
   _timerText: {fileID: 0}
   _scoreMultiplierText: {fileID: 0}
   _scoreTextLocation: {x: 0, y: 8}
-  _roundTo1DigitsAt: 30
-  _roundTo2DigitsAt: 10
-  _startCountDownAnimAt: 3.5
-  _scoreMultiplierScalingRate: 1.3
+  _scoreMultiplierScalingRate: 0.8
   _gradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -82,6 +79,11 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
+  _multiplierAnimation: {fileID: 0}
+  _roundTo1DigitsAt: 30
+  _roundTo2DigitsAt: 10
+  _startCountDownAnimAt: 3.5
+  _timerAlertAnim: {fileID: 0}
   _scorePopUpSpawnSource: {fileID: 0}
   _scorePopUpObject: {fileID: 8745426761391789019, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
   _scorePopupLocation: {x: 100, y: 550}
@@ -90,6 +92,7 @@ MonoBehaviour:
   _scorePopupRate: 0.3
   _scorePopupRateScaler: 0.5
   _ballLaunchButton: {fileID: 0}
+  _launchAnimator: {fileID: 0}
   _leftFlipperButton: {fileID: 0}
   _rightFlipperButton: {fileID: 0}
   _flipperButtonPassive: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
@@ -100,9 +103,9 @@ MonoBehaviour:
   _leftCooldown: {fileID: 0}
   _rightCooldown: {fileID: 0}
   _countdownAnim: {fileID: 0}
-  _countdownText: {fileID: 0}
   _milestoneIncrement: 10000
   _milestoneAnimation: {fileID: 0}
+  _placeablesHints: {fileID: 0}
   _finalScoreDisplay: {fileID: 0}
   _finalScoreText: {fileID: 0}
   _CongratsGameEndDisplay: {fileID: 0}
