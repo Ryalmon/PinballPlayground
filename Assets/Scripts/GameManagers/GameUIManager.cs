@@ -81,6 +81,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject _CongratsGameEndDisplay;
     [SerializeField] GameObject _KeyboardDisplay;
     [SerializeField] GameObject _Fireworks;
+    [SerializeField] Animator _fw1;
+    [SerializeField] Animator _fw2;
 
     [Space]
     [SerializeField] float _startTimeForEnd;
@@ -399,6 +401,13 @@ public class GameUIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         _Fireworks.SetActive(true);
+        _fw1.gameObject.SetActive(true);
+        _fw1.SetTrigger("StartFirework");
+        
+        yield return new WaitForSeconds(.5f);
+        _fw2.gameObject.SetActive(true);
+        _fw2.SetTrigger("StartFirework");
+        
     }
 
     public Vector2 GetScoreTextLocation()
