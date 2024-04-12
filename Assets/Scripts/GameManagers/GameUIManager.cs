@@ -80,6 +80,7 @@ public class GameUIManager : MonoBehaviour
     [Space]
     [SerializeField] GameObject _CongratsGameEndDisplay;
     [SerializeField] GameObject _KeyboardDisplay;
+    [SerializeField] GameObject _Fireworks;
 
     [Space]
     [SerializeField] float _startTimeForEnd;
@@ -383,12 +384,21 @@ public class GameUIManager : MonoBehaviour
     private void DisplayCongrats()
     {
         _CongratsGameEndDisplay.SetActive(true);
+
     }
 
     private void DisplayLeaderboardGameEnd()
     {
         //Debug.Log("DisplayKeyboard");
         _KeyboardDisplay.SetActive(true);
+
+        StartCoroutine(DisplayFireWorks());
+    }
+
+    private IEnumerator DisplayFireWorks()
+    {
+        yield return new WaitForSeconds(1);
+        _Fireworks.SetActive(true);
     }
 
     public Vector2 GetScoreTextLocation()

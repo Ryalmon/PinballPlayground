@@ -3474,6 +3474,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _Fireworks
+      value: 
+      objectReference: {fileID: 2610877276101417664}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scoreText
       value: 
       objectReference: {fileID: 490284820}
@@ -9187,6 +9191,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d76f508009f5c84baf52c041725a772, type: 3}
+--- !u!1 &2610877276101417664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2802854371496335960, guid: 8d76f508009f5c84baf52c041725a772, type: 3}
+  m_PrefabInstance: {fileID: 2610877276101417663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5854040937169211111
 PrefabInstance:
   m_ObjectHideFlags: 0
