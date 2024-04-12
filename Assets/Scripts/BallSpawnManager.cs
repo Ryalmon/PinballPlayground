@@ -86,4 +86,9 @@ public class BallSpawnManager : MonoBehaviour
         return BallsInScene.Count;
     }
 
+    public void ShooterBegin()
+    {
+        _ballShooter.GetComponent<BallShooter>().Begin();
+    }
+
 }
