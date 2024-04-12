@@ -16,13 +16,47 @@ public class MusicLoader : MonoBehaviour
 
         if (sceneName == "MainMenu")
         {
-            UniversalManager.Instance.Sound.StopMusic("GameMusic");
-            UniversalManager.Instance.Sound.PlayMusic("MenuMusic");
+            StartCoroutine(MainMenuMusic());
         }
         else if (sceneName == "NEWSwansonGameplay")
         {
-            UniversalManager.Instance.Sound.StopMusic("MenuMusic");
-            UniversalManager.Instance.Sound.PlayMusic("GameMusic");
+            StartCoroutine(GameMusic());
         }
+    }
+
+    IEnumerator MainMenuMusic()
+    {
+        float progress = 0.5f;
+        while (progress > 0f)
+        {
+            progress -= Time.deltaTime;
+            UniversalManager.Instance.Sound.musicSource.volume = progress;
+        }
+        UniversalManager.Instance.Sound.StopMusic("GameMusic");
+        UniversalManager.Instance.Sound.PlayMusic("MenuMusic");
+        while (progress < 0.5f)
+        {
+            progress += Time.deltaTime;
+            UniversalManager.Instance.Sound.musicSource.volume = progress;
+        }
+        yield return new WaitForSeconds(0f);
+    }
+
+    IEnumerator GameMusic()
+    {
+        float progress = 0.5f;
+        while (progress > 0f)
+        {
+            progress -= Time.deltaTime;
+            UniversalManager.Instance.Sound.musicSource.volume = progress;
+        }
+        UniversalManager.Instance.Sound.StopMusic("MenuMusic");
+        UniversalManager.Instance.Sound.PlayMusic("GameMusic");
+        while (progress < 0.5f)
+        {
+            progress += Time.deltaTime;
+            UniversalManager.Instance.Sound.musicSource.volume = progress;
+        }
+        yield return new WaitForSeconds(0f);
     }
 }
