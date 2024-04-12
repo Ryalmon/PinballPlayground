@@ -20,7 +20,7 @@ public class BallShooter : MonoBehaviour
     private Coroutine rotate2;
 
     // Start is called before the first frame update
-    void Start()
+    public void Begin()
     {
         transform.eulerAngles = _startRotation;
         AssignEvents();
@@ -64,8 +64,8 @@ public class BallShooter : MonoBehaviour
         {
             yield return new WaitForSeconds(_flipTime);
             _rotateSpeed *= -1;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                Mathf.Round(transform.eulerAngles.z / 90) * 90);
+            //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+                //Mathf.Round(transform.eulerAngles.z / 90) * 90);
         }
     }
 
