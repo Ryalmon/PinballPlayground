@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-       PlayMusic("Music");
+      
+
     }
 
     public void PlayMusic(string name)
@@ -26,6 +28,22 @@ public class SoundManager : MonoBehaviour
         {
             musicSource.clip = s.clip;
             musicSource.Play();
+        }
+    }
+
+    public void StopMusic(string name)
+    {
+        Sound s = Array.Find(musicSounds, x => x.soundName == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            musicSource.clip = s.clip;
+            musicSource.Stop();
         }
     }
 

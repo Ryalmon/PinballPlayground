@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds:
-  - soundName: Music
+  - soundName: MenuMusic
     clip: {fileID: 8300000, guid: c82c426db15928c428a807d65d2a359e, type: 3}
+  - soundName: GameMusic
+    clip: {fileID: 8300000, guid: a68717a292282e743bca104698e37ce6, type: 3}
   sfxSounds:
   - soundName: FlipperUp
     clip: {fileID: 8300000, guid: 91acea86d6afdeb44bf63735d3a0e26c, type: 3}
