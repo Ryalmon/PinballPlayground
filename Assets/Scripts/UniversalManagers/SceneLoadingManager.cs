@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class SceneLoadingManager : MonoBehaviour
 {
     private UnityEvent _postSceneChange = new UnityEvent();
+    private int _previousScene = -1;
     public int CurrentScene()
     {
         return SceneManager.GetActiveScene().buildIndex;
@@ -24,6 +25,7 @@ public class SceneLoadingManager : MonoBehaviour
 
     public IEnumerator SceneLoadDelay(int index)
     {
+        _previousScene = SceneManager.GetActiveScene().buildIndex;
         SceneTransition st = FindObjectOfType<SceneTransition>();
         if (st != null)
             st.SceneTransitionIn();
@@ -35,5 +37,15 @@ public class SceneLoadingManager : MonoBehaviour
     public UnityEvent PostSceneChangeEvent()
     {
         return _postSceneChange;
+    }
+
+    public int PreviousScene()
+    {
+        return _previousScene;
+    }
+
+    public bool IsSameAsPreviousScene()
+    {
+        return SceneManager.GetActiveScene().buildIndex == _previousScene;
     }
 }

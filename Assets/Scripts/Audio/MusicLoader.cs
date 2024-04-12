@@ -16,7 +16,8 @@ public class MusicLoader : MonoBehaviour
 
         if (sceneName == "MainMenu")
         {
-            StartCoroutine(MainMenuMusic());
+            if(!UniversalManager.Instance.Scene.IsSameAsPreviousScene() && UniversalManager.Instance.Scene.PreviousScene() != 2)
+                StartCoroutine(MainMenuMusic());
         }
         else if (sceneName == "NEWSwansonGameplay")
         {
