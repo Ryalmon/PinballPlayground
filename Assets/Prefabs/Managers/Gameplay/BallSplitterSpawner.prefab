@@ -49,4 +49,6 @@ MonoBehaviour:
   YUpperSpawnBounds: 5
   XLeft: -6.66
   YLowerSpawnBounds: -2.5
-  SpawnCountdown: 15
+  SpawnCountdown: 7.5
+  _TwoBallCooldown: 12.5
+  _ThreeBallCooldown: 15
