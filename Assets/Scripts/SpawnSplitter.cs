@@ -11,12 +11,16 @@ public class SpawnSplitter : MonoBehaviour
     [SerializeField] float XLeft;
     [SerializeField] float YLowerSpawnBounds;
     [SerializeField] float SpawnCountdown;
+    [SerializeField] float _TwoBallCooldown;
+    [SerializeField] float _ThreeBallCooldown;
+    private float _currentBallCooldown;
     private float currentTime;
     private float PosOrNeg;
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = SpawnCountdown;
+        //currentTime = SpawnCountdown;
+        _currentBallCooldown = SpawnCountdown;
         AssignEvents();
     }
 
@@ -61,15 +65,27 @@ public class SpawnSplitter : MonoBehaviour
         StartCoroutine(SplitterCreationCooldown());
     }
 
+    public float CooldownBasedOnBallsInScene()
+    {
+        int _ballsInScene = GameplayManagers.Instance.Ball.GetBallsInSceneCount();
+        if (_ballsInScene >= 3)
+            return _ThreeBallCooldown;
+        else if (_ballsInScene == 2)
+            return _TwoBallCooldown;
+        else
+            return SpawnCountdown;
+    }
+
     private IEnumerator SplitterCreationCooldown()
     {
-        while(GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.Play)
+        currentTime = CooldownBasedOnBallsInScene();
+        while (GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.Play)
         {
             currentTime -= Time.deltaTime;
 
             if (currentTime <= 0.0f)
             {
-                currentTime = SpawnCountdown;
+                currentTime = CooldownBasedOnBallsInScene();
                 CreateSplitter();
             }
             yield return null;
