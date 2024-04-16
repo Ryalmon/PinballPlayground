@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
-    public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public Sound[] musicSounds, sfxSounds, flipperSounds;
+    public AudioSource musicSource, sfxSource, flipperSource;
 
     private void Start()
     {
@@ -59,6 +59,21 @@ public class SoundManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayFlipper(string name)
+    {
+        Sound s = Array.Find(flipperSounds, x => x.soundName == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            flipperSource.PlayOneShot(s.clip);
         }
     }
 
