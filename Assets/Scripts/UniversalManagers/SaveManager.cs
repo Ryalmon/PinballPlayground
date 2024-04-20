@@ -92,6 +92,7 @@ public class SaveManager : MonoBehaviour
         //Stops if you reach the end and this is bigger than everything else
         if (pos < 0)
         {
+            _mostRecentScorePos = pos + 1;
             SaveText();
             return;
         }
