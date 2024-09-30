@@ -148,6 +148,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpeedAccel"",
+                    ""type"": ""Button"",
+                    ""id"": ""582bf5e7-fe43-417f-9316-67b7594a60a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpeedReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a79a4e3-52fc-4c7c-ac8a-e060362ab55e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +234,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""DisableEventSystem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a42b2885-b723-4c4d-a02e-58e3f15bfc77"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpeedAccel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00a6bdd0-3402-4cc4-bc5e-7dfdfbda3cd4"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpeedReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -235,6 +275,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_DebugButtons_ReloadCurrentScene = m_DebugButtons.FindAction("ReloadCurrentScene", throwIfNotFound: true);
         m_DebugButtons_DestroyBalls = m_DebugButtons.FindAction("DestroyBalls", throwIfNotFound: true);
         m_DebugButtons_DisableEventSystem = m_DebugButtons.FindAction("DisableEventSystem", throwIfNotFound: true);
+        m_DebugButtons_SpeedAccel = m_DebugButtons.FindAction("SpeedAccel", throwIfNotFound: true);
+        m_DebugButtons_SpeedReset = m_DebugButtons.FindAction("SpeedReset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -364,6 +406,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_DebugButtons_ReloadCurrentScene;
     private readonly InputAction m_DebugButtons_DestroyBalls;
     private readonly InputAction m_DebugButtons_DisableEventSystem;
+    private readonly InputAction m_DebugButtons_SpeedAccel;
+    private readonly InputAction m_DebugButtons_SpeedReset;
     public struct DebugButtonsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -374,6 +418,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @ReloadCurrentScene => m_Wrapper.m_DebugButtons_ReloadCurrentScene;
         public InputAction @DestroyBalls => m_Wrapper.m_DebugButtons_DestroyBalls;
         public InputAction @DisableEventSystem => m_Wrapper.m_DebugButtons_DisableEventSystem;
+        public InputAction @SpeedAccel => m_Wrapper.m_DebugButtons_SpeedAccel;
+        public InputAction @SpeedReset => m_Wrapper.m_DebugButtons_SpeedReset;
         public InputActionMap Get() { return m_Wrapper.m_DebugButtons; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -401,6 +447,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @DisableEventSystem.started += instance.OnDisableEventSystem;
             @DisableEventSystem.performed += instance.OnDisableEventSystem;
             @DisableEventSystem.canceled += instance.OnDisableEventSystem;
+            @SpeedAccel.started += instance.OnSpeedAccel;
+            @SpeedAccel.performed += instance.OnSpeedAccel;
+            @SpeedAccel.canceled += instance.OnSpeedAccel;
+            @SpeedReset.started += instance.OnSpeedReset;
+            @SpeedReset.performed += instance.OnSpeedReset;
+            @SpeedReset.canceled += instance.OnSpeedReset;
         }
 
         private void UnregisterCallbacks(IDebugButtonsActions instance)
@@ -423,6 +475,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @DisableEventSystem.started -= instance.OnDisableEventSystem;
             @DisableEventSystem.performed -= instance.OnDisableEventSystem;
             @DisableEventSystem.canceled -= instance.OnDisableEventSystem;
+            @SpeedAccel.started -= instance.OnSpeedAccel;
+            @SpeedAccel.performed -= instance.OnSpeedAccel;
+            @SpeedAccel.canceled -= instance.OnSpeedAccel;
+            @SpeedReset.started -= instance.OnSpeedReset;
+            @SpeedReset.performed -= instance.OnSpeedReset;
+            @SpeedReset.canceled -= instance.OnSpeedReset;
         }
 
         public void RemoveCallbacks(IDebugButtonsActions instance)
@@ -454,5 +512,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnReloadCurrentScene(InputAction.CallbackContext context);
         void OnDestroyBalls(InputAction.CallbackContext context);
         void OnDisableEventSystem(InputAction.CallbackContext context);
+        void OnSpeedAccel(InputAction.CallbackContext context);
+        void OnSpeedReset(InputAction.CallbackContext context);
     }
 }

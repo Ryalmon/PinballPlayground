@@ -27,6 +27,10 @@ public class UniversalManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+
         SpawnManagers();
         DontDestroyOnLoad(gameObject);
     }

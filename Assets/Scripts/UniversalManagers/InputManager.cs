@@ -46,6 +46,15 @@ public class InputManager : MonoBehaviour
             iSUIIM.enabled = !iSUIIM.enabled;
     }
 
+    private void TimeAccel(InputAction.CallbackContext obj)
+    {
+        Time.timeScale += 1;
+    }
+
+    private void TimeReset(InputAction.CallbackContext obj)
+    {
+        Time.timeScale = 1;
+    }
     #endregion
 
     private void EstablishInput()
@@ -60,6 +69,9 @@ public class InputManager : MonoBehaviour
         PIA.DebugButtons.DestroyBalls.started += DestroyBalls;
         PIA.DebugButtons.DisableEventSystem.started += DisableEvent;
 
+        PIA.DebugButtons.SpeedAccel.started += TimeAccel;
+        PIA.DebugButtons.SpeedReset.started += TimeReset;
+
     }
 
     private void OnDestroy()
@@ -70,6 +82,9 @@ public class InputManager : MonoBehaviour
         PIA.DebugButtons.ReloadCurrentScene.started -= RefreshScene;
         PIA.DebugButtons.DestroyBalls.started -= DestroyBalls;
         PIA.DebugButtons.DisableEventSystem.started -= DisableEvent;
+
+        PIA.DebugButtons.SpeedAccel.started -= TimeAccel;
+        PIA.DebugButtons.SpeedReset.started -= TimeReset;
 
         PIA.DebugButtons.Disable();
     }

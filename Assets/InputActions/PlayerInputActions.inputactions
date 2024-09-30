@@ -126,6 +126,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpeedAccel",
+                    "type": "Button",
+                    "id": "582bf5e7-fe43-417f-9316-67b7594a60a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpeedReset",
+                    "type": "Button",
+                    "id": "9a79a4e3-52fc-4c7c-ac8a-e060362ab55e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -192,6 +210,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DisableEventSystem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a42b2885-b723-4c4d-a02e-58e3f15bfc77",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpeedAccel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00a6bdd0-3402-4cc4-bc5e-7dfdfbda3cd4",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpeedReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
