@@ -11,6 +11,8 @@ public class UniversalManager : MonoBehaviour
     public VFXManager VFX;
     public SoundManager Sound;
 
+    [SerializeField] private ObjectPoolingParent _objectPoolingParent;
+
     public static UniversalManager Instance;
 
 
@@ -29,8 +31,9 @@ public class UniversalManager : MonoBehaviour
         Instance = this;
 
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 90;
 
+        _objectPoolingParent.SetupInstance();
         SpawnManagers();
         DontDestroyOnLoad(gameObject);
     }
@@ -54,4 +57,6 @@ public class UniversalManager : MonoBehaviour
         Sound = FindObjectOfType<SoundManager>();
 
     }
+
+    public ObjectPoolingParent GetObjectPoolingParent() => _objectPoolingParent;
 }

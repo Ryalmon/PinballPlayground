@@ -12,15 +12,29 @@ public class PointParticle : MonoBehaviour
     internal Vector2 AwayDirection;
     internal Vector2 EndingLocation;
     int _baseValue;
+
+    private Coroutine _moveAwayCoroutine;
+    private Coroutine _moveTowardsCoroutine;
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void SetPointValue(int value)
     {
         _baseValue = value;
+    }
+
+    public void StartMoveAway(Vector3 away)
+    {
+        StopMoveAway();
+        _moveAwayCoroutine = StartCoroutine(MoveAway(away));
+    }
+
+    public void StopMoveAway()
+    {
+        if(_moveAwayCoroutine != null)
+        {
+            StopCoroutine(_moveAwayCoroutine);
+        }
     }
 
     public IEnumerator MoveAway(Vector2 away)
@@ -36,6 +50,20 @@ public class PointParticle : MonoBehaviour
             movePercent += Time.deltaTime/_awayTime;
             transform.position = Vector2.Lerp(startPos, AwayDirection, Mathf.Sqrt(movePercent));
             yield return null;
+        }
+    }
+
+    public void StartMoveTowards(Vector2 end)
+    {
+        StopMoveTowards();
+        _moveTowardsCoroutine = StartCoroutine(MoveTowards(end));
+    }
+
+    public void StopMoveTowards()
+    {
+        if(_moveTowardsCoroutine != null)
+        {
+            StopCoroutine(_moveTowardsCoroutine);
         }
     }
 
@@ -56,7 +84,7 @@ public class PointParticle : MonoBehaviour
             yield return null;
         }
         GameplayManagers.Instance.Score.AddToScore(_baseValue);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

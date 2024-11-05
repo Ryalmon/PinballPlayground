@@ -11,15 +11,46 @@ public class VFXManager : MonoBehaviour
     [SerializeField] int _basePointValue;
     [SerializeField] GameObject _pointParticle;
 
+    private PointParticle[] _pointParticlesPool;
+    private const int POINT_PARTICLES_POOL_COUNT = 600;
+    private int _particlePoolCounter = 0;
+
+    private void Awake()
+    {
+        EstablishPointParticlePool();
+    }
+
+    private void EstablishPointParticlePool()
+    {
+        _pointParticlesPool = new PointParticle[POINT_PARTICLES_POOL_COUNT];
+        for(int i = 0; i < POINT_PARTICLES_POOL_COUNT; i++)
+        {
+            GameObject newParticle = Instantiate(_pointParticle, transform.position, Quaternion.identity);
+            _pointParticlesPool[i] = newParticle.GetComponent<PointParticle>();
+            newParticle.SetActive(false);
+            ObjectPoolingParent.Instance.AddObjectAsChild(newParticle);
+        }
+    }
+
+    private PointParticle GetNextPointParticleInPool()
+    {
+        int currentCounter = _particlePoolCounter;
+        _particlePoolCounter++;
+        if (_particlePoolCounter >= POINT_PARTICLES_POOL_COUNT)
+            _particlePoolCounter = 0;
+
+        return _pointParticlesPool[_particlePoolCounter];
+    }
+
     public IEnumerator SpawnPointParticles(GameObject spawnSource, Vector2 endPos, int score)
     {
         Vector3 spawnSourceLoc = spawnSource.transform.position;
-        List <GameObject> particleList = new List<GameObject>();
         int particleNumber = DetermineParticleNum(score);
+        PointParticle[] particleArray = new PointParticle[particleNumber];
         for (int i = 0; i < particleNumber; i++)
         {
             //Spawns a new particle
-            GameObject newestPoint;
+            PointParticle newestPoint;
             if(spawnSource == null)
                 newestPoint = SpawnPointGameObject(spawnSourceLoc);
             else
@@ -31,36 +62,33 @@ public class VFXManager : MonoBehaviour
             //Decrements total score and assigns the score to the point particle
             int newPointValue = IndividualPointValue(score);
             //Debug.Log(newPointValue);
-            newestPoint.GetComponent<PointParticle>().SetPointValue(newPointValue);
+            newestPoint.SetPointValue(newPointValue);
             score -= newPointValue;
             //Adds the most recent particle to a list
-            particleList.Add(newestPoint);
+            particleArray[i] = newestPoint;
 
             //Waits to spawn another particle
             yield return new WaitForSeconds(_pointPSpawnDelay);
         }
         //After all particles have spawned wait for a set time
         yield return new WaitForSeconds(.1f);
-        foreach(GameObject particle in particleList)
+        foreach(PointParticle particle in particleArray)
         {
             //Makes all particles that were spawned, start their MoveTowards function
-            PointParticle pScript = particle.GetComponent<PointParticle>();
-            pScript.StartCoroutine(pScript.MoveTowards(endPos));
+            particle.StartMoveTowards(endPos);
             yield return new WaitForSeconds(_pointPMoveDelay);
         }
     }
 
-    private GameObject SpawnPointGameObject(Vector2 spawnPos)
+    private PointParticle SpawnPointGameObject(Vector2 spawnPos)
     {
         //Choose a random direction
         Vector2 dir = Random.insideUnitCircle.normalized;
         //Creates the point particle
-        GameObject currentParticle = Instantiate(_pointParticle, spawnPos, Quaternion.identity);
-        //Passes the direction and endPos values into the most recent particle
-        /*currentParticle.transform.eulerAngles = new Vector3(currentParticle.transform.eulerAngles.x,
-            currentParticle.transform.eulerAngles.y, Random.Range(0, 360));*/
-        PointParticle pScript = currentParticle.GetComponent<PointParticle>();
-        pScript.StartCoroutine(pScript.MoveAway(dir));
+        PointParticle currentParticle = GetNextPointParticleInPool() ;
+        currentParticle.gameObject.SetActive(true);
+        currentParticle.gameObject.transform.position = spawnPos;
+        currentParticle.StartMoveAway(dir);
 
         return currentParticle;
     }

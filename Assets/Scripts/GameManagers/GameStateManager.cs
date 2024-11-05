@@ -43,6 +43,7 @@ public class GameStateManager : MonoBehaviour
         GPS = GamePlayState.Play;
         //Starts the timer
         _gameStartEvent.Invoke();
+        ObjectPoolingParent.Instance.PoolCreated();
     }
 
 
