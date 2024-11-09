@@ -48,8 +48,8 @@ public class GameUIManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject _ballLaunchButton;
     [SerializeField] private Animator _launchAnimator;
-    [SerializeField] private GameObject _leftFlipperButton;
-    [SerializeField] private GameObject _rightFlipperButton;
+    [SerializeField] private Image _leftFlipperButton;
+    [SerializeField] private Image _rightFlipperButton;
     [SerializeField] private Sprite _flipperButtonPassive;
     [SerializeField] private Sprite _flipperButtonPressed;
     [Space]
@@ -234,8 +234,8 @@ public class GameUIManager : MonoBehaviour
 
     private IEnumerator GameEndUIProcess()
     {
-        _leftFlipperButton.SetActive(false);
-        _rightFlipperButton.SetActive(false);
+        _leftFlipperButton.gameObject.SetActive(false);
+        _rightFlipperButton.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(_startTimeForEnd);
         DisplayFinalScore();
@@ -279,15 +279,13 @@ public class GameUIManager : MonoBehaviour
 
     public void SetLaunchButtonActive()
     {
-        if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) 
-        return;
-        //_ballLaunchButton.SetActive(true);
+        if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) return;
+
         _launchAnimator.SetBool("ButtonVisible", true);
     }
 
     public void BallLaunchButtonPressed()
     {
-        //_ballLaunchButton.SetActive(false);
         _launchAnimator.SetBool("ButtonVisible", false);
     }
 

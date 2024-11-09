@@ -39,7 +39,7 @@ public class VFXManager : MonoBehaviour
         if (_particlePoolCounter >= POINT_PARTICLES_POOL_COUNT)
             _particlePoolCounter = 0;
 
-        return _pointParticlesPool[_particlePoolCounter];
+        return _pointParticlesPool[currentCounter];
     }
 
     public IEnumerator SpawnPointParticles(GameObject spawnSource, Vector2 endPos, int score)

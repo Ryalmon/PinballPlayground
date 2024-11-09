@@ -15,20 +15,12 @@ public class GameStateManager : MonoBehaviour
     private const int _mainMenuScene = 0;
 
     internal GamePlayState GPS = GamePlayState.Intro;
-    //private BallActiveGameplayState BallActiveEnum = BallActiveGameplayState.BallInactive;
-    
 
     public enum GamePlayState { 
         Intro,
         Play,
         End
     };
-
-    /*public enum BallActiveGameplayState
-    {
-        BallActive,
-        BallInactive
-    };*/
 
     public void LaunchBallButtonPress()
     {
@@ -46,7 +38,6 @@ public class GameStateManager : MonoBehaviour
         ObjectPoolingParent.Instance.PoolCreated();
     }
 
-
     public void EndGameState()
     {
         GPS = GamePlayState.End;
@@ -55,13 +46,11 @@ public class GameStateManager : MonoBehaviour
 
     public void ActivateBallState()
     {
-        //BallActiveEnum = BallActiveGameplayState.BallActive;
         _ballActivatedEvent.Invoke();
     }
 
     public void DeactivateBallState()
     {
-        //BallActiveEnum = BallActiveGameplayState.BallInactive;
         _ballDeactivatedEvent.Invoke();
     }
 

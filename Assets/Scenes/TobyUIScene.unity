@@ -3592,7 +3592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &820887281
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3947,11 +3947,11 @@ PrefabInstance:
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _finalScoreDisplay
       value: 
-      objectReference: {fileID: 6719438342721579891}
+      objectReference: {fileID: 3737978355159600051}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _leftFlipperButton
       value: 
-      objectReference: {fileID: 189015880}
+      objectReference: {fileID: 189015883}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: rightFlipperButton
       value: 
@@ -3967,7 +3967,7 @@ PrefabInstance:
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _rightFlipperButton
       value: 
-      objectReference: {fileID: 1792820187}
+      objectReference: {fileID: 1792820190}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _multiplierAnimation
       value: 
@@ -10275,7 +10275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &210555308064313875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13199,7 +13199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3461966781892315781
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15076,7 +15076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &5595807069534149041
 Animator:
   serializedVersion: 5
@@ -16638,7 +16638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &6720916968909264508
 CanvasRenderer:
   m_ObjectHideFlags: 0

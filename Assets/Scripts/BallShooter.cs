@@ -1,11 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class BallShooter : MonoBehaviour
 {
-    private Vector3 currentRotation;
     [SerializeField] private GameObject _visuals;
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private float _flipTime;
