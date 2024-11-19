@@ -264,11 +264,14 @@ public class GameUIManager : MonoBehaviour
     private IEnumerator PopupCreationProcess()
     {
         //This code is gibberish to read I will comment it later - Ryan
+        // Apparently I never did 11/10/24
         while(_scorePopupQueue.Count > 0)
         {
-            Vector2 popupLoc = new Vector2(_scorePopupLocation.x, Random.Range(_scorePopupLocation.y - _scorePopupYVariability,
-            _scorePopupLocation.y + _scorePopupYVariability));
+            Vector3 popupLoc = new Vector3(Random.Range(_scorePopupLocation.x - _scorePopupYVariability,
+            _scorePopupLocation.x + _scorePopupYVariability),0,0);
             GameObject textPopup = Instantiate(_scorePopUpObject, popupLoc, _scorePopUpObject.transform.rotation);
+            RectTransform popUpRectTransform = textPopup.GetComponent<RectTransform>();
+            popUpRectTransform.position = _scorePopUpSpawnSource.GetComponent<RectTransform>().position + popupLoc;
             textPopup.GetComponent<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
             textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
             Destroy(textPopup.gameObject, _scorePopupTime);
