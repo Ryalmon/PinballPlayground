@@ -8,12 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScenes/MainMenu.unity
     guid: 03ced14312d47c94380ab136be3e9bef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScenes/NEWSwansonGameplay.unity
     guid: 1a74b5dc4777dd4469b33f29354eb17e
   - enabled: 1
+    path: Assets/Scenes/TobyUIScene.unity
+    guid: 7be5ffc03ccb68241890a7a8d5e00a0d
+  - enabled: 1
     path: Assets/Scenes/MainScenes/CreditsScene.unity
     guid: 7b771801b5673384a9f22dd0e02198f5
+  - enabled: 0
+    path: Assets/Scenes/MainScenes/VSyncTesting.unity
+    guid: a5382eb4b0b08a04991d82b8cfe32e32
   - enabled: 0
     path: Assets/Scenes/New Scene.unity
     guid: 2e6164f22cb4e1a40aaa39c94be33302

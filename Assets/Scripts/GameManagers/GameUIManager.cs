@@ -48,8 +48,8 @@ public class GameUIManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject _ballLaunchButton;
     [SerializeField] private Animator _launchAnimator;
-    [SerializeField] private GameObject _leftFlipperButton;
-    [SerializeField] private GameObject _rightFlipperButton;
+    [SerializeField] private Image _leftFlipperButton;
+    [SerializeField] private Image _rightFlipperButton;
     [SerializeField] private Sprite _flipperButtonPassive;
     [SerializeField] private Sprite _flipperButtonPressed;
     [Space]
@@ -234,8 +234,8 @@ public class GameUIManager : MonoBehaviour
 
     private IEnumerator GameEndUIProcess()
     {
-        _leftFlipperButton.SetActive(false);
-        _rightFlipperButton.SetActive(false);
+        _leftFlipperButton.gameObject.SetActive(false);
+        _rightFlipperButton.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(_startTimeForEnd);
         DisplayFinalScore();
@@ -264,11 +264,14 @@ public class GameUIManager : MonoBehaviour
     private IEnumerator PopupCreationProcess()
     {
         //This code is gibberish to read I will comment it later - Ryan
+        // Apparently I never did 11/10/24
         while(_scorePopupQueue.Count > 0)
         {
-            Vector2 popupLoc = new Vector2(_scorePopupLocation.x, Random.Range(_scorePopupLocation.y - _scorePopupYVariability,
-            _scorePopupLocation.y + _scorePopupYVariability));
+            Vector3 popupLoc = new Vector3(Random.Range(_scorePopupLocation.x - _scorePopupYVariability,
+            _scorePopupLocation.x + _scorePopupYVariability),0,0);
             GameObject textPopup = Instantiate(_scorePopUpObject, popupLoc, _scorePopUpObject.transform.rotation);
+            RectTransform popUpRectTransform = textPopup.GetComponent<RectTransform>();
+            popUpRectTransform.position = _scorePopUpSpawnSource.GetComponent<RectTransform>().position + popupLoc;
             textPopup.GetComponent<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
             textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
             Destroy(textPopup.gameObject, _scorePopupTime);
@@ -279,15 +282,13 @@ public class GameUIManager : MonoBehaviour
 
     public void SetLaunchButtonActive()
     {
-        if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) 
-        return;
-        //_ballLaunchButton.SetActive(true);
+        if (GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.Play) return;
+
         _launchAnimator.SetBool("ButtonVisible", true);
     }
 
     public void BallLaunchButtonPressed()
     {
-        //_ballLaunchButton.SetActive(false);
         _launchAnimator.SetBool("ButtonVisible", false);
     }
 
