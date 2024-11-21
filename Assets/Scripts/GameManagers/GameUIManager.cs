@@ -12,6 +12,7 @@ public class GameUIManager : MonoBehaviour
     [Header("Text")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _timerText;
+    [SerializeField] Slider _timerSlider;
     [SerializeField] TMP_Text _scoreMultiplierText;
     [Space]
 
@@ -19,6 +20,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] Vector2 _scoreTextLocation;
     [SerializeField] float _scoreMultiplierScalingRate;
     [SerializeField] private Gradient _gradient;
+    [SerializeField] private Gradient _timeLeftGradient;
     [SerializeField] private Animator _multiplierAnimation;
     private float _scoreMultiplierStartingFontSize;
     
@@ -142,6 +144,11 @@ public class GameUIManager : MonoBehaviour
         _timerChecks?.Invoke(time);
         //time = Mathf.Round(time * 10) * .1f;
         _timerText.text = time.ToString(_roundScoreTo);
+        _timerSlider.value = time;
+        ColorBlock c = _timerSlider.colors;
+        c.disabledColor = _timeLeftGradient.Evaluate(1-(time / 120));
+        c.normalColor = _timeLeftGradient.Evaluate(1-(time / 120));
+        _timerSlider.colors = c;
     }
 
 
