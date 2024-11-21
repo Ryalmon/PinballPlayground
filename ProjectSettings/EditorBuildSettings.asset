@@ -17,9 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TobyUIScene.unity
     guid: 7be5ffc03ccb68241890a7a8d5e00a0d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TobyCreditsScene.unity
     guid: 5bdb1697521d1594ca92b08b798f15cf
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/PhoneCreditScene.unity
+    guid: e39c48698c291e44b945788102b04b2b
   - enabled: 0
     path: Assets/Scenes/MainScenes/CreditsScene.unity
     guid: 7b771801b5673384a9f22dd0e02198f5
