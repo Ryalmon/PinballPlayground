@@ -279,7 +279,7 @@ public class GameUIManager : MonoBehaviour
             GameObject textPopup = Instantiate(_scorePopUpObject, popupLoc, _scorePopUpObject.transform.rotation);
             RectTransform popUpRectTransform = textPopup.GetComponent<RectTransform>();
             popUpRectTransform.position = _scorePopUpSpawnSource.GetComponent<RectTransform>().position + popupLoc;
-            textPopup.GetComponent<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
+            textPopup.GetComponentInChildren<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
             textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
             Destroy(textPopup.gameObject, _scorePopupTime);
             yield return new WaitForSeconds(_scorePopupRate / (1 +(_scorePopupQueue.Count * _scorePopupRateScaler)));
