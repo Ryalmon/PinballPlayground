@@ -185,6 +185,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Pinball Board (thin left timer)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 4500
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbac759c5406bb344aad8344e209de20
+      internalID: 1621677296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -196,6 +217,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Pinball Board (thin left timer)_0: 1621677296
       UI Body: 1027769125
       UI Bottom: -1081957907
       UI Top: -2026560395
