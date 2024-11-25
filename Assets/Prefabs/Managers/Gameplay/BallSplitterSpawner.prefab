@@ -51,4 +51,4 @@ MonoBehaviour:
   YLowerSpawnBounds: -2.5
   SpawnCountdown: 10
   _TwoBallCooldown: 12.5
-  _ThreeBallCooldown: 15
+  _ThreeBallCooldown: 20

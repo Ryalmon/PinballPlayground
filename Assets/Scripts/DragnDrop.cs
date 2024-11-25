@@ -199,7 +199,6 @@ public class DragnDrop : MonoBehaviour
         if (!onlyCollideOnce && collision.gameObject.CompareTag("PlayerTouch"))
         {
             GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
-            Debug.Log("Trigger Enter");
             isFollowingTouch = true;
             playerTouch = collision.gameObject.transform;
         }
@@ -219,7 +218,6 @@ public class DragnDrop : MonoBehaviour
     {
         if (!stoppedFollowing)
         {
-            Debug.Log("Stopped Following");
             stoppedFollowing = true;
 
             isFollowingTouch = false;
