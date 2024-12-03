@@ -38,6 +38,7 @@ public class GameUIManager : MonoBehaviour
     [Header("ScorePopup")]
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
+    [SerializeField] private Animator _scorePopUpAnimator;
     [SerializeField] Vector2 _scorePopupLocation;
     [SerializeField] float _scorePopupTime;
     [SerializeField] float _scorePopupYVariability;
@@ -45,6 +46,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _scorePopupRateScaler;
     Queue<float> _scorePopupQueue = new Queue<float>();
     private Coroutine _scorePopupCoroutine;
+
+    private const string POPUP_PLAY_TRIGGER = "PlayPopUp";
     [Space]
 
     [Header("Buttons")]
@@ -262,6 +265,8 @@ public class GameUIManager : MonoBehaviour
 
     public void CreateScorePopUp(float scorePopUp)
     {
+        //_scorePopUpAnimator.SetTrigger(POPUP_PLAY_TRIGGER);
+
         _scorePopupQueue.Enqueue(scorePopUp);
         if (_scorePopupCoroutine == null)
             _scorePopupCoroutine = StartCoroutine(PopupCreationProcess());
