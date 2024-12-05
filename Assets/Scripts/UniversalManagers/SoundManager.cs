@@ -9,12 +9,6 @@ public class SoundManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds, flipperSounds;
     public AudioSource musicSource, sfxSource, flipperSource;
 
-    private void Start()
-    {
-      
-
-    }
-
     public void PlayMusic(string name)
     {
         Sound s = Array.Find(musicSounds, x => x.soundName == name);
