@@ -37,8 +37,12 @@ public class GameUIManager : MonoBehaviour
 
     [Header("ScorePopup")]
     [SerializeField] float _scorePopupTime;
+    [SerializeField] private float _popupSizeScalar;
+    [SerializeField] private float _maxPopupSize;
+    [SerializeField] private AnimationCurve _popupSizeCurve;
 
     [Space]
+    [SerializeField] private Transform _popupSizeScale;
     [SerializeField] private TMP_Text _scorePopupText;
     [SerializeField] private Animator _scorePopupAnimator;
     private float _currentScorePopupValue = 0;
@@ -266,24 +270,25 @@ public class GameUIManager : MonoBehaviour
         _scorePopupAnimator.SetTrigger(POPUP_PLAY_TRIGGER);
 
         UpdateScorePopUp(scorePopUp);
+        DeterminePopUpScale();
 
         if (_scorePopupCoroutine != null)
         {
             StopCoroutine(_scorePopupCoroutine);
         }
         _scorePopupCoroutine = StartCoroutine(PopUpProcess());
-
-        /*
-        _scorePopupQueue.Enqueue(scorePopUp);
-        if (_scorePopupCoroutine == null)
-            _scorePopupCoroutine = StartCoroutine(PopupCreationProcess());
-        */
     }
 
     private void UpdateScorePopUp(float scorePopUp)
     {
         _currentScorePopupValue += scorePopUp;
         _scorePopupText.text = _currentScorePopupValue.ToString();
+    }
+
+    private void DeterminePopUpScale()
+    {
+        float newPopupSize = 1 + (_popupSizeCurve.Evaluate(_currentScorePopupValue / _maxPopupSize)*_popupSizeScalar);
+        _popupSizeScale.localScale = new Vector2(newPopupSize, newPopupSize);
     }
 
     private IEnumerator PopUpProcess()
