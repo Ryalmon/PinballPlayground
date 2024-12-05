@@ -8,8 +8,15 @@ public class SceneTransition : MonoBehaviour
     const string TransitionInString = "TransitionIn";
     const string TransitionOutString = "TransitionOut";
 
+    private static bool _ignoreFirstTransition = false;
+
     public void Start()
     {
+        if(!_ignoreFirstTransition)
+        {
+            _ignoreFirstTransition = true;
+            return;
+        }    
         SceneTransitionOut();
     }
 
