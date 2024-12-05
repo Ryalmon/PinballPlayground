@@ -99,7 +99,8 @@ public class MultipleTouch : MonoBehaviour
 
     void CameraUpdate()
     {
-        mainCam = FindObjectOfType<Camera>();
+        //mainCam = FindObjectOfType<Camera>();
+        mainCam = Camera.main;
     }
 
     /// <summary>
