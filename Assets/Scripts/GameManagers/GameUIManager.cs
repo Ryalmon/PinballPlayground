@@ -38,7 +38,6 @@ public class GameUIManager : MonoBehaviour
     [Header("ScorePopup")]
     [SerializeField] GameObject _scorePopUpSpawnSource;
     [SerializeField] GameObject _scorePopUpObject;
-    [SerializeField] private Animator _scorePopUpAnimator;
     [SerializeField] Vector2 _scorePopupLocation;
     [SerializeField] float _scorePopupTime;
     [SerializeField] float _scorePopupYVariability;
@@ -46,6 +45,11 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] float _scorePopupRateScaler;
     Queue<float> _scorePopupQueue = new Queue<float>();
     private Coroutine _scorePopupCoroutine;
+
+    [Space]
+    [SerializeField] private TMP_Text _scorePopupText;
+    [SerializeField] private Animator _scorePopupAnimator;
+    private float _currentScorePopupValue = 0;
 
     private const string POPUP_PLAY_TRIGGER = "PlayPopUp";
     [Space]
@@ -265,12 +269,33 @@ public class GameUIManager : MonoBehaviour
 
     public void CreateScorePopUp(float scorePopUp)
     {
-        //_scorePopUpAnimator.SetTrigger(POPUP_PLAY_TRIGGER);
+        _scorePopupAnimator.SetTrigger(POPUP_PLAY_TRIGGER);
 
+        UpdateScorePopUp(scorePopUp);
+
+        if (_scorePopupCoroutine != null)
+        {
+            StopCoroutine(_scorePopupCoroutine);
+        }
+        _scorePopupCoroutine = StartCoroutine(PopUpProcess());
+
+        /*
         _scorePopupQueue.Enqueue(scorePopUp);
         if (_scorePopupCoroutine == null)
             _scorePopupCoroutine = StartCoroutine(PopupCreationProcess());
-        
+        */
+    }
+
+    private void UpdateScorePopUp(float scorePopUp)
+    {
+        _currentScorePopupValue += scorePopUp;
+        _scorePopupText.text = _currentScorePopupValue.ToString();
+    }
+
+    private IEnumerator PopUpProcess()
+    {
+        yield return new WaitForSeconds(_scorePopupTime);
+        _currentScorePopupValue = 0;
     }
 
     private IEnumerator PopupCreationProcess()

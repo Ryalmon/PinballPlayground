@@ -2109,10 +2109,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8028240952249152096, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8745426761391789019, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
       propertyPath: m_Name
       value: ScorePopupText
@@ -4243,6 +4239,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1269371855}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _scorePopupText
+      value: 
+      objectReference: {fileID: 1832747930}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _timerAlertAnim
       value: 
       objectReference: {fileID: 611447661}
@@ -4296,6 +4296,10 @@ PrefabInstance:
       objectReference: {fileID: 1792820190}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scorePopUpAnimator
+      value: 
+      objectReference: {fileID: 833350738}
+    - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
+      propertyPath: _scorePopupAnimator
       value: 
       objectReference: {fileID: 833350738}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
@@ -9634,6 +9638,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bda71141dd149848922831a3d3f3ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1832747930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8028240952249152096, guid: c1c8e4cf0f1613a4b9274a208d97c40c, type: 3}
+  m_PrefabInstance: {fileID: 414827817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1837959491
