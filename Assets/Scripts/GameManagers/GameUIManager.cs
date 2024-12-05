@@ -36,15 +36,20 @@ public class GameUIManager : MonoBehaviour
     [Space]
 
     [Header("ScorePopup")]
-    [SerializeField] GameObject _scorePopUpSpawnSource;
-    [SerializeField] GameObject _scorePopUpObject;
-    [SerializeField] Vector2 _scorePopupLocation;
     [SerializeField] float _scorePopupTime;
-    [SerializeField] float _scorePopupYVariability;
-    [SerializeField] float _scorePopupRate;
-    [SerializeField] float _scorePopupRateScaler;
-    Queue<float> _scorePopupQueue = new Queue<float>();
+    [SerializeField] private float _popupSizeScalar;
+    [SerializeField] private float _maxPopupSize;
+    [SerializeField] private AnimationCurve _popupSizeCurve;
+
+    [Space]
+    [SerializeField] private Transform _popupSizeScale;
+    [SerializeField] private TMP_Text _scorePopupText;
+    [SerializeField] private Animator _scorePopupAnimator;
+    private float _currentScorePopupValue = 0;
+
     private Coroutine _scorePopupCoroutine;
+
+    private const string POPUP_PLAY_TRIGGER = "PlayPopUp";
     [Space]
 
     [Header("Buttons")]
@@ -262,29 +267,34 @@ public class GameUIManager : MonoBehaviour
 
     public void CreateScorePopUp(float scorePopUp)
     {
-        _scorePopupQueue.Enqueue(scorePopUp);
-        if (_scorePopupCoroutine == null)
-            _scorePopupCoroutine = StartCoroutine(PopupCreationProcess());
-        
+        _scorePopupAnimator.SetTrigger(POPUP_PLAY_TRIGGER);
+
+        UpdateScorePopUp(scorePopUp);
+        DeterminePopUpScale();
+
+        if (_scorePopupCoroutine != null)
+        {
+            StopCoroutine(_scorePopupCoroutine);
+        }
+        _scorePopupCoroutine = StartCoroutine(PopUpProcess());
     }
 
-    private IEnumerator PopupCreationProcess()
+    private void UpdateScorePopUp(float scorePopUp)
     {
-        //This code is gibberish to read I will comment it later - Ryan
-        // Apparently I never did 11/10/24
-        while(_scorePopupQueue.Count > 0)
-        {
-            Vector3 popupLoc = new Vector3(Random.Range(_scorePopupLocation.x - _scorePopupYVariability,
-            _scorePopupLocation.x + _scorePopupYVariability),0,0);
-            GameObject textPopup = Instantiate(_scorePopUpObject, popupLoc, _scorePopUpObject.transform.rotation);
-            RectTransform popUpRectTransform = textPopup.GetComponent<RectTransform>();
-            popUpRectTransform.position = _scorePopUpSpawnSource.GetComponent<RectTransform>().position + popupLoc;
-            textPopup.GetComponentInChildren<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
-            textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
-            Destroy(textPopup.gameObject, _scorePopupTime);
-            yield return new WaitForSeconds(_scorePopupRate / (1 +(_scorePopupQueue.Count * _scorePopupRateScaler)));
-        }
-        _scorePopupCoroutine = null;
+        _currentScorePopupValue += scorePopUp;
+        _scorePopupText.text = _currentScorePopupValue.ToString();
+    }
+
+    private void DeterminePopUpScale()
+    {
+        float newPopupSize = 1 + (_popupSizeCurve.Evaluate(_currentScorePopupValue / _maxPopupSize)*_popupSizeScalar);
+        _popupSizeScale.localScale = new Vector2(newPopupSize, newPopupSize);
+    }
+
+    private IEnumerator PopUpProcess()
+    {
+        yield return new WaitForSeconds(_scorePopupTime);
+        _currentScorePopupValue = 0;
     }
 
     public void SetLaunchButtonActive()
