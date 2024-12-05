@@ -8,18 +8,36 @@ public class MusicLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DetermineSong();
+        SubscribeToEvents();
+    }
+
+    private void OnDestroy()
+    {
+        UnsubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        UniversalManager.Instance.Scene.PostSceneChangeEvent().AddListener(DetermineSong);
+    }
+
+    private void UnsubscribeToEvents()
+    {
+        UniversalManager.Instance.Scene.PostSceneChangeEvent().RemoveListener(DetermineSong);
+    }
+
+    private void DetermineSong()
+    {
         // Create a temporary reference to the current scene.
-        Scene currentScene = SceneManager.GetActiveScene();
+        int sceneID = SceneManager.GetActiveScene().buildIndex;
 
-        // Retrieve the name of this scene.
-        string sceneName = currentScene.name;
-
-        if (sceneName == "MainMenu")
+        if (sceneID == 0)
         {
-            if(!UniversalManager.Instance.Scene.IsSameAsPreviousScene() && UniversalManager.Instance.Scene.PreviousScene() != 2)
+            if (!UniversalManager.Instance.Scene.IsSameAsPreviousScene() && UniversalManager.Instance.Scene.PreviousScene() != 2)
                 StartCoroutine(MainMenuMusic());
         }
-        else if (sceneName == "NEWSwansonGameplay")
+        else if (sceneID == 1)
         {
             StartCoroutine(GameMusic());
         }
