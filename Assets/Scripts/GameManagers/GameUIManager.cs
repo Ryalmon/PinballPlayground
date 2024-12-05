@@ -36,20 +36,14 @@ public class GameUIManager : MonoBehaviour
     [Space]
 
     [Header("ScorePopup")]
-    [SerializeField] GameObject _scorePopUpSpawnSource;
-    [SerializeField] GameObject _scorePopUpObject;
-    [SerializeField] Vector2 _scorePopupLocation;
     [SerializeField] float _scorePopupTime;
-    [SerializeField] float _scorePopupYVariability;
-    [SerializeField] float _scorePopupRate;
-    [SerializeField] float _scorePopupRateScaler;
-    Queue<float> _scorePopupQueue = new Queue<float>();
-    private Coroutine _scorePopupCoroutine;
 
     [Space]
     [SerializeField] private TMP_Text _scorePopupText;
     [SerializeField] private Animator _scorePopupAnimator;
     private float _currentScorePopupValue = 0;
+
+    private Coroutine _scorePopupCoroutine;
 
     private const string POPUP_PLAY_TRIGGER = "PlayPopUp";
     [Space]
@@ -296,25 +290,6 @@ public class GameUIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(_scorePopupTime);
         _currentScorePopupValue = 0;
-    }
-
-    private IEnumerator PopupCreationProcess()
-    {
-        //This code is gibberish to read I will comment it later - Ryan
-        // Apparently I never did 11/10/24
-        while(_scorePopupQueue.Count > 0)
-        {
-            Vector3 popupLoc = new Vector3(Random.Range(_scorePopupLocation.x - _scorePopupYVariability,
-            _scorePopupLocation.x + _scorePopupYVariability),0,0);
-            GameObject textPopup = Instantiate(_scorePopUpObject, popupLoc, _scorePopUpObject.transform.rotation);
-            RectTransform popUpRectTransform = textPopup.GetComponent<RectTransform>();
-            popUpRectTransform.position = _scorePopUpSpawnSource.GetComponent<RectTransform>().position + popupLoc;
-            textPopup.GetComponentInChildren<TMP_Text>().text = _scorePopupQueue.Dequeue().ToString();
-            textPopup.transform.SetParent(_scorePopUpSpawnSource.transform);
-            Destroy(textPopup.gameObject, _scorePopupTime);
-            yield return new WaitForSeconds(_scorePopupRate / (1 +(_scorePopupQueue.Count * _scorePopupRateScaler)));
-        }
-        _scorePopupCoroutine = null;
     }
 
     public void SetLaunchButtonActive()
