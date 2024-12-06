@@ -116,7 +116,7 @@ MonoBehaviour:
   _startCountDownAnimAt: 3.5
   _timerAlertAnim: {fileID: 0}
   _scorePopupTime: 1.5
-  _popupSizeScalar: 3
+  _popupSizeScalar: 2
   _maxPopupSize: 10000
   _popupSizeCurve:
     serializedVersion: 2
