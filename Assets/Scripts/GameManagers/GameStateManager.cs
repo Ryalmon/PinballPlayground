@@ -78,4 +78,13 @@ public class GameStateManager : MonoBehaviour
     {
         return _ballDeactivatedEvent;
     }
+
+    private void OnDestroy()
+    {
+        _gameStartEvent.RemoveAllListeners();
+        _gameEndEvent.RemoveAllListeners();
+
+        _ballActivatedEvent.RemoveAllListeners();
+        _ballDeactivatedEvent.RemoveAllListeners();
+    }
 }

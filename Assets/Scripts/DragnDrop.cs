@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class DragnDrop : MonoBehaviour
 {
@@ -16,11 +14,9 @@ public class DragnDrop : MonoBehaviour
     private DragTokenSO _placementData;
 
     bool isFollowingTouch = false;
-    private bool dragging = false;
 
     private Vector3 offset;
     private Vector3 originalPosition;
-
 
     bool onlyCollideOnce = false;
     bool stoppedFollowing = false;
@@ -44,18 +40,7 @@ public class DragnDrop : MonoBehaviour
         {
             Debug.Log("Failsafe triggered");
             failsafeTriggered = true;
-           // StopFollowing();
         }
-
-        /*if (isFollowingTouch && Mathf.Abs(Vector3.Distance(_lastPos, transform.position)) >= 1f)
-        {
-            
-            if (circleTrigger != null)
-            {
-                Destroy(circleTrigger);
-            }
-           // StopFollowing();
-        }*/
         else if (isFollowingTouch && playerTouch != null)
         {
 
@@ -75,29 +60,6 @@ public class DragnDrop : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = _placementData._tokenVisuals;
     }
-
-    /*public void OnMouseDrag()
-    {
-        if (!dragging && GameplayManagers.Instance.State.GPS != GameStateManager.GamePlayState.End)
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-        }
-    }
-    private void OnMouseDown()
-    {
-        if (!dragging)
-        {
-            offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
-        }
-    }
-
-    public void OnMouseUp()
-    {
-        dragging = false;
-
-        AttemptPlacement();
-    }*/
     
     private void AttemptPlacement()
     {
@@ -123,22 +85,7 @@ public class DragnDrop : MonoBehaviour
         if (Vector2.Distance(positionToCheck, originalPosition) > _minDistanceForValidPlacement)
             return true;
         return false;
-        /*Collider2D[] colliders = Physics2D.OverlapPointAll(position);
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.isTrigger && collider.gameObject != gameObject)
-            {
-                return true;
-            }
-        }
-        return false;*/   
     }
-
-    /*
-    private void ValidPlacement()
-    {
-        StartCoroutine(MoveTokenToNewPos(new Vector3(transform.position.x,-4, transform.position.z)));
-    }*/
 
     private void PlaceItem()
     {
@@ -159,8 +106,7 @@ public class DragnDrop : MonoBehaviour
 
             progress += Time.deltaTime / _travelToSpawnTime * speedFromDistance;
             transform.position = Vector3.Lerp(startPos, targetPos, progress);
-            yield return null;
-                
+            yield return null;  
         }
 
         CreateTokenPlaceable();
@@ -183,15 +129,9 @@ public class DragnDrop : MonoBehaviour
 
         _placeableInterface.Placed();
 
-        //spawningObjects.StartSpawnDelay(gameObject);
         GameplayManagers.Instance.Spawning.PlaceableObjectPlaced(gameObject);
         
         Destroy(gameObject);
-    }
-
-    public void SetDragging(bool enabled)
-    {
-        dragging = enabled;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -208,7 +148,6 @@ public class DragnDrop : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerTouch"))
         {
-            
             StopFollowing();
             AttemptPlacement();
         }
@@ -222,9 +161,6 @@ public class DragnDrop : MonoBehaviour
 
             isFollowingTouch = false;
             playerTouch = null;
-            //circleTrigger.enabled = false;
-
-            //physicalCollider.enabled = true;
         }
     }
 }

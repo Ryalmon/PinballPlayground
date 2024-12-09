@@ -27,8 +27,6 @@ public class MainMenuButtons : MonoBehaviour
         _otherButton.interactable = false;
         UniversalManager.Instance.Save.ResetMostRecentScore();
         UniversalManager.Instance.Scene.LoadScene(_gameplayScene);
-
-        
     }
 
     public static void QuitGame()
@@ -46,7 +44,6 @@ public class MainMenuButtons : MonoBehaviour
 
     }
 
-
     public void ViewCredits()
     {
         _viewCreditsButton.interactable = false;
@@ -54,6 +51,4 @@ public class MainMenuButtons : MonoBehaviour
         _otherButton.interactable = false;
         UniversalManager.Instance.Scene.LoadScene(_creditsScene);
     }
-
-
 }

@@ -99,26 +99,6 @@ public class MultipleTouch : MonoBehaviour
 
     void CameraUpdate()
     {
-        //mainCam = FindObjectOfType<Camera>();
         mainCam = Camera.main;
     }
-
-    /// <summary>
-    /// Returns which player gave which input based on input location
-    /// </summary>
-    /// <param name="input">touch input</param>
-    /// <returns>true == player 1, false == player 2</returns>
-
-    /*
-    public bool Player1Touch(Touch input)
-    {
-        if (GetTouchPosition(input.position).x <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
 }

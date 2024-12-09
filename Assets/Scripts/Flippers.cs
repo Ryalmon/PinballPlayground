@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Flippers : MonoBehaviour
 {
@@ -14,7 +12,6 @@ public class Flippers : MonoBehaviour
 
     [SerializeField] private bool hold;
     private Coroutine _flipCoroutine;
-    private Coroutine _unflipCoroutine;
 
     [SerializeField] private Quaternion _startingRotation;
 
@@ -64,10 +61,6 @@ public class Flippers : MonoBehaviour
         while (hold)
             yield return null;
         StartCoroutine(UnFlipProcess());
-        /*if (hold == false && done == true)
-        {
-            StartCoroutine(UnFlipProcess());
-        }*/
     }
     IEnumerator UnFlipProcess()
     {

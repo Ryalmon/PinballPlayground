@@ -18,11 +18,6 @@ public class ScoreBoardText : MonoBehaviour
         CheckForRecentScore();
     }
 
-    private void Update()
-    {
-        //StartCoroutine(TextUpdate()); 
-    }
-
     public void ChangeText()
     {
         //Gets the name and score from JSON at a certain position and displays it on the scoreboard
@@ -36,7 +31,6 @@ public class ScoreBoardText : MonoBehaviour
         {
             Animator animator = GetComponent<Animator>();
             animator.SetTrigger("Highlight");
-            //Debug.Log("highlight");
         }
     }
     public IEnumerator TextUpdate()

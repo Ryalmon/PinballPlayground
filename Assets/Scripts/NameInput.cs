@@ -18,11 +18,6 @@ public class NameInput : MonoBehaviour
     [SerializeField] List<Button> _textButtons; 
     [SerializeField] Button _enterButton;
     [SerializeField] NameBlacklistSO _blacklist;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void AddLetter()
     {

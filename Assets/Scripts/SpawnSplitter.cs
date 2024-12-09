@@ -31,7 +31,6 @@ public class SpawnSplitter : MonoBehaviour
 
     void CreateSplitter()
     {
-
         GameObject splitter = Instantiate(SplitterPrefab, RandomizeSpawnLocation(),Quaternion.identity);
         Vector3 MoveDirection = new Vector3 ((transform.position.x * PosOrNeg),0,0).normalized;
         splitter.GetComponent<MovingObjects>().SetMoveDirection(MoveDirection);
