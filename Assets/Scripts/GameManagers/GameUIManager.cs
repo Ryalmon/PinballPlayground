@@ -1,11 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 //using System;
 
+/// <summary>
+/// This script is an afront to god. I'm sorry that this was every created. This will forever live as my greatest mistake. - Ryan 12/9/24
+/// </summary>
 public class GameUIManager : MonoBehaviour
 {
     [Header("Gameplay")]

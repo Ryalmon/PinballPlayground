@@ -15,16 +15,13 @@ public class DragnDrop : MonoBehaviour
 
     bool isFollowingTouch = false;
 
-    private Vector3 offset;
     private Vector3 originalPosition;
 
     bool onlyCollideOnce = false;
     bool stoppedFollowing = false;
     bool failsafeTriggered = false;
     [SerializeField] Collider2D circleTrigger;
-    //[SerializeField] Collider2D physicalCollider;
     Transform playerTouch;
-    Vector2 _lastPos;
 
 
     private void Start()
@@ -47,7 +44,6 @@ public class DragnDrop : MonoBehaviour
             transform.position = (Vector2)playerTouch.position;
             
         }
-        _lastPos = transform.position;
     }
 
     public void AssignPlacementData(DragTokenSO newPlacementData)

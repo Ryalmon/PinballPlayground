@@ -21,10 +21,6 @@ public class MovingObjects : MonoBehaviour
         }
 
     }
-    void Update()
-    {
-        
-    }
 
     public void SetMoveDirection(Vector3 direction)
     {
