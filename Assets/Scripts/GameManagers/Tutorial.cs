@@ -56,7 +56,7 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    public void setTutorialStateFalse()
+    public void SetTutorialStateFalse()
     {
         Time.timeScale = 1f;
 
@@ -69,7 +69,6 @@ public class Tutorial : MonoBehaviour
         GameplayManagers.Instance.Ball.ShooterBegin();
 
         _backgroundImage.color = _normal;
-        //_borderImage.color = _normal; we dont need that
 
         for (int i = 0; i < _nonImportantItems.Length; ++i)
         {

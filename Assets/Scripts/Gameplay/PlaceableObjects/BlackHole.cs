@@ -24,7 +24,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
     private Coroutine _moveObjectsCoroutine;
     private Coroutine _addScoreCoroutine;
 
-    IEnumerator MovePinballs()
+    private IEnumerator MovePinballs()
     {
         time = 1;
         while(_objectsInRadius.Count > 0)
@@ -42,7 +42,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
         _moveObjectsCoroutine = null;
     }
 
-    IEnumerator GenerateScore()
+    private IEnumerator GenerateScore()
     {
         while(_objectsInRadius.Count > 0)
         {
@@ -63,9 +63,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
         newForce *= new Vector2(_xForceMultiplier, _yForceMultiplier);
         if (newForce.y > 0 && bp.GetComponent<Rigidbody2D>().velocity.y < 0)
             newForce *= new Vector2(1, _upwardsForceMultiplier);
-        /*else
-            if (bp.gameObject.transform.position.y < transform.position.y)
-                newForce += new Vector2(0, 10000f * Time.deltaTime);*/
+
         return newForce;
     }
 

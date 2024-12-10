@@ -55,7 +55,6 @@ public class BallPhysics : MonoBehaviour
 
     private bool HasPhysics()
     {
-        if (rb.bodyType == RigidbodyType2D.Dynamic) return true;
-        return false;
+        return rb.bodyType == RigidbodyType2D.Dynamic;
     }
 }

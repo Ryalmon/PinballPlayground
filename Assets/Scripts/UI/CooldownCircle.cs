@@ -1,9 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CooldownCircle : MonoBehaviour
 {
+    private Animator _cooldownAnimator;
+    
+    private void Start()
+    {
+        _cooldownAnimator = GetComponent<Animator>();
+    }
+
     public void Activate()
     {
         if (GameplayManagers.Instance.State.GPS == GameStateManager.GamePlayState.Intro)
@@ -19,6 +24,6 @@ public class CooldownCircle : MonoBehaviour
 
     private void StartCooldown()
     {
-        GetComponent<Animator>().SetTrigger("StartAnim");
+        _cooldownAnimator.SetTrigger("StartAnim");
     }
 }

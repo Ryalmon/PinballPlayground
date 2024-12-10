@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Drift : MonoBehaviour
 {
-    [SerializeField] float DriftSpeed;
+    [SerializeField] float _driftSpeed;
 
     private Coroutine _driftCoroutine;
     /// <summary>
@@ -45,7 +44,7 @@ public class Drift : MonoBehaviour
     {
         while (true)
         {
-            transform.position += new Vector3(0, DriftSpeed, 0) * Time.deltaTime;
+            transform.position += new Vector3(0, _driftSpeed, 0) * Time.deltaTime;
             yield return null;
         }
 

@@ -15,8 +15,6 @@ public class Bumper : MonoBehaviour, IPlaceable
     {
         if (collision.gameObject.GetComponent<BallPhysics>() != null )
         {
-            //Debug.DrawRay(collision.contacts[collision.contactCount-1].point, collision.gameObject.transform.position - (Vector3)collision.contacts[collision.contactCount-1].point, Color.green,5);
-
             collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision));
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper, _scoreMultiplier);
             UniversalManager.Instance.Sound.PlaySFX("HitBumper");
