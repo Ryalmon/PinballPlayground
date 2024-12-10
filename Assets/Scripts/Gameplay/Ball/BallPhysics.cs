@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallPhysics : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+    [field:SerializeField] public Rigidbody2D rb { get; private set; }
 
     public void ApplyForceToBall(Vector2 newForce)
     {

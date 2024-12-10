@@ -32,7 +32,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
             time += Time.deltaTime;
             foreach (BallPhysics bp in _objectsInRadius)
             {
-                if (bp.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < _minimumHoldMagnitude)
+                if (bp.rb.velocity.magnitude < _minimumHoldMagnitude)
                     continue;
                 
                 bp.ApplyForceToBall(CalculateGravityForce(bp) / time);
@@ -58,10 +58,10 @@ public class BlackHole : MonoBehaviour, IPlaceable
         Vector2 newForce = (transform.position - bp.gameObject.transform.position).normalized
             * (transform.position - bp.gameObject.transform.position).sqrMagnitude
             * _baseGravityForce
-            * (bp.GetComponent<Rigidbody2D>().velocity.magnitude / _ballSpeedForceInfluence) *
+            * (bp.rb.velocity.magnitude / _ballSpeedForceInfluence) *
             Time.deltaTime;
         newForce *= new Vector2(_xForceMultiplier, _yForceMultiplier);
-        if (newForce.y > 0 && bp.GetComponent<Rigidbody2D>().velocity.y < 0)
+        if (newForce.y > 0 && bp.rb.velocity.y < 0)
             newForce *= new Vector2(1, _upwardsForceMultiplier);
 
         return newForce;
