@@ -99,8 +99,7 @@ public class BlackHole : MonoBehaviour, IPlaceable
 
     public void Placed()
     {
-        GetComponent<Drift>().enabled = true;
-        GetComponent<BlackHole>().enabled = true;
+        //Doesn't do anything when placed
     }
 
     public void DestroyPlacedObject()

@@ -159,6 +159,7 @@ MonoBehaviour:
   _upwardsForceMultiplier: 3
   _ballSpeedForceInfluence: 6
   _minimumHoldMagnitude: 2
+  _scoreMultiplier: 1
   _scoreTickRate: 0.25
   _destroyTime: 2
   _visuals: {fileID: 380580927792532226}
@@ -204,9 +205,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4158817482814993248}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DriftSpeed: 0.125
+  _driftSpeed: 0.2

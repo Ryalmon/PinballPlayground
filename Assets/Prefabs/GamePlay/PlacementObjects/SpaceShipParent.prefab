@@ -108,6 +108,7 @@ MonoBehaviour:
   _minSpeedToAddXVariability: 1
   _resetFadeOutTime: 1
   _resetFadeInTime: 1
+  _scoreMultiplier: 1
   _destroyTime: 2
   _detectionArea: {fileID: 9193157069710995436}
   _holdingLocation: {fileID: 2387247319312278465}
@@ -298,4 +299,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DriftSpeed: 0.125
+  _driftSpeed: 0.2

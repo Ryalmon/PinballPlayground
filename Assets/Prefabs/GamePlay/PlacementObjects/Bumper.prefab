@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forceMultiplier: 14
+  _scoreMultiplier: 1
   _destroyTime: 2
   _visuals: {fileID: 1684276421564522955}
 --- !u!58 &1106186567627082645
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458cc1455853c6b46b7a0c69de778602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DriftSpeed: 0.125
+  _driftSpeed: 0.2
 --- !u!95 &5539529137806631818
 Animator:
   serializedVersion: 5

@@ -11,25 +11,9 @@ public class SaveManager : MonoBehaviour
 
     void Awake()
     {
-        /*EstablishSingleton();*/
         EstablishPath();
         Load();
-
-        /*int p = Random.Range(0, 100);
-        PlaceScoreInArray("a", p, GSD.SaveScore.Length-1);*/
     }
-
-    /*    private void EstablishSingleton()
-        {
-            if (M_Instance != null && M_Instance != this)
-            {
-                Destroy(gameObject);
-            }
-
-            M_Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }*/
-
 
     private void EstablishPath()
     {
@@ -72,15 +56,6 @@ public class SaveManager : MonoBehaviour
         _mostRecentScorePos = -1;
     }
 
-/*    public string[] ReturnPlayerList()
-    {
-        return GSD.SaveNames;
-    }
-
-    public int[] ReturnPlayerScores()
-    {
-        return GSD.SaveScore;
-    }*/
     public bool ValidScoreInput(int score)
     {
         if (score > GSD.SaveScore[GSD.SaveScore.Length-1]) return true;
@@ -134,18 +109,6 @@ public class SaveManager : MonoBehaviour
         //Checks that a specific number is a valid position on the scoreboard
         return pos < GSD.SaveScore.Length;
     }
-
-    //Used to print the array if needed
-    /*private void Print()
-    {
-        //Debug.Log("print");
-        string a = "";
-        for (int i = 9; i >= 0; i--)
-        {
-            a += "Pos:" + i + " Name:" + GSD.SaveNames[i] + " Score:" + GSD.SaveScore[i] + " ";
-        }
-        Debug.Log(a);
-    }*/
 
     private void PopulateArrays()
     {

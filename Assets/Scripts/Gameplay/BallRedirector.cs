@@ -9,23 +9,29 @@ public class BallRedirector : MonoBehaviour
     [SerializeField] float _xVariance;
     [SerializeField] float _holdTime;
     [SerializeField] float _scoreMultiplier = 1;
-    private Queue<GameObject> balls = new Queue<GameObject>();
+
+    [SerializeField] private float _regrabImmunity;
+
+    private Queue<BallPhysics> balls = new Queue<BallPhysics>();
+    private List<BallPhysics> _immuneBalls = new();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        BallPhysics ballphysics = collision.gameObject.GetComponent<BallPhysics>();
-        if (ballphysics != null)
+        BallPhysics ballPhysics = collision.gameObject.GetComponent<BallPhysics>();
+        if (ballPhysics != null && !balls.Contains(ballPhysics) && !_immuneBalls.Contains(ballPhysics))
         {
-            StartCoroutine(RedirectProcess(collision.gameObject));
+            StartCoroutine(RedirectProcess(ballPhysics));
         }
     }
 
-    private void BallEntrance(GameObject newBall)
+    private void BallEntrance(BallPhysics newBall)
     {
         balls.Enqueue(newBall);
         newBall.transform.position = transform.position;
-        newBall.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        newBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+        newBall.ResetVelocity();
+        newBall.PhysicsEnabled(false);
+
         UniversalManager.Instance.Sound.PlaySFX("SlingRing");
 
         GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Redirector, _scoreMultiplier);
@@ -33,20 +39,32 @@ public class BallRedirector : MonoBehaviour
 
     private void BallFire()
     {
-        GameObject ballReleased = balls.Dequeue();
+        BallPhysics ballReleased = balls.Dequeue();
+        _immuneBalls.Add(ballReleased);
         Vector2 currentFireForce = new(Random.Range(_redirectDirection.x-_xVariance,_redirectDirection.x +_xVariance)
             ,_redirectDirection.y);
-        ballReleased.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        ballReleased.GetComponent<BallPhysics>().OverrideBallForce(currentFireForce * _redirectForce);
+
+        ballReleased.PhysicsEnabled(true);
+        ballReleased.OverrideBallForce(currentFireForce * _redirectForce);
+
         UniversalManager.Instance.Sound.PlaySFX("BallLaunch");
     }
 
-    private IEnumerator RedirectProcess(GameObject newBall)
+    private void EnableRegrab(BallPhysics newBall)
+    {
+        _immuneBalls.Remove(newBall);
+    }
+
+    private IEnumerator RedirectProcess(BallPhysics newBall)
     {
         BallEntrance(newBall);
         
         yield return new WaitForSeconds(_holdTime);
 
         BallFire();
+
+        yield return new WaitForSeconds(_regrabImmunity);
+
+        EnableRegrab(newBall);
     }
 }

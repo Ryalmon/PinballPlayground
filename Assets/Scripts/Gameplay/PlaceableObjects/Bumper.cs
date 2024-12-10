@@ -11,18 +11,28 @@ public class Bumper : MonoBehaviour, IPlaceable
     [Space]
     [SerializeField] GameObject _visuals;
 
+    private Animator _bumperAnimator;
+
+    private void Start()
+    {
+        _bumperAnimator = GetComponent<Animator>();
+        //If check just in case the animator is moved around.
+        if(_bumperAnimator == null)
+            _bumperAnimator = GetComponentInParent<Animator>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<BallPhysics>() != null )
+        BallPhysics storedBallPhysics = collision.gameObject.GetComponent<BallPhysics>();
+
+        if (storedBallPhysics != null )
         {
-            collision.gameObject.GetComponent<BallPhysics>().OverrideBallForce(DetermineShootDirection(collision));
+            storedBallPhysics.OverrideBallForce(DetermineShootDirection(collision));
             GameplayManagers.Instance.Score.CreatePointParticles(gameObject, ScoreSource.Bumper, _scoreMultiplier);
             UniversalManager.Instance.Sound.PlaySFX("HitBumper");
             //SoundManager.Instance.PlaySFX("Bounce");
-            Animator animator = GetComponent<Animator>();
-            if (animator == null) animator = GetComponentInParent<Animator>();
-            if (animator == null) return;
-            animator.SetTrigger("Hit");
+            if (_bumperAnimator == null) return;
+            _bumperAnimator.SetTrigger("Hit");
         }
     }
 
@@ -33,8 +43,7 @@ public class Bumper : MonoBehaviour, IPlaceable
 
     public void Placed()
     {
-        GetComponent<Drift>().enabled = true;
-        GetComponent<Bumper>().enabled = true;
+        //Nothing happens when placed
     }
 
     public void DestroyPlacedObject()
