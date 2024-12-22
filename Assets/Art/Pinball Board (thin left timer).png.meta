@@ -129,7 +129,7 @@ TextureImporter:
         x: 0
         y: 6242
         width: 4500
-        height: 1758
+        height: 836
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,7 +194,7 @@ TextureImporter:
         width: 4500
         height: 482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,6 +202,69 @@ TextureImporter:
       bones: []
       spriteID: bbac759c5406bb344aad8344e209de20
       internalID: 1621677296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pinball Board (thin left timer)_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 7278
+        width: 873
+        height: 642
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d3499ef0d6939469a2c0a3582e5743
+      internalID: -1827881235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pinball Board (thin left timer)_2
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 7136
+        width: 2529
+        height: 777
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71448b5736dc7ae45a7153b605a952a5
+      internalID: 1245198329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pinball Board (thin left timer)_3
+      rect:
+        serializedVersion: 2
+        x: 3862
+        y: 7492
+        width: 473
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969f07499304bf349a2e0a8d2a81fa22
+      internalID: -1911308941
       vertices: []
       indices: 
       edges: []
@@ -218,6 +281,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Pinball Board (thin left timer)_0: 1621677296
+      Pinball Board (thin left timer)_1: -1827881235
+      Pinball Board (thin left timer)_2: 1245198329
+      Pinball Board (thin left timer)_3: -1911308941
       UI Body: 1027769125
       UI Bottom: -1081957907
       UI Top: -2026560395
