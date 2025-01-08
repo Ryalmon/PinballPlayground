@@ -14,12 +14,13 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private SpriteRenderer[] _nonImportantItems;
     [SerializeField] private SpriteRenderer[] _specialItems;
+    [SerializeField] private GameObject[] _additionalObjects;
 
     [SerializeField] private SpriteRenderer _backgroundImage;
     [SerializeField] private SpriteRenderer _borderImage;
 
     [SerializeField] private Color _darken = new Color(0.45f, 0.45f, 0.45f);
-    [SerializeField] private Color _normal = new Color(1, 1, 1);
+    [SerializeField] private Color _normal = new Color(1, 1, 1,0);
    
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,12 @@ public class Tutorial : MonoBehaviour
             if (_specialItems[i] == null) continue;
             _specialItems[i].color = new Color(_specialItems[i].color.r, _specialItems[i].color.g, _specialItems[i].color.b, 0.25f);
         }
+
+        for(int i = 0; i < _additionalObjects.Length; ++i)
+        {
+            if (_specialItems[i].gameObject == null) continue;
+            _additionalObjects[i].SetActive(true);
+        }
     }
 
     public void SetTutorialStateFalse()
@@ -80,6 +87,13 @@ public class Tutorial : MonoBehaviour
         {
             if (_specialItems[i] == null) continue;
             _specialItems[i].color = new Color(_specialItems[i].color.r, _specialItems[i].color.g, _specialItems[i].color.b, 1f);
+        }
+
+        for (int i = 0; i < _additionalObjects.Length; ++i)
+        {
+            if (_specialItems[i] == null) continue;
+
+            _additionalObjects[i].gameObject.SetActive(false);
         }
     }
 }
