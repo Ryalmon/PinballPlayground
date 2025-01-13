@@ -58,7 +58,7 @@ public class Tutorial : MonoBehaviour
 
         for(int i = 0; i < _additionalObjects.Length; ++i)
         {
-            if (_specialItems[i].gameObject == null) continue;
+            if (_additionalObjects[i].gameObject == null) continue;
             _additionalObjects[i].SetActive(true);
         }
     }
@@ -91,8 +91,7 @@ public class Tutorial : MonoBehaviour
 
         for (int i = 0; i < _additionalObjects.Length; ++i)
         {
-            if (_specialItems[i] == null) continue;
-
+            if (_additionalObjects[i] == null) continue;
             _additionalObjects[i].gameObject.SetActive(false);
         }
     }

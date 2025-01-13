@@ -235,8 +235,9 @@ GameObject:
   - component: {fileID: 97969970}
   - component: {fileID: 97969972}
   - component: {fileID: 97969971}
+  - component: {fileID: 97969973}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Version Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,18 +250,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97969969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 390418646}
+  m_Father: {fileID: 1603302214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 25, y: -20}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &97969971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +345,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 299.70642, y: -725.24384, z: 299.70645, w: 766.42474}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -358,6 +359,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97969969}
   m_CullTransparentMesh: 1
+--- !u!114 &97969973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97969969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &123005854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1475,6 @@ RectTransform:
   - {fileID: 925563705}
   - {fileID: 745964216}
   - {fileID: 1116419757}
-  - {fileID: 97969970}
   m_Father: {fileID: 1603302214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -2163,10 +2177,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1603302214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1920}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &628143054
 MonoBehaviour:
@@ -2218,7 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AspectMode: 2
+  m_AspectMode: 4
   m_AspectRatio: 0.5625
 --- !u!1001 &708761732
 PrefabInstance:
@@ -3718,7 +3732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095576360879690059, guid: 0f84c28acb7eb2e4b8eb9e4b4575b726, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.00024414062
       objectReference: {fileID: 0}
     - target: {fileID: 2095576360879690059, guid: 0f84c28acb7eb2e4b8eb9e4b4575b726, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3730,6 +3744,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095576360879690059, guid: 0f84c28acb7eb2e4b8eb9e4b4575b726, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391678967543375496, guid: 0f84c28acb7eb2e4b8eb9e4b4575b726, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 464.3159
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353818150742669051, guid: 0f84c28acb7eb2e4b8eb9e4b4575b726, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8785675807161710440, guid: 0f84c28acb7eb2e4b8eb9e4b4575b726, type: 3}
@@ -4692,6 +4714,7 @@ RectTransform:
   - {fileID: 1934784248}
   - {fileID: 1822377091}
   - {fileID: 390418646}
+  - {fileID: 97969970}
   - {fileID: 590590705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
