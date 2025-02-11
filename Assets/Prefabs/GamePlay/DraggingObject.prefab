@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5504716591517409997}
   - component: {fileID: 2503505305801440470}
   - component: {fileID: 6057492609687936269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DraggingObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 654572297
-  m_SortingLayer: 12
+  m_SortingLayer: 15
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,7 +141,6 @@ MonoBehaviour:
   _minSpeedDist: 0.2
   _maxSpeedDist: 1.75
   circleTrigger: {fileID: 1484192007461822283}
-  physicalCollider: {fileID: 6570637746972116661, guid: d5da5eb059820e84697200fdd22f841a, type: 3}
 --- !u!95 &2503505305801440470
 Animator:
   serializedVersion: 5
