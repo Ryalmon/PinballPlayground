@@ -4681,6 +4681,7 @@ GameObject:
   - component: {fileID: 2132264254}
   - component: {fileID: 2132264256}
   - component: {fileID: 2132264255}
+  - component: {fileID: 2132264257}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -4772,6 +4773,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2132264257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132264249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e548a739144cd46b0a58076eae4f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 215321979}
 --- !u!1001 &7669650538689263722
 PrefabInstance:
   m_ObjectHideFlags: 0
