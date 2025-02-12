@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007492561514482772}
   - component: {fileID: 4485691724692039339}
+  - component: {fileID: 3741589985184240001}
   m_Layer: 0
   m_Name: TouchPoint
   m_TagString: PlayerTouch
@@ -67,3 +68,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3741589985184240001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002618062165718921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1d3f826f380d94381bf1a166366585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanPickUp: 1
