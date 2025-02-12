@@ -44,5 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bda71141dd149848922831a3d3f3ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFlippers: []
-  rightFlippers: []
+  _leftFlippers:
+  - {fileID: 0}
+  _rightFlippers:
+  - {fileID: 0}
+  unpressedButton: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
+  pressedButton: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+  leftButton: {fileID: 0}
+  rightButton: {fileID: 0}

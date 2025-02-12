@@ -7,6 +7,14 @@ public class FlipperManager : MonoBehaviour
     [SerializeField] List<Flippers> _leftFlippers = new List<Flippers>();
     [SerializeField] List<Flippers> _rightFlippers = new List<Flippers>();
 
+
+    [SerializeField] Sprite unpressedButton;
+    [SerializeField] Sprite pressedButton;
+
+    [SerializeField] SpriteRenderer leftButton;
+    [SerializeField] SpriteRenderer rightButton;
+
+
     private void Start()
     {
         AssignEvents();
@@ -30,6 +38,8 @@ public class FlipperManager : MonoBehaviour
         {
             currentFlipper.Flip();
         }
+
+        leftButton.sprite = pressedButton;
     }
 
     public void DeactivateLeftFlippers()
@@ -40,6 +50,8 @@ public class FlipperManager : MonoBehaviour
         {
             currentFlipper.UnFlip();
         }
+
+        leftButton.sprite = unpressedButton;
     }
 
     public void ActivateRightFlippers()
@@ -50,6 +62,8 @@ public class FlipperManager : MonoBehaviour
         {
             currentFlipper.Flip();
         }
+
+        rightButton.sprite = pressedButton;
     }
 
     public void DeactivateRightFlippers()
@@ -60,6 +74,8 @@ public class FlipperManager : MonoBehaviour
         {
             currentFlipper.UnFlip();
         }
+
+        rightButton.sprite = unpressedButton;
     }
 
     private void DeactivateAllFlippers()
