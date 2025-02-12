@@ -33,6 +33,8 @@ public class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(_tutorialWaitTime);
 
+        GameplayManagers.Instance.State.OnTutorialStartEvent?.Invoke();
+
         Time.timeScale = 0f;
 
         _ContinueButton.SetActive(true);
@@ -94,5 +96,7 @@ public class Tutorial : MonoBehaviour
             if (_additionalObjects[i] == null) continue;
             _additionalObjects[i].gameObject.SetActive(false);
         }
+
+        GameplayManagers.Instance.State.OnTutorialEndEvent?.Invoke();
     }
 }

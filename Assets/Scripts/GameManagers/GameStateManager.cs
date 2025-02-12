@@ -9,7 +9,10 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] UnityEvent _ballActivatedEvent;
     [SerializeField] UnityEvent _ballDeactivatedEvent;
-    
+
+    internal UnityEvent OnTutorialStartEvent = new();
+    internal UnityEvent OnTutorialEndEvent = new();
+
     private const int _mainMenuScene = 0;
 
     internal GamePlayState GPS = GamePlayState.Intro;
