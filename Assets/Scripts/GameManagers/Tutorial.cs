@@ -8,7 +8,6 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private GameObject _placementField;
     [SerializeField] private GameObject _ballLauncher;
-    [SerializeField] private GameObject _ContinueButton;
     [SerializeField] private GameObject _tutorialArt;
     [SerializeField] private GameObject _tutorialText;
 
@@ -21,23 +20,29 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private Color _darken = new Color(0.45f, 0.45f, 0.45f);
     [SerializeField] private Color _normal = new Color(1, 1, 1,0);
+
+    private bool _isTutorialActive;
    
-    // Start is called before the first frame update
-    void Start()
+    public void ToggleTutorial()
     {
-        StartCoroutine(TutorialPopUp());
+        _isTutorialActive = !_isTutorialActive;
+
+        if(_isTutorialActive)
+        {
+            TutorialPopUp();
+        }
+        else
+        {
+            SetTutorialStateFalse();
+        }
     }
 
-    
-    private IEnumerator TutorialPopUp()
+    private void TutorialPopUp()
     {
-        yield return new WaitForSeconds(_tutorialWaitTime);
-
         GameplayManagers.Instance.State.OnTutorialStartEvent?.Invoke();
 
         Time.timeScale = 0f;
 
-        _ContinueButton.SetActive(true);
         _placementField.SetActive(true);
         _ballLauncher.SetActive(false);
         _tutorialArt.SetActive(true);
@@ -69,7 +74,6 @@ public class Tutorial : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        _ContinueButton.SetActive(false);
         _placementField.SetActive(false);
         _ballLauncher.SetActive(true);
         _tutorialArt.SetActive(false);
