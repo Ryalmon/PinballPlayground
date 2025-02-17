@@ -23,6 +23,7 @@ public class DragnDrop : MonoBehaviour
     [SerializeField] Collider2D circleTrigger;
     Transform playerTouch;
 
+    DragPoint _currentDragPoint;
 
     private void Start()
     {
@@ -132,11 +133,13 @@ public class DragnDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!onlyCollideOnce && collision.gameObject.CompareTag("PlayerTouch"))
+        _currentDragPoint = collision.GetComponent<DragPoint>();
+        if (!onlyCollideOnce && _currentDragPoint != null && _currentDragPoint.CanPickUp)
         {
             GameplayManagers.Instance.Placement.IncreaseItemsBeingDragged();
             isFollowingTouch = true;
             playerTouch = collision.gameObject.transform;
+            _currentDragPoint.CanPickUp = false;
         }
     }
 
