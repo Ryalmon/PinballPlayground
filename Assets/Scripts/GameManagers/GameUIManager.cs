@@ -57,8 +57,10 @@ public class GameUIManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject _ballLaunchButton;
     [SerializeField] private Animator _launchAnimator;
-    [SerializeField] private Image _leftFlipperButton;
-    [SerializeField] private Image _rightFlipperButton;
+    //[SerializeField] private Image _leftFlipperButton;
+    //[SerializeField] private Image _rightFlipperButton;
+    [SerializeField] private SpriteRenderer _leftFlipperButton;
+    [SerializeField] private SpriteRenderer _rightFlipperButton;
     [SerializeField] private Sprite _flipperButtonPassive;
     [SerializeField] private Sprite _flipperButtonPressed;
     [Space]

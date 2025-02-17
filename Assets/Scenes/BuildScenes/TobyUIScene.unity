@@ -887,6 +887,7 @@ GameObject:
   - component: {fileID: 215779716}
   - component: {fileID: 215779718}
   - component: {fileID: 215779717}
+  - component: {fileID: 215779719}
   m_Layer: 5
   m_Name: Gameplay Group
   m_TagString: Untagged
@@ -956,6 +957,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215779715}
   m_CullTransparentMesh: 1
+--- !u!225 &215779719
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215779715}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
 --- !u!1 &248424222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,11 +2103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -266.6667
+      value: 155.79977
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -630.869
+      value: 52.74725
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3018,6 +3031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820887281}
   - component: {fileID: 820887282}
+  - component: {fileID: 820887283}
   m_Layer: 5
   m_Name: Game End Screen
   m_TagString: Untagged
@@ -3053,6 +3067,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820887280}
   m_CullTransparentMesh: 1
+--- !u!225 &820887283
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820887280}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
 --- !u!1 &832802974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,7 +3431,7 @@ PrefabInstance:
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _leftFlipperButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1790726907}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: rightFlipperButton
       value: 
@@ -3421,7 +3447,7 @@ PrefabInstance:
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _rightFlipperButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1003310431}
     - target: {fileID: 3229328678617177870, guid: 90bd685dcf0c1814cba57ebb77bf50d1, type: 3}
       propertyPath: _scorePopUpAnimator
       value: 
@@ -6063,7 +6089,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1003310431}
     - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
+      propertyPath: _leftFlippers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
       propertyPath: _leftFlippers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1267799313}
+    - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
+      propertyPath: _leftFlippers.Array.data[1]
       value: 
       objectReference: {fileID: 1267799313}
     - target: {fileID: 6331817751542454100, guid: faa7a96ed0c7f2945a27f0e9e96807b9, type: 3}
@@ -8070,6 +8104,7 @@ GameObject:
   - component: {fileID: 1727111044}
   - component: {fileID: 1727111046}
   - component: {fileID: 1727111045}
+  - component: {fileID: 1727111047}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -8137,6 +8172,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727111043}
   m_CullTransparentMesh: 1
+--- !u!225 &1727111047
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727111043}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1739498271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9280,11 +9327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 271.1111
+      value: 644.20026
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -680.6745
+      value: 52.74725
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
