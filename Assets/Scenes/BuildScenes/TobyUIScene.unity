@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 68091465}
   - component: {fileID: 68091464}
   - component: {fileID: 68091463}
+  - component: {fileID: 68091469}
   m_Layer: 5
   m_Name: Tutorial Button
   m_TagString: Untagged
@@ -515,6 +516,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 68091469}
+        m_TargetAssemblyTypeName: ChangeUIText, Assembly-CSharp
+        m_MethodName: ChangeText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &68091467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +566,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68091461}
   m_CullTransparentMesh: 1
+--- !u!114 &68091469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68091461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80043c9d7a4c0b2459a8f67a2a91f809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textToChange: {fileID: 1491361696}
+  _beforeText: Tutorial
+  _afterText: Back
 --- !u!1 &79634092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 52.747192
+      value: 52.74725
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3833,7 +3861,6 @@ MonoBehaviour:
   _tutorialWaitTime: 1
   _placementField: {fileID: 14044722}
   _ballLauncher: {fileID: 1269371850}
-  _ContinueButton: {fileID: 0}
   _tutorialArt: {fileID: 2079120693}
   _tutorialText: {fileID: 701412746}
   _nonImportantItems:
@@ -9310,7 +9337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 52.747192
+      value: 52.74725
       objectReference: {fileID: 0}
     - target: {fileID: 7347254295395816910, guid: 1f103b1576a3a744eb24844fa0f51255, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

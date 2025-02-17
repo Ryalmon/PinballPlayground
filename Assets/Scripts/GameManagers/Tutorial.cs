@@ -79,8 +79,6 @@ public class Tutorial : MonoBehaviour
         _tutorialArt.SetActive(false);
         _tutorialText.SetActive(false);
 
-        GameplayManagers.Instance.Ball.ShooterBegin();
-
         _backgroundImage.color = _normal;
 
         for (int i = 0; i < _nonImportantItems.Length; ++i)

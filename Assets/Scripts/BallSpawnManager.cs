@@ -15,6 +15,7 @@ public class BallSpawnManager : MonoBehaviour
 
     private void Start()
     {
+        GameplayManagers.Instance.Ball.ShooterBegin();
         AssignEvents();
     }
     private void AssignEvents()

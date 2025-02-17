@@ -336,12 +336,14 @@ public class GameUIManager : MonoBehaviour
 
     public void RightFlipperButtonPressed()
     {
-        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+        _rightFlipperButton.sprite = _flipperButtonPressed;
+        //_rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
     }
 
     public void RightFlipperButtonPassive()
     {
-        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+        _rightFlipperButton.sprite = _flipperButtonPassive;
+        //_rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
     }
     #endregion
 
