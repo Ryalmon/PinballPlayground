@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 
@@ -118,7 +119,13 @@ public class MultipleTouch : MonoBehaviour
         GameObject c = Instantiate(circle);
         c.name = "touch" + t.fingerId;
         //Assigns its position to be where the touch occured
-        c.transform.position = GetTouchPosition(t.position);
+        Vector3 position = GetTouchPosition(t.position);
+        c.transform.position = position;
+
+        // Debug draw tocuh position
+        Debug.DrawLine(position + (Vector3.down / 2), position + (Vector3.up / 2), UnityEngine.Color.green);
+        Debug.DrawLine(position + (Vector3.left / 2), position + (Vector3.right / 2), UnityEngine.Color.green);
+
         return c;
     }
 
