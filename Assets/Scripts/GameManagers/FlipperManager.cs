@@ -32,6 +32,7 @@ public class FlipperManager : MonoBehaviour
 
     public void ActivateLeftFlippers()
     {
+        print("Activate Left Flippers");
         GameplayManagers.Instance.UI.LeftFlipperButtonPressed();
         //Goes through the list of left flippers and activates them
         foreach(Flippers currentFlipper in _leftFlippers)

@@ -59,6 +59,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private Animator _launchAnimator;
     //[SerializeField] private Image _leftFlipperButton;
     //[SerializeField] private Image _rightFlipperButton;
+    [SerializeField] private Animator _tutorialButtonAnimator;
     [SerializeField] private SpriteRenderer _leftFlipperButton;
     [SerializeField] private SpriteRenderer _rightFlipperButton;
     [SerializeField] private Sprite _flipperButtonPassive;
@@ -116,6 +117,7 @@ public class GameUIManager : MonoBehaviour
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(BallLaunchButtonPressed);
         GameplayManagers.Instance.State.GetBallActiveEvent().AddListener(ResetMultiplier);
         GameplayManagers.Instance.State.GetBallDeactiveEvent().AddListener(SetLaunchButtonActive);
+        GameplayManagers.Instance.State.GetGameStartEvent().AddListener(HideTutorialButton);
 
         _timerChecks.AddListener(OneDigitRound);
     }
@@ -313,25 +315,37 @@ public class GameUIManager : MonoBehaviour
         _launchAnimator.SetBool("ButtonVisible", false);
     }
 
+    /// <summary>
+    /// I hate this script with every fiber of my being but I might as well stay consistent
+    /// </summary>
+    public void HideTutorialButton()
+    {
+        _tutorialButtonAnimator.SetBool("ButtonVisible", false);
+    }
+
     #region FlipperButtons
     public void LeftFlipperButtonPressed()
     {
-        _leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+        _leftFlipperButton.sprite = _flipperButtonPressed;
+        //_leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
     }
 
     public void LeftFlipperButtonPassive()
     {
-        _leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+        _leftFlipperButton.sprite = _flipperButtonPassive;
+        //_leftFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
     }
 
     public void RightFlipperButtonPressed()
     {
-        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
+        _rightFlipperButton.sprite = _flipperButtonPressed;
+        //_rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPressed;
     }
 
     public void RightFlipperButtonPassive()
     {
-        _rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
+        _rightFlipperButton.sprite = _flipperButtonPassive;
+        //_rightFlipperButton.GetComponent<Image>().sprite = _flipperButtonPassive;
     }
     #endregion
 
