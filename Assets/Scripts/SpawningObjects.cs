@@ -68,6 +68,9 @@ public class SpawningObjects : MonoBehaviour
         {
             GameObject newGameObj = CreateSpawnedObj(index);
             SpawnedObjects[index] = newGameObj;
+
+            string audioName = index == 0 ? "LeftRecharge" : "RightRecharge";
+            UniversalManager.Instance.Sound.PlaySFX(audioName);
         }
     }
 
@@ -79,6 +82,7 @@ public class SpawningObjects : MonoBehaviour
         GameObject newGameObj = Instantiate(_placementToken, SpawnPoints[index].position, Quaternion.identity);
         //newGameObj.GetComponent<DragnDrop>().AssignPlacementData(Placeables[Random.Range(0, Placeables.Count)]);
         newGameObj.GetComponent<DragnDrop>().AssignPlacementData(nextToken);
+
         return newGameObj;
     }
 

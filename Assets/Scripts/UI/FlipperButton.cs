@@ -18,7 +18,6 @@ public class FlipperButton : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerTouch"))
         {
-            Debug.Log("hi");
             OnPointerDown.Invoke();
         }
     }

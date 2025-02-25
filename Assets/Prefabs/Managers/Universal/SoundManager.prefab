@@ -76,6 +76,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d0a63d5d0d5a1ba45ace468d993bd4ea, type: 3}
   - soundName: SlingRing
     clip: {fileID: 8300000, guid: 0daf3047115481e4299c96323ec228c5, type: 3}
+  - soundName: LeftRecharge
+    clip: {fileID: 8300000, guid: c6bceccb419128541b3658f800c49d6e, type: 3}
+  - soundName: RightRecharge
+    clip: {fileID: 8300000, guid: c6bceccb419128541b3658f800c49d6e, type: 3}
   flipperSounds:
   - soundName: FlipperUp
     clip: {fileID: 8300000, guid: 91acea86d6afdeb44bf63735d3a0e26c, type: 3}
