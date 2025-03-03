@@ -34,10 +34,12 @@ public class MusicLoader : MonoBehaviour
 
         if (sceneID == 0)
         {
-            if (!UniversalManager.Instance.Scene.IsSameAsPreviousScene() && UniversalManager.Instance.Scene.PreviousScene() != 2)
+            if (!UniversalManager.Instance.Scene.IsSameAsPreviousScene() 
+                && UniversalManager.Instance.Scene.PreviousScene() != 2 
+                && UniversalManager.Instance.Sound.DoesPlayMusic)
                 StartCoroutine(MainMenuMusic());
         }
-        else if (sceneID == 1)
+        else if (sceneID == 1 && UniversalManager.Instance.Sound.DoesPlayMusic)
         {
             StartCoroutine(GameMusic());
         }
