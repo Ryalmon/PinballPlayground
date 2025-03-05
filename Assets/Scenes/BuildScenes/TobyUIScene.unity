@@ -15755,6 +15755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5293988621963241069}
   - component: {fileID: 6669451563585702547}
+  - component: {fileID: 6669451563585702548}
   m_Layer: 5
   m_Name: CongratsText
   m_TagString: Untagged
@@ -17178,6 +17179,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &6669451563585702548
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574412328746054275}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &6669497311625314086
 RectTransform:
   m_ObjectHideFlags: 0
