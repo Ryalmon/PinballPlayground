@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class MultipleTouch : MonoBehaviour
 {
@@ -22,6 +23,16 @@ public class MultipleTouch : MonoBehaviour
         UniversalManager.Instance.Scene.PostSceneChangeEvent().AddListener(CameraUpdate);
 
         StartTouchProcess();
+
+        // I know GameObject.Find is the worst thing ever but I am tired and struggling to find a better way.
+        // Given that is manager is a PREFAB (??????) and doesnt even have a constructor.
+        // Also the MultipleTouch class is never even referenced so its basically impossible for me to find the code
+        // that instantiates this manager, so i can set the damn variable from that script.
+        // 
+        // In the future, if you are going to make a manager script that is instantiated from another script, DO NOT
+        // make the script inherit monobehaviour.
+        //gameObjectsCanvas = GameObject.Find("GameObjects").GetComponent<RectTransform>(); 
+        //                  ok so the code ended up not working but let this be a lesson in good system architecture
     }
 
     public void StartTouchProcess()
@@ -104,8 +115,10 @@ public class MultipleTouch : MonoBehaviour
         if (mainCam == null)
             CameraUpdate();
 
-        return mainCam.GetComponent<Camera>().ScreenToWorldPoint(
+        Vector3 rawPoint = mainCam.GetComponent<Camera>().ScreenToWorldPoint(
             new Vector3(touchPosition.x, touchPosition.y, 0));
+
+        return rawPoint;
     }
 
     /// <summary>
