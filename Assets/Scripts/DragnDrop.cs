@@ -29,6 +29,12 @@ public class DragnDrop : MonoBehaviour
     {
         GameplayManagers.Instance.Fade.FadeGameObjectIn(gameObject, GameplayManagers.Instance.Placement.GetTokenFadeInTime(), null);
         originalPosition = transform.position;
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        GameplayManagers.Instance.State.GetGameEndEvent().AddListener(DestroyOnGameEnd);
     }
 
     private void Update()
@@ -161,5 +167,15 @@ public class DragnDrop : MonoBehaviour
             isFollowingTouch = false;
             playerTouch = null;
         }
+    }
+
+    private void DestroyOnGameEnd()
+    {
+        GetComponent<Animator>().SetTrigger("TokenEnd");
+    }
+
+    public void DestroyDraggable()
+    {
+        Destroy(gameObject);
     }
 }
