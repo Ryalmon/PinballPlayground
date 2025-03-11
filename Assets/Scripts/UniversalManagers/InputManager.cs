@@ -1,16 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
 public class InputManager : MonoBehaviour
 {
     public PlayerInputActions PIA;
+    private EventSystem _eventSystem;
 
     void Start()
     {
+        _eventSystem = GetComponent<EventSystem>();
         EstablishInput();
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        UniversalManager.Instance.Scene.GetPreSceneLoadEvent().AddListener(delegate { EventSystemEnable(false); });
+        UniversalManager.Instance.Scene.PostSceneChangeEvent().AddListener(delegate { EventSystemEnable(true); });
+    }
+
+    private void EventSystemEnable(bool enabled)
+    {
+        _eventSystem.enabled = enabled;
     }
 
     #region DebugButtons
