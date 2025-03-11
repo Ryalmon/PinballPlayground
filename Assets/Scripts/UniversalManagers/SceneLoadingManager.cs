@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class SceneLoadingManager : MonoBehaviour
 {
+    private UnityEvent _preSceneChange = new UnityEvent();
     private UnityEvent _postSceneChange = new UnityEvent();
     private int _previousScene = -1;
     public int CurrentScene()
@@ -25,6 +26,7 @@ public class SceneLoadingManager : MonoBehaviour
 
     public IEnumerator SceneLoadDelay(int index)
     {
+        _preSceneChange?.Invoke();
         _previousScene = SceneManager.GetActiveScene().buildIndex;
         SceneTransition st = FindObjectOfType<SceneTransition>();
         if (st != null)
@@ -33,6 +35,8 @@ public class SceneLoadingManager : MonoBehaviour
         SceneManager.LoadScene(index);
         _postSceneChange?.Invoke();
     }
+
+    public UnityEvent GetPreSceneLoadEvent() => _preSceneChange;
 
     public UnityEvent PostSceneChangeEvent()
     {
