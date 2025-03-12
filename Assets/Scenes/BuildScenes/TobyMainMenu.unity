@@ -6343,8 +6343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isMusicToggle: 1
   _visuals: {fileID: 2075805151}
-  _onSprite: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
-  _offSprite: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+  _onSprite: {fileID: 21300000, guid: 2a12784613c829d4e92981358b56db1c, type: 3}
+  _offSprite: {fileID: 21300000, guid: 1adade134aa55a14b90826e3483dd2d4, type: 3}
 --- !u!1 &1754560943
 GameObject:
   m_ObjectHideFlags: 0
@@ -8142,8 +8142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isMusicToggle: 0
   _visuals: {fileID: 1567417797}
-  _onSprite: {fileID: 21300000, guid: 6808e88d4bf4f394c905e5fb54437d76, type: 3}
-  _offSprite: {fileID: 21300000, guid: 0202df138c7acbf4ea0385c9dd1d09eb, type: 3}
+  _onSprite: {fileID: 21300000, guid: 2fd5e4030880ab84582ac01f92526fa1, type: 3}
+  _offSprite: {fileID: 21300000, guid: 703d7b296348af64fa016aa5664e76c0, type: 3}
 --- !u!114 &2101347854
 MonoBehaviour:
   m_ObjectHideFlags: 0
