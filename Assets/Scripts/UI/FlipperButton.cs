@@ -16,15 +16,17 @@ public class FlipperButton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("PlayerTouch"))
+        if (collision.TryGetComponent<DragPoint>(out DragPoint dp))
         {
-            OnPointerDown.Invoke();
+            Debug.Log(dp.TimeDragging);
+            if(dp.TimeDragging < 0.25f)
+                OnPointerDown.Invoke();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("PlayerTouch"))
+        if (collision.TryGetComponent<DragPoint>(out DragPoint dp))
         {
             OnPointerUp.Invoke();
         }
