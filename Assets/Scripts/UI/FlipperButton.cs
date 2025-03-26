@@ -18,7 +18,6 @@ public class FlipperButton : MonoBehaviour
     {
         if (collision.TryGetComponent<DragPoint>(out DragPoint dp))
         {
-            Debug.Log(dp.TimeDragging);
             if(dp.TimeDragging < 0.25f)
                 OnPointerDown.Invoke();
         }
