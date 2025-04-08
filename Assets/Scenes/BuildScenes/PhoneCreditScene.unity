@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7792135576874290419, guid: 1eeb2b7f39da1ef4288e27d853970cef, type: 3}
       propertyPath: m_text
-      value: "Team Lead\nJosh Eddy \nCleo Nixon-Johnson\nNoah Lipowski\nLance Marshall"
+      value: "Josh Eddy \nCleo Nixon-Johnson\nNoah Lipowski\nLance Marshall"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1172,8 +1172,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nRyan Salmon \n\nJosh Eddy\n   \nMadison Gorman  \n   \nToby Schamberger\n\nRyan
-    Swanson \n   \nCaitlin Immer\n   "
+  m_text: "Ryan Salmon \nJosh Eddy \nMadison Gorman    \nToby Schamberger\nRyan Swanson
+    \nCaitlin Immer\n   "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
   m_sharedMaterial: {fileID: 643703137179681282, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
@@ -2825,9 +2825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9fa6bc0f5551746a24ab0d78c8f3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playButton: {fileID: 215321979}
-  _otherButton: {fileID: 0}
-  _viewCreditsButton: {fileID: 0}
 --- !u!114 &1103562945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4701,8 +4698,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2123570400}
   - {fileID: 1125877212}
+  - {fileID: 2123570400}
   - {fileID: 295815834}
   - {fileID: 1101997790}
   m_Father: {fileID: 1103562948}
