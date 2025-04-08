@@ -145,6 +145,7 @@ public class SaveManager : MonoBehaviour
     {
         GSD = new GameSaveData();
         PopulateArrays();
+        ResetMostRecentScore();
         SaveText();
     }
 }
