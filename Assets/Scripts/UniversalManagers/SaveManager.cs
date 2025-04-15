@@ -6,6 +6,9 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
     public GameSaveData GSD;
+    [SerializeField] private string[] _defaultNames;
+    [SerializeField] private int[] _defaultScores;
+
     private string _path;
     private int _mostRecentScorePos = -1;
 
@@ -115,6 +118,15 @@ public class SaveManager : MonoBehaviour
         //Fills the arrays with default values when the file is created
         System.Array.Fill(GSD.SaveNames, "");
         System.Array.Fill(GSD.SaveScore, 0);
+
+        for(int i = 0; i < GSD.SaveNames.Length; i++)
+        {
+            GSD.SaveNames[i] = _defaultNames[i];
+        }    
+        for(int j = 0; j < GSD.SaveScore.Length; j++)
+        {
+            GSD.SaveScore[j] = _defaultScores[j];
+        }
     }
 
     public void SaveText()
