@@ -3091,7 +3091,7 @@ GameObject:
   - component: {fileID: 643770293}
   - component: {fileID: 643770292}
   m_Layer: 5
-  m_Name: Description (7)
+  m_Name: Placeables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3136,7 +3136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Placables
+  m_text: Placeables
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
   m_sharedMaterial: {fileID: 643703137179681282, guid: f08103f47c7b10a4d8a93852327183b4, type: 2}
