@@ -61,7 +61,7 @@ public class DragnDrop : MonoBehaviour
 
     private void UpdatePlacementVisuals()
     {
-        GetComponent<SpriteRenderer>().sprite = _placementData._tokenVisuals;
+        GetComponentInChildren<SpriteRenderer>().sprite = _placementData._tokenVisuals;
     }
     
     private void AttemptPlacement()
