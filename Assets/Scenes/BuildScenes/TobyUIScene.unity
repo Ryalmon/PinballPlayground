@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 3
-  m_AspectRatio: 0.48743126
+  m_AspectRatio: 0.5625
 --- !u!212 &104806671 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5190406773647342387, guid: bf8704d4708781842871113b9b518fd9, type: 3}
@@ -4689,7 +4689,7 @@ Transform:
   m_GameObject: {fileID: 1003310428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: -9, z: 0}
+  m_LocalPosition: {x: 4, y: -8.62, z: 0}
   m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -9446,7 +9446,7 @@ Transform:
   m_GameObject: {fileID: 1790726904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -9, z: 0}
+  m_LocalPosition: {x: -4, y: -8.62, z: 0}
   m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children: []
